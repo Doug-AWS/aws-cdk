@@ -76,7 +76,7 @@ export abstract class StreamRef extends Construct {
     }
 
     /**
-     * Grant write permissions for this stream and it's contents to an IAM
+     * Grant write permissions for this stream and its contents to an IAM
      * principal (Role/Group/User).
      *
      * If an encryption key is used, permission to ues the key to decrypt the
@@ -100,7 +100,7 @@ export abstract class StreamRef extends Construct {
     }
 
     /**
-     * Grant read permissions for this stream and it's contents to an IAM
+     * Grant read permissions for this stream and its contents to an IAM
      * principal (Role/Group/User).
      *
      * If an encryption key is used, permission to ues the key to decrypt the
@@ -126,7 +126,7 @@ export abstract class StreamRef extends Construct {
     }
 
     /**
-     * Grants read/write permissions for this stream and it's contents to an IAM
+     * Grants read/write permissions for this stream and its contents to an IAM
      * principal (Role/Group/User).
      *
      * If an encryption key is used, permission to use the key for
