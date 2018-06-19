@@ -1,0 +1,3 @@
+{
+    "app": "java -jar target/%name%-0.1.0.jar"
+}

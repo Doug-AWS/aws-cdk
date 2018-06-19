@@ -2,6 +2,7 @@ import { execCdkBetaNpm } from 'aws-cdk-npm';
 import { exec } from 'child_process';
 import * as colors from 'colors/safe';
 import * as fs from 'fs-extra';
+import * as os from 'os';
 import * as path from 'path';
 import { promisify } from 'util';
 import { error, print, warning } from './logging';
@@ -191,8 +192,20 @@ async function initializeGitRepository() {
 
 async function postInstall(language: string) {
     switch (language) {
+    case 'java':
+        return await postInstallJava();
     case 'typescript':
         return await postInstallTypescript();
+    }
+}
+async function postInstallJava() {
+    const localCdk = process.env.CDK_HOME ? process.env.CDK_HOME : path.join(os.homedir(), '.cdk');
+    const srcDir = path.join(localCdk, 'repo', 'maven');
+    print(`Copying CKD libraries from ${colors.green(srcDir)} to ${colors.green('lib')}`);
+    await fs.mkdirp('lib');
+    for (const jar of await fs.readdir(srcDir)) {
+        if (!jar.endsWith('.jar') || jar.endsWith('-sources.jar')) { continue; }
+        await fs.copy(path.join(srcDir, jar), path.join('lib', jar));
     }
 }
 
