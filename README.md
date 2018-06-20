@@ -45,9 +45,19 @@ unzip <path-to-zip-file> -d ~/.cdk
 
 Make sure the ~/.cdk/bin is in your `PATH`
 
+#### Linux/MacOS
+
 ```shell
 # at the end of your ~/.bashrc or ~/.zshrc file
 export PATH=$PATH:$HOME/.cdk/bin
+```
+
+#### Windows
+```powershell
+# Place at the end of your ~/Documents/WindowsPowerShell/profile.ps1
+# If profile.ps1 does not exist, create it.
+$cdkBin = [IO.Path]::Combine($env:USERPROFILE, ".cdk", "bin")
+$env:Path = "${env:Path}:$cdkBin"
 ```
 
 To check which CDK version you have installed:

@@ -38,6 +38,9 @@ cp ${root}/packages/aws-cdk-java/target/*.jar repo/maven
 echo "Bootstrapping a production-ready npm closure"
 npm install --global-style --production --no-save $(find repo/npm -iname '*.tgz')
 
+# Add .cmd shims for Windows support. See comments in ./add-cmd-shims.js.
+./add-cmd-shims.js
+
 # Symlink 'bin' to the root
 echo "Symlinking bin"
 ln -s node_modules/.bin bin
