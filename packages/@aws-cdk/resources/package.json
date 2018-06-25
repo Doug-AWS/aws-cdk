@@ -15,7 +15,7 @@
     "outdir": "dist",
     "names": {
       "java": "com.amazonaws.cdk.resources",
-      "dotnet": "Aws.Cdk.Resources"
+      "dotnet": "AWS.Cdk.Resources"
     }
   },
   "dependencies": {

@@ -9,7 +9,7 @@
     "bundledDependencies": [],
     "names": {
       "java": "com.amazonaws.cdk.acm",
-      "dotnet": "Aws.Cdk.Acm"
+      "dotnet": "AWS.Cdk.Acm"
     }
   },
   "repository": {

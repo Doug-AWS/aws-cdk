@@ -9,7 +9,7 @@
     "bundledDependencies": [],
     "names": {
       "java": "com.amazonaws.cdk.dynamodb",
-      "dotnet": "Aws.Cdk.DynamoDb"
+      "dotnet": "AWS.Cdk.DynamoDb"
     }
   },
   "repository": {

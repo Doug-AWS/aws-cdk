@@ -9,7 +9,7 @@
     "bundledDependencies": [],
     "names": {
       "java": "com.amazonaws.cdk.neptune",
-      "dotnet": "Aws.Cdk.Neptune"
+      "dotnet": "AWS.Cdk.Neptune"
     }
   },
   "repository": {

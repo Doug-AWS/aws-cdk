@@ -9,7 +9,7 @@
     "bundledDependencies": [],
     "names": {
       "java": "com.amazonaws.cdk.rds",
-      "dotnet": "Aws.Cdk.Rds"
+      "dotnet": "AWS.Cdk.Rds"
     }
   },
   "repository": {

@@ -11,7 +11,7 @@
     ],
     "names": {
       "java": "com.amazonaws.cdk.codepipeline",
-      "dotnet": "Aws.Cdk.CodePipeline"
+      "dotnet": "AWS.Cdk.CodePipeline"
     }
   },
   "repository": {

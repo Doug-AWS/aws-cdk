@@ -11,7 +11,7 @@
     ],
     "names": {
       "java": "com.amazonaws.cdk.ec2",
-      "dotnet": "Aws.Cdk.Ec2"
+      "dotnet": "AWS.Cdk.Ec2"
     }
   },
   "repository": {

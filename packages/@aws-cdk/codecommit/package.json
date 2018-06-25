@@ -9,7 +9,7 @@
     "bundledDependencies": [],
     "names": {
       "java": "com.amazonaws.cdk.codecommit",
-      "dotnet": "Aws.Cdk.CodeCommit"
+      "dotnet": "AWS.Cdk.CodeCommit"
     }
   },
   "repository": {

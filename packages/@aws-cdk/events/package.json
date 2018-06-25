@@ -11,7 +11,7 @@
     ],
     "names": {
       "java": "com.amazonaws.cdk.events",
-      "dotnet": "Aws.Cdk.Events"
+      "dotnet": "AWS.Cdk.Events"
     }
   },
   "repository": {
