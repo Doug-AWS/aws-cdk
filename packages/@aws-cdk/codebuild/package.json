@@ -9,7 +9,7 @@
     "bundledDependencies": [],
     "names": {
       "java": "com.amazonaws.cdk.codebuild",
-      "dotnet": "Aws.Cdk.CodeBuild"
+      "dotnet": "AWS.Cdk.CodeBuild"
     }
   },
   "repository": {

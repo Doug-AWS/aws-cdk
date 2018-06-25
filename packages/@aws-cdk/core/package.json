@@ -12,7 +12,7 @@
     ],
     "names": {
       "java": "com.amazonaws.cdk",
-      "dotnet": "Aws.Cdk"
+      "dotnet": "AWS.Cdk"
     }
   },
   "repository": {

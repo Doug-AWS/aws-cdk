@@ -9,7 +9,7 @@
     "bundledDependencies": [],
     "names": {
       "java": "com.amazonaws.cdk.route53",
-      "dotnet": "Aws.Cdk.Route53"
+      "dotnet": "AWS.Cdk.Route53"
     }
   },
   "repository": {

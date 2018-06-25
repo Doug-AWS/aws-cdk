@@ -9,7 +9,7 @@
     "bundledDependencies": [],
     "names": {
       "java": "com.amazonaws.cdk.cloudfront",
-      "dotnet": "Aws.Cdk.CloudFront"
+      "dotnet": "AWS.Cdk.CloudFront"
     }
   },
   "repository": {

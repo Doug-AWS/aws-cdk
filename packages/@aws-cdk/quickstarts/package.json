@@ -11,7 +11,7 @@
     ],
     "names": {
       "java": "com.amazonaws.cdk.quickstarts",
-      "dotnet": "Aws.Cdk.QuickStarts"
+      "dotnet": "AWS.Cdk.QuickStarts"
     }
   },
   "repository": {

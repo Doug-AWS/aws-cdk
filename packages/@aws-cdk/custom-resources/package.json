@@ -9,7 +9,7 @@
     "bundledDependencies": [],
     "names": {
       "java": "com.amazonaws.cdk.customresources",
-      "dotnet": "Aws.Cdk.CustomResources"
+      "dotnet": "AWS.Cdk.CustomResources"
     }
   },
   "repository": {

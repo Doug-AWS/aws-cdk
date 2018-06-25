@@ -9,7 +9,7 @@
     "bundledDependencies": [],
     "names": {
       "java": "com.amazonaws.cdk.cloudtrail",
-      "dotnet": "Aws.Cdk.CloudTrail"
+      "dotnet": "AWS.Cdk.CloudTrail"
     }
   },
   "repository": {

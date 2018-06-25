@@ -9,7 +9,7 @@
     "bundledDependencies": [],
     "names": {
       "java": "com.amazonaws.cdk.sqs",
-      "dotnet": "Aws.Cdk.Sqs"
+      "dotnet": "AWS.Cdk.Sqs"
     }
   },
   "repository": {
