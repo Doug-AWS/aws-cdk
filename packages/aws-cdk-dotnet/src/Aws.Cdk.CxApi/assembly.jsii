@@ -1,0 +1,378 @@
+{
+  "schema": "jsii/1.0",
+  "types": {
+    "jsii$_aws_cdk_cx_api$.ListStacksRequest": {
+      "kind": "interface",
+      "properties": [
+        {
+          "name": "type",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "name": "context",
+          "type": {
+            "primitive": "any",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cx_api$.ListStacksRequest",
+      "module": "jsii$_aws_cdk_cx_api$",
+      "namespace": "jsii$_aws_cdk_cx_api$",
+      "name": "ListStacksRequest",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cx_api$.SynthesizeRequest": {
+      "kind": "interface",
+      "properties": [
+        {
+          "name": "type",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "name": "stacks",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "name": "context",
+          "type": {
+            "primitive": "any",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cx_api$.SynthesizeRequest",
+      "module": "jsii$_aws_cdk_cx_api$",
+      "namespace": "jsii$_aws_cdk_cx_api$",
+      "name": "SynthesizeRequest",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cx_api$.MissingContext": {
+      "docs": {
+        "comment": "Represents a missing piece of context.\n(should have been an interface, but jsii still doesn't have support for structs)."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "name": "provider",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "name": "scope",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "name": "args",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cx_api$.MissingContext",
+      "module": "jsii$_aws_cdk_cx_api$",
+      "namespace": "jsii$_aws_cdk_cx_api$",
+      "name": "MissingContext",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cx_api$.ListStacksResponse": {
+      "kind": "interface",
+      "properties": [
+        {
+          "name": "stacks",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_cx_api$.StackInfo"
+              },
+              "kind": "array"
+            }
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cx_api$.ListStacksResponse",
+      "module": "jsii$_aws_cdk_cx_api$",
+      "namespace": "jsii$_aws_cdk_cx_api$",
+      "name": "ListStacksResponse",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cx_api$.SynthesizeResponse": {
+      "kind": "interface",
+      "properties": [
+        {
+          "name": "stacks",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_cx_api$.SynthesizedStack"
+              },
+              "kind": "array"
+            }
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cx_api$.SynthesizeResponse",
+      "module": "jsii$_aws_cdk_cx_api$",
+      "namespace": "jsii$_aws_cdk_cx_api$",
+      "name": "SynthesizeResponse",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cx_api$.StackId": {
+      "docs": {
+        "comment": "Identifies a single stack"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cx_api$.StackId",
+      "module": "jsii$_aws_cdk_cx_api$",
+      "namespace": "jsii$_aws_cdk_cx_api$",
+      "name": "StackId",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cx_api$.StackInfo": {
+      "docs": {
+        "comment": "Identifies and contains metadata about a stack"
+      },
+      "kind": "interface",
+      "interfaces": [
+        {
+          "fqn": "jsii$_aws_cdk_cx_api$.StackId"
+        }
+      ],
+      "properties": [
+        {
+          "name": "environment",
+          "type": {
+            "fqn": "jsii$_aws_cdk_cx_api$.Environment",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cx_api$.StackInfo",
+      "module": "jsii$_aws_cdk_cx_api$",
+      "namespace": "jsii$_aws_cdk_cx_api$",
+      "name": "StackInfo",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cx_api$.SynthesizedStack": {
+      "docs": {
+        "comment": "A complete synthesized stack"
+      },
+      "kind": "interface",
+      "interfaces": [
+        {
+          "fqn": "jsii$_aws_cdk_cx_api$.StackInfo"
+        }
+      ],
+      "properties": [
+        {
+          "name": "missing",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_cx_api$.MissingContext"
+              },
+              "kind": "map"
+            },
+            "optional": true
+          }
+        },
+        {
+          "name": "metadata",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "collection": {
+                  "elementtype": {
+                    "fqn": "jsii$_aws_cdk_cx_api$.MetadataEntry"
+                  },
+                  "kind": "array"
+                }
+              },
+              "kind": "map"
+            }
+          }
+        },
+        {
+          "name": "template",
+          "type": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cx_api$.SynthesizedStack",
+      "module": "jsii$_aws_cdk_cx_api$",
+      "namespace": "jsii$_aws_cdk_cx_api$",
+      "name": "SynthesizedStack",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cx_api$.MetadataEntry": {
+      "docs": {
+        "comment": "An metadata entry in the construct."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The type of the metadata entry."
+          },
+          "name": "type",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The data."
+          },
+          "name": "data",
+          "type": {
+            "primitive": "any",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "A stack trace for when the entry was created."
+          },
+          "name": "trace",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cx_api$.MetadataEntry",
+      "module": "jsii$_aws_cdk_cx_api$",
+      "namespace": "jsii$_aws_cdk_cx_api$",
+      "name": "MetadataEntry",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cx_api$.Environment": {
+      "docs": {
+        "comment": "Models an AWS execution environment, for use within the CDK toolkit."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The arbitrary name of this environment (user-set, or at least user-meaningful) "
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The 12-digit AWS account ID for the account this environment deploys into "
+          },
+          "name": "account",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The AWS region name where this environment deploys into "
+          },
+          "name": "region",
+          "type": {
+            "primitive": "string"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cx_api$.Environment",
+      "module": "jsii$_aws_cdk_cx_api$",
+      "namespace": "jsii$_aws_cdk_cx_api$",
+      "name": "Environment",
+      "datatype": true
+    }
+  },
+  "nametree": {
+    "jsii$_aws_cdk_cx_api$": {
+      "ListStacksRequest": {
+        "_": "jsii$_aws_cdk_cx_api$.ListStacksRequest"
+      },
+      "SynthesizeRequest": {
+        "_": "jsii$_aws_cdk_cx_api$.SynthesizeRequest"
+      },
+      "MissingContext": {
+        "_": "jsii$_aws_cdk_cx_api$.MissingContext"
+      },
+      "ListStacksResponse": {
+        "_": "jsii$_aws_cdk_cx_api$.ListStacksResponse"
+      },
+      "SynthesizeResponse": {
+        "_": "jsii$_aws_cdk_cx_api$.SynthesizeResponse"
+      },
+      "StackId": {
+        "_": "jsii$_aws_cdk_cx_api$.StackId"
+      },
+      "StackInfo": {
+        "_": "jsii$_aws_cdk_cx_api$.StackInfo"
+      },
+      "SynthesizedStack": {
+        "_": "jsii$_aws_cdk_cx_api$.SynthesizedStack"
+      },
+      "MetadataEntry": {
+        "_": "jsii$_aws_cdk_cx_api$.MetadataEntry"
+      },
+      "Environment": {
+        "_": "jsii$_aws_cdk_cx_api$.Environment"
+      }
+    }
+  },
+  "typecount": 10,
+  "name": "jsii$_aws_cdk_cx_api$",
+  "package": "@aws-cdk/cx-api",
+  "version": "0.7.2-beta",
+  "names": {
+    "java": "com.amazonaws.cdk.cxapi",
+    "dotnet": "Aws.Cdk.CxApi",
+    "js": "@aws-cdk/cx-api"
+  },
+  "nativenames": {
+    "jsii$_aws_cdk_cx_api$": {
+      "java": "com.amazonaws.cdk.cxapi",
+      "dotnet": "Aws.Cdk.CxApi",
+      "js": "@aws-cdk/cx-api"
+    }
+  },
+  "code": "var jsii$_aws_cdk_cx_api$ =\n/******/ (function(modules) { // webpackBootstrap\n/******/ \t// The module cache\n/******/ \tvar installedModules = {};\n/******/\n/******/ \t// The require function\n/******/ \tfunction __webpack_require__(moduleId) {\n/******/\n/******/ \t\t// Check if module is in cache\n/******/ \t\tif(installedModules[moduleId]) {\n/******/ \t\t\treturn installedModules[moduleId].exports;\n/******/ \t\t}\n/******/ \t\t// Create a new module (and put it into the cache)\n/******/ \t\tvar module = installedModules[moduleId] = {\n/******/ \t\t\ti: moduleId,\n/******/ \t\t\tl: false,\n/******/ \t\t\texports: {}\n/******/ \t\t};\n/******/\n/******/ \t\t// Execute the module function\n/******/ \t\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\n/******/\n/******/ \t\t// Flag the module as loaded\n/******/ \t\tmodule.l = true;\n/******/\n/******/ \t\t// Return the exports of the module\n/******/ \t\treturn module.exports;\n/******/ \t}\n/******/\n/******/\n/******/ \t// expose the modules object (__webpack_modules__)\n/******/ \t__webpack_require__.m = modules;\n/******/\n/******/ \t// expose the module cache\n/******/ \t__webpack_require__.c = installedModules;\n/******/\n/******/ \t// define getter function for harmony exports\n/******/ \t__webpack_require__.d = function(exports, name, getter) {\n/******/ \t\tif(!__webpack_require__.o(exports, name)) {\n/******/ \t\t\tObject.defineProperty(exports, name, {\n/******/ \t\t\t\tconfigurable: false,\n/******/ \t\t\t\tenumerable: true,\n/******/ \t\t\t\tget: getter\n/******/ \t\t\t});\n/******/ \t\t}\n/******/ \t};\n/******/\n/******/ \t// getDefaultExport function for compatibility with non-harmony modules\n/******/ \t__webpack_require__.n = function(module) {\n/******/ \t\tvar getter = module && module.__esModule ?\n/******/ \t\t\tfunction getDefault() { return module['default']; } :\n/******/ \t\t\tfunction getModuleExports() { return module; };\n/******/ \t\t__webpack_require__.d(getter, 'a', getter);\n/******/ \t\treturn getter;\n/******/ \t};\n/******/\n/******/ \t// Object.prototype.hasOwnProperty.call\n/******/ \t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\n/******/\n/******/ \t// __webpack_public_path__\n/******/ \t__webpack_require__.p = \"\";\n/******/\n/******/ \t// Load entry module and return exports\n/******/ \treturn __webpack_require__(__webpack_require__.s = 0);\n/******/ })\n/************************************************************************/\n/******/ ([\n/* 0 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(1));\n\n\n/***/ }),\n/* 1 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\n/**\n * File with definitions for the interface between the Cloud Executable and the CDK toolkit.\n */\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.VERSION = '1';\nexports.BASE64_REQ_PREFIX = 'base64:';\n/**\n * Context parameter for the default AWS account to use if a stack's environment is not set.\n */\nexports.DEFAULT_ACCOUNT_CONTEXT_KEY = 'aws:cdk:toolkit:default-account';\n/**\n * Context parameter for the default AWS region to use if a stack's environment is not set.\n */\nexports.DEFAULT_REGION_CONTEXT_KEY = 'aws:cdk:toolkit:default-region';\n\n\n/***/ })\n/******/ ]);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vd2VicGFjay9ib290c3RyYXAgZjE0MGVjZmU0YzNiNjg5ODMzYmUiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvY3gtYXBpL2xpYi9pbmRleC50cyIsIndlYnBhY2s6Ly8vL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9jeC1hcGkvbGliL2N4YXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUE7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7OztBQUdBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLGFBQUs7QUFDTDtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBLG1DQUEyQiwwQkFBMEIsRUFBRTtBQUN2RCx5Q0FBaUMsZUFBZTtBQUNoRDtBQUNBO0FBQ0E7O0FBRUE7QUFDQSw4REFBc0QsK0RBQStEOztBQUVySDtBQUNBOztBQUVBO0FBQ0E7Ozs7Ozs7Ozs7Ozs7QUM3REEsaUNBQXdCOzs7Ozs7Ozs7QUNBeEI7O0dBRUc7O0FBSVUsZUFBTyxHQUFHLEdBQUcsQ0FBQztBQUNkLHlCQUFpQixHQUFHLFNBQVMsQ0FBQztBQWlGM0M7O0dBRUc7QUFDVSxtQ0FBMkIsR0FBRyxpQ0FBaUMsQ0FBQztBQUU3RTs7R0FFRztBQUNVLGtDQUEwQixHQUFHLGdDQUFnQyxDQUFDIiwiZmlsZSI6ImJ1bmRsZS5qcyIsInNvdXJjZXNDb250ZW50IjpbIiBcdC8vIFRoZSBtb2R1bGUgY2FjaGVcbiBcdHZhciBpbnN0YWxsZWRNb2R1bGVzID0ge307XG5cbiBcdC8vIFRoZSByZXF1aXJlIGZ1bmN0aW9uXG4gXHRmdW5jdGlvbiBfX3dlYnBhY2tfcmVxdWlyZV9fKG1vZHVsZUlkKSB7XG5cbiBcdFx0Ly8gQ2hlY2sgaWYgbW9kdWxlIGlzIGluIGNhY2hlXG4gXHRcdGlmKGluc3RhbGxlZE1vZHVsZXNbbW9kdWxlSWRdKSB7XG4gXHRcdFx0cmV0dXJuIGluc3RhbGxlZE1vZHVsZXNbbW9kdWxlSWRdLmV4cG9ydHM7XG4gXHRcdH1cbiBcdFx0Ly8gQ3JlYXRlIGEgbmV3IG1vZHVsZSAoYW5kIHB1dCBpdCBpbnRvIHRoZSBjYWNoZSlcbiBcdFx0dmFyIG1vZHVsZSA9IGluc3RhbGxlZE1vZHVsZXNbbW9kdWxlSWRdID0ge1xuIFx0XHRcdGk6IG1vZHVsZUlkLFxuIFx0XHRcdGw6IGZhbHNlLFxuIFx0XHRcdGV4cG9ydHM6IHt9XG4gXHRcdH07XG5cbiBcdFx0Ly8gRXhlY3V0ZSB0aGUgbW9kdWxlIGZ1bmN0aW9uXG4gXHRcdG1vZHVsZXNbbW9kdWxlSWRdLmNhbGwobW9kdWxlLmV4cG9ydHMsIG1vZHVsZSwgbW9kdWxlLmV4cG9ydHMsIF9fd2VicGFja19yZXF1aXJlX18pO1xuXG4gXHRcdC8vIEZsYWcgdGhlIG1vZHVsZSBhcyBsb2FkZWRcbiBcdFx0bW9kdWxlLmwgPSB0cnVlO1xuXG4gXHRcdC8vIFJldHVybiB0aGUgZXhwb3J0cyBvZiB0aGUgbW9kdWxlXG4gXHRcdHJldHVybiBtb2R1bGUuZXhwb3J0cztcbiBcdH1cblxuXG4gXHQvLyBleHBvc2UgdGhlIG1vZHVsZXMgb2JqZWN0IChfX3dlYnBhY2tfbW9kdWxlc19fKVxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5tID0gbW9kdWxlcztcblxuIFx0Ly8gZXhwb3NlIHRoZSBtb2R1bGUgY2FjaGVcbiBcdF9fd2VicGFja19yZXF1aXJlX18uYyA9IGluc3RhbGxlZE1vZHVsZXM7XG5cbiBcdC8vIGRlZmluZSBnZXR0ZXIgZnVuY3Rpb24gZm9yIGhhcm1vbnkgZXhwb3J0c1xuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5kID0gZnVuY3Rpb24oZXhwb3J0cywgbmFtZSwgZ2V0dGVyKSB7XG4gXHRcdGlmKCFfX3dlYnBhY2tfcmVxdWlyZV9fLm8oZXhwb3J0cywgbmFtZSkpIHtcbiBcdFx0XHRPYmplY3QuZGVmaW5lUHJvcGVydHkoZXhwb3J0cywgbmFtZSwge1xuIFx0XHRcdFx0Y29uZmlndXJhYmxlOiBmYWxzZSxcbiBcdFx0XHRcdGVudW1lcmFibGU6IHRydWUsXG4gXHRcdFx0XHRnZXQ6IGdldHRlclxuIFx0XHRcdH0pO1xuIFx0XHR9XG4gXHR9O1xuXG4gXHQvLyBnZXREZWZhdWx0RXhwb3J0IGZ1bmN0aW9uIGZvciBjb21wYXRpYmlsaXR5IHdpdGggbm9uLWhhcm1vbnkgbW9kdWxlc1xuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5uID0gZnVuY3Rpb24obW9kdWxlKSB7XG4gXHRcdHZhciBnZXR0ZXIgPSBtb2R1bGUgJiYgbW9kdWxlLl9fZXNNb2R1bGUgP1xuIFx0XHRcdGZ1bmN0aW9uIGdldERlZmF1bHQoKSB7IHJldHVybiBtb2R1bGVbJ2RlZmF1bHQnXTsgfSA6XG4gXHRcdFx0ZnVuY3Rpb24gZ2V0TW9kdWxlRXhwb3J0cygpIHsgcmV0dXJuIG1vZHVsZTsgfTtcbiBcdFx0X193ZWJwYWNrX3JlcXVpcmVfXy5kKGdldHRlciwgJ2EnLCBnZXR0ZXIpO1xuIFx0XHRyZXR1cm4gZ2V0dGVyO1xuIFx0fTtcblxuIFx0Ly8gT2JqZWN0LnByb3RvdHlwZS5oYXNPd25Qcm9wZXJ0eS5jYWxsXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLm8gPSBmdW5jdGlvbihvYmplY3QsIHByb3BlcnR5KSB7IHJldHVybiBPYmplY3QucHJvdG90eXBlLmhhc093blByb3BlcnR5LmNhbGwob2JqZWN0LCBwcm9wZXJ0eSk7IH07XG5cbiBcdC8vIF9fd2VicGFja19wdWJsaWNfcGF0aF9fXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLnAgPSBcIlwiO1xuXG4gXHQvLyBMb2FkIGVudHJ5IG1vZHVsZSBhbmQgcmV0dXJuIGV4cG9ydHNcbiBcdHJldHVybiBfX3dlYnBhY2tfcmVxdWlyZV9fKF9fd2VicGFja19yZXF1aXJlX18ucyA9IDApO1xuXG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIHdlYnBhY2svYm9vdHN0cmFwIGYxNDBlY2ZlNGMzYjY4OTgzM2JlIiwiZXhwb3J0ICogZnJvbSAnLi9jeGFwaSc7XG5leHBvcnQgKiBmcm9tICcuL2Vudmlyb25tZW50JztcblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAvcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2N4LWFwaS9saWIvaW5kZXgudHMiLCIvKipcbiAqIEZpbGUgd2l0aCBkZWZpbml0aW9ucyBmb3IgdGhlIGludGVyZmFjZSBiZXR3ZWVuIHRoZSBDbG91ZCBFeGVjdXRhYmxlIGFuZCB0aGUgQ0RLIHRvb2xraXQuXG4gKi9cblxuaW1wb3J0IHsgRW52aXJvbm1lbnQgfSBmcm9tICcuL2Vudmlyb25tZW50JztcblxuZXhwb3J0IGNvbnN0IFZFUlNJT04gPSAnMSc7XG5leHBvcnQgY29uc3QgQkFTRTY0X1JFUV9QUkVGSVggPSAnYmFzZTY0Oic7XG5cbmV4cG9ydCBpbnRlcmZhY2UgTGlzdFN0YWNrc1JlcXVlc3Qge1xuICAgIHR5cGU6ICdsaXN0JyxcbiAgICBjb250ZXh0PzogYW55XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgU3ludGhlc2l6ZVJlcXVlc3Qge1xuICAgIHR5cGU6ICdzeW50aCcsXG4gICAgc3RhY2tzOiBzdHJpbmdbXSxcbiAgICBjb250ZXh0PzogYW55LFxufVxuXG5leHBvcnQgdHlwZSBDWFJlcXVlc3QgPSBMaXN0U3RhY2tzUmVxdWVzdCB8IFN5bnRoZXNpemVSZXF1ZXN0O1xuXG4vKipcbiAqIFJlcHJlc2VudHMgYSBtaXNzaW5nIHBpZWNlIG9mIGNvbnRleHQuXG4gKiAoc2hvdWxkIGhhdmUgYmVlbiBhbiBpbnRlcmZhY2UsIGJ1dCBqc2lpIHN0aWxsIGRvZXNuJ3QgaGF2ZSBzdXBwb3J0IGZvciBzdHJ1Y3RzKS5cbiAqL1xuZXhwb3J0IGludGVyZmFjZSBNaXNzaW5nQ29udGV4dCB7XG4gICAgcHJvdmlkZXI6IHN0cmluZztcbiAgICBzY29wZTogc3RyaW5nW107XG4gICAgYXJnczogc3RyaW5nW107XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgTGlzdFN0YWNrc1Jlc3BvbnNlIHtcbiAgICBzdGFja3M6IFN0YWNrSW5mb1tdXG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgU3ludGhlc2l6ZVJlc3BvbnNlIHtcbiAgICBzdGFja3M6IFN5bnRoZXNpemVkU3RhY2tbXVxufVxuXG4vKipcbiAqIElkZW50aWZpZXMgYSBzaW5nbGUgc3RhY2tcbiAqL1xuZXhwb3J0IGludGVyZmFjZSBTdGFja0lkIHtcbiAgICBuYW1lOiBzdHJpbmc7XG59XG5cbi8qKlxuICogSWRlbnRpZmllcyBhbmQgY29udGFpbnMgbWV0YWRhdGEgYWJvdXQgYSBzdGFja1xuICovXG5leHBvcnQgaW50ZXJmYWNlIFN0YWNrSW5mbyBleHRlbmRzIFN0YWNrSWQge1xuICAgIGVudmlyb25tZW50PzogRW52aXJvbm1lbnQ7XG59XG5cbi8qKlxuICogQSBjb21wbGV0ZSBzeW50aGVzaXplZCBzdGFja1xuICovXG5leHBvcnQgaW50ZXJmYWNlIFN5bnRoZXNpemVkU3RhY2sgZXh0ZW5kcyBTdGFja0luZm8ge1xuICAgIG1pc3Npbmc/OiB7IFtrZXk6IHN0cmluZ106IE1pc3NpbmdDb250ZXh0IH07XG4gICAgbWV0YWRhdGE6IFN0YWNrTWV0YWRhdGE7XG4gICAgdGVtcGxhdGU6IGFueTtcbn1cblxuLyoqXG4gKiBBbiBtZXRhZGF0YSBlbnRyeSBpbiB0aGUgY29uc3RydWN0LlxuICovXG5leHBvcnQgaW50ZXJmYWNlIE1ldGFkYXRhRW50cnkge1xuICAgIC8qKlxuICAgICAqIFRoZSB0eXBlIG9mIHRoZSBtZXRhZGF0YSBlbnRyeS5cbiAgICAgKi9cbiAgICB0eXBlOiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBUaGUgZGF0YS5cbiAgICAgKi9cbiAgICBkYXRhPzogYW55O1xuXG4gICAgLyoqXG4gICAgICogQSBzdGFjayB0cmFjZSBmb3Igd2hlbiB0aGUgZW50cnkgd2FzIGNyZWF0ZWQuXG4gICAgICovXG4gICAgdHJhY2U6IHN0cmluZ1tdO1xufVxuXG4vKipcbiAqIE1ldGFkYXRhIGFzc29jaWF0ZWQgd2l0aCB0aGUgb2JqZWN0cyBpbiB0aGUgc3RhY2sncyBDb25zdHJ1Y3QgdHJlZVxuICovXG5leHBvcnQgdHlwZSBTdGFja01ldGFkYXRhID0geyBbcGF0aDogc3RyaW5nXTogTWV0YWRhdGFFbnRyeVtdIH07XG5cbi8qKlxuICogQ29udGV4dCBwYXJhbWV0ZXIgZm9yIHRoZSBkZWZhdWx0IEFXUyBhY2NvdW50IHRvIHVzZSBpZiBhIHN0YWNrJ3MgZW52aXJvbm1lbnQgaXMgbm90IHNldC5cbiAqL1xuZXhwb3J0IGNvbnN0IERFRkFVTFRfQUNDT1VOVF9DT05URVhUX0tFWSA9ICdhd3M6Y2RrOnRvb2xraXQ6ZGVmYXVsdC1hY2NvdW50JztcblxuLyoqXG4gKiBDb250ZXh0IHBhcmFtZXRlciBmb3IgdGhlIGRlZmF1bHQgQVdTIHJlZ2lvbiB0byB1c2UgaWYgYSBzdGFjaydzIGVudmlyb25tZW50IGlzIG5vdCBzZXQuXG4gKi9cbmV4cG9ydCBjb25zdCBERUZBVUxUX1JFR0lPTl9DT05URVhUX0tFWSA9ICdhd3M6Y2RrOnRvb2xraXQ6ZGVmYXVsdC1yZWdpb24nO1xuXG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvY3gtYXBpL2xpYi9jeGFwaS50cyJdLCJzb3VyY2VSb290IjoiIn0="
+}

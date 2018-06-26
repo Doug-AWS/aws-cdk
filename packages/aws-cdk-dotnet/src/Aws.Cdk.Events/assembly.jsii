@@ -1,0 +1,1331 @@
+{
+  "schema": "jsii/1.0",
+  "types": {
+    "jsii$_aws_cdk_events$.EventRuleProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "A description of the rule's purpose."
+          },
+          "name": "description",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "A name for the rule. If you don't specify a name, AWS CloudFormation\ngenerates a unique physical ID and uses that ID for the rule name. For\nmore information, see Name Type."
+          },
+          "name": "ruleName",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "Rule is enabled",
+            "comment": "Indicates whether the rule is enabled."
+          },
+          "name": "enabled",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "see": "http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html\n\nYou must specify this property, the `eventPattern` property, or both.",
+            "comment": "The schedule or rate (frequency) that determines when CloudWatch Events\nruns the rule. For more information, see Schedule Expression Syntax for\nRules in the Amazon CloudWatch User Guide."
+          },
+          "name": "scheduleExpression",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "see": "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CloudWatchEventsandEventPatterns.html\n\nYou must specify this property (either via props or via\n`addEventPattern`), the `scheduleExpression` property, or both. The\nmethod `addEventPattern` can be used to add filter values to the event\npattern.",
+            "comment": "Describes which events CloudWatch Events routes to the specified target.\nThese routed events are matched events. For more information, see Events\nand Event Patterns in the Amazon CloudWatch User Guide."
+          },
+          "name": "eventPattern",
+          "type": {
+            "fqn": "jsii$_aws_cdk_events$.EventPattern",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Targets to invoke when this rule matches an event.\n\nInput will be the full matched event. If you wish to specify custom\ntarget input, use `addTarget(target[, inputOptions])`."
+          },
+          "name": "targets",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "EventRuleProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_events$.EventRule": {
+      "docs": {
+        "comment": "Defines a CloudWatch Event Rule in this stack."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The value of the event rule Amazon Resource Name (ARN), such as\narn:aws:events:us-east-2:123456789012:rule/example."
+          },
+          "name": "ruleArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleArn"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "inputOptions",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.TargetInputTemplate",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a target to the rule. The abstract class RuleTarget can be extended to define new\ntargets.\n\nNo-op if target is undefined."
+          },
+          "name": "addTarget"
+        },
+        {
+          "parameters": [
+            {
+              "name": "eventPattern",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventPattern",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds an event pattern filter to this rule. If a pattern was already specified,\nthese values are merged into the existing pattern.\n\nFor example, if the rule already contains the pattern:\n\n      {\n          \"resources\": [ \"r1\" ],\n          \"detail\": {\n              \"hello\": [ 1 ]\n          }\n      }\n\nAnd `addEventPattern` is called with the pattern:\n\n      {\n          \"resources\": [ \"r2\" ],\n          \"detail\": {\n              \"foo\": [ \"bar\" ]\n          }\n      }\n\nThe resulting event pattern will be:\n\n      {\n          \"resources\": [ \"r1\", \"r2\" ],\n          \"detail\": {\n              \"hello\": [ 1 ],\n              \"foo\": [ \"bar\" ]\n          }\n      }"
+          },
+          "name": "addEventPattern"
+        },
+        {
+          "docs": {
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.EventRule",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "EventRule",
+      "base": {
+        "fqn": "jsii$_aws_cdk_events$.EventRuleRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+              "optional": true
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_events$.EventRuleRefProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The value of the event rule Amazon Resource Name (ARN), such as\narn:aws:events:us-east-2:123456789012:rule/example."
+          },
+          "name": "eventRuleArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleArn"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.EventRuleRefProps",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "EventRuleRefProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_events$.EventRuleRef": {
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The value of the event rule Amazon Resource Name (ARN), such as\narn:aws:events:us-east-2:123456789012:rule/example."
+          },
+          "name": "ruleArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleArn"
+          },
+          "immutable": true,
+          "abstract": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Imports a rule by ARN into this stack."
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRuleRef"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Exports this rule resource from this stack and returns an import token."
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRuleRefProps"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.EventRuleRef",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "EventRuleRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_events$.EventRuleTarget": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "A unique, user-defined identifier for the target. Acceptable values\ninclude alphanumeric characters, periods (.), hyphens (-), and\nunderscores (_)."
+          },
+          "name": "id",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The Amazon Resource Name (ARN) of the target."
+          },
+          "name": "arn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Arn"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The Amazon Resource Name (ARN) of the AWS Identity and Access Management\n(IAM) role to use for this target when the rule is triggered. If one rule\ntriggers multiple targets, you can use a different IAM role for each\ntarget."
+          },
+          "name": "roleArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.iam.RoleArn",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The Amazon ECS task definition and task count to use, if the event target\nis an Amazon ECS task."
+          },
+          "name": "ecsParameters",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.EcsParametersProperty",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Settings that control shard assignment, when the target is a Kinesis\nstream. If you don't include this parameter, eventId is used as the\npartition key."
+          },
+          "name": "kinesisParameters",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.KinesisParametersProperty",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Parameters used when the rule invokes Amazon EC2 Systems Manager Run\nCommand."
+          },
+          "name": "runCommandParameters",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.RunCommandParametersProperty",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.EventRuleTarget",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "EventRuleTarget",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_events$.IEventRuleTarget": {
+      "docs": {
+        "comment": "An abstract target for EventRules."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the rule target specification.\nNOTE: Do not use the various `inputXxx` options. They can be set in a call to `addTarget`."
+          },
+          "name": "eventRuleTarget",
+          "type": {
+            "fqn": "jsii$_aws_cdk_events$.EventRuleTarget"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "IEventRuleTarget",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_events$.EventPattern": {
+      "docs": {
+        "see": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html",
+        "comment": "Events in Amazon CloudWatch Events are represented as JSON objects. For more\ninformation about JSON objects, see RFC 7159.\n\nRules use event patterns to select events and route them to targets. A\npattern either matches an event or it doesn't. Event patterns are represented\nas JSON objects with a structure that is similar to that of events, for\nexample:\n\nIt is important to remember the following about event pattern matching:\n\n- For a pattern to match an event, the event must contain all the field names\n   listed in the pattern. The field names must appear in the event with the\n   same nesting structure.\n\n- Other fields of the event not mentioned in the pattern are ignored;\n   effectively, there is a ``\"*\": \"*\"`` wildcard for fields not mentioned.\n\n- The matching is exact (character-by-character), without case-folding or any\n   other string normalization.\n\n- The values being matched follow JSON rules: Strings enclosed in quotes,\n   numbers, and the unquoted keywords true, false, and null.\n\n- Number matching is at the string representation level. For example, 300,\n   300.0, and 3.0e2 are not considered equal."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "By default, this is set to 0 (zero) in all events."
+          },
+          "name": "version",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "A unique value is generated for every event. This can be helpful in\ntracing events as they move through rules to targets, and are processed."
+          },
+          "name": "id",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Identifies, in combination with the source field, the fields and values\nthat appear in the detail field.\n\nRepresents the \"detail-type\" event field."
+          },
+          "name": "detailType",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "see": "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces",
+            "comment": "Identifies the service that sourced the event. All events sourced from\nwithin AWS begin with \"aws.\" Customer-generated events can have any value\nhere, as long as it doesn't begin with \"aws.\" We recommend the use of\nJava package-name style reverse domain-name strings.\n\nTo find the correct value for source for an AWS service, see the table in\nAWS Service Namespaces. For example, the source value for Amazon\nCloudFront is aws.cloudfront."
+          },
+          "name": "source",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The 12-digit number identifying an AWS account."
+          },
+          "name": "account",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The event timestamp, which can be specified by the service originating\nthe event. If the event spans a time interval, the service might choose\nto report the start time, so this value can be noticeably before the time\nthe event is actually received."
+          },
+          "name": "time",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Identifies the AWS region where the event originated."
+          },
+          "name": "region",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "This JSON array contains ARNs that identify resources that are involved\nin the event. Inclusion of these ARNs is at the discretion of the\nservice.\n\nFor example, Amazon EC2 instance state-changes include Amazon EC2\ninstance ARNs, Auto Scaling events include ARNs for both instances and\nAuto Scaling groups, but API calls with AWS CloudTrail do not include\nresource ARNs."
+          },
+          "name": "resources",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Arn"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "A JSON object, whose content is at the discretion of the service\noriginating the event."
+          },
+          "name": "detail",
+          "type": {
+            "primitive": "any",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.EventPattern",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "EventPattern",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_events$.TargetInputTemplate": {
+      "docs": {
+        "see": "https://docs.aws.amazon.com/AmazonCloudWatchEvents/latest/APIReference/API_InputTransformer.html",
+        "comment": "Specifies settings that provide custom input to an Amazon CloudWatch Events\nrule target based on certain event data."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "example": "{\n   textTemplate: 'Build <buildid> started',\n   pathsMap: {\n     buildid: '$.detail.id'\n   }\n}",
+            "comment": "Input template where you can use the values of the keys from\ninputPathsMap to customize the data sent to the target. Enclose each\nInputPathsMaps value in brackets: <value>\n\nThe value passed here will be double-quoted to indicate it's a string value.\nThis option is mutually exclusive with `jsonTemplate`."
+          },
+          "name": "textTemplate",
+          "type": {
+            "primitive": "any",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "example": "{\n   jsonTemplate: '{ \"commands\": <commandsToRun> }' ,\n   pathsMap: {\n     commandsToRun: '$.detail.commands'\n   }\n}",
+            "comment": "Input template where you can use the values of the keys from\ninputPathsMap to customize the data sent to the target. Enclose each\nInputPathsMaps value in brackets: <value>\n\nThis option is mutually exclusive with `textTemplate`."
+          },
+          "name": "jsonTemplate",
+          "type": {
+            "primitive": "any",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Map of JSON paths to be extracted from the event. These are key-value\npairs, where each value is a JSON path. You must use JSON dot notation,\nnot bracket notation."
+          },
+          "name": "pathsMap",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "map"
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.TargetInputTemplate",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "TargetInputTemplate",
+      "datatype": true
+    }
+  },
+  "nametree": {
+    "jsii$_aws_cdk_events$": {
+      "EventRuleProps": {
+        "_": "jsii$_aws_cdk_events$.EventRuleProps"
+      },
+      "EventRule": {
+        "_": "jsii$_aws_cdk_events$.EventRule"
+      },
+      "EventRuleRefProps": {
+        "_": "jsii$_aws_cdk_events$.EventRuleRefProps"
+      },
+      "EventRuleRef": {
+        "_": "jsii$_aws_cdk_events$.EventRuleRef"
+      },
+      "EventRuleTarget": {
+        "_": "jsii$_aws_cdk_events$.EventRuleTarget"
+      },
+      "IEventRuleTarget": {
+        "_": "jsii$_aws_cdk_events$.IEventRuleTarget"
+      },
+      "EventPattern": {
+        "_": "jsii$_aws_cdk_events$.EventPattern"
+      },
+      "TargetInputTemplate": {
+        "_": "jsii$_aws_cdk_events$.TargetInputTemplate"
+      }
+    }
+  },
+  "typecount": 8,
+  "externalTypes": {
+    "jsii$_aws_cdk_core$.Construct": {
+      "docs": {
+        "comment": "Represents the building block of the construct graph.\nWhen a construct is created, it is always added as a child"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the parent of this node or undefined if this is a root node."
+          },
+          "name": "parent",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of this construct"
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "All direct children of this construct."
+          },
+          "name": "children",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "returns": "/-separated path of this Construct.",
+            "comment": "Returns the path of all constructs from root to this construct, in string form."
+          },
+          "name": "path",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "An array of metadata objects associated with this construct.\nThis can be used, for example, to implement support for deprecation notices, source mapping, etc."
+          },
+          "name": "metadata",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.MetadataEntry"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "docs": {
+            "comment": "Returns a string representation of this construct."
+          },
+          "name": "toString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "depth",
+              "type": {
+                "primitive": "number",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Returns a string with a tree representation of this construct and it's children."
+          },
+          "name": "toTreeString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "a child by path or undefined if not found.",
+            "comment": "Return a descendant by path, or undefined"
+          },
+          "name": "tryFindChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "Child with the given path.",
+            "comment": "Return a descendant by path\n\nThrows an exception if the descendant is not found."
+          },
+          "name": "findChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "value The context value",
+                "comment": "The context value"
+              },
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "This can be used to set contextual values.\nContext must be set before any children are added, since children may consult context info during construction.\nIf the key already exists, it will be overridden."
+          },
+          "name": "setContext"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The context value or undefined",
+            "comment": "Retrieves a value from tree context.\n\nContext is usually initialized at the root, but can be overridden at any point in the tree."
+          },
+          "name": "getContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Retrieve a value from tree-global context\n\nIt is an error if the context object is not available."
+          },
+          "name": "requireContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "type a string denoting the type of metadata",
+                "comment": "a string denoting the type of metadata"
+              },
+              "name": "type",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "data the value of the metadata (can be a Token). If null/undefined, metadata will not be added.",
+                "comment": "the value of the metadata (can be a Token). If null/undefined, metadata will not be added."
+              },
+              "name": "data",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "from a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)",
+                "comment": "a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)"
+              },
+              "name": "from",
+              "type": {
+                "primitive": "any",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a metadata entry to this construct.\nEntries are arbitrary values and will also include a stack trace to allow tracing back to\nthe code location for when the entry was added. It can be used, for example, to include source\nmapping in CloudFormation templates to improve diagnostics."
+          },
+          "name": "addMetadata",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "message The warning message.",
+                "comment": "The warning message."
+              },
+              "name": "message",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a { warning: <message> } metadata entry to this construct."
+          },
+          "name": "addWarning",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "docs": {
+            "returns": "An array of validation error messages, or an empty array if there the construct is valid.",
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "returns": "A list of validation errors. If the list is empty, all constructs are valid.",
+            "comment": "Invokes 'validate' on all child constructs and then on this construct (depth-first)."
+          },
+          "name": "validateTree",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.ValidationError"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "upTo",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Return the ancestors (including self) of this Construct up until and excluding the indicated component"
+          },
+          "name": "ancestors",
+          "protected": true,
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "props The props bag.",
+                "comment": "The props bag."
+              },
+              "name": "props",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the required property.",
+                "comment": "The name of the required property."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Throws if the `props` bag doesn't include the property `name`.\nIn the future we can add some type-checking here, maybe even auto-generate during compilation."
+          },
+          "name": "required",
+          "protected": true,
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "child The child construct",
+                "comment": "The child construct"
+              },
+              "name": "child",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "childName",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The resolved path part name of the child",
+            "comment": "Adds a child construct to this node."
+          },
+          "name": "addChild",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Locks this construct from allowing more children to be added. After this\ncall, no more children can be added to this construct or to any children."
+          },
+          "name": "lock",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Unlocks this costruct and allows mutations (adding children)."
+          },
+          "name": "unlock",
+          "protected": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Construct",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Construct",
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.events.RuleArn": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.events.RuleArn",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.events",
+      "name": "RuleArn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Arn"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.Arn": {
+      "docs": {
+        "comment": "An Amazon Resource Name (ARN).\nhttp://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html"
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "components",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.ArnComponents"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Creates an ARN from components.\nIf any component is the empty string,\nan empty string will be inserted into the generated ARN\nat the location that component corresponds to."
+          },
+          "name": "fromComponents",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Arn"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "arn",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "an ArnComponents object which allows access to the various\ncomponents of the ARN.",
+            "comment": "Given an ARN, parses it and returns components.\n\nThe ARN it will be parsed and validated. The separator (`sep`) will be\nset to '/' if the 6th component includes a '/', in which case, `resource`\nwill be set to the value before the '/' and `resourceName` will be the\nrest. In case there is no '/', `resource` will be set to the 6th\ncomponents and `resourceName` will be set to the rest of the string."
+          },
+          "name": "parse",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.ArnComponents"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Arn",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Arn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.iam.RoleArn": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.iam.RoleArn",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.iam",
+      "name": "RoleArn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Arn"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.events.RuleResource.EcsParametersProperty": {
+      "docs": {
+        "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-rule-ecsparameters.html"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-rule-ecsparameters.html#cfn-events-rule-ecsparameters-taskcount",
+            "comment": "RuleResource.EcsParametersProperty.TaskCount"
+          },
+          "name": "taskCount",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "number"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-rule-ecsparameters.html#cfn-events-rule-ecsparameters-taskdefinitionarn",
+            "comment": "RuleResource.EcsParametersProperty.TaskDefinitionArn"
+          },
+          "name": "taskDefinitionArn",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.EcsParametersProperty",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.events.RuleResource",
+      "name": "EcsParametersProperty",
+      "datatype": true,
+      "parenttype": "jsii$_aws_cdk_resources$.events.RuleResource"
+    },
+    "jsii$_aws_cdk_resources$.events.RuleResource.KinesisParametersProperty": {
+      "docs": {
+        "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-rule-kinesisparameters.html"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-rule-kinesisparameters.html#cfn-events-rule-kinesisparameters-partitionkeypath",
+            "comment": "RuleResource.KinesisParametersProperty.PartitionKeyPath"
+          },
+          "name": "partitionKeyPath",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.KinesisParametersProperty",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.events.RuleResource",
+      "name": "KinesisParametersProperty",
+      "datatype": true,
+      "parenttype": "jsii$_aws_cdk_resources$.events.RuleResource"
+    },
+    "jsii$_aws_cdk_resources$.events.RuleResource.RunCommandParametersProperty": {
+      "docs": {
+        "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-rule-runcommandparameters.html"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-rule-runcommandparameters.html#cfn-events-rule-runcommandparameters-runcommandtargets",
+            "comment": "RuleResource.RunCommandParametersProperty.RunCommandTargets"
+          },
+          "name": "runCommandTargets",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                },
+                {
+                  "collection": {
+                    "elementtype": {
+                      "union": {
+                        "types": [
+                          {
+                            "fqn": "jsii$_aws_cdk_core$.Token"
+                          },
+                          {
+                            "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.RunCommandTargetProperty"
+                          }
+                        ]
+                      }
+                    },
+                    "kind": "array"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.RunCommandParametersProperty",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.events.RuleResource",
+      "name": "RunCommandParametersProperty",
+      "datatype": true,
+      "parenttype": "jsii$_aws_cdk_resources$.events.RuleResource"
+    }
+  },
+  "name": "jsii$_aws_cdk_events$",
+  "package": "@aws-cdk/events",
+  "version": "0.7.2-beta",
+  "dependencies": {
+    "jsii$_aws_cdk_core$": {
+      "package": "@aws-cdk/core",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "package": "@aws-cdk/iam",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "package": "@aws-cdk/resources",
+      "version": "0.7.2-beta"
+    }
+  },
+  "bundled": {
+    "@aws-cdk/util": "^0.7.2-beta"
+  },
+  "names": {
+    "java": "com.amazonaws.cdk.events",
+    "dotnet": "Aws.Cdk.Events",
+    "js": "@aws-cdk/events"
+  },
+  "nativenames": {
+    "jsii$_aws_cdk_core$": {
+      "java": "com.amazonaws.cdk",
+      "dotnet": "Aws.Cdk",
+      "js": "@aws-cdk/core"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "java": "com.amazonaws.cdk.iam",
+      "dotnet": "Aws.Cdk.Iam",
+      "js": "@aws-cdk/iam"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "java": "com.amazonaws.cdk.resources",
+      "dotnet": "Aws.Cdk.Resources",
+      "js": "@aws-cdk/resources"
+    },
+    "jsii$_aws_cdk_events$": {
+      "java": "com.amazonaws.cdk.events",
+      "dotnet": "Aws.Cdk.Events",
+      "js": "@aws-cdk/events"
+    }
+  },
+  "readme": {
+    "markdown": "## AWS CloudWatch Events Construct Library\n\nAmazon CloudWatch Events delivers a near real-time stream of system events that\ndescribe changes in AWS resources. For example, an AWS CodePipeline emits the\n[State\nChange](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/EventTypes.html#codepipeline_event_type)\nevent when the pipeline changes it's state.\n\n* __Events__: An event indicates a change in your AWS environment. AWS resources\n  can generate events when their state changes. For example, Amazon EC2\n  generates an event when the state of an EC2 instance changes from pending to\n  running, and Amazon EC2 Auto Scaling generates events when it launches or\n  terminates instances. AWS CloudTrail publishes events when you make API calls.\n  You can generate custom application-level events and publish them to\n  CloudWatch Events. You can also set up scheduled events that are generated on\n  a periodic basis. For a list of services that generate events, and sample\n  events from each service, see [CloudWatch Events Event Examples From Each\n  Supported\n  Service](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/EventTypes.html).\n* __Targets__: A target processes events. Targets can include Amazon EC2\n  instances, AWS Lambda functions, Kinesis streams, Amazon ECS tasks, Step\n  Functions state machines, Amazon SNS topics, Amazon SQS queues, and built-in\n  targets. A target receives events in JSON format.\n* __Rules__: A rule matches incoming events and routes them to targets for\n  processing. A single rule can route to multiple targets, all of which are\n  processed in parallel. Rules are not processed in a particular order. This\n  enables different parts of an organization to look for and process the events\n  that are of interest to them. A rule can customize the JSON sent to the\n  target, by passing only certain parts or by overwriting it with a constant.\n\nThe `EventRule` construct defines a CloudWatch events rule which monitors an\nevent based on an [event\npattern](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)\nand invoke __event targets__ when the pattern is matched against a triggered\nevent. Event targets are objects that implement the `IEventTarget` interface.\n\nNormally, you will use one of the `source.onXxx(name[, target[, options]]) ->\nEventRule` methods on the event source to define an event rule associated with\nthe specific activity. You can targets either via props, or add targets using\n`rule.addTarget`.\n\nFor example, to define an rule that triggers a CodeBuild project build when a\ncommit is pushed to the \"master\" branch of a CodeCommit repository:\n\n```ts\nconst onCommitRule = repo.onCommit('OnCommitToMaster', buildProject, 'master');\n```\n\nYou can add additional targets, with optional [input\ntransformer](https://docs.aws.amazon.com/AmazonCloudWatchEvents/latest/APIReference/API_InputTransformer.html)\nusing `eventRule.addTarget(target[, input])`. For example, we can add a SNS\ntopic target which formats a human-readable message for the commit.\n\nFor example, this adds an SNS topic as a target:\n\n```ts\nonCommitRule.addTarget(topic, {\n    template: 'A commit was pushed to the repository <repo> on branch <branch>',\n    pathsMap: {\n        branch: '$.detail.referenceName',\n        repo: '$.detail.repositoryName'\n    }\n});\n```\n"
+  },
+  "code": "var jsii$_aws_cdk_events$ =\n/******/ (function(modules) { // webpackBootstrap\n/******/ \t// The module cache\n/******/ \tvar installedModules = {};\n/******/\n/******/ \t// The require function\n/******/ \tfunction __webpack_require__(moduleId) {\n/******/\n/******/ \t\t// Check if module is in cache\n/******/ \t\tif(installedModules[moduleId]) {\n/******/ \t\t\treturn installedModules[moduleId].exports;\n/******/ \t\t}\n/******/ \t\t// Create a new module (and put it into the cache)\n/******/ \t\tvar module = installedModules[moduleId] = {\n/******/ \t\t\ti: moduleId,\n/******/ \t\t\tl: false,\n/******/ \t\t\texports: {}\n/******/ \t\t};\n/******/\n/******/ \t\t// Execute the module function\n/******/ \t\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\n/******/\n/******/ \t\t// Flag the module as loaded\n/******/ \t\tmodule.l = true;\n/******/\n/******/ \t\t// Return the exports of the module\n/******/ \t\treturn module.exports;\n/******/ \t}\n/******/\n/******/\n/******/ \t// expose the modules object (__webpack_modules__)\n/******/ \t__webpack_require__.m = modules;\n/******/\n/******/ \t// expose the module cache\n/******/ \t__webpack_require__.c = installedModules;\n/******/\n/******/ \t// define getter function for harmony exports\n/******/ \t__webpack_require__.d = function(exports, name, getter) {\n/******/ \t\tif(!__webpack_require__.o(exports, name)) {\n/******/ \t\t\tObject.defineProperty(exports, name, {\n/******/ \t\t\t\tconfigurable: false,\n/******/ \t\t\t\tenumerable: true,\n/******/ \t\t\t\tget: getter\n/******/ \t\t\t});\n/******/ \t\t}\n/******/ \t};\n/******/\n/******/ \t// getDefaultExport function for compatibility with non-harmony modules\n/******/ \t__webpack_require__.n = function(module) {\n/******/ \t\tvar getter = module && module.__esModule ?\n/******/ \t\t\tfunction getDefault() { return module['default']; } :\n/******/ \t\t\tfunction getModuleExports() { return module; };\n/******/ \t\t__webpack_require__.d(getter, 'a', getter);\n/******/ \t\treturn getter;\n/******/ \t};\n/******/\n/******/ \t// Object.prototype.hasOwnProperty.call\n/******/ \t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\n/******/\n/******/ \t// __webpack_public_path__\n/******/ \t__webpack_require__.p = \"\";\n/******/\n/******/ \t// Load entry module and return exports\n/******/ \treturn __webpack_require__(__webpack_require__.s = 2);\n/******/ })\n/************************************************************************/\n/******/ ([\n/* 0 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_core$;\n\n/***/ }),\n/* 1 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(0);\nclass EventRuleRef extends core_1.Construct {\n    /**\n     * Imports a rule by ARN into this stack.\n     */\n    static import(parent, name, props) {\n        return new ImportedEventRule(parent, name, props);\n    }\n    /**\n     * Exports this rule resource from this stack and returns an import token.\n     */\n    export() {\n        return {\n            eventRuleArn: new core_1.Output(this, 'RuleArn', { value: this.ruleArn }).makeImportValue()\n        };\n    }\n}\nexports.EventRuleRef = EventRuleRef;\nclass ImportedEventRule extends EventRuleRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        this.ruleArn = props.eventRuleArn;\n    }\n}\n\n\n/***/ }),\n/* 2 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(3));\n__export(__webpack_require__(1));\n\n\n/***/ }),\n/* 3 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(0);\nconst resources_1 = __webpack_require__(4);\nconst rule_ref_1 = __webpack_require__(1);\nconst util_1 = __webpack_require__(5);\n/**\n * Defines a CloudWatch Event Rule in this stack.\n */\nclass EventRule extends rule_ref_1.EventRuleRef {\n    constructor(parent, name, props = {}) {\n        super(parent, name);\n        this.targets = new Array();\n        this.eventPattern = {};\n        const resource = new resources_1.events.RuleResource(this, 'Resource', {\n            description: props.description,\n            state: props.enabled == null ? 'ENABLED' : (props.enabled ? 'ENABLED' : 'DISABLED'),\n            scheduleExpression: new core_1.Token(() => this.scheduleExpression),\n            eventPattern: new core_1.Token(() => this.renderEventPattern()),\n            targets: new core_1.Token(() => this.renderTargets())\n        });\n        this.ruleArn = resource.ruleArn;\n        this.addEventPattern(props.eventPattern);\n        this.scheduleExpression = props.scheduleExpression;\n        for (const target of props.targets || []) {\n            this.addTarget(target);\n        }\n    }\n    /**\n     * Adds a target to the rule. The abstract class RuleTarget can be extended to define new\n     * targets.\n     *\n     * No-op if target is undefined.\n     */\n    addTarget(target, inputOptions) {\n        if (!target) {\n            return;\n        }\n        // check if a target with this ID already exists\n        if (this.targets.find(t => t.id === target.eventRuleTarget.id)) {\n            throw new Error('Duplicate event rule target with ID: ' + target.eventRuleTarget.id);\n        }\n        this.targets.push(Object.assign({}, target.eventRuleTarget, { inputTransformer: renderTransformer() }));\n        function renderTransformer() {\n            if (!inputOptions) {\n                return undefined;\n            }\n            if (inputOptions.jsonTemplate && inputOptions.textTemplate) {\n                throw new Error('\"jsonTemplate\" and \"textTemplate\" are mutually exclusive');\n            }\n            if (!inputOptions.jsonTemplate && !inputOptions.textTemplate) {\n                throw new Error('One of \"jsonTemplate\" or \"textTemplate\" are required');\n            }\n            let inputTemplate;\n            if (inputOptions.jsonTemplate) {\n                inputTemplate = inputOptions.jsonTemplate;\n            }\n            else if (typeof (inputOptions.textTemplate) === 'string') {\n                inputTemplate = JSON.stringify(inputOptions.textTemplate);\n            }\n            else {\n                inputTemplate = new core_1.FnConcat('\"', inputOptions.textTemplate, '\"');\n            }\n            return {\n                inputPathsMap: inputOptions.pathsMap,\n                inputTemplate\n            };\n        }\n    }\n    /**\n     * Adds an event pattern filter to this rule. If a pattern was already specified,\n     * these values are merged into the existing pattern.\n     *\n     * For example, if the rule already contains the pattern:\n     *\n     *      {\n     *          \"resources\": [ \"r1\" ],\n     *          \"detail\": {\n     *              \"hello\": [ 1 ]\n     *          }\n     *      }\n     *\n     * And `addEventPattern` is called with the pattern:\n     *\n     *      {\n     *          \"resources\": [ \"r2\" ],\n     *          \"detail\": {\n     *              \"foo\": [ \"bar\" ]\n     *          }\n     *      }\n     *\n     * The resulting event pattern will be:\n     *\n     *      {\n     *          \"resources\": [ \"r1\", \"r2\" ],\n     *          \"detail\": {\n     *              \"hello\": [ 1 ],\n     *              \"foo\": [ \"bar\" ]\n     *          }\n     *      }\n     *\n     */\n    addEventPattern(eventPattern) {\n        if (!eventPattern) {\n            return;\n        }\n        util_1.mergeEventPattern(this.eventPattern, eventPattern);\n    }\n    validate() {\n        if (Object.keys(this.eventPattern).length === 0 && !this.scheduleExpression) {\n            return [`Either 'eventPattern' or 'scheduleExpression' must be defined`];\n        }\n        return [];\n    }\n    renderTargets() {\n        if (this.targets.length === 0) {\n            return undefined;\n        }\n        return this.targets;\n    }\n    renderEventPattern() {\n        const eventPattern = this.eventPattern;\n        if (Object.keys(eventPattern).length === 0) {\n            return undefined;\n        }\n        // rename 'detailType' to 'detail-type'\n        const out = {};\n        for (let key of Object.keys(eventPattern)) {\n            const value = eventPattern[key];\n            if (key === 'detailType') {\n                key = 'detail-type';\n            }\n            out[key] = value;\n        }\n        return out;\n    }\n}\nexports.EventRule = EventRule;\n\n\n/***/ }),\n/* 4 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_resources$;\n\n/***/ }),\n/* 5 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\n/**\n * Merge the `src` event pattern into the `dest` event pattern by adding all\n * values from `src` into the fields in `dest`.\n *\n * See `rule.addEventPattern` for details.\n */\nfunction mergeEventPattern(dest, src) {\n    dest = dest || {};\n    mergeObject(dest, src);\n    return dest;\n    function mergeObject(destObj, srcObj) {\n        if (typeof (srcObj) !== 'object') {\n            throw new Error(`Invalid event pattern '${JSON.stringify(srcObj)}', expecting an object or an array`);\n        }\n        for (const field of Object.keys(srcObj)) {\n            const srcValue = srcObj[field];\n            const destValue = destObj[field];\n            if (typeof (srcValue) !== 'object') {\n                throw new Error(`Invalid event pattern field { ${field}: ${JSON.stringify(srcValue)} }. All fields must be arrays`);\n            }\n            // dest doesn't have this field\n            if (!(field in destObj)) {\n                destObj[field] = srcValue;\n                continue;\n            }\n            if (Array.isArray(srcValue) !== Array.isArray(destValue)) {\n                throw new Error(`Invalid event pattern field ${field}. ` +\n                    `Type mismatch between existing pattern ${JSON.stringify(destValue)} and added pattern ${JSON.stringify(srcValue)}`);\n            }\n            // if this is an array, concat the values\n            if (Array.isArray(srcValue)) {\n                destObj[field] = destValue.concat(srcValue);\n                continue;\n            }\n            // otherwise, it's an object, so recurse\n            mergeObject(destObj[field], srcValue);\n        }\n    }\n}\nexports.mergeEventPattern = mergeEventPattern;\n\n\n/***/ })\n/******/ ]);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vd2VicGFjay9ib290c3RyYXAgNzczZjcxNTM4NDE2NzNjOGE0OTUiLCJ3ZWJwYWNrOi8vL2V4dGVybmFsIFwianNpaSRfYXdzX2Nka19jb3JlJFwiIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2V2ZW50cy9saWIvcnVsZS1yZWYudHMiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvZXZlbnRzL2xpYi9pbmRleC50cyIsIndlYnBhY2s6Ly8vL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9ldmVudHMvbGliL3J1bGUudHMiLCJ3ZWJwYWNrOi8vL2V4dGVybmFsIFwianNpaSRfYXdzX2Nka19yZXNvdXJjZXMkXCIiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvZXZlbnRzL2xpYi91dGlsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUE7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7OztBQUdBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLGFBQUs7QUFDTDtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBLG1DQUEyQiwwQkFBMEIsRUFBRTtBQUN2RCx5Q0FBaUMsZUFBZTtBQUNoRDtBQUNBO0FBQ0E7O0FBRUE7QUFDQSw4REFBc0QsK0RBQStEOztBQUVySDtBQUNBOztBQUVBO0FBQ0E7Ozs7Ozs7QUM3REEscUM7Ozs7Ozs7OztBQ0FBLHNDQUFrRDtBQVdsRCxrQkFBbUMsU0FBUSxnQkFBUztJQUVoRDs7T0FFRztJQUNJLE1BQU0sQ0FBQyxNQUFNLENBQUMsTUFBaUIsRUFB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O2dCQUM1QyxTQUFTO2FBQ1o7WUFFRCx3Q0FBd0M7WUFDeEMsV0FBVyxDQUFDLE9BQU8sQ0FBQyxLQUFLLENBQUMsRUFBRSxRQUFRLENBQUMsQ0FBQztTQUN6QztJQUNMLENBQUM7QUFDTCxDQUFDO0FBMUNELDhDQTBDQyIsImZpbGUiOiJidW5kbGUuanMiLCJzb3VyY2VzQ29udGVudCI6WyIgXHQvLyBUaGUgbW9kdWxlIGNhY2hlXG4gXHR2YXIgaW5zdGFsbGVkTW9kdWxlcyA9IHt9O1xuXG4gXHQvLyBUaGUgcmVxdWlyZSBmdW5jdGlvblxuIFx0ZnVuY3Rpb24gX193ZWJwYWNrX3JlcXVpcmVfXyhtb2R1bGVJZCkge1xuXG4gXHRcdC8vIENoZWNrIGlmIG1vZHVsZSBpcyBpbiBjYWNoZVxuIFx0XHRpZihpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXSkge1xuIFx0XHRcdHJldHVybiBpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXS5leHBvcnRzO1xuIFx0XHR9XG4gXHRcdC8vIENyZWF0ZSBhIG5ldyBtb2R1bGUgKGFuZCBwdXQgaXQgaW50byB0aGUgY2FjaGUpXG4gXHRcdHZhciBtb2R1bGUgPSBpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXSA9IHtcbiBcdFx0XHRpOiBtb2R1bGVJZCxcbiBcdFx0XHRsOiBmYWxzZSxcbiBcdFx0XHRleHBvcnRzOiB7fVxuIFx0XHR9O1xuXG4gXHRcdC8vIEV4ZWN1dGUgdGhlIG1vZHVsZSBmdW5jdGlvblxuIFx0XHRtb2R1bGVzW21vZHVsZUlkXS5jYWxsKG1vZHVsZS5leHBvcnRzLCBtb2R1bGUsIG1vZHVsZS5leHBvcnRzLCBfX3dlYnBhY2tfcmVxdWlyZV9fKTtcblxuIFx0XHQvLyBGbGFnIHRoZSBtb2R1bGUgYXMgbG9hZGVkXG4gXHRcdG1vZHVsZS5sID0gdHJ1ZTtcblxuIFx0XHQvLyBSZXR1cm4gdGhlIGV4cG9ydHMgb2YgdGhlIG1vZHVsZVxuIFx0XHRyZXR1cm4gbW9kdWxlLmV4cG9ydHM7XG4gXHR9XG5cblxuIFx0Ly8gZXhwb3NlIHRoZSBtb2R1bGVzIG9iamVjdCAoX193ZWJwYWNrX21vZHVsZXNfXylcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubSA9IG1vZHVsZXM7XG5cbiBcdC8vIGV4cG9zZSB0aGUgbW9kdWxlIGNhY2hlXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLmMgPSBpbnN0YWxsZWRNb2R1bGVzO1xuXG4gXHQvLyBkZWZpbmUgZ2V0dGVyIGZ1bmN0aW9uIGZvciBoYXJtb255IGV4cG9ydHNcbiBcdF9fd2VicGFja19yZXF1aXJlX18uZCA9IGZ1bmN0aW9uKGV4cG9ydHMsIG5hbWUsIGdldHRlcikge1xuIFx0XHRpZighX193ZWJwYWNrX3JlcXVpcmVfXy5vKGV4cG9ydHMsIG5hbWUpKSB7XG4gXHRcdFx0T2JqZWN0LmRlZmluZVByb3BlcnR5KGV4cG9ydHMsIG5hbWUsIHtcbiBcdFx0XHRcdGNvbmZpZ3VyYWJsZTogZmFsc2UsXG4gXHRcdFx0XHRlbnVtZXJhYmxlOiB0cnVlLFxuIFx0XHRcdFx0Z2V0OiBnZXR0ZXJcbiBcdFx0XHR9KTtcbiBcdFx0fVxuIFx0fTtcblxuIFx0Ly8gZ2V0RGVmYXVsdEV4cG9ydCBmdW5jdGlvbiBmb3IgY29tcGF0aWJpbGl0eSB3aXRoIG5vbi1oYXJtb255IG1vZHVsZXNcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubiA9IGZ1bmN0aW9uKG1vZHVsZSkge1xuIFx0XHR2YXIgZ2V0dGVyID0gbW9kdWxlICYmIG1vZHVsZS5fX2VzTW9kdWxlID9cbiBcdFx0XHRmdW5jdGlvbiBnZXREZWZhdWx0KCkgeyByZXR1cm4gbW9kdWxlWydkZWZhdWx0J107IH0gOlxuIFx0XHRcdGZ1bmN0aW9uIGdldE1vZHVsZUV4cG9ydHMoKSB7IHJldHVybiBtb2R1bGU7IH07XG4gXHRcdF9fd2VicGFja19yZXF1aXJlX18uZChnZXR0ZXIsICdhJywgZ2V0dGVyKTtcbiBcdFx0cmV0dXJuIGdldHRlcjtcbiBcdH07XG5cbiBcdC8vIE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbFxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5vID0gZnVuY3Rpb24ob2JqZWN0LCBwcm9wZXJ0eSkgeyByZXR1cm4gT2JqZWN0LnByb3RvdHlwZS5oYXNPd25Qcm9wZXJ0eS5jYWxsKG9iamVjdCwgcHJvcGVydHkpOyB9O1xuXG4gXHQvLyBfX3dlYnBhY2tfcHVibGljX3BhdGhfX1xuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5wID0gXCJcIjtcblxuIFx0Ly8gTG9hZCBlbnRyeSBtb2R1bGUgYW5kIHJldHVybiBleHBvcnRzXG4gXHRyZXR1cm4gX193ZWJwYWNrX3JlcXVpcmVfXyhfX3dlYnBhY2tfcmVxdWlyZV9fLnMgPSAyKTtcblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyB3ZWJwYWNrL2Jvb3RzdHJhcCA3NzNmNzE1Mzg0MTY3M2M4YTQ5NSIsIm1vZHVsZS5leHBvcnRzID0ganNpaSRfYXdzX2Nka19jb3JlJDtcblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyBleHRlcm5hbCBcImpzaWkkX2F3c19jZGtfY29yZSRcIlxuLy8gbW9kdWxlIGlkID0gMFxuLy8gbW9kdWxlIGNodW5rcyA9IDAiLCJpbXBvcnQgeyBDb25zdHJ1Y3QsIE91dHB1dCB9IGZyb20gJ0Bhd3MtY2RrL2NvcmUnO1xuaW1wb3J0IHsgZXZlbnRzIH0gZnJvbSAnQGF3cy1jZGsvcmVzb3VyY2VzJztcblxuZXhwb3J0IGludGVyZmFjZSBFdmVudFJ1bGVSZWZQcm9wcyB7XG4gICAgLyoqXG4gICAgICogVGhlIHZhbHVlIG9mIHRoZSBldmVudCBydWxlIEFtYXpvbiBSZXNvdXJjZSBOYW1lIChBUk4pLCBzdWNoIGFzXG4gICAgICogYXJuOmF3czpldmVudHM6dXMtZWFzdC0yOjEyMzQ1Njc4OTAxMjpydWxlL2V4YW1wbGUuXG4gICAgICovXG4gICAgZXZlbnRSdWxlQXJuOiBldmVudHMuUnVsZUFybjtcbn1cblxuZXhwb3J0IGFic3RyYWN0IGNsYXNzIEV2ZW50UnVsZVJlZiBleHRlbmRzIENvbnN0cnVjdCB7XG5cbiAgICAvKipcbiAgICAgKiBJbXBvcnRzIGEgcnVsZSBieSBBUk4gaW50byB0aGlzIHN0YWNrLlxuICAgICAqL1xuICAgIHB1YmxpYyBzdGF0aWMgaW1wb3J0KHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBFdmVudFJ1bGVSZWZQcm9wcyk6IEV2ZW50UnVsZVJlZiB7XG4gICAgICAgIHJldHVybiBuZXcgSW1wb3J0ZWRFdmVudFJ1bGUocGFyZW50LCBuYW1lLCBwcm9wcyk7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogVGhlIHZhbHVlIG9mIHRoZSBldmVudCBydWxlIEFtYXpvbiBSZXNvdXJjZSBOYW1lIChBUk4pLCBzdWNoIGFzXG4gICAgICogYXJuOmF3czpldmVudHM6dXMtZWFzdC0yOjEyMzQ1Njc4OTAxMjpydWxlL2V4YW1wbGUuXG4gICAgICovXG4gICAgcHVibGljIGFic3RyYWN0IHJlYWRvbmx5IHJ1bGVBcm46IGV2ZW50cy5SdWxlQXJuO1xuXG4gICAgLyoqXG4gICAgICogRXhwb3J0cyB0aGlzIHJ1bGUgcmVzb3VyY2UgZnJvbSB0aGlzIHN0YWNrIGFuZCByZXR1cm5zIGFuIGltcG9ydCB0b2tlbi5cbiAgICAgKi9cbiAgICBwdWJsaWMgZXhwb3J0KCk6IEV2ZW50UnVsZVJlZlByb3BzIHtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIGV2ZW50UnVsZUFybjogbmV3IE91dHB1dCh0aGlzLCAnUnVsZUFybicsIHsgdmFsdWU6IHRoaXMucnVsZUFybiB9KS5tYWtlSW1wb3J0VmFsdWUoKVxuICAgICAgICB9O1xuICAgIH1cbn1cblxuY2xhc3MgSW1wb3J0ZWRFdmVudFJ1bGUgZXh0ZW5kcyBFdmVudFJ1bGVSZWYge1xuICAgIHB1YmxpYyByZWFkb25seSBydWxlQXJuOiBldmVudHMuUnVsZUFybjtcblxuICAgIGNvbnN0cnVjdG9yKHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBFdmVudFJ1bGVSZWZQcm9wcykge1xuICAgICAgICBzdXBlcihwYXJlbnQsIG5hbWUpO1xuXG4gICAgICAgIHRoaXMucnVsZUFybiA9IHByb3BzLmV2ZW50UnVsZUFybjtcbiAgICB9XG59XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9ldmVudHMvbGliL3J1bGUtcmVmLnRzIiwiZXhwb3J0ICogZnJvbSAnLi9ydWxlJztcbmV4cG9ydCAqIGZyb20gJy4vcnVsZS1yZWYnO1xuZXhwb3J0ICogZnJvbSAnLi90YXJnZXQnO1xuZXhwb3J0ICogZnJvbSAnLi9ldmVudC1wYXR0ZXJuJztcbmV4cG9ydCAqIGZyb20gJy4vaW5wdXQtb3B0aW9ucyc7XG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvZXZlbnRzL2xpYi9pbmRleC50cyIsImltcG9ydCB7IENvbnN0cnVjdCwgRm5Db25jYXQsIFRva2VuIH0gZnJvbSAnQGF3cy1jZGsvY29yZSc7XG5pbXBvcnQgeyBldmVudHMgfSBmcm9tICdAYXdzLWNkay9yZXNvdXJjZXMnO1xuaW1wb3J0IHsgRXZlbnRQYXR0ZXJuIH0gZnJvbSAnLi9ldmVudC1wYXR0ZXJuJztcbmltcG9ydCB7IFRhcmdldElucHV0VGVtcGxhdGUgfSBmcm9tICcuL2lucHV0LW9wdGlvbnMnO1xuaW1wb3J0IHsgRXZlbnRSdWxlUmVmIH0gZnJvbSAnLi9ydWxlLXJlZic7XG5pbXBvcnQgeyBJRXZlbnRSdWxlVGFyZ2V0IH0gZnJvbSAnLi90YXJnZXQnO1xuaW1wb3J0IHsgbWVyZ2VFdmVudFBhdHRlcm4gfSBmcm9tICcuL3V0aWwnO1xuXG5leHBvcnQgaW50ZXJmYWNlIEV2ZW50UnVsZVByb3BzIHtcbiAgICAvKipcbiAgICAgKiBBIGRlc2NyaXB0aW9uIG9mIHRoZSBydWxlJ3MgcHVycG9zZS5cbiAgICAgKi9cbiAgICBkZXNjcmlwdGlvbj86IHN0cmluZztcblxuICAgIC8qKlxuICAgICAqIEEgbmFtZSBmb3IgdGhlIHJ1bGUuIElmIHlvdSBkb24ndCBzcGVjaWZ5IGEgbmFtZSwgQVdTIENsb3VkRm9ybWF0aW9uXG4gICAgICogZ2VuZXJhdGVzIGEgdW5pcXVlIHBoeXNpY2FsIElEIGFuZCB1c2VzIHRoYXQgSUQgZm9yIHRoZSBydWxlIG5hbWUuIEZvclxuICAgICAqIG1vcmUgaW5mb3JtYXRpb24sIHNlZSBOYW1lIFR5cGUuXG4gICAgICovXG4gICAgcnVsZU5hbWU/OiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBJbmRpY2F0ZXMgd2hldGhlciB0aGUgcnVsZSBpcyBlbmFibGVkLlxuICAgICAqIEBkZWZhdWx0IFJ1bGUgaXMgZW5hYmxlZFxuICAgICAqL1xuICAgIGVuYWJsZWQ/OiBib29sZWFuO1xuXG4gICAgLyoqXG4gICAgICogVGhlIHNjaGVkdWxlIG9yIHJhdGUgKGZyZXF1ZW5jeSkgdGhhdCBkZXRlcm1pbmVzIHdoZW4gQ2xvdWRXYXRjaCBFdmVudHNcbiAgICAgKiBydW5zIHRoZSBydWxlLiBGb3IgbW9yZSBpbmZvcm1hdGlvbiwgc2VlIFNjaGVkdWxlIEV4cHJlc3Npb24gU3ludGF4IGZvclxuICAgICAqIFJ1bGVzIGluIHRoZSBBbWF6b24gQ2xvdWRXYXRjaCBVc2VyIEd1aWRlLlxuICAgICAqXG4gICAgICogQHNlZSBodHRwOi8vZG9jcy5hd3MuYW1hem9uLmNvbS9BbWF6b25DbG91ZFdhdGNoL2xhdGVzdC9ldmVudHMvU2NoZWR1bGVkRXZlbnRzLmh0bWxcbiAgICAgKlxuICAgICAqIFlvdSBtdXN0IHNwZWNpZnkgdGhpcyBwcm9wZXJ0eSwgdGhlIGBldmVudFBhdHRlcm5gIHByb3BlcnR5LCBvciBib3RoLlxuICAgICAqL1xuICAgIHNjaGVkdWxlRXhwcmVzc2lvbj86IHN0cmluZztcblxuICAgIC8qKlxuICAgICAqIERlc2NyaWJlcyB3aGljaCBldmVudHMgQ2xvdWRXYXRjaCBFdmVudHMgcm91dGVzIHRvIHRoZSBzcGVjaWZpZWQgdGFyZ2V0LlxuICAgICAqIFRoZXNlIHJvdXRlZCBldmVudHMgYXJlIG1hdGNoZWQgZXZlbnRzLiBGb3IgbW9yZSBpbmZvcm1hdGlvbiwgc2VlIEV2ZW50c1xuICAgICAqIGFuZCBFdmVudCBQYXR0ZXJucyBpbiB0aGUgQW1hem9uIENsb3VkV2F0Y2ggVXNlciBHdWlkZS5cbiAgICAgKlxuICAgICAqIEBzZWVcbiAgICAgKiBodHRwOi8vZG9jcy5hd3MuYW1hem9uLmNvbS9BbWF6b25DbG91ZFdhdGNoL2xhdGVzdC9EZXZlbG9wZXJHdWlkZS9DbG91ZFdhdGNoRXZlbnRzYW5kRXZlbnRQYXR0ZXJucy5odG1sXG4gICAgICpcbiAgICAgKiBZb3UgbXVzdCBzcGVjaWZ5IHRoaXMgcHJvcGVydHkgKGVpdGhlciB2aWEgcHJvcHMgb3IgdmlhXG4gICAgICogYGFkZEV2ZW50UGF0dGVybmApLCB0aGUgYHNjaGVkdWxlRXhwcmVzc2lvbmAgcHJvcGVydHksIG9yIGJvdGguIFRoZVxuICAgICAqIG1ldGhvZCBgYWRkRXZlbnRQYXR0ZXJuYCBjYW4gYmUgdXNlZCB0byBhZGQgZmlsdGVyIHZhbHVlcyB0byB0aGUgZXZlbnRcbiAgICAgKiBwYXR0ZXJuLlxuICAgICAqL1xuICAgIGV2ZW50UGF0dGVybj86IEV2ZW50UGF0dGVybjtcblxuICAgIC8qKlxuICAgICAqIFRhcmdldHMgdG8gaW52b2tlIHdoZW4gdGhpcyBydWxlIG1hdGNoZXMgYW4gZXZlbnQuXG4gICAgICpcbiAgICAgKiBJbnB1dCB3aWxsIGJlIHRoZSBmdWxsIG1hdGNoZWQgZXZlbnQuIElmIHlvdSB3aXNoIHRvIHNwZWNpZnkgY3VzdG9tXG4gICAgICogdGFyZ2V0IGlucHV0LCB1c2UgYGFkZFRhcmdldCh0YXJnZXRbLCBpbnB1dE9wdGlvbnNdKWAuXG4gICAgICovXG4gICAgdGFyZ2V0cz86IElFdmVudFJ1bGVUYXJnZXRbXTtcbn1cblxuLyoqXG4gKiBEZWZpbmVzIGEgQ2xvdWRXYXRjaCBFdmVudCBSdWxlIGluIHRoaXMgc3RhY2suXG4gKi9cbmV4cG9ydCBjbGFzcyBFdmVudFJ1bGUgZXh0ZW5kcyBFdmVudFJ1bGVSZWYge1xuICAgIHB1YmxpYyBydWxlQXJuOiBldmVudHMuUnVsZUFybjtcblxuICAgIHByaXZhdGUgcmVhZG9ubHkgdGFyZ2V0cyA9IG5ldyBBcnJheTxldmVudHMuUnVsZVJlc291cmNlLlRhcmdldFByb3BlcnR5PigpO1xuICAgIHByaXZhdGUgcmVhZG9ubHkgZXZlbnRQYXR0ZXJuOiBFdmVudFBhdHRlcm4gPSB7IH07XG4gICAgcHJpdmF0ZSBzY2hlZHVsZUV4cHJlc3Npb24/OiBzdHJpbmc7XG5cbiAgICBjb25zdHJ1Y3RvcihwYXJlbnQ6IENvbnN0cnVjdCwgbmFtZTogc3RyaW5nLCBwcm9wczogRXZlbnRSdWxlUHJvcHMgPSB7IH0pIHtcbiAgICAgICAgc3VwZXIocGFyZW50LCBuYW1lKTtcblxuICAgICAgICBjb25zdCByZXNvdXJjZSA9IG5ldyBldmVudHMuUnVsZVJlc291cmNlKHRoaXMsICdSZXNvdXJjZScsIHtcbiAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBwcm9wcy5kZXNjcmlwdGlvbixcbiAgICAgICAgICAgIHN0YXRlOiBwcm9wcy5lbmFibGVkID09IG51bGwgPyAnRU5BQkxFRCcgOiAocHJvcHMuZW5hYmxlZCA/ICdFTkFCTEVEJyA6ICdESVNBQkxFRCcpLFxuICAgICAgICAgICAgc2NoZWR1bGVFeHByZXNzaW9uOiBuZXcgVG9rZW4oKCkgPT4gdGhpcy5zY2hlZHVsZUV4cHJlc3Npb24pLFxuICAgICAgICAgICAgZXZlbnRQYXR0ZXJuOiBuZXcgVG9rZW4oKCkgPT4gdGhpcy5yZW5kZXJFdmVudFBhdHRlcm4oKSksXG4gICAgICAgICAgICB0YXJnZXRzOiBuZXcgVG9rZW4oKCkgPT4gdGhpcy5yZW5kZXJUYXJnZXRzKCkpXG4gICAgICAgIH0pO1xuXG4gICAgICAgIHRoaXMucnVsZUFybiA9IHJlc291cmNlLnJ1bGVBcm47XG5cbiAgICAgICAgdGhpcy5hZGRFdmVudFBhdHRlcm4ocHJvcHMuZXZlbnRQYXR0ZXJuKTtcbiAgICAgICAgdGhpcy5zY2hlZHVsZUV4cHJlc3Npb24gPSBwcm9wcy5zY2hlZHVsZUV4cHJlc3Npb247XG5cbiAgICAgICAgZm9yIChjb25zdCB0YXJnZXQgb2YgcHJvcHMudGFyZ2V0cyB8fCBbXSkge1xuICAgICAgICAgICAgdGhpcy5hZGRUYXJnZXQodGFyZ2V0KTtcbiAgICAgICAgfVxuICAgIH1cblxuICAgIC8qKlxuICAgICAqIEFkZHMgYSB0YXJnZXQgdG8gdGhlIHJ1bGUuIFRoZSBhYnN0cmFjdCBjbGFzcyBSdWxlVGFyZ2V0IGNhbiBiZSBleHRlbmRlZCB0byBkZWZpbmUgbmV3XG4gICAgICogdGFyZ2V0cy5cbiAgICAgKlxuICAgICAqIE5vLW9wIGlmIHRhcmdldCBpcyB1bmRlZmluZWQuXG4gICAgICovXG4gICAgcHVibGljIGFkZFRhcmdldCh0YXJnZXQ/OiBJRXZlbnRSdWxlVGFyZ2V0LCBpbnB1dE9wdGlvbnM/OiBUYXJnZXRJbnB1dFRlbXBsYXRlKSB7XG4gICAgICAgIGlmICghdGFyZ2V0KSB7IHJldHVybjsgfVxuXG4gICAgICAgIC8vIGNoZWNrIGlmIGEgdGFyZ2V0IHdpdGggdGhpcyBJRCBhbHJlYWR5IGV4aXN0c1xuICAgICAgICBpZiAodGhpcy50YXJnZXRzLmZpbmQodCA9PiB0LmlkID09PSB0YXJnZXQuZXZlbnRSdWxlVGFyZ2V0LmlkKSkge1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKCdEdXBsaWNhdGUgZXZlbnQgcnVsZSB0YXJnZXQgd2l0aCBJRDogJyArIHRhcmdldC5ldmVudFJ1bGVUYXJnZXQuaWQpO1xuICAgICAgICB9XG5cbiAgICAgICAgdGhpcy50YXJnZXRzLnB1c2goe1xuICAgICAgICAgICAgLi4udGFyZ2V0LmV2ZW50UnVsZVRhcmdldCxcbiAgICAgICAgICAgIGlucHV0VHJhbnNmb3JtZXI6IHJlbmRlclRyYW5zZm9ybWVyKCksXG4gICAgICAgIH0pO1xuXG4gICAgICAgIGZ1bmN0aW9uIHJlbmRlclRyYW5zZm9ybWVyKCk6IGV2ZW50cy5SdWxlUmVzb3VyY2UuSW5wdXRUcmFuc2Zvcm1lclByb3BlcnR5IHwgdW5kZWZpbmVkIHtcbiAgICAgICAgICAgIGlmICghaW5wdXRPcHRpb25zKSB7XG4gICAgICAgICAgICAgICAgcmV0dXJuIHVuZGVmaW5lZDtcbiAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgaWYgKGlucHV0T3B0aW9ucy5qc29uVGVtcGxhdGUgJiYgaW5wdXRPcHRpb25zLnRleHRUZW1wbGF0ZSkge1xuICAgICAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcignXCJqc29uVGVtcGxhdGVcIiBhbmQgXCJ0ZXh0VGVtcGxhdGVcIiBhcmUgbXV0dWFsbHkgZXhjbHVzaXZlJyk7XG4gICAgICAgICAgICB9XG5cbiAgICAgICAgICAgIGlmICghaW5wdXRPcHRpb25zLmpzb25UZW1wbGF0ZSAmJiAhaW5wdXRPcHRpb25zLnRleHRUZW1wbGF0ZSkge1xuICAgICAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcignT25lIG9mIFwianNvblRlbXBsYXRlXCIgb3IgXCJ0ZXh0VGVtcGxhdGVcIiBhcmUgcmVxdWlyZWQnKTtcbiAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgbGV0IGlucHV0VGVtcGxhdGU6IGFueTtcblxuICAgICAgICAgICAgaWYgKGlucHV0T3B0aW9ucy5qc29uVGVtcGxhdGUpIHtcbiAgICAgICAgICAgICAgICBpbnB1dFRlbXBsYXRlID0gaW5wdXRPcHRpb25zLmpzb25UZW1wbGF0ZTtcbiAgICAgICAgICAgIH0gZWxzZSBpZiAodHlwZW9mKGlucHV0T3B0aW9ucy50ZXh0VGVtcGxhdGUpID09PSAnc3RyaW5nJykge1xuICAgICAgICAgICAgICAgIGlucHV0VGVtcGxhdGUgPSBKU09OLnN0cmluZ2lmeShpbnB1dE9wdGlvbnMudGV4dFRlbXBsYXRlKTtcbiAgICAgICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICAgICAgaW5wdXRUZW1wbGF0ZSA9IG5ldyBGbkNvbmNhdCgnXCInLCBpbnB1dE9wdGlvbnMudGV4dFRlbXBsYXRlLCAnXCInKTtcbiAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgICAgICBpbnB1dFBhdGhzTWFwOiBpbnB1dE9wdGlvbnMucGF0aHNNYXAsXG4gICAgICAgICAgICAgICAgaW5wdXRUZW1wbGF0ZVxuICAgICAgICAgICAgfTtcbiAgICAgICAgfVxuICAgIH1cblxuICAgIC8qKlxuICAgICAqIEFkZHMgYW4gZXZlbnQgcGF0dGVybiBmaWx0ZXIgdG8gdGhpcyBydWxlLiBJZiBhIHBhdHRlcm4gd2FzIGFscmVhZHkgc3BlY2lmaWVkLFxuICAgICAqIHRoZXNlIHZhbHVlcyBhcmUgbWVyZ2VkIGludG8gdGhlIGV4aXN0aW5nIHBhdHRlcm4uXG4gICAgICpcbiAgICAgKiBGb3IgZXhhbXBsZSwgaWYgdGhlIHJ1bGUgYWxyZWFkeSBjb250YWlucyB0aGUgcGF0dGVybjpcbiAgICAgKlxuICAgICAqICAgICAge1xuICAgICAqICAgICAgICAgIFwicmVzb3VyY2VzXCI6IFsgXCJyMVwiIF0sXG4gICAgICogICAgICAgICAgXCJkZXRhaWxcIjoge1xuICAgICAqICAgICAgICAgICAgICBcImhlbGxvXCI6IFsgMSBdXG4gICAgICogICAgICAgICAgfVxuICAgICAqICAgICAgfVxuICAgICAqXG4gICAgICogQW5kIGBhZGRFdmVudFBhdHRlcm5gIGlzIGNhbGxlZCB3aXRoIHRoZSBwYXR0ZXJuOlxuICAgICAqXG4gICAgICogICAgICB7XG4gICAgICogICAgICAgICAgXCJyZXNvdXJjZXNcIjogWyBcInIyXCIgXSxcbiAgICAgKiAgICAgICAgICBcImRldGFpbFwiOiB7XG4gICAgICogICAgICAgICAgICAgIFwiZm9vXCI6IFsgXCJiYXJcIiBdXG4gICAgICogICAgICAgICAgfVxuICAgICAqICAgICAgfVxuICAgICAqXG4gICAgICogVGhlIHJlc3VsdGluZyBldmVudCBwYXR0ZXJuIHdpbGwgYmU6XG4gICAgICpcbiAgICAgKiAgICAgIHtcbiAgICAgKiAgICAgICAgICBcInJlc291cmNlc1wiOiBbIFwicjFcIiwgXCJyMlwiIF0sXG4gICAgICogICAgICAgICAgXCJkZXRhaWxcIjoge1xuICAgICAqICAgICAgICAgICAgICBcImhlbGxvXCI6IFsgMSBdLFxuICAgICAqICAgICAgICAgICAgICBcImZvb1wiOiBbIFwiYmFyXCIgXVxuICAgICAqICAgICAgICAgIH1cbiAgICAgKiAgICAgIH1cbiAgICAgKlxuICAgICAqL1xuICAgIHB1YmxpYyBhZGRFdmVudFBhdHRlcm4oZXZlbnRQYXR0ZXJuPzogRXZlbnRQYXR0ZXJuKSB7XG4gICAgICAgIGlmICghZXZlbnRQYXR0ZXJuKSB7XG4gICAgICAgICAgICByZXR1cm47XG4gICAgICAgIH1cbiAgICAgICAgbWVyZ2VFdmVudFBhdHRlcm4odGhpcy5ldmVudFBhdHRlcm4sIGV2ZW50UGF0dGVybik7XG4gICAgfVxuXG4gICAgcHVibGljIHZhbGlkYXRlKCkge1xuICAgICAgICBpZiAoT2JqZWN0LmtleXModGhpcy5ldmVudFBhdHRlcm4pLmxlbmd0aCA9PT0gMCAmJiAhdGhpcy5zY2hlZHVsZUV4cHJlc3Npb24pIHtcbiAgICAgICAgICAgIHJldHVybiBbIGBFaXRoZXIgJ2V2ZW50UGF0dGVybicgb3IgJ3NjaGVkdWxlRXhwcmVzc2lvbicgbXVzdCBiZSBkZWZpbmVkYCBdO1xuICAgICAgICB9XG5cbiAgICAgICAgcmV0dXJuIFsgXTtcbiAgICB9XG5cbiAgICBwcml2YXRlIHJlbmRlclRhcmdldHMoKSB7XG4gICAgICAgIGlmICh0aGlzLnRhcmdldHMubGVuZ3RoID09PSAwKSB7XG4gICAgICAgICAgICByZXR1cm4gdW5kZWZpbmVkO1xuICAgICAgICB9XG5cbiAgICAgICAgcmV0dXJuIHRoaXMudGFyZ2V0cztcbiAgICB9XG5cbiAgICBwcml2YXRlIHJlbmRlckV2ZW50UGF0dGVybigpIHtcbiAgICAgICAgY29uc3QgZXZlbnRQYXR0ZXJuID0gdGhpcy5ldmVudFBhdHRlcm47XG5cbiAgICAgICAgaWYgKE9iamVjdC5rZXlzKGV2ZW50UGF0dGVybikubGVuZ3RoID09PSAwKSB7XG4gICAgICAgICAgICByZXR1cm4gdW5kZWZpbmVkO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gcmVuYW1lICdkZXRhaWxUeXBlJyB0byAnZGV0YWlsLXR5cGUnXG4gICAgICAgIGNvbnN0IG91dDogYW55ID0ge307XG4gICAgICAgIGZvciAobGV0IGtleSBvZiBPYmplY3Qua2V5cyhldmVudFBhdHRlcm4pKSB7XG4gICAgICAgICAgICBjb25zdCB2YWx1ZSA9IChldmVudFBhdHRlcm4gYXMgYW55KVtrZXldO1xuICAgICAgICAgICAgaWYgKGtleSA9PT0gJ2RldGFpbFR5cGUnKSB7XG4gICAgICAgICAgICAgICAga2V5ID0gJ2RldGFpbC10eXBlJztcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgIG91dFtrZXldID0gdmFsdWU7XG4gICAgICAgIH1cblxuICAgICAgICByZXR1cm4gb3V0O1xuICAgIH1cbn1cblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAvcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2V2ZW50cy9saWIvcnVsZS50cyIsIm1vZHVsZS5leHBvcnRzID0ganNpaSRfYXdzX2Nka19yZXNvdXJjZXMkO1xuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIGV4dGVybmFsIFwianNpaSRfYXdzX2Nka19yZXNvdXJjZXMkXCJcbi8vIG1vZHVsZSBpZCA9IDRcbi8vIG1vZHVsZSBjaHVua3MgPSAwIiwiLyoqXG4gKiBNZXJnZSB0aGUgYHNyY2AgZXZlbnQgcGF0dGVybiBpbnRvIHRoZSBgZGVzdGAgZXZlbnQgcGF0dGVybiBieSBhZGRpbmcgYWxsXG4gKiB2YWx1ZXMgZnJvbSBgc3JjYCBpbnRvIHRoZSBmaWVsZHMgaW4gYGRlc3RgLlxuICpcbiAqIFNlZSBgcnVsZS5hZGRFdmVudFBhdHRlcm5gIGZvciBkZXRhaWxzLlxuICovXG5leHBvcnQgZnVuY3Rpb24gbWVyZ2VFdmVudFBhdHRlcm4oZGVzdDogYW55LCBzcmM6IGFueSkge1xuICAgIGRlc3QgPSBkZXN0IHx8IHsgfTtcblxuICAgIG1lcmdlT2JqZWN0KGRlc3QsIHNyYyk7XG5cbiAgICByZXR1cm4gZGVzdDtcblxuICAgIGZ1bmN0aW9uIG1lcmdlT2JqZWN0KGRlc3RPYmo6IGFueSwgc3JjT2JqOiBhbnkpIHtcbiAgICAgICAgaWYgKHR5cGVvZihzcmNPYmopICE9PSAnb2JqZWN0Jykge1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBJbnZhbGlkIGV2ZW50IHBhdHRlcm4gJyR7SlNPTi5zdHJpbmdpZnkoc3JjT2JqKX0nLCBleHBlY3RpbmcgYW4gb2JqZWN0IG9yIGFuIGFycmF5YCk7XG4gICAgICAgIH1cblxuICAgICAgICBmb3IgKGNvbnN0IGZpZWxkIG9mIE9iamVjdC5rZXlzKHNyY09iaikpIHtcblxuICAgICAgICAgICAgY29uc3Qgc3JjVmFsdWUgPSBzcmNPYmpbZmllbGRdO1xuICAgICAgICAgICAgY29uc3QgZGVzdFZhbHVlID0gZGVzdE9ialtmaWVsZF07XG5cbiAgICAgICAgICAgIGlmICh0eXBlb2Yoc3JjVmFsdWUpICE9PSAnb2JqZWN0Jykge1xuICAgICAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcihgSW52YWxpZCBldmVudCBwYXR0ZXJuIGZpZWxkIHsgJHtmaWVsZH06ICR7SlNPTi5zdHJpbmdpZnkoc3JjVmFsdWUpfSB9LiBBbGwgZmllbGRzIG11c3QgYmUgYXJyYXlzYCk7XG4gICAgICAgICAgICB9XG5cbiAgICAgICAgICAgIC8vIGRlc3QgZG9lc24ndCBoYXZlIHRoaXMgZmllbGRcbiAgICAgICAgICAgIGlmICghKGZpZWxkIGluIGRlc3RPYmopKSB7XG4gICAgICAgICAgICAgICAgZGVzdE9ialtmaWVsZF0gPSBzcmNWYWx1ZTtcbiAgICAgICAgICAgICAgICBjb250aW51ZTtcbiAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgaWYgKEFycmF5LmlzQXJyYXkoc3JjVmFsdWUpICE9PSBBcnJheS5pc0FycmF5KGRlc3RWYWx1ZSkpIHtcbiAgICAgICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYEludmFsaWQgZXZlbnQgcGF0dGVybiBmaWVsZCAke2ZpZWxkfS4gYCArXG4gICAgICAgICAgICAgICAgICAgIGBUeXBlIG1pc21hdGNoIGJldHdlZW4gZXhpc3RpbmcgcGF0dGVybiAke0pTT04uc3RyaW5naWZ5KGRlc3RWYWx1ZSl9IGFuZCBhZGRlZCBwYXR0ZXJuICR7SlNPTi5zdHJpbmdpZnkoc3JjVmFsdWUpfWApO1xuICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAvLyBpZiB0aGlzIGlzIGFuIGFycmF5LCBjb25jYXQgdGhlIHZhbHVlc1xuICAgICAgICAgICAgaWYgKEFycmF5LmlzQXJyYXkoc3JjVmFsdWUpKSB7XG4gICAgICAgICAgICAgICAgZGVzdE9ialtmaWVsZF0gPSBkZXN0VmFsdWUuY29uY2F0KHNyY1ZhbHVlKTtcbiAgICAgICAgICAgICAgICBjb250aW51ZTtcbiAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgLy8gb3RoZXJ3aXNlLCBpdCdzIGFuIG9iamVjdCwgc28gcmVjdXJzZVxuICAgICAgICAgICAgbWVyZ2VPYmplY3QoZGVzdE9ialtmaWVsZF0sIHNyY1ZhbHVlKTtcbiAgICAgICAgfVxuICAgIH1cbn1cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9ldmVudHMvbGliL3V0aWwudHMiXSwic291cmNlUm9vdCI6IiJ9"
+}

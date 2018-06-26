@@ -1,0 +1,736 @@
+{
+  "schema": "jsii/1.0",
+  "types": {
+    "jsii$_aws_cdk_rtv$.RuntimeValueProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "name": "package",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "name": "value",
+          "type": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_rtv$.RuntimeValueProps",
+      "module": "jsii$_aws_cdk_rtv$",
+      "namespace": "jsii$_aws_cdk_rtv$",
+      "name": "RuntimeValueProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_rtv$.RuntimeValue": {
+      "kind": "class",
+      "properties": [
+        {
+          "name": "ENV_NAME",
+          "static": true,
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true,
+          "const": true
+        },
+        {
+          "name": "ENV_VALUE",
+          "static": true,
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.AwsStackName"
+          },
+          "immutable": true,
+          "const": true
+        },
+        {
+          "name": "parameterName",
+          "type": {
+            "primitive": "any"
+          },
+          "immutable": true
+        },
+        {
+          "name": "arn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Arn"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "principal",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.IIdentityResource"
+              }
+            }
+          ],
+          "name": "grantReadPermissions"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_rtv$.RuntimeValue",
+      "module": "jsii$_aws_cdk_rtv$",
+      "namespace": "jsii$_aws_cdk_rtv$",
+      "name": "RuntimeValue",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_rtv$.RuntimeValueProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    }
+  },
+  "nametree": {
+    "jsii$_aws_cdk_rtv$": {
+      "RuntimeValueProps": {
+        "_": "jsii$_aws_cdk_rtv$.RuntimeValueProps"
+      },
+      "RuntimeValue": {
+        "_": "jsii$_aws_cdk_rtv$.RuntimeValue"
+      }
+    }
+  },
+  "typecount": 2,
+  "externalTypes": {
+    "jsii$_aws_cdk_core$.Construct": {
+      "docs": {
+        "comment": "Represents the building block of the construct graph.\nWhen a construct is created, it is always added as a child"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the parent of this node or undefined if this is a root node."
+          },
+          "name": "parent",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of this construct"
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "All direct children of this construct."
+          },
+          "name": "children",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "returns": "/-separated path of this Construct.",
+            "comment": "Returns the path of all constructs from root to this construct, in string form."
+          },
+          "name": "path",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "An array of metadata objects associated with this construct.\nThis can be used, for example, to implement support for deprecation notices, source mapping, etc."
+          },
+          "name": "metadata",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.MetadataEntry"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "docs": {
+            "comment": "Returns a string representation of this construct."
+          },
+          "name": "toString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "depth",
+              "type": {
+                "primitive": "number",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Returns a string with a tree representation of this construct and it's children."
+          },
+          "name": "toTreeString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "a child by path or undefined if not found.",
+            "comment": "Return a descendant by path, or undefined"
+          },
+          "name": "tryFindChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "Child with the given path.",
+            "comment": "Return a descendant by path\n\nThrows an exception if the descendant is not found."
+          },
+          "name": "findChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "value The context value",
+                "comment": "The context value"
+              },
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "This can be used to set contextual values.\nContext must be set before any children are added, since children may consult context info during construction.\nIf the key already exists, it will be overridden."
+          },
+          "name": "setContext"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The context value or undefined",
+            "comment": "Retrieves a value from tree context.\n\nContext is usually initialized at the root, but can be overridden at any point in the tree."
+          },
+          "name": "getContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Retrieve a value from tree-global context\n\nIt is an error if the context object is not available."
+          },
+          "name": "requireContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "type a string denoting the type of metadata",
+                "comment": "a string denoting the type of metadata"
+              },
+              "name": "type",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "data the value of the metadata (can be a Token). If null/undefined, metadata will not be added.",
+                "comment": "the value of the metadata (can be a Token). If null/undefined, metadata will not be added."
+              },
+              "name": "data",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "from a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)",
+                "comment": "a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)"
+              },
+              "name": "from",
+              "type": {
+                "primitive": "any",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a metadata entry to this construct.\nEntries are arbitrary values and will also include a stack trace to allow tracing back to\nthe code location for when the entry was added. It can be used, for example, to include source\nmapping in CloudFormation templates to improve diagnostics."
+          },
+          "name": "addMetadata",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "message The warning message.",
+                "comment": "The warning message."
+              },
+              "name": "message",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a { warning: <message> } metadata entry to this construct."
+          },
+          "name": "addWarning",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "docs": {
+            "returns": "An array of validation error messages, or an empty array if there the construct is valid.",
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "returns": "A list of validation errors. If the list is empty, all constructs are valid.",
+            "comment": "Invokes 'validate' on all child constructs and then on this construct (depth-first)."
+          },
+          "name": "validateTree",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.ValidationError"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "upTo",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Return the ancestors (including self) of this Construct up until and excluding the indicated component"
+          },
+          "name": "ancestors",
+          "protected": true,
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "props The props bag.",
+                "comment": "The props bag."
+              },
+              "name": "props",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the required property.",
+                "comment": "The name of the required property."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Throws if the `props` bag doesn't include the property `name`.\nIn the future we can add some type-checking here, maybe even auto-generate during compilation."
+          },
+          "name": "required",
+          "protected": true,
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "child The child construct",
+                "comment": "The child construct"
+              },
+              "name": "child",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "childName",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The resolved path part name of the child",
+            "comment": "Adds a child construct to this node."
+          },
+          "name": "addChild",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Locks this construct from allowing more children to be added. After this\ncall, no more children can be added to this construct or to any children."
+          },
+          "name": "lock",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Unlocks this costruct and allows mutations (adding children)."
+          },
+          "name": "unlock",
+          "protected": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Construct",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Construct",
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.AwsStackName": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_core$.AwsStackName",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "AwsStackName",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.PseudoParameter"
+      },
+      "initializer": {
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.Arn": {
+      "docs": {
+        "comment": "An Amazon Resource Name (ARN).\nhttp://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html"
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "components",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.ArnComponents"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Creates an ARN from components.\nIf any component is the empty string,\nan empty string will be inserted into the generated ARN\nat the location that component corresponds to."
+          },
+          "name": "fromComponents",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Arn"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "arn",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "an ArnComponents object which allows access to the various\ncomponents of the ARN.",
+            "comment": "Given an ARN, parses it and returns components.\n\nThe ARN it will be parsed and validated. The separator (`sep`) will be\nset to '/' if the 6th component includes a '/', in which case, `resource`\nwill be set to the value before the '/' and `resourceName` will be the\nrest. In case there is no '/', `resource` will be set to the 6th\ncomponents and `resourceName` will be set to the rest of the string."
+          },
+          "name": "parse",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.ArnComponents"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Arn",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Arn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_iam$.IIdentityResource": {
+      "kind": "interface",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "statement",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds an IAM statement to the default inline policy associated with this\nprincipal. If a policy doesn't exist, it is created."
+          },
+          "name": "addToPolicy"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "policy The policy resource to attach to this principal.",
+                "comment": "The policy resource to attach to this principal."
+              },
+              "name": "policy",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.Policy"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Attaches an inline policy to this principal.\nThis is the same as calling `policy.addToXxx(principal)`."
+          },
+          "name": "attachInlinePolicy"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "arn The ARN of the managed policy",
+                "comment": "The ARN of the managed policy"
+              },
+              "name": "arn",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Attaches a managed policy to this principal."
+          },
+          "name": "attachManagedPolicy"
+        }
+      ],
+      "properties": [
+        {
+          "docs": {
+            "comment": "The IAM principal of this identity (i.e. AWS principal, service principal, etc)."
+          },
+          "name": "principal",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyPrincipal"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+      "module": "jsii$_aws_cdk_iam$",
+      "namespace": "jsii$_aws_cdk_iam$",
+      "name": "IIdentityResource"
+    }
+  },
+  "name": "jsii$_aws_cdk_rtv$",
+  "package": "@aws-cdk/rtv",
+  "version": "0.7.2-beta",
+  "dependencies": {
+    "jsii$_aws_cdk_core$": {
+      "package": "@aws-cdk/core",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "package": "@aws-cdk/iam",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "package": "@aws-cdk/resources",
+      "version": "0.7.2-beta"
+    }
+  },
+  "names": {
+    "java": "com.amazonaws.cdk.rtv",
+    "dotnet": "Aws.Cdk.Rtv",
+    "js": "@aws-cdk/rtv"
+  },
+  "nativenames": {
+    "jsii$_aws_cdk_core$": {
+      "java": "com.amazonaws.cdk",
+      "dotnet": "Aws.Cdk",
+      "js": "@aws-cdk/core"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "java": "com.amazonaws.cdk.iam",
+      "dotnet": "Aws.Cdk.Iam",
+      "js": "@aws-cdk/iam"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "java": "com.amazonaws.cdk.resources",
+      "dotnet": "Aws.Cdk.Resources",
+      "js": "@aws-cdk/resources"
+    },
+    "jsii$_aws_cdk_rtv$": {
+      "java": "com.amazonaws.cdk.rtv",
+      "dotnet": "Aws.Cdk.Rtv",
+      "js": "@aws-cdk/rtv"
+    }
+  },
+  "code": "var jsii$_aws_cdk_rtv$ =\n/******/ (function(modules) { // webpackBootstrap\n/******/ \t// The module cache\n/******/ \tvar installedModules = {};\n/******/\n/******/ \t// The require function\n/******/ \tfunction __webpack_require__(moduleId) {\n/******/\n/******/ \t\t// Check if module is in cache\n/******/ \t\tif(installedModules[moduleId]) {\n/******/ \t\t\treturn installedModules[moduleId].exports;\n/******/ \t\t}\n/******/ \t\t// Create a new module (and put it into the cache)\n/******/ \t\tvar module = installedModules[moduleId] = {\n/******/ \t\t\ti: moduleId,\n/******/ \t\t\tl: false,\n/******/ \t\t\texports: {}\n/******/ \t\t};\n/******/\n/******/ \t\t// Execute the module function\n/******/ \t\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\n/******/\n/******/ \t\t// Flag the module as loaded\n/******/ \t\tmodule.l = true;\n/******/\n/******/ \t\t// Return the exports of the module\n/******/ \t\treturn module.exports;\n/******/ \t}\n/******/\n/******/\n/******/ \t// expose the modules object (__webpack_modules__)\n/******/ \t__webpack_require__.m = modules;\n/******/\n/******/ \t// expose the module cache\n/******/ \t__webpack_require__.c = installedModules;\n/******/\n/******/ \t// define getter function for harmony exports\n/******/ \t__webpack_require__.d = function(exports, name, getter) {\n/******/ \t\tif(!__webpack_require__.o(exports, name)) {\n/******/ \t\t\tObject.defineProperty(exports, name, {\n/******/ \t\t\t\tconfigurable: false,\n/******/ \t\t\t\tenumerable: true,\n/******/ \t\t\t\tget: getter\n/******/ \t\t\t});\n/******/ \t\t}\n/******/ \t};\n/******/\n/******/ \t// getDefaultExport function for compatibility with non-harmony modules\n/******/ \t__webpack_require__.n = function(module) {\n/******/ \t\tvar getter = module && module.__esModule ?\n/******/ \t\t\tfunction getDefault() { return module['default']; } :\n/******/ \t\t\tfunction getModuleExports() { return module; };\n/******/ \t\t__webpack_require__.d(getter, 'a', getter);\n/******/ \t\treturn getter;\n/******/ \t};\n/******/\n/******/ \t// Object.prototype.hasOwnProperty.call\n/******/ \t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\n/******/\n/******/ \t// __webpack_public_path__\n/******/ \t__webpack_require__.p = \"\";\n/******/\n/******/ \t// Load entry module and return exports\n/******/ \treturn __webpack_require__(__webpack_require__.s = 0);\n/******/ })\n/************************************************************************/\n/******/ ([\n/* 0 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(1));\n\n\n/***/ }),\n/* 1 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(2);\nconst resources_1 = __webpack_require__(3);\nclass RuntimeValue extends core_1.Construct {\n    constructor(parent, name, props) {\n        super(parent, name);\n        this.parameterName = new core_1.FnConcat('/rtv/', new core_1.AwsStackName(), '/', props.package, '@', name);\n        new resources_1.ssm.ParameterResource(this, 'Parameter', {\n            parameterName: this.parameterName,\n            type: 'String',\n            value: props.value,\n        });\n    }\n    get arn() {\n        return core_1.Arn.fromComponents({\n            service: 'ssm',\n            resource: 'parameter',\n            resourceName: this.parameterName\n        });\n    }\n    grantReadPermissions(principal) {\n        principal.addToPolicy(new core_1.PolicyStatement()\n            .addResource(this.arn)\n            .addActions(...RuntimeValue.SSM_READ_ACTIONS));\n    }\n}\nRuntimeValue.ENV_NAME = 'RTV_STACK_NAME';\nRuntimeValue.ENV_VALUE = new core_1.AwsStackName();\nRuntimeValue.SSM_READ_ACTIONS = [\n    'ssm:DescribeParameters',\n    'ssm:GetParameters',\n    'ssm:GetParameter'\n];\nexports.RuntimeValue = RuntimeValue;\n\n\n/***/ }),\n/* 2 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_core$;\n\n/***/ }),\n/* 3 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_resources$;\n\n/***/ })\n/******/ ]);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vd2VicGFjay9ib290c3RyYXAgMTczNmQwZGUwY2E1MWM2YzM2MzEiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvcnR2L2xpYi9pbmRleC50cyIsIndlYnBhY2s6Ly8vL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9ydHYvbGliL3J0di50cyIsIndlYnBhY2s6Ly8vZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX2NvcmUkXCIiLCJ3ZWJwYWNrOi8vL2V4dGVybmFsIFwianNpaSRfYXdzX2Nka19yZXNvdXJjZXMkXCIiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTs7O0FBR0E7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsYUFBSztBQUNMO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0EsbUNBQTJCLDBCQUEwQixFQUFFO0FBQ3ZELHlDQUFpQyxlQUFlO0FBQ2hEO0FBQ0E7QUFDQTs7QUFFQTtBQUNBLDhEQUFzRCwrREFBK0Q7O0FBRXJIO0FBQ0E7O0FBRUE7QUFDQTs7Ozs7Ozs7Ozs7OztBQzdEQSxpQ0FBc0I7Ozs7Ozs7Ozs7QUNBdEIsc0NBQXdGO0FBRXhGLDJDQUF5QztBQU96QyxrQkFBMEIsU0FBUSxnQkFBUztJQVl2QyxZQUFZLE1BQWlCLEVBQUUsSUFBWSxFQUFFLEtBQXdCO1FBQ2pFLEtBQUssQ0FBQyxNQUFNLEVBQUUsSUFBSSxDQUFDLENBQUM7UUFFcEIsSUFBSSxDQUFDLGFBQWEsR0FBRyxJQUFJLGVBQVEsQ0FBQyxPQUFPLEVBQUUsSUFBSSxtQkFBWSxFQUFFLEVBQUUsR0FBRyxFQUFFLEtBQUssQ0FBQyxPQUFPLEVBQUUsR0FBRyxFQUFFLElBQUksQ0FBQyxDQUFDO1FBRTlGLElBQUksZUFBRyxDQUFDLGlCQUFpQixDQUFDLElBQUksRUFBRSxXQUFXLEVBQUU7WUFDekMsYUFBYSxFQUFFLElBQUksQ0FBQyxhQUFhO1lBQ2pDLElBQUksRUFBRSxRQUFRO1lBQ2QsS0FBSyxFQUFFLEtBQUssQ0FBQyxLQUFLO1NBQ3JCLENBQUMsQ0FBQztJQUNQLENBQUM7SUFFRCxJQUFJLEdBQUc7UUFDSCxPQUFPLFVBQUcsQ0FBQyxjQUFjLENBQUM7WUFDdEIsT0FBTyxFQUFFLEtBQUs7WUFDZCxRQUFRLEVBQUUsV0FBVztZQUNyQixZQUFZLEVBQUUsSUFBSSxDQUFDLGFBQWE7U0FDbkMsQ0FBQyxDQUFDO0lBQ1AsQ0FBQztJQUVNLG9CQUFvQixDQUFDLFNBQTRCO1FBQ3BELFNBQVMsQ0FBQyxXQUFXLENBQUMsSUFBSSxzQkFBZSxFQUFFO2FBQ3RDLFdBQVcsQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDO2FBQ3JCLFVBQVUsQ0FBQyxHQUFHLFlBQVksQ0FBQyxnQkFBZ0IsQ0FBQyxDQUFDLENBQUM7SUFDdkQsQ0FBQzs7QUFuQ3NCLHFCQUFRLEdBQUcsZ0JBQWdCLENBQUM7QUFDNUIsc0JBQVMsR0FBRyxJQUFJLG1CQUFZLEVBQUUsQ0FBQztBQUU5Qiw2QkFBZ0IsR0FBRztJQUN2Qyx3QkFBd0I7SUFDeEIsbUJBQW1CO0lBQ25CLGtCQUFrQjtDQUNyQixDQUFDO0FBUk4sb0NBcUNDOzs7Ozs7O0FDOUNELHFDOzs7Ozs7QUNBQSwwQyIsImZpbGUiOiJidW5kbGUuanMiLCJzb3VyY2VzQ29udGVudCI6WyIgXHQvLyBUaGUgbW9kdWxlIGNhY2hlXG4gXHR2YXIgaW5zdGFsbGVkTW9kdWxlcyA9IHt9O1xuXG4gXHQvLyBUaGUgcmVxdWlyZSBmdW5jdGlvblxuIFx0ZnVuY3Rpb24gX193ZWJwYWNrX3JlcXVpcmVfXyhtb2R1bGVJZCkge1xuXG4gXHRcdC8vIENoZWNrIGlmIG1vZHVsZSBpcyBpbiBjYWNoZVxuIFx0XHRpZihpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXSkge1xuIFx0XHRcdHJldHVybiBpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXS5leHBvcnRzO1xuIFx0XHR9XG4gXHRcdC8vIENyZWF0ZSBhIG5ldyBtb2R1bGUgKGFuZCBwdXQgaXQgaW50byB0aGUgY2FjaGUpXG4gXHRcdHZhciBtb2R1bGUgPSBpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXSA9IHtcbiBcdFx0XHRpOiBtb2R1bGVJZCxcbiBcdFx0XHRsOiBmYWxzZSxcbiBcdFx0XHRleHBvcnRzOiB7fVxuIFx0XHR9O1xuXG4gXHRcdC8vIEV4ZWN1dGUgdGhlIG1vZHVsZSBmdW5jdGlvblxuIFx0XHRtb2R1bGVzW21vZHVsZUlkXS5jYWxsKG1vZHVsZS5leHBvcnRzLCBtb2R1bGUsIG1vZHVsZS5leHBvcnRzLCBfX3dlYnBhY2tfcmVxdWlyZV9fKTtcblxuIFx0XHQvLyBGbGFnIHRoZSBtb2R1bGUgYXMgbG9hZGVkXG4gXHRcdG1vZHVsZS5sID0gdHJ1ZTtcblxuIFx0XHQvLyBSZXR1cm4gdGhlIGV4cG9ydHMgb2YgdGhlIG1vZHVsZVxuIFx0XHRyZXR1cm4gbW9kdWxlLmV4cG9ydHM7XG4gXHR9XG5cblxuIFx0Ly8gZXhwb3NlIHRoZSBtb2R1bGVzIG9iamVjdCAoX193ZWJwYWNrX21vZHVsZXNfXylcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubSA9IG1vZHVsZXM7XG5cbiBcdC8vIGV4cG9zZSB0aGUgbW9kdWxlIGNhY2hlXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLmMgPSBpbnN0YWxsZWRNb2R1bGVzO1xuXG4gXHQvLyBkZWZpbmUgZ2V0dGVyIGZ1bmN0aW9uIGZvciBoYXJtb255IGV4cG9ydHNcbiBcdF9fd2VicGFja19yZXF1aXJlX18uZCA9IGZ1bmN0aW9uKGV4cG9ydHMsIG5hbWUsIGdldHRlcikge1xuIFx0XHRpZighX193ZWJwYWNrX3JlcXVpcmVfXy5vKGV4cG9ydHMsIG5hbWUpKSB7XG4gXHRcdFx0T2JqZWN0LmRlZmluZVByb3BlcnR5KGV4cG9ydHMsIG5hbWUsIHtcbiBcdFx0XHRcdGNvbmZpZ3VyYWJsZTogZmFsc2UsXG4gXHRcdFx0XHRlbnVtZXJhYmxlOiB0cnVlLFxuIFx0XHRcdFx0Z2V0OiBnZXR0ZXJcbiBcdFx0XHR9KTtcbiBcdFx0fVxuIFx0fTtcblxuIFx0Ly8gZ2V0RGVmYXVsdEV4cG9ydCBmdW5jdGlvbiBmb3IgY29tcGF0aWJpbGl0eSB3aXRoIG5vbi1oYXJtb255IG1vZHVsZXNcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubiA9IGZ1bmN0aW9uKG1vZHVsZSkge1xuIFx0XHR2YXIgZ2V0dGVyID0gbW9kdWxlICYmIG1vZHVsZS5fX2VzTW9kdWxlID9cbiBcdFx0XHRmdW5jdGlvbiBnZXREZWZhdWx0KCkgeyByZXR1cm4gbW9kdWxlWydkZWZhdWx0J107IH0gOlxuIFx0XHRcdGZ1bmN0aW9uIGdldE1vZHVsZUV4cG9ydHMoKSB7IHJldHVybiBtb2R1bGU7IH07XG4gXHRcdF9fd2VicGFja19yZXF1aXJlX18uZChnZXR0ZXIsICdhJywgZ2V0dGVyKTtcbiBcdFx0cmV0dXJuIGdldHRlcjtcbiBcdH07XG5cbiBcdC8vIE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbFxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5vID0gZnVuY3Rpb24ob2JqZWN0LCBwcm9wZXJ0eSkgeyByZXR1cm4gT2JqZWN0LnByb3RvdHlwZS5oYXNPd25Qcm9wZXJ0eS5jYWxsKG9iamVjdCwgcHJvcGVydHkpOyB9O1xuXG4gXHQvLyBfX3dlYnBhY2tfcHVibGljX3BhdGhfX1xuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5wID0gXCJcIjtcblxuIFx0Ly8gTG9hZCBlbnRyeSBtb2R1bGUgYW5kIHJldHVybiBleHBvcnRzXG4gXHRyZXR1cm4gX193ZWJwYWNrX3JlcXVpcmVfXyhfX3dlYnBhY2tfcmVxdWlyZV9fLnMgPSAwKTtcblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyB3ZWJwYWNrL2Jvb3RzdHJhcCAxNzM2ZDBkZTBjYTUxYzZjMzYzMSIsImV4cG9ydCAqIGZyb20gJy4vcnR2JztcblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9ydHYvbGliL2luZGV4LnRzIiwiaW1wb3J0IHsgQXJuLCBBd3NTdGFja05hbWUsIENvbnN0cnVjdCwgRm5Db25jYXQsIFBvbGljeVN0YXRlbWVudCB9IGZyb20gJ0Bhd3MtY2RrL2NvcmUnO1xuaW1wb3J0IHsgSUlkZW50aXR5UmVzb3VyY2UgfSBmcm9tICdAYXdzLWNkay9pYW0nO1xuaW1wb3J0IHsgc3NtIH0gZnJvbSAnQGF3cy1jZGsvcmVzb3VyY2VzJztcblxuZXhwb3J0IGludGVyZmFjZSBSdW50aW1lVmFsdWVQcm9wcyB7XG4gICAgcGFja2FnZTogc3RyaW5nO1xuICAgIHZhbHVlOiBhbnk7XG59XG5cbmV4cG9ydCBjbGFzcyBSdW50aW1lVmFsdWUgZXh0ZW5kcyBDb25zdHJ1Y3Qge1xuICAgIHB1YmxpYyBzdGF0aWMgcmVhZG9ubHkgRU5WX05BTUUgPSAnUlRWX1NUQUNLX05BTUUnO1xuICAgIHB1YmxpYyBzdGF0aWMgcmVhZG9ubHkgRU5WX1ZBTFVFID0gbmV3IEF3c1N0YWNrTmFtZSgpO1xuXG4gICAgcHJpdmF0ZSBzdGF0aWMgcmVhZG9ubHkgU1NNX1JFQURfQUNUSU9OUyA9IFtcbiAgICAgICAgJ3NzbTpEZXNjcmliZVBhcmFtZXRlcnMnLFxuICAgICAgICAnc3NtOkdldFBhcmFtZXRlcnMnLFxuICAgICAgICAnc3NtOkdldFBhcmFtZXRlcidcbiAgICBdO1xuXG4gICAgcHVibGljIHJlYWRvbmx5IHBhcmFtZXRlck5hbWU6IGFueTtcblxuICAgIGNvbnN0cnVjdG9yKHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBSdW50aW1lVmFsdWVQcm9wcykge1xuICAgICAgICBzdXBlcihwYXJlbnQsIG5hbWUpO1xuXG4gICAgICAgIHRoaXMucGFyYW1ldGVyTmFtZSA9IG5ldyBGbkNvbmNhdCgnL3J0di8nLCBuZXcgQXdzU3RhY2tOYW1lKCksICcvJywgcHJvcHMucGFja2FnZSwgJ0AnLCBuYW1lKTtcblxuICAgICAgICBuZXcgc3NtLlBhcmFtZXRlclJlc291cmNlKHRoaXMsICdQYXJhbWV0ZXInLCB7XG4gICAgICAgICAgICBwYXJhbWV0ZXJOYW1lOiB0aGlzLnBhcmFtZXRlck5hbWUsXG4gICAgICAgICAgICB0eXBlOiAnU3RyaW5nJyxcbiAgICAgICAgICAgIHZhbHVlOiBwcm9wcy52YWx1ZSxcbiAgICAgICAgfSk7XG4gICAgfVxuXG4gICAgZ2V0IGFybigpIHtcbiAgICAgICAgcmV0dXJuIEFybi5mcm9tQ29tcG9uZW50cyh7XG4gICAgICAgICAgICBzZXJ2aWNlOiAnc3NtJyxcbiAgICAgICAgICAgIHJlc291cmNlOiAncGFyYW1ldGVyJyxcbiAgICAgICAgICAgIHJlc291cmNlTmFtZTogdGhpcy5wYXJhbWV0ZXJOYW1lXG4gICAgICAgIH0pO1xuICAgIH1cblxuICAgIHB1YmxpYyBncmFudFJlYWRQZXJtaXNzaW9ucyhwcmluY2lwYWw6IElJZGVudGl0eVJlc291cmNlKSB7XG4gICAgICAgIHByaW5jaXBhbC5hZGRUb1BvbGljeShuZXcgUG9saWN5U3RhdGVtZW50KClcbiAgICAgICAgICAgIC5hZGRSZXNvdXJjZSh0aGlzLmFybilcbiAgICAgICAgICAgIC5hZGRBY3Rpb25zKC4uLlJ1bnRpbWVWYWx1ZS5TU01fUkVBRF9BQ1RJT05TKSk7XG4gICAgfVxufVxuXG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvcnR2L2xpYi9ydHYudHMiLCJtb2R1bGUuZXhwb3J0cyA9IGpzaWkkX2F3c19jZGtfY29yZSQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX2NvcmUkXCJcbi8vIG1vZHVsZSBpZCA9IDJcbi8vIG1vZHVsZSBjaHVua3MgPSAwIiwibW9kdWxlLmV4cG9ydHMgPSBqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyRcIlxuLy8gbW9kdWxlIGlkID0gM1xuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwic291cmNlUm9vdCI6IiJ9"
+}
