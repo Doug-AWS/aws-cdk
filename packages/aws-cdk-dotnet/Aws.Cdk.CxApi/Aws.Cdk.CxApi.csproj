@@ -6,6 +6,6 @@
     <Company></Company>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AWS.Jsii.Runtime\AWS.Jsii.Runtime.csproj" />
+    <PackageReference Include="AWS.Jsii.Runtime" Version="1.0.0" />
   </ItemGroup>
 </Project>

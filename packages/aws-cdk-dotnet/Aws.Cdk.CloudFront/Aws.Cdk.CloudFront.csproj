@@ -6,12 +6,12 @@
     <Company></Company>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AWS.Jsii.Runtime\AWS.Jsii.Runtime.csproj" />
-    <ProjectReference Include="..\Aws.Cdk.Acm\Aws.Cdk.Acm.csproj" />
-    <ProjectReference Include="..\Aws.Cdk\Aws.Cdk.csproj" />
-    <ProjectReference Include="..\Aws.Cdk.Iam\Aws.Cdk.Iam.csproj" />
-    <ProjectReference Include="..\Aws.Cdk.Kms\Aws.Cdk.Kms.csproj" />
-    <ProjectReference Include="..\Aws.Cdk.Resources\Aws.Cdk.Resources.csproj" />
-    <ProjectReference Include="..\Aws.Cdk.S3\Aws.Cdk.S3.csproj" />
+    <PackageReference Include="AWS.Jsii.Runtime" Version="1.0.0" />
+    <PackageReference Include="Aws.Cdk.Acm" Version="1.0.0" />
+    <PackageReference Include="Aws.Cdk" Version="1.0.0" />
+    <PackageReference Include="Aws.Cdk.Iam" Version="1.0.0" />
+    <PackageReference Include="Aws.Cdk.Kms" Version="1.0.0" />
+    <PackageReference Include="Aws.Cdk.Resources" Version="1.0.0" />
+    <PackageReference Include="Aws.Cdk.S3" Version="1.0.0" />
   </ItemGroup>
 </Project>

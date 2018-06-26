@@ -6,7 +6,7 @@
     <Company></Company>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AWS.Jsii.Runtime\AWS.Jsii.Runtime.csproj" />
-    <ProjectReference Include="..\Aws.Cdk\Aws.Cdk.csproj" />
+    <PackageReference Include="AWS.Jsii.Runtime" Version="1.0.0" />
+    <PackageReference Include="Aws.Cdk" Version="1.0.0" />
   </ItemGroup>
 </Project>
