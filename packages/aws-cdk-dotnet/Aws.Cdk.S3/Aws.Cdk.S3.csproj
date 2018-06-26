@@ -7,9 +7,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AWS.Jsii.Runtime" Version="1.0.0" />
-    <PackageReference Include="Aws.Cdk" Version="1.0.0" />
-    <PackageReference Include="Aws.Cdk.Iam" Version="1.0.0" />
-    <PackageReference Include="Aws.Cdk.Kms" Version="1.0.0" />
-    <PackageReference Include="Aws.Cdk.Resources" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aws.Cdk\Aws.Cdk.csproj" />
+    <ProjectReference Include="..\Aws.Cdk.Iam\Aws.Cdk.Iam.csproj" />
+    <ProjectReference Include="..\Aws.Cdk.Kms\Aws.Cdk.Kms.csproj" />
+    <ProjectReference Include="..\Aws.Cdk.Resources\Aws.Cdk.Resources.csproj" />
   </ItemGroup>
 </Project>

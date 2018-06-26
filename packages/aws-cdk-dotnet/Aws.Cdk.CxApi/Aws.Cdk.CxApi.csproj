@@ -8,4 +8,5 @@
   <ItemGroup>
     <PackageReference Include="AWS.Jsii.Runtime" Version="1.0.0" />
   </ItemGroup>
+  <ItemGroup />
 </Project>
