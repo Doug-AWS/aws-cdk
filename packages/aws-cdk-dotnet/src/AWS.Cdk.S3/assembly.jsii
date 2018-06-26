@@ -1,0 +1,2153 @@
+{
+  "schema": "jsii/1.0",
+  "types": {
+    "jsii$_aws_cdk_s3$.BucketRefProps": {
+      "docs": {
+        "comment": "A reference to a bucket. The easiest way to instantiate is to call\n`bucket.export()`. Then, the consumer can use `Bucket.import(this, ref)` and\nget a `Bucket`."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN fo the bucket. At least one of bucketArn or bucketName must be\ndefined in order to initialize a bucket ref."
+          },
+          "name": "bucketArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.s3.BucketArn",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The name of the bucket. If the underlying value of ARN is a string, the\nname will be parsed from the ARN. Otherwise, the name is optional, but\nsome features that require the bucket name such as auto-creating a bucket\npolicy, won't work."
+          },
+          "name": "bucketName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketName",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.BucketRefProps",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "BucketRefProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_s3$.BucketRef": {
+      "docs": {
+        "comment": "Represents an S3 Bucket.\n\nBuckets can be either defined within this stack:\n\n     new Bucket(this, 'MyBucket', { props });\n\nOr imported from an existing bucket:\n\n     BucketRef.import(this, 'MyImportedBucket', { bucketArn: ... });\n\nYou can also export a bucket and import it into another stack:\n\n     const ref = myBucket.export();\n     BucketRef.import(this, 'MyImportedBucket', ref);"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the bucket."
+          },
+          "name": "bucketArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.s3.BucketArn"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The name of the bucket."
+          },
+          "name": "bucketName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketName"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Optional KMS encryption key associated with this bucket."
+          },
+          "name": "encryptionKey",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+            "optional": true
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The resource policy assoicated with this bucket.\n\nIf `autoCreatePolicy` is true, a `BucketPolicy` will be created upon the\nfirst call to addToResourcePolicy(s)."
+          },
+          "name": "policy",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketPolicy",
+            "optional": true
+          },
+          "protected": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Indicates if a bucket resource policy should automatically created upon\nthe first call to `addToResourcePolicy`."
+          },
+          "name": "autoCreatePolicy",
+          "type": {
+            "primitive": "boolean"
+          },
+          "protected": true,
+          "abstract": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "parent The parent creating construct (usually `this`).",
+                "comment": "The parent creating construct (usually `this`)."
+              },
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The construct's name.",
+                "comment": "The construct's name."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_s3$.BucketRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Creates a Bucket construct that represents an external bucket."
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRef"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Exports this bucket from the stack."
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRefProps"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "permission",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a statement to the resource policy for a principal (i.e.\naccount/role/service) to perform actions on this bucket and/or it's\ncontents. Use `bucketArn` and `arnForObjects(keys)` to obtain ARNs for\nthis bucket or objects."
+          },
+          "name": "addToResourcePolicy"
+        },
+        {
+          "parameters": [
+            {
+              "name": "keyPattern",
+              "type": {
+                "primitive": "any"
+              },
+              "variadic": true
+            }
+          ],
+          "docs": {
+            "comment": "Returns an ARN that represents all objects within the bucket that match\nthe key pattern specified. To represent all keys, specify ``\"*\"``.\n\nIf you specify multiple components for keyPattern, they will be concatenated::\n\n     arnForObjects('home/', team, '/', user, '/*')"
+          },
+          "name": "arnForObjects",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Arn"
+          },
+          "variadic": true
+        },
+        {
+          "parameters": [
+            {
+              "name": "identity",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+                "optional": true
+              }
+            },
+            {
+              "name": "objectsKeyPattern",
+              "type": {
+                "primitive": "string",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Temporary API for granting read permissions for this bucket and it's\ncontents to an IAM principal (Role/Group/User).\n\nIf an encryption key is used, permission to ues the key to decrypt the\ncontents of the bucket will also be granted."
+          },
+          "name": "grantRead"
+        },
+        {
+          "parameters": [
+            {
+              "name": "identity",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+                "optional": true
+              }
+            },
+            {
+              "name": "objectsKeyPattern",
+              "type": {
+                "primitive": "string",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Grants read/write permissions for this bucket and it's contents to an IAM\nprincipal (Role/Group/User).\n\nIf an encryption key is used, permission to use the key for\nencrypt/decrypt will also be granted."
+          },
+          "name": "grantReadWrite"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.BucketRef",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "BucketRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_s3$.BucketProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "default": "Unencrypted",
+            "comment": "The kind of server-side encryption to apply to this bucket.\n\nIf you choose KMS, you can specify a KMS key via `encryptionKey`. If\nencryption key is not specified, a key will automatically be created."
+          },
+          "name": "encryption",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "If encryption is set to \"Kms\" and this property is undefined, a\nnew KMS key will be created and associated with this bucket.",
+            "comment": "External KMS key to use for bucket encryption.\n\nThe 'encryption' property must be either not specified or set to \"Kms\".\nAn error will be emitted if encryption is set to \"Unencrypted\" or\n\"Managed\"."
+          },
+          "name": "encryptionKey",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "Assigned by CloudFormation (recommended)",
+            "comment": "Physical name of this bucket."
+          },
+          "name": "bucketName",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "By default, the bucket will be destroyed if it is removed from the stack.",
+            "comment": "Policy to apply when the bucket is removed from this stack."
+          },
+          "name": "removalPolicy",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "A bucket policy will be created automatically in the first call\nto addToPolicy.",
+            "comment": "The bucket policy associated with this bucket."
+          },
+          "name": "policy",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketPolicy",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "false",
+            "comment": "Whether this bucket should have versioning turned on or not."
+          },
+          "name": "versioned",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "No lifecycle rules",
+            "comment": "Rules that define how Amazon S3 manages objects during their lifetime."
+          },
+          "name": "lifecycleRules",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_s3$.LifecycleRule"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.BucketProps",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "BucketProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_s3$.Bucket": {
+      "docs": {
+        "comment": "An S3 bucket with associated policy objects\n\nThis bucket does not yet have all features that exposed by the underlying\nBucketResource."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the bucket."
+          },
+          "name": "bucketArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.s3.BucketArn"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of the bucket."
+          },
+          "name": "bucketName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketName"
+          },
+          "immutable": true
+        },
+        {
+          "name": "domainName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.s3.BucketDomainName"
+          },
+          "immutable": true
+        },
+        {
+          "name": "dualstackDomainName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.s3.BucketDualStackDomainName"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Optional KMS encryption key associated with this bucket."
+          },
+          "name": "encryptionKey",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The resource policy assoicated with this bucket.\n\nIf `autoCreatePolicy` is true, a `BucketPolicy` will be created upon the\nfirst call to addToResourcePolicy(s)."
+          },
+          "name": "policy",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketPolicy",
+            "optional": true
+          },
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Indicates if a bucket resource policy should automatically created upon\nthe first call to `addToResourcePolicy`."
+          },
+          "name": "autoCreatePolicy",
+          "type": {
+            "primitive": "boolean"
+          },
+          "protected": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "rule The rule to add",
+                "comment": "The rule to add"
+              },
+              "name": "rule",
+              "type": {
+                "fqn": "jsii$_aws_cdk_s3$.LifecycleRule"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Add a lifecycle rule to the bucket"
+          },
+          "name": "addLifecycleRule"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.Bucket",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "Bucket",
+      "base": {
+        "fqn": "jsii$_aws_cdk_s3$.BucketRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_s3$.BucketProps",
+              "optional": true
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_s3$.BucketEncryption": {
+      "docs": {
+        "comment": "What kind of server-side encryption to apply to this bucket"
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "Unencrypted"
+        },
+        {
+          "name": "KmsManaged"
+        },
+        {
+          "name": "Kms"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.BucketEncryption",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "BucketEncryption"
+    },
+    "jsii$_aws_cdk_s3$.BucketName": {
+      "docs": {
+        "comment": "The name of the bucket."
+      },
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_s3$.BucketName",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "BucketName",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_s3$.BucketPolicyProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The Amazon S3 bucket that the policy applies to."
+          },
+          "name": "bucket",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRef"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.BucketPolicyProps",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "BucketPolicyProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_s3$.BucketPolicy": {
+      "docs": {
+        "comment": "Applies an Amazon S3 bucket policy to an Amazon S3 bucket."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "A policy document containing permissions to add to the specified bucket.\nFor more information, see Access Policy Language Overview in the Amazon\nSimple Storage Service Developer Guide."
+          },
+          "name": "document",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyDocument"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.BucketPolicy",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "BucketPolicy",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_s3$.BucketPolicyProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_s3$.LifecycleRule": {
+      "docs": {
+        "comment": "Declaration of a Life cycle rule"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "A unique identifier for this rule. The value cannot be more than 255 characters."
+          },
+          "name": "id",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "true",
+            "comment": "Whether this rule is enabled."
+          },
+          "name": "enabled",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "Incomplete uploads are never aborted",
+            "comment": "Specifies a lifecycle rule that aborts incomplete multipart uploads to an Amazon S3 bucket.\n\nThe AbortIncompleteMultipartUpload property type creates a lifecycle\nrule that aborts incomplete multipart uploads to an Amazon S3 bucket.\nWhen Amazon S3 aborts a multipart upload, it deletes all parts\nassociated with the multipart upload."
+          },
+          "name": "abortIncompleteMultipartUploadAfterDays",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "No expiration date",
+            "comment": "Indicates when objects are deleted from Amazon S3 and Amazon Glacier.\n\nThe date value must be in ISO 8601 format. The time is always midnight UTC.\n\nIf you specify an expiration and transition time, you must use the same\ntime unit for both properties (either in days or by date). The\nexpiration time must also be later than the transition time."
+          },
+          "name": "expirationDate",
+          "type": {
+            "primitive": "date",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "No expiration timeout",
+            "comment": "Indicates the number of days after creation when objects are deleted from Amazon S3 and Amazon Glacier.\n\nIf you specify an expiration and transition time, you must use the same\ntime unit for both properties (either in days or by date). The\nexpiration time must also be later than the transition time."
+          },
+          "name": "expirationInDays",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "No noncurrent version expiration",
+            "comment": "Time between when a new version of the object is uploaded to the bucket and when old versions of the object expire.\n\nFor buckets with versioning enabled (or suspended), specifies the time,\nin days, between when a new version of the object is uploaded to the\nbucket and when old versions of the object expire. When object versions\nexpire, Amazon S3 permanently deletes them. If you specify a transition\nand expiration time, the expiration time must be later than the\ntransition time."
+          },
+          "name": "noncurrentVersionExpirationInDays",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "One or more transition rules that specify when non-current objects transition to a specified storage class.\n\nOnly for for buckets with versioning enabled (or suspended).\n\nIf you specify a transition and expiration time, the expiration time\nmust be later than the transition time."
+          },
+          "name": "noncurrentVersionTransitions",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_s3$.NoncurrentVersionTransition"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "No transition rules",
+            "comment": "One or more transition rules that specify when an object transitions to a specified storage class.\n\nIf you specify an expiration and transition time, you must use the same\ntime unit for both properties (either in days or by date). The\nexpiration time must also be later than the transition time."
+          },
+          "name": "transitions",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_s3$.Transition"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "Rule applies to all objects",
+            "comment": "Object key prefix that identifies one or more objects to which this rule applies."
+          },
+          "name": "prefix",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "Rule applies to all objects",
+            "comment": "The TagFilter property type specifies tags to use to identify a subset of objects for an Amazon S3 bucket."
+          },
+          "name": "tagFilters",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "any"
+              },
+              "kind": "map"
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.LifecycleRule",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "LifecycleRule",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_s3$.Transition": {
+      "docs": {
+        "comment": "Describes when an object transitions to a specified storage class."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The storage class to which you want the object to transition."
+          },
+          "name": "storageClass",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.StorageClass"
+          }
+        },
+        {
+          "docs": {
+            "default": "No transition date.",
+            "comment": "Indicates when objects are transitioned to the specified storage class.\n\nThe date value must be in ISO 8601 format. The time is always midnight UTC."
+          },
+          "name": "transitionDate",
+          "type": {
+            "primitive": "date",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "No transition count.",
+            "comment": "Indicates the number of days after creation when objects are transitioned to the specified storage class."
+          },
+          "name": "transitionInDays",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.Transition",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "Transition",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_s3$.NoncurrentVersionTransition": {
+      "docs": {
+        "comment": "Describes when noncurrent versions transition to a specified storage class."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The storage class to which you want the object to transition."
+          },
+          "name": "storageClass",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.StorageClass"
+          }
+        },
+        {
+          "docs": {
+            "default": "No transition count.",
+            "comment": "Indicates the number of days after creation when objects are transitioned to the specified storage class."
+          },
+          "name": "transitionInDays",
+          "type": {
+            "primitive": "number"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.NoncurrentVersionTransition",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "NoncurrentVersionTransition",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_s3$.StorageClass": {
+      "docs": {
+        "comment": "Storage class to move an object to"
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "InfrequentAccess"
+        },
+        {
+          "name": "OneZoneInfrequentAccess"
+        },
+        {
+          "name": "Glacier"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.StorageClass",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "StorageClass"
+    }
+  },
+  "nametree": {
+    "jsii$_aws_cdk_s3$": {
+      "BucketRefProps": {
+        "_": "jsii$_aws_cdk_s3$.BucketRefProps"
+      },
+      "BucketRef": {
+        "_": "jsii$_aws_cdk_s3$.BucketRef"
+      },
+      "BucketProps": {
+        "_": "jsii$_aws_cdk_s3$.BucketProps"
+      },
+      "Bucket": {
+        "_": "jsii$_aws_cdk_s3$.Bucket"
+      },
+      "BucketEncryption": {
+        "_": "jsii$_aws_cdk_s3$.BucketEncryption"
+      },
+      "BucketName": {
+        "_": "jsii$_aws_cdk_s3$.BucketName"
+      },
+      "BucketPolicyProps": {
+        "_": "jsii$_aws_cdk_s3$.BucketPolicyProps"
+      },
+      "BucketPolicy": {
+        "_": "jsii$_aws_cdk_s3$.BucketPolicy"
+      },
+      "LifecycleRule": {
+        "_": "jsii$_aws_cdk_s3$.LifecycleRule"
+      },
+      "Transition": {
+        "_": "jsii$_aws_cdk_s3$.Transition"
+      },
+      "NoncurrentVersionTransition": {
+        "_": "jsii$_aws_cdk_s3$.NoncurrentVersionTransition"
+      },
+      "StorageClass": {
+        "_": "jsii$_aws_cdk_s3$.StorageClass"
+      }
+    }
+  },
+  "typecount": 12,
+  "externalTypes": {
+    "jsii$_aws_cdk_resources$.s3.BucketArn": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.s3.BucketArn",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.s3",
+      "name": "BucketArn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Arn"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.Construct": {
+      "docs": {
+        "comment": "Represents the building block of the construct graph.\nWhen a construct is created, it is always added as a child"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the parent of this node or undefined if this is a root node."
+          },
+          "name": "parent",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of this construct"
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "All direct children of this construct."
+          },
+          "name": "children",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "returns": "/-separated path of this Construct.",
+            "comment": "Returns the path of all constructs from root to this construct, in string form."
+          },
+          "name": "path",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "An array of metadata objects associated with this construct.\nThis can be used, for example, to implement support for deprecation notices, source mapping, etc."
+          },
+          "name": "metadata",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.MetadataEntry"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "docs": {
+            "comment": "Returns a string representation of this construct."
+          },
+          "name": "toString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "depth",
+              "type": {
+                "primitive": "number",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Returns a string with a tree representation of this construct and it's children."
+          },
+          "name": "toTreeString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "a child by path or undefined if not found.",
+            "comment": "Return a descendant by path, or undefined"
+          },
+          "name": "tryFindChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "Child with the given path.",
+            "comment": "Return a descendant by path\n\nThrows an exception if the descendant is not found."
+          },
+          "name": "findChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "value The context value",
+                "comment": "The context value"
+              },
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "This can be used to set contextual values.\nContext must be set before any children are added, since children may consult context info during construction.\nIf the key already exists, it will be overridden."
+          },
+          "name": "setContext"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The context value or undefined",
+            "comment": "Retrieves a value from tree context.\n\nContext is usually initialized at the root, but can be overridden at any point in the tree."
+          },
+          "name": "getContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Retrieve a value from tree-global context\n\nIt is an error if the context object is not available."
+          },
+          "name": "requireContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "type a string denoting the type of metadata",
+                "comment": "a string denoting the type of metadata"
+              },
+              "name": "type",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "data the value of the metadata (can be a Token). If null/undefined, metadata will not be added.",
+                "comment": "the value of the metadata (can be a Token). If null/undefined, metadata will not be added."
+              },
+              "name": "data",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "from a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)",
+                "comment": "a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)"
+              },
+              "name": "from",
+              "type": {
+                "primitive": "any",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a metadata entry to this construct.\nEntries are arbitrary values and will also include a stack trace to allow tracing back to\nthe code location for when the entry was added. It can be used, for example, to include source\nmapping in CloudFormation templates to improve diagnostics."
+          },
+          "name": "addMetadata",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "message The warning message.",
+                "comment": "The warning message."
+              },
+              "name": "message",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a { warning: <message> } metadata entry to this construct."
+          },
+          "name": "addWarning",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "docs": {
+            "returns": "An array of validation error messages, or an empty array if there the construct is valid.",
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "returns": "A list of validation errors. If the list is empty, all constructs are valid.",
+            "comment": "Invokes 'validate' on all child constructs and then on this construct (depth-first)."
+          },
+          "name": "validateTree",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.ValidationError"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "upTo",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Return the ancestors (including self) of this Construct up until and excluding the indicated component"
+          },
+          "name": "ancestors",
+          "protected": true,
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "props The props bag.",
+                "comment": "The props bag."
+              },
+              "name": "props",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the required property.",
+                "comment": "The name of the required property."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Throws if the `props` bag doesn't include the property `name`.\nIn the future we can add some type-checking here, maybe even auto-generate during compilation."
+          },
+          "name": "required",
+          "protected": true,
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "child The child construct",
+                "comment": "The child construct"
+              },
+              "name": "child",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "childName",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The resolved path part name of the child",
+            "comment": "Adds a child construct to this node."
+          },
+          "name": "addChild",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Locks this construct from allowing more children to be added. After this\ncall, no more children can be added to this construct or to any children."
+          },
+          "name": "lock",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Unlocks this costruct and allows mutations (adding children)."
+          },
+          "name": "unlock",
+          "protected": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Construct",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Construct",
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_kms$.EncryptionKeyRef": {
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the key."
+          },
+          "name": "keyArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.kms.KeyArn"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Optional policy document that represents the resource policy of this key.\n\nIf specified, addToResourcePolicy can be used to edit this policy.\nOtherwise this method will no-op."
+          },
+          "name": "policy",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyDocument",
+            "optional": true
+          },
+          "immutable": true,
+          "protected": true,
+          "abstract": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "parent The parent construct.",
+                "comment": "The parent construct."
+              },
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the construct.",
+                "comment": "The name of the construct."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "props The key reference.",
+                "comment": "The key reference."
+              },
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines an imported encryption key.\n\n`ref` can be obtained either via a call to `key.export()` or using\nliterals.\n\nFor example:\n\n     const keyRefProps = key.export();\n     const keyRef1 = EncryptionKeyRef.import(this, 'MyImportedKey1', keyRefProps);\n     const keyRef2 = EncryptionKeyRef.import(this, 'MyImportedKey2', {\n         keyArn: new KeyArn('arn:aws:kms:...')\n     });"
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "alias",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines a new alias for the key."
+          },
+          "name": "addAlias",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyAlias"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "statement",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a statement to the KMS key resource policy."
+          },
+          "name": "addToResourcePolicy"
+        },
+        {
+          "docs": {
+            "returns": "a key ref which can be used in a call to `EncryptionKey.import(ref)`.",
+            "comment": "Exports this key from the current stack."
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRefProps"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+      "module": "jsii$_aws_cdk_kms$",
+      "namespace": "jsii$_aws_cdk_kms$",
+      "name": "EncryptionKeyRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.PolicyStatement": {
+      "docs": {
+        "comment": "Represents a statement in an IAM policy document."
+      },
+      "subtypes": [
+        "jsii$_aws_cdk_core$.PolicyStatement.Effect"
+      ],
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Indicates if this permission has a \"Principal\" section."
+          },
+          "name": "hasPrincipal",
+          "type": {
+            "primitive": "boolean"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Indicates if this permission as at least one resource associated with it."
+          },
+          "name": "hasResource",
+          "type": {
+            "primitive": "boolean"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Indicates if this permission has only a ``\"*\"`` resource associated with it."
+          },
+          "name": "isOnlyStarResource",
+          "type": {
+            "primitive": "boolean"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "action",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "name": "addAction",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "actions",
+              "type": {
+                "primitive": "string"
+              },
+              "variadic": true
+            }
+          ],
+          "name": "addActions",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          },
+          "variadic": true
+        },
+        {
+          "parameters": [
+            {
+              "name": "principal",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyPrincipal"
+              }
+            }
+          ],
+          "name": "addPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "arn",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "addAwsPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "accountId",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "addAwsAccountPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "service",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "addServicePrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "federated",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "name": "conditions",
+              "type": {
+                "collection": {
+                  "elementtype": {
+                    "primitive": "any"
+                  },
+                  "kind": "map"
+                }
+              }
+            }
+          ],
+          "name": "addFederatedPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "name": "addAccountRootPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "resource",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "addResource",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Adds a ``\"*\"`` resource to this statement."
+          },
+          "name": "addAllResources",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "resources",
+              "type": {
+                "primitive": "any"
+              },
+              "variadic": true
+            }
+          ],
+          "name": "addResources",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          },
+          "variadic": true
+        },
+        {
+          "parameters": [
+            {
+              "name": "sid",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "describe",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Sets the permission effect to deny access to resources."
+          },
+          "name": "allow",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Sets the permission effect to allow access to resources."
+          },
+          "name": "deny",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Add a condition to the Policy"
+          },
+          "name": "addCondition",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "conditions",
+              "type": {
+                "collection": {
+                  "elementtype": {
+                    "primitive": "any"
+                  },
+                  "kind": "map"
+                }
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Add multiple conditions to the Policy"
+          },
+          "name": "addConditions",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "deprecated": "For backwards compatibility. Use addCondition() instead.",
+            "comment": "Add a condition to the Policy."
+          },
+          "name": "setCondition",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "accountId",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "limitToAccount",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "name": "resolve",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "name": "toJson",
+          "returns": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.PolicyStatement",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "PolicyStatement",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "effect",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.PolicyStatement.Effect",
+              "optional": true
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.Arn": {
+      "docs": {
+        "comment": "An Amazon Resource Name (ARN).\nhttp://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html"
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "components",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.ArnComponents"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Creates an ARN from components.\nIf any component is the empty string,\nan empty string will be inserted into the generated ARN\nat the location that component corresponds to."
+          },
+          "name": "fromComponents",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Arn"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "arn",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "an ArnComponents object which allows access to the various\ncomponents of the ARN.",
+            "comment": "Given an ARN, parses it and returns components.\n\nThe ARN it will be parsed and validated. The separator (`sep`) will be\nset to '/' if the 6th component includes a '/', in which case, `resource`\nwill be set to the value before the '/' and `resourceName` will be the\nrest. In case there is no '/', `resource` will be set to the 6th\ncomponents and `resourceName` will be set to the rest of the string."
+          },
+          "name": "parse",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.ArnComponents"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Arn",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Arn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_iam$.IIdentityResource": {
+      "kind": "interface",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "statement",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds an IAM statement to the default inline policy associated with this\nprincipal. If a policy doesn't exist, it is created."
+          },
+          "name": "addToPolicy"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "policy The policy resource to attach to this principal.",
+                "comment": "The policy resource to attach to this principal."
+              },
+              "name": "policy",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.Policy"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Attaches an inline policy to this principal.\nThis is the same as calling `policy.addToXxx(principal)`."
+          },
+          "name": "attachInlinePolicy"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "arn The ARN of the managed policy",
+                "comment": "The ARN of the managed policy"
+              },
+              "name": "arn",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Attaches a managed policy to this principal."
+          },
+          "name": "attachManagedPolicy"
+        }
+      ],
+      "properties": [
+        {
+          "docs": {
+            "comment": "The IAM principal of this identity (i.e. AWS principal, service principal, etc)."
+          },
+          "name": "principal",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyPrincipal"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+      "module": "jsii$_aws_cdk_iam$",
+      "namespace": "jsii$_aws_cdk_iam$",
+      "name": "IIdentityResource"
+    },
+    "jsii$_aws_cdk_resources$.s3.BucketDomainName": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.s3.BucketDomainName",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.s3",
+      "name": "BucketDomainName",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.s3.BucketDualStackDomainName": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.s3.BucketDualStackDomainName",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.s3",
+      "name": "BucketDualStackDomainName",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.Token": {
+      "docs": {
+        "comment": "Represents a lazy-evaluated value. Can be used to delay evaluation of a certain value\nin case, for example, that it requires some context or late-bound data."
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "docs": {
+            "returns": "The resolved value for this token."
+          },
+          "name": "resolve",
+          "returns": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Token",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Token",
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.PolicyDocument": {
+      "kind": "class",
+      "properties": [
+        {
+          "name": "isEmpty",
+          "type": {
+            "primitive": "boolean"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The number of statements already added to this policy.\nCan be used, for example, to generate uniuqe \"sid\"s within the policy."
+          },
+          "name": "statementCount",
+          "type": {
+            "primitive": "number"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "name": "resolve",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "statement",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "name": "addStatement",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyDocument"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.PolicyDocument",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "PolicyDocument",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "baseDocument",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new IAM policy document."
+        },
+        "initializer": true
+      }
+    }
+  },
+  "name": "jsii$_aws_cdk_s3$",
+  "package": "@aws-cdk/s3",
+  "version": "0.7.2-beta",
+  "dependencies": {
+    "jsii$_aws_cdk_core$": {
+      "package": "@aws-cdk/core",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "package": "@aws-cdk/iam",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_kms$": {
+      "package": "@aws-cdk/kms",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "package": "@aws-cdk/resources",
+      "version": "0.7.2-beta"
+    }
+  },
+  "names": {
+    "java": "com.amazonaws.cdk.s3",
+    "dotnet": "AWS.Cdk.S3",
+    "js": "@aws-cdk/s3"
+  },
+  "nativenames": {
+    "jsii$_aws_cdk_core$": {
+      "java": "com.amazonaws.cdk",
+      "dotnet": "AWS.Cdk",
+      "js": "@aws-cdk/core"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "java": "com.amazonaws.cdk.iam",
+      "dotnet": "AWS.Cdk.Iam",
+      "js": "@aws-cdk/iam"
+    },
+    "jsii$_aws_cdk_kms$": {
+      "java": "com.amazonaws.cdk.kms",
+      "dotnet": "AWS.Cdk.Kms",
+      "js": "@aws-cdk/kms"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "java": "com.amazonaws.cdk.resources",
+      "dotnet": "AWS.Cdk.Resources",
+      "js": "@aws-cdk/resources"
+    },
+    "jsii$_aws_cdk_s3$": {
+      "java": "com.amazonaws.cdk.s3",
+      "dotnet": "AWS.Cdk.S3",
+      "js": "@aws-cdk/s3"
+    }
+  },
+  "readme": {
+    "markdown": "## AWS S3 Construct Library\n\nDefine an unencrypted S3 bucket.\n\n```ts\nnew Bucket(this, 'MyFirstBucket');\n```\n\n### Encryption\n\nDefine a KMS-encrypted bucket:\n\n```ts\nconst bucket = new Bucket(this, 'MyUnencryptedBucket', {\n    encryption: BucketEncryption.Kms\n});\n\n// you can access the encryption key:\nassert(bucket.encryptionKey instanceof kms.EncryptionKey);\n```\n\nYou can also supply your own key:\n\n```ts\nconst myKmsKey = new kms.EncryptionKey(this, 'MyKey');\n\nconst bucket = new Bucket(this, 'MyEncryptedBucket', {\n    encryption: BucketEncryption.Kms,\n    encryptionKey: myKmsKey\n});\n\nassert(bucket.encryptionKey === myKmsKey);\n```\n\nUse `BucketEncryption.ManagedKms` to use the S3 master KMS key:\n\n```ts\nconst bucket = new Bucket(this, 'Buck', {\n    encryption: BucketEncryption.ManagedKms\n});\n\nassert(bucket.encryptionKey == null);\n```\n\n### Bucket Policy\n\nBy default, a bucket policy will be automatically created for the bucket upon the first call to `addToPolicy(statement)`:\n\n```ts\nconst bucket = new Bucket(this, 'MyBucket');\nbucket.addToPolicy(statement);\n\n// we now have a policy!\n```\n\nYou can bring you own policy as well:\n\n```ts\nconst policy = new BucketPolicy(this, 'MyBucketPolicy');\nconst bucket = new Bucket(this, 'MyBucket', { policy });\n```\n\n### Importing and Exporting Buckets\n\nYou can create a `Bucket` construct that represents an external/existing/unowned bucket by using the `Bucket.import` factory method.\n\nThis method accepts an object that adheres to `BucketRef` which basically include tokens to bucket's attributes.\n\nThis means that you can define a `BucketRef` using token literals:\n\n```ts\nconst bucket = Bucket.import(this, {\n    bucketArn: new BucketArn('arn:aws:s3:::my-bucket')\n});\n\n// now you can just call methods on the bucket\nbucket.grantReadWrite(user);\n```\n\nThe `bucket.export()` method can be used to \"export\" the bucket from the current stack. It returns a `BucketRef` object that can later be used in a call to `Bucket.import` in another stack.\n\nHere's an example.\n\nLet's define a stack with an S3 bucket and export it using `bucket.export()`.\n\n```ts\nclass Producer extends Stack {\n    public readonly myBucketRef: BucketRef;\n\n    constructor(parent: App, name: string) {\n        super(parent, name);\n\n        const bucket = new Bucket(this, 'MyBucket');\n        this.myBucketRef = bucket.export();\n    }\n}\n```\n\nNow let's define a stack that requires a BucketRef as an input and uses\n`Bucket.import` to create a `Bucket` object that represents this external\nbucket. Grant a user principal created within this consuming stack read/write\npermissions to this bucket and contents.\n\n```ts\ninterface ConsumerProps {\n    public userBucketRef: BucketRef;\n}\n\nclass Consumer extends Stack {\n    constructor(parent: App, name: string, props: ConsumerProps) {\n        super(parent, name);\n\n        const user = new User(this, 'MyUser');\n        const userBucket = Bucket.import(this, props.userBucketRef);\n        userBucket.grantReadWrite(user);\n    }\n}\n```\n\nNow, let's define our CDK app to bind these together:\n\n```ts\nconst app = new App(process.argv);\n\nconst producer = new Producer(app, 'produce');\n\nnew Consumer(app, 'consume', {\n    userBucketRef: producer.myBucketRef\n});\n\nprocess.stdout.write(app.run());\n```\n"
+  },
+  "code": "var jsii$_aws_cdk_s3$ =\n/******/ (function(modules) { // webpackBootstrap\n/******/ \t// The module cache\n/******/ \tvar installedModules = {};\n/******/\n/******/ \t// The require function\n/******/ \tfunction __webpack_require__(moduleId) {\n/******/\n/******/ \t\t// Check if module is in cache\n/******/ \t\tif(installedModules[moduleId]) {\n/******/ \t\t\treturn installedModules[moduleId].exports;\n/******/ \t\t}\n/******/ \t\t// Create a new module (and put it into the cache)\n/******/ \t\tvar module = installedModules[moduleId] = {\n/******/ \t\t\ti: moduleId,\n/******/ \t\t\tl: false,\n/******/ \t\t\texports: {}\n/******/ \t\t};\n/******/\n/******/ \t\t// Execute the module function\n/******/ \t\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\n/******/\n/******/ \t\t// Flag the module as loaded\n/******/ \t\tmodule.l = true;\n/******/\n/******/ \t\t// Return the exports of the module\n/******/ \t\treturn module.exports;\n/******/ \t}\n/******/\n/******/\n/******/ \t// expose the modules object (__webpack_modules__)\n/******/ \t__webpack_require__.m = modules;\n/******/\n/******/ \t// expose the module cache\n/******/ \t__webpack_require__.c = installedModules;\n/******/\n/******/ \t// define getter function for harmony exports\n/******/ \t__webpack_require__.d = function(exports, name, getter) {\n/******/ \t\tif(!__webpack_require__.o(exports, name)) {\n/******/ \t\t\tObject.defineProperty(exports, name, {\n/******/ \t\t\t\tconfigurable: false,\n/******/ \t\t\t\tenumerable: true,\n/******/ \t\t\t\tget: getter\n/******/ \t\t\t});\n/******/ \t\t}\n/******/ \t};\n/******/\n/******/ \t// getDefaultExport function for compatibility with non-harmony modules\n/******/ \t__webpack_require__.n = function(module) {\n/******/ \t\tvar getter = module && module.__esModule ?\n/******/ \t\t\tfunction getDefault() { return module['default']; } :\n/******/ \t\t\tfunction getModuleExports() { return module; };\n/******/ \t\t__webpack_require__.d(getter, 'a', getter);\n/******/ \t\treturn getter;\n/******/ \t};\n/******/\n/******/ \t// Object.prototype.hasOwnProperty.call\n/******/ \t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\n/******/\n/******/ \t// __webpack_public_path__\n/******/ \t__webpack_require__.p = \"\";\n/******/\n/******/ \t// Load entry module and return exports\n/******/ \treturn __webpack_require__(__webpack_require__.s = 3);\n/******/ })\n/************************************************************************/\n/******/ ([\n/* 0 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_core$;\n\n/***/ }),\n/* 1 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_resources$;\n\n/***/ }),\n/* 2 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(0);\nconst resources_1 = __webpack_require__(1);\n/**\n * Applies an Amazon S3 bucket policy to an Amazon S3 bucket.\n */\nclass BucketPolicy extends core_1.Construct {\n    constructor(parent, name, props) {\n        super(parent, name);\n        /**\n         * A policy document containing permissions to add to the specified bucket.\n         * For more information, see Access Policy Language Overview in the Amazon\n         * Simple Storage Service Developer Guide.\n         */\n        this.document = new core_1.PolicyDocument();\n        if (!props.bucket.bucketName) {\n            throw new Error('Bucket doesn\\'t have a bucketName defined');\n        }\n        new resources_1.s3.BucketPolicyResource(this, 'Resource', {\n            bucket: props.bucket.bucketName,\n            policyDocument: this.document,\n        });\n    }\n}\nexports.BucketPolicy = BucketPolicy;\n\n\n/***/ }),\n/* 3 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(4));\n__export(__webpack_require__(2));\n__export(__webpack_require__(8));\n\n\n/***/ }),\n/* 4 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(0);\nconst kms = __webpack_require__(5);\nconst resources_1 = __webpack_require__(1);\nconst bucket_policy_1 = __webpack_require__(2);\nconst perms = __webpack_require__(6);\nconst util_1 = __webpack_require__(7);\n/**\n * Represents an S3 Bucket.\n *\n * Buckets can be either defined within this stack:\n *\n *     new Bucket(this, 'MyBucket', { props });\n *\n * Or imported from an existing bucket:\n *\n *     BucketRef.import(this, 'MyImportedBucket', { bucketArn: ... });\n *\n * You can also export a bucket and import it into another stack:\n *\n *     const ref = myBucket.export();\n *     BucketRef.import(this, 'MyImportedBucket', ref);\n *\n */\nclass BucketRef extends core_1.Construct {\n    constructor() {\n        super(...arguments);\n        /**\n         * Indicates if a bucket resource policy should automatically created upon\n         * the first call to `addToResourcePolicy`.\n         */\n        this.autoCreatePolicy = false;\n    }\n    /**\n     * Creates a Bucket construct that represents an external bucket.\n     *\n     * @param parent The parent creating construct (usually `this`).\n     * @param name The construct's name.\n     * @param ref A BucketRefProps object. Can be obtained from a call to\n     * `bucket.export()`.\n     */\n    static import(parent, name, props) {\n        return new ImportedBucketRef(parent, name, props);\n    }\n    /**\n     * Exports this bucket from the stack.\n     */\n    export() {\n        return {\n            bucketArn: new core_1.Output(this, 'BucketArn', { value: this.bucketArn }).makeImportValue(),\n            bucketName: new core_1.Output(this, 'BucketName', { value: this.bucketName }).makeImportValue(),\n        };\n    }\n    /**\n     * Adds a statement to the resource policy for a principal (i.e.\n     * account/role/service) to perform actions on this bucket and/or it's\n     * contents. Use `bucketArn` and `arnForObjects(keys)` to obtain ARNs for\n     * this bucket or objects.\n     */\n    addToResourcePolicy(permission) {\n        if (!this.policy && this.autoCreatePolicy) {\n            this.policy = new bucket_policy_1.BucketPolicy(this, 'Policy', { bucket: this });\n        }\n        if (this.policy) {\n            this.policy.document.addStatement(permission);\n        }\n    }\n    /**\n     * Returns an ARN that represents all objects within the bucket that match\n     * the key pattern specified. To represent all keys, specify ``\"*\"``.\n     *\n     * If you specify multiple components for keyPattern, they will be concatenated::\n     *\n     *     arnForObjects('home/', team, '/', user, '/*')\n     *\n     */\n    arnForObjects(...keyPattern) {\n        return new core_1.FnConcat(this.bucketArn, '/', ...keyPattern);\n    }\n    /**\n     * Temporary API for granting read permissions for this bucket and it's\n     * contents to an IAM principal (Role/Group/User).\n     *\n     * If an encryption key is used, permission to ues the key to decrypt the\n     * contents of the bucket will also be granted.\n     */\n    grantRead(identity, objectsKeyPattern = '*') {\n        if (!identity) {\n            return;\n        }\n        this.grant(identity, objectsKeyPattern, perms.BUCKET_READ_ACTIONS, perms.KEY_READ_ACTIONS);\n    }\n    /**\n     * Grants read/write permissions for this bucket and it's contents to an IAM\n     * principal (Role/Group/User).\n     *\n     * If an encryption key is used, permission to use the key for\n     * encrypt/decrypt will also be granted.\n     */\n    grantReadWrite(identity, objectsKeyPattern = '*') {\n        if (!identity) {\n            return;\n        }\n        const bucketActions = perms.BUCKET_READ_ACTIONS.concat(perms.BUCKET_WRITE_ACTIONS);\n        const keyActions = perms.KEY_READ_ACTIONS.concat(perms.KEY_WRITE_ACTIONS);\n        this.grant(identity, objectsKeyPattern, bucketActions, keyActions);\n    }\n    grant(identity, objectsKeyPattern, bucketActions, keyActions) {\n        const resources = [\n            this.bucketArn,\n            this.arnForObjects(objectsKeyPattern)\n        ];\n        identity.addToPolicy(new core_1.PolicyStatement()\n            .addResources(...resources)\n            .addActions(...bucketActions));\n        // grant key permissions if there's an associated key.\n        if (this.encryptionKey) {\n            // KMS permissions need to be granted both directions\n            identity.addToPolicy(new core_1.PolicyStatement()\n                .addResource(this.encryptionKey.keyArn)\n                .addActions(...keyActions));\n            this.encryptionKey.addToResourcePolicy(new core_1.PolicyStatement()\n                .addResource('*')\n                .addPrincipal(identity.principal)\n                .addActions(...keyActions));\n        }\n    }\n}\nexports.BucketRef = BucketRef;\n/**\n * An S3 bucket with associated policy objects\n *\n * This bucket does not yet have all features that exposed by the underlying\n * BucketResource.\n */\nclass Bucket extends BucketRef {\n    constructor(parent, name, props = {}) {\n        super(parent, name);\n        this.autoCreatePolicy = true;\n        this.lifecycleRules = [];\n        util_1.validateBucketName(props && props.bucketName);\n        const { bucketEncryption, encryptionKey } = this.parseEncryption(props);\n        const resource = new resources_1.s3.BucketResource(this, 'Resource', {\n            bucketName: props && props.bucketName,\n            bucketEncryption,\n            versioningConfiguration: props.versioned ? { status: 'Enabled' } : undefined,\n            lifecycleConfiguration: new core_1.Token(() => this.parseLifecycleConfiguration()),\n        });\n        core_1.applyRemovalPolicy(resource, props.removalPolicy);\n        this.versioned = props.versioned;\n        this.policy = props.policy;\n        this.encryptionKey = encryptionKey;\n        this.bucketArn = resource.bucketArn;\n        this.bucketName = resource.ref;\n        this.domainName = resource.bucketDomainName;\n        this.dualstackDomainName = resource.bucketDualStackDomainName;\n        // Add all lifecycle rules\n        (props.lifecycleRules || []).forEach(this.addLifecycleRule.bind(this));\n    }\n    /**\n     * Add a lifecycle rule to the bucket\n     *\n     * @param rule The rule to add\n     */\n    addLifecycleRule(rule) {\n        if ((rule.noncurrentVersionExpirationInDays !== undefined\n            || (rule.noncurrentVersionTransitions && rule.noncurrentVersionTransitions.length > 0))\n            && !this.versioned) {\n            throw new Error(\"Cannot use 'noncurrent' rules on a nonversioned bucket\");\n        }\n        this.lifecycleRules.push(rule);\n    }\n    /**\n     * Set up key properties and return the Bucket encryption property from the\n     * user's configuration.\n     */\n    parseEncryption(props) {\n        // default to unencrypted.\n        const encryptionType = props.encryption || BucketEncryption.Unencrypted;\n        // if encryption key is set, encryption must be set to KMS.\n        if (encryptionType !== BucketEncryption.Kms && props.encryptionKey) {\n            throw new Error(`encryptionKey is specified, so 'encryption' must be set to KMS (value: ${encryptionType})`);\n        }\n        if (encryptionType === BucketEncryption.Unencrypted) {\n            return { bucketEncryption: undefined, encryptionKey: undefined };\n        }\n        if (encryptionType === BucketEncryption.Kms) {\n            const encryptionKey = props.encryptionKey || new kms.EncryptionKey(this, 'Key', {\n                description: `Created by ${this.path}`\n            });\n            const bucketEncryption = {\n                serverSideEncryptionConfiguration: [\n                    {\n                        serverSideEncryptionByDefault: {\n                            sseAlgorithm: 'aws:kms',\n                            kmsMasterKeyId: encryptionKey.keyArn\n                        }\n                    }\n                ]\n            };\n            return { encryptionKey, bucketEncryption };\n        }\n        if (encryptionType === BucketEncryption.KmsManaged) {\n            const bucketEncryption = {\n                serverSideEncryptionConfiguration: [\n                    { serverSideEncryptionByDefault: { sseAlgorithm: 'aws:kms' } }\n                ]\n            };\n            return { bucketEncryption };\n        }\n        throw new Error(`Unexpected 'encryptionType': ${encryptionType}`);\n    }\n    /**\n     * Parse the lifecycle configuration out of the uucket props\n     * @param props Par\n     */\n    parseLifecycleConfiguration() {\n        if (!this.lifecycleRules || this.lifecycleRules.length === 0) {\n            return undefined;\n        }\n        return { rules: this.lifecycleRules.map(parseLifecycleRule) };\n        function parseLifecycleRule(rule) {\n            const enabled = rule.enabled !== undefined ? rule.enabled : true;\n            const x = {\n                // tslint:disable-next-line:max-line-length\n                abortIncompleteMultipartUpload: rule.abortIncompleteMultipartUploadAfterDays !== undefined ? { daysAfterInitiation: rule.abortIncompleteMultipartUploadAfterDays } : undefined,\n                expirationDate: rule.expirationDate,\n                expirationInDays: rule.expirationInDays,\n                id: rule.id,\n                noncurrentVersionExpirationInDays: rule.noncurrentVersionExpirationInDays,\n                noncurrentVersionTransitions: rule.noncurrentVersionTransitions,\n                prefix: rule.prefix,\n                status: enabled ? 'Enabled' : 'Disabled',\n                transitions: rule.transitions,\n                tagFilters: parseTagFilters(rule.tagFilters)\n            };\n            return x;\n        }\n        function parseTagFilters(tagFilters) {\n            if (!tagFilters || tagFilters.length === 0) {\n                return undefined;\n            }\n            return Object.keys(tagFilters).map(tag => ({\n                key: tag,\n                value: tagFilters[tag]\n            }));\n        }\n    }\n}\nexports.Bucket = Bucket;\n/**\n * What kind of server-side encryption to apply to this bucket\n */\nvar BucketEncryption;\n(function (BucketEncryption) {\n    /**\n     * Objects in the bucket are not encrypted.\n     */\n    BucketEncryption[\"Unencrypted\"] = \"NONE\";\n    /**\n     * Server-side KMS encryption with a master key managed by S3.\n     */\n    BucketEncryption[\"KmsManaged\"] = \"MANAGED\";\n    /**\n     * Server-side encryption with a KMS key managed by the user.\n     * If `encryptionKey` is specified, this key will be used, otherwise, one will be defined.\n     */\n    BucketEncryption[\"Kms\"] = \"KMS\";\n})(BucketEncryption = exports.BucketEncryption || (exports.BucketEncryption = {}));\n/**\n * The name of the bucket.\n */\nclass BucketName extends core_1.Token {\n}\nexports.BucketName = BucketName;\nclass ImportedBucketRef extends BucketRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        this.bucketArn = util_1.parseBucketArn(props);\n        this.bucketName = util_1.parseBucketName(props);\n        this.autoCreatePolicy = false;\n        this.policy = undefined;\n    }\n}\n\n\n/***/ }),\n/* 5 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_kms$;\n\n/***/ }),\n/* 6 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.BUCKET_READ_ACTIONS = [\n    's3:GetObject*',\n    's3:GetBucket*',\n    's3:List*',\n];\nexports.BUCKET_WRITE_ACTIONS = [\n    's3:PutObject*',\n    's3:DeleteObject*',\n    's3:Abort*'\n];\nexports.KEY_READ_ACTIONS = [\n    'kms:Decrypt',\n    'kms:DescribeKey',\n];\nexports.KEY_WRITE_ACTIONS = [\n    'kms:Encrypt',\n    'kms:ReEncrypt*',\n    'kms:GenerateDataKey*',\n];\n\n\n/***/ }),\n/* 7 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(0);\nfunction validateBucketName(bucketName) {\n    if (!bucketName) {\n        return;\n    }\n    if (bucketName.search(/[^a-z0-9.-]/g) !== -1) {\n        throw new Error('Bucket name contains invalid characters: ' + bucketName);\n    }\n}\nexports.validateBucketName = validateBucketName;\nfunction parseBucketArn(props) {\n    // if we have an explicit bucket ARN, use it.\n    if (props.bucketArn) {\n        return props.bucketArn;\n    }\n    if (props.bucketName) {\n        return core_1.Arn.fromComponents({\n            // S3 Bucket names are globally unique in a partition,\n            // and so their ARNs have empty region and account components\n            region: '',\n            account: '',\n            service: 's3',\n            resource: props.bucketName\n        });\n    }\n    throw new Error('Cannot determine bucket ARN. At least `bucketArn` or `bucketName` is needed');\n}\nexports.parseBucketArn = parseBucketArn;\nfunction parseBucketName(props) {\n    // if we have an explicit bucket name, use it.\n    if (props.bucketName) {\n        return props.bucketName;\n    }\n    // if we have a string arn, we can extract the bucket name from it.\n    if (props.bucketArn) {\n        const resolved = props.bucketArn.resolve();\n        if (typeof (resolved) === 'string') {\n            const components = core_1.Arn.parse(resolved);\n            if (components.service !== 's3') {\n                throw new Error('Invalid ARN. Expecting \"s3\" service:' + resolved);\n            }\n            if (components.resourceName) {\n                throw new Error(`Bucket ARN must not contain a path`);\n            }\n            return components.resource;\n        }\n    }\n    // no bucket name is okay since it's optional.\n    return undefined;\n}\nexports.parseBucketName = parseBucketName;\n\n\n/***/ }),\n/* 8 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\n/**\n * Storage class to move an object to\n */\nvar StorageClass;\n(function (StorageClass) {\n    /**\n     * Storage class for data that is accessed less frequently, but requires rapid access when needed.\n     *\n     * Has lower availability than Standard storage.\n     */\n    StorageClass[\"InfrequentAccess\"] = \"STANDARD_IA\";\n    /**\n     * Infrequent Access that's only stored in one availability zone.\n     *\n     * Has lower availability than standard InfrequentAccess.\n     */\n    StorageClass[\"OneZoneInfrequentAccess\"] = \"ONEZONE_IA\";\n    /**\n     * Storage class for long-term archival that can take between minutes and hours to access.\n     */\n    StorageClass[\"Glacier\"] = \"GLACIER\";\n})(StorageClass = exports.StorageClass || (exports.StorageClass = {}));\n\n\n/***/ })\n/******/ ]);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vd2VicGFjay9ib290c3RyYXAgN2VmYjkxOWJiYmQ2NjI3MmI0ZGUiLCJ3ZWJwYWNrOi8vL2V4dGVybmFsIFwianNpaSRfYXdzX2Nka19jb3JlJFwiIiwid2VicGFjazovLy9leHRlcm5hbCBcImpzaWkkX2F3c19jZGtfcmVzb3VyY2VzJFwiIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL3MzL2xpYi9idWNrZXQtcG9saWN5LnRzIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL3MzL2xpYi9pbmRleC50cyIsIndlYnBhY2s6Ly8vL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9zMy9saWIvYnVja2V0LnRzIiwid2VicGFjazovLy9leHRlcm5hbCBcImpzaWkkX2F3c19jZGtfa21zJFwiIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL3MzL2xpYi9wZXJtcy50cyIsIndlYnBhY2s6Ly8vL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9zMy9saWIvdXRpbC50cyIsIndlYnBhY2s6Ly8vL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9zMy9saWIvcnVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBOzs7QUFHQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxhQUFLO0FBQ0w7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQSxtQ0FBMkIsMEJBQTBCLEVBQUU7QUFDdkQseUNBQWlDLGVBQWU7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QkFDN0IsTUFBTSxJQUFJLEtBQUssQ0FBQyxzQ0FBc0MsR0FBRyxRQUFRLENBQUMsQ0FBQzthQUN0RTtZQUNELElBQUksVUFBVSxDQUFDLFlBQVksRUFBRTtnQkFDekIsTUFBTSxJQUFJLEtBQUssQ0FBQyxvQ0FBb0MsQ0FBQyxDQUFDO2FBQ3pEO1lBQ0QsT0FBTyxVQUFVLENBQUMsUUFBUSxDQUFDO1NBQzlCO0tBQ0o7SUFFRCw4Q0FBOEM7SUFDOUMsT0FBTyxTQUFTLENBQUM7QUFDckIsQ0FBQztBQXhCRCwwQ0F3QkM7Ozs7Ozs7Ozs7QUN1RkQ7O0dBRUc7QUFDSCxJQUFZLFlBbUJYO0FBbkJELFdBQVksWUFBWTtJQUNwQjs7OztPQUlHO0lBQ0gsZ0RBQWdDO0lBRWhDOzs7O09BSUc7SUFDSCxzREFBc0M7SUFFdEM7O09BRUc7SUFDSCxtQ0FBbUI7QUFDdkIsQ0FBQyxFQW5CVyxZQUFZLEdBQVosb0JBQVksS0FBWixvQkFBWSxRQW1CdkIiLCJmaWxlIjoiYnVuZGxlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiIFx0Ly8gVGhlIG1vZHVsZSBjYWNoZVxuIFx0dmFyIGluc3RhbGxlZE1vZHVsZXMgPSB7fTtcblxuIFx0Ly8gVGhlIHJlcXVpcmUgZnVuY3Rpb25cbiBcdGZ1bmN0aW9uIF9fd2VicGFja19yZXF1aXJlX18obW9kdWxlSWQpIHtcblxuIFx0XHQvLyBDaGVjayBpZiBtb2R1bGUgaXMgaW4gY2FjaGVcbiBcdFx0aWYoaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0pIHtcbiBcdFx0XHRyZXR1cm4gaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0uZXhwb3J0cztcbiBcdFx0fVxuIFx0XHQvLyBDcmVhdGUgYSBuZXcgbW9kdWxlIChhbmQgcHV0IGl0IGludG8gdGhlIGNhY2hlKVxuIFx0XHR2YXIgbW9kdWxlID0gaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0gPSB7XG4gXHRcdFx0aTogbW9kdWxlSWQsXG4gXHRcdFx0bDogZmFsc2UsXG4gXHRcdFx0ZXhwb3J0czoge31cbiBcdFx0fTtcblxuIFx0XHQvLyBFeGVjdXRlIHRoZSBtb2R1bGUgZnVuY3Rpb25cbiBcdFx0bW9kdWxlc1ttb2R1bGVJZF0uY2FsbChtb2R1bGUuZXhwb3J0cywgbW9kdWxlLCBtb2R1bGUuZXhwb3J0cywgX193ZWJwYWNrX3JlcXVpcmVfXyk7XG5cbiBcdFx0Ly8gRmxhZyB0aGUgbW9kdWxlIGFzIGxvYWRlZFxuIFx0XHRtb2R1bGUubCA9IHRydWU7XG5cbiBcdFx0Ly8gUmV0dXJuIHRoZSBleHBvcnRzIG9mIHRoZSBtb2R1bGVcbiBcdFx0cmV0dXJuIG1vZHVsZS5leHBvcnRzO1xuIFx0fVxuXG5cbiBcdC8vIGV4cG9zZSB0aGUgbW9kdWxlcyBvYmplY3QgKF9fd2VicGFja19tb2R1bGVzX18pXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLm0gPSBtb2R1bGVzO1xuXG4gXHQvLyBleHBvc2UgdGhlIG1vZHVsZSBjYWNoZVxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5jID0gaW5zdGFsbGVkTW9kdWxlcztcblxuIFx0Ly8gZGVmaW5lIGdldHRlciBmdW5jdGlvbiBmb3IgaGFybW9ueSBleHBvcnRzXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLmQgPSBmdW5jdGlvbihleHBvcnRzLCBuYW1lLCBnZXR0ZXIpIHtcbiBcdFx0aWYoIV9fd2VicGFja19yZXF1aXJlX18ubyhleHBvcnRzLCBuYW1lKSkge1xuIFx0XHRcdE9iamVjdC5kZWZpbmVQcm9wZXJ0eShleHBvcnRzLCBuYW1lLCB7XG4gXHRcdFx0XHRjb25maWd1cmFibGU6IGZhbHNlLFxuIFx0XHRcdFx0ZW51bWVyYWJsZTogdHJ1ZSxcbiBcdFx0XHRcdGdldDogZ2V0dGVyXG4gXHRcdFx0fSk7XG4gXHRcdH1cbiBcdH07XG5cbiBcdC8vIGdldERlZmF1bHRFeHBvcnQgZnVuY3Rpb24gZm9yIGNvbXBhdGliaWxpdHkgd2l0aCBub24taGFybW9ueSBtb2R1bGVzXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLm4gPSBmdW5jdGlvbihtb2R1bGUpIHtcbiBcdFx0dmFyIGdldHRlciA9IG1vZHVsZSAmJiBtb2R1bGUuX19lc01vZHVsZSA/XG4gXHRcdFx0ZnVuY3Rpb24gZ2V0RGVmYXVsdCgpIHsgcmV0dXJuIG1vZHVsZVsnZGVmYXVsdCddOyB9IDpcbiBcdFx0XHRmdW5jdGlvbiBnZXRNb2R1bGVFeHBvcnRzKCkgeyByZXR1cm4gbW9kdWxlOyB9O1xuIFx0XHRfX3dlYnBhY2tfcmVxdWlyZV9fLmQoZ2V0dGVyLCAnYScsIGdldHRlcik7XG4gXHRcdHJldHVybiBnZXR0ZXI7XG4gXHR9O1xuXG4gXHQvLyBPYmplY3QucHJvdG90eXBlLmhhc093blByb3BlcnR5LmNhbGxcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubyA9IGZ1bmN0aW9uKG9iamVjdCwgcHJvcGVydHkpIHsgcmV0dXJuIE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbChvYmplY3QsIHByb3BlcnR5KTsgfTtcblxuIFx0Ly8gX193ZWJwYWNrX3B1YmxpY19wYXRoX19cbiBcdF9fd2VicGFja19yZXF1aXJlX18ucCA9IFwiXCI7XG5cbiBcdC8vIExvYWQgZW50cnkgbW9kdWxlIGFuZCByZXR1cm4gZXhwb3J0c1xuIFx0cmV0dXJuIF9fd2VicGFja19yZXF1aXJlX18oX193ZWJwYWNrX3JlcXVpcmVfXy5zID0gMyk7XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gd2VicGFjay9ib290c3RyYXAgN2VmYjkxOWJiYmQ2NjI3MmI0ZGUiLCJtb2R1bGUuZXhwb3J0cyA9IGpzaWkkX2F3c19jZGtfY29yZSQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX2NvcmUkXCJcbi8vIG1vZHVsZSBpZCA9IDBcbi8vIG1vZHVsZSBjaHVua3MgPSAwIiwibW9kdWxlLmV4cG9ydHMgPSBqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyRcIlxuLy8gbW9kdWxlIGlkID0gMVxuLy8gbW9kdWxlIGNodW5rcyA9IDAiLCJpbXBvcnQgeyBDb25zdHJ1Y3QsIFBvbGljeURvY3VtZW50IH0gZnJvbSAnQGF3cy1jZGsvY29yZSc7XG5pbXBvcnQgeyBzMyB9IGZyb20gJ0Bhd3MtY2RrL3Jlc291cmNlcyc7XG5pbXBvcnQgeyBCdWNrZXRSZWYgfSBmcm9tICcuL2J1Y2tldCc7XG5cbmV4cG9ydCBpbnRlcmZhY2UgQnVja2V0UG9saWN5UHJvcHMge1xuICAgIC8qKlxuICAgICAqIFRoZSBBbWF6b24gUzMgYnVja2V0IHRoYXQgdGhlIHBvbGljeSBhcHBsaWVzIHRvLlxuICAgICAqL1xuICAgIGJ1Y2tldDogQnVja2V0UmVmO1xufVxuXG4vKipcbiAqIEFwcGxpZXMgYW4gQW1hem9uIFMzIGJ1Y2tldCBwb2xpY3kgdG8gYW4gQW1hem9uIFMzIGJ1Y2tldC5cbiAqL1xuZXhwb3J0IGNsYXNzIEJ1Y2tldFBvbGljeSBleHRlbmRzIENvbnN0cnVjdCB7XG5cbiAgICAvKipcbiAgICAgKiBBIHBvbGljeSBkb2N1bWVudCBjb250YWluaW5nIHBlcm1pc3Npb25zIHRvIGFkZCB0byB0aGUgc3BlY2lmaWVkIGJ1Y2tldC5cbiAgICAgKiBGb3IgbW9yZSBpbmZvcm1hdGlvbiwgc2VlIEFjY2VzcyBQb2xpY3kgTGFuZ3VhZ2UgT3ZlcnZpZXcgaW4gdGhlIEFtYXpvblxuICAgICAqIFNpbXBsZSBTdG9yYWdlIFNlcnZpY2UgRGV2ZWxvcGVyIEd1aWRlLlxuICAgICAqL1xuICAgIHB1YmxpYyByZWFkb25seSBkb2N1bWVudCA9IG5ldyBQb2xpY3lEb2N1bWVudCgpO1xuXG4gICAgY29uc3RydWN0b3IocGFyZW50OiBDb25zdHJ1Y3QsIG5hbWU6IHN0cmluZywgcHJvcHM6IEJ1Y2tldFBvbGljeVByb3BzKSB7XG4gICAgICAgIHN1cGVyKHBhcmVudCwgbmFtZSk7XG5cbiAgICAgICAgaWYgKCFwcm9wcy5idWNrZXQuYnVja2V0TmFtZSkge1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKCdCdWNrZXQgZG9lc25cXCd0IGhhdmUgYSBidWNrZXROYW1lIGRlZmluZWQnKTtcbiAgICAgICAgfVxuXG4gICAgICAgIG5ldyBzMy5CdWNrZXRQb2xpY3lSZXNvdXJjZSh0aGlzLCAnUmVzb3VyY2UnLCB7XG4gICAgICAgICAgICBidWNrZXQ6IHByb3BzLmJ1Y2tldC5idWNrZXROYW1lLFxuICAgICAgICAgICAgcG9saWN5RG9jdW1lbnQ6IHRoaXMuZG9jdW1lbnQsXG4gICAgICAgIH0pO1xuICAgIH1cbn1cblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAvcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL3MzL2xpYi9idWNrZXQtcG9saWN5LnRzIiwiZXhwb3J0ICogZnJvbSAnLi9idWNrZXQnO1xuZXhwb3J0ICogZnJvbSAnLi9idWNrZXQtcG9saWN5JztcbmV4cG9ydCAqIGZyb20gJy4vcnVsZSc7XG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvczMvbGliL2luZGV4LnRzIiwiaW1wb3J0IHsgYXBwbHlSZW1vdmFsUG9saWN5LCBBcm4sIENvbnN0cnVjdCwgRm5Db25jYXQsIE91dHB1dCwgUG9saWN5U3RhdGVtZW50LCBSZW1vdmFsUG9saWN5LCBUb2tlbiB9IGZyb20gJ0Bhd3MtY2RrL2NvcmUnO1xuaW1wb3J0IHsgSUlkZW50aXR5UmVzb3VyY2UgfSBmcm9tICdAYXdzLWNkay9pYW0nO1xuaW1wb3J0ICogYXMga21zIGZyb20gJ0Bhd3MtY2RrL2ttcyc7XG5pbXBvcnQgeyBzMyB9IGZyb20gJ0Bhd3MtY2RrL3Jlc291cmNlcyc7XG5pbXBvcnQgeyBCdWNrZXRQb2xpY3kgfSBmcm9tICcuL2J1Y2tldC1wb2xpY3knO1xuaW1wb3J0ICogYXMgcGVybXMgZnJvbSAnLi9wZXJtcyc7XG5pbXBvcnQgeyBMaWZlY3ljbGVSdWxlIH0gZnJvbSAnLi9ydWxlJztcbmltcG9ydCB7IHBhcnNlQnVja2V0QXJuLCBwYXJzZUJ1Y2tldE5hbWUsIHZhbGlkYXRlQnVja2V0TmFtZSB9IGZyb20gJy4vdXRpbCc7XG5cbi8qKlxuICogQSByZWZlcmVuY2UgdG8gYSBidWNrZXQuIFRoZSBlYXNpZXN0IHdheSB0byBpbnN0YW50aWF0ZSBpcyB0byBjYWxsXG4gKiBgYnVja2V0LmV4cG9ydCgpYC4gVGhlbiwgdGhlIGNvbnN1bWVyIGNhbiB1c2UgYEJ1Y2tldC5pbXBvcnQodGhpcywgcmVmKWAgYW5kXG4gKiBnZXQgYSBgQnVja2V0YC5cbiAqL1xuZXhwb3J0IGludGVyZmFjZSBCdWNrZXRSZWZQcm9wcyB7XG4gICAgLyoqXG4gICAgICogVGhlIEFSTiBmbyB0aGUgYnVja2V0LiBBdCBsZWFzdCBvbmUgb2YgYnVja2V0QXJuIG9yIGJ1Y2tldE5hbWUgbXVzdCBiZVxuICAgICAqIGRlZmluZWQgaW4gb3JkZXIgdG8gaW5pdGlhbGl6ZSBhIGJ1Y2tldCByZWYuXG4gICAgICovXG4gICAgYnVja2V0QXJuPzogczMuQnVja2V0QXJuO1xuXG4gICAgLyoqXG4gICAgICogVGhlIG5hbWUgb2YgdGhlIGJ1Y2tldC4gSWYgdGhlIHVuZGVybHlpbmcgdmFsdWUgb2YgQVJOIGlzIGEgc3RyaW5nLCB0aGVcbiAgICAgKiBuYW1lIHdpbGwgYmUgcGFyc2VkIGZyb20gdGhlIEFSTi4gT3RoZXJ3aXNlLCB0aGUgbmFtZSBpcyBvcHRpb25hbCwgYnV0XG4gICAgICogc29tZSBmZWF0dXJlcyB0aGF0IHJlcXVpcmUgdGhlIGJ1Y2tldCBuYW1lIHN1Y2ggYXMgYXV0by1jcmVhdGluZyBhIGJ1Y2tldFxuICAgICAqIHBvbGljeSwgd29uJ3Qgd29yay5cbiAgICAgKi9cbiAgICBidWNrZXROYW1lPzogQnVja2V0TmFtZTtcbn1cblxuLyoqXG4gKiBSZXByZXNlbnRzIGFuIFMzIEJ1Y2tldC5cbiAqXG4gKiBCdWNrZXRzIGNhbiBiZSBlaXRoZXIgZGVmaW5lZCB3aXRoaW4gdGhpcyBzdGFjazpcbiAqXG4gKiAgICAgbmV3IEJ1Y2tldCh0aGlzLCAnTXlCdWNrZXQnLCB7IHByb3BzIH0pO1xuICpcbiAqIE9yIGltcG9ydGVkIGZyb20gYW4gZXhpc3RpbmcgYnVja2V0OlxuICpcbiAqICAgICBCdWNrZXRSZWYuaW1wb3J0KHRoaXMsICdNeUltcG9ydGVkQnVja2V0JywgeyBidWNrZXRBcm46IC4uLiB9KTtcbiAqXG4gKiBZb3UgY2FuIGFsc28gZXhwb3J0IGEgYnVja2V0IGFuZCBpbXBvcnQgaXQgaW50byBhbm90aGVyIHN0YWNrOlxuICpcbiAqICAgICBjb25zdCByZWYgPSBteUJ1Y2tldC5leHBvcnQoKTtcbiAqICAgICBCdWNrZXRSZWYuaW1wb3J0KHRoaXMsICdNeUltcG9ydGVkQnVja2V0JywgcmVmKTtcbiAqXG4gKi9cbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBCdWNrZXRSZWYgZXh0ZW5kcyBDb25zdHJ1Y3Qge1xuICAgIC8qKlxuICAgICAqIENyZWF0ZXMgYSBCdWNrZXQgY29uc3RydWN0IHRoYXQgcmVwcmVzZW50cyBhbiBleHRlcm5hbCBidWNrZXQuXG4gICAgICpcbiAgICAgKiBAcGFyYW0gcGFyZW50IFRoZSBwYXJlbnQgY3JlYXRpbmcgY29uc3RydWN0ICh1c3VhbGx5IGB0aGlzYCkuXG4gICAgICogQHBhcmFtIG5hbWUgVGhlIGNvbnN0cnVjdCdzIG5hbWUuXG4gICAgICogQHBhcmFtIHJlZiBBIEJ1Y2tldFJlZlByb3BzIG9iamVjdC4gQ2FuIGJlIG9idGFpbmVkIGZyb20gYSBjYWxsIHRvXG4gICAgICogYGJ1Y2tldC5leHBvcnQoKWAuXG4gICAgICovXG4gICAgcHVibGljIHN0YXRpYyBpbXBvcnQocGFyZW50OiBDb25zdHJ1Y3QsIG5hbWU6IHN0cmluZywgcHJvcHM6IEJ1Y2tldFJlZlByb3BzKTogQnVja2V0UmVmIHtcbiAgICAgICAgcmV0dXJuIG5ldyBJbXBvcnRlZEJ1Y2tldFJlZihwYXJlbnQsIG5hbWUsIHByb3BzKTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBUaGUgQVJOIG9mIHRoZSBidWNrZXQuXG4gICAgICovXG4gICAgcHVibGljIGFic3RyYWN0IHJlYWRvbmx5IGJ1Y2tldEFybjogczMuQnVja2V0QXJuO1xuXG4gICAgLyoqXG4gICAgICogVGhlIG5hbWUgb2YgdGhlIGJ1Y2tldC5cbiAgICAgKi9cbiAgICBwdWJsaWMgYWJzdHJhY3QgcmVhZG9ubHkgYnVja2V0TmFtZTogQnVja2V0TmFtZTtcblxuICAgIC8qKlxuICAgICAqIE9wdGlvbmFsIEtNUyBlbmNyeXB0aW9uIGtleSBhc3NvY2lhdGVkIHdpdGggdGhpcyBidWNrZXQuXG4gICAgICovXG4gICAgcHVibGljIGFic3RyYWN0IHJlYWRvbmx5IGVuY3J5cHRpb25LZXk/OiBrbXMuRW5jcnlwdGlvbktleVJlZjtcblxuICAgIC8qKlxuICAgICAqIFRoZSByZXNvdXJjZSBwb2xpY3kgYXNzb2ljYXRlZCB3aXRoIHRoaXMgYnVja2V0LlxuICAgICAqXG4gICAgICogSWYgYGF1dG9DcmVhdGVQb2xpY3lgIGlzIHRydWUsIGEgYEJ1Y2tldFBvbGljeWAgd2lsbCBiZSBjcmVhdGVkIHVwb24gdGhlXG4gICAgICogZmlyc3QgY2FsbCB0byBhZGRUb1Jlc291cmNlUG9saWN5KHMpLlxuICAgICAqL1xuICAgIHByb3RlY3RlZCBhYnN0cmFjdCBwb2xpY3k/OiBCdWNrZXRQb2xpY3k7XG5cbiAgICAvKipcbiAgICAgKiBJbmRpY2F0ZXMgaWYgYSBidWNrZXQgcmVzb3VyY2UgcG9saWN5IHNob3VsZCBhdXRvbWF0aWNhbGx5IGNyZWF0ZWQgdXBvblxuICAgICAqIHRoZSBmaXJzdCBjYWxsIHRvIGBhZGRUb1Jlc291cmNlUG9saWN5YC5cbiAgICAgKi9cbiAgICBwcm90ZWN0ZWQgYWJzdHJhY3QgYXV0b0NyZWF0ZVBvbGljeSA9IGZhbHNlO1xuXG4gICAgLyoqXG4gICAgICogRXhwb3J0cyB0aGlzIGJ1Y2tldCBmcm9tIHRoZSBzdGFjay5cbiAgICAgKi9cbiAgICBwdWJsaWMgZXhwb3J0KCk6IEJ1Y2tldFJlZlByb3BzIHtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIGJ1Y2tldEFybjogbmV3IE91dHB1dCh0aGlzLCAnQnVja2V0QXJuJywgeyB2YWx1ZTogdGhpcy5idWNrZXRBcm4gfSkubWFrZUltcG9ydFZhbHVlKCksXG4gICAgICAgICAgICBidWNrZXROYW1lOiBuZXcgT3V0cHV0KHRoaXMsICdCdWNrZXROYW1lJywgeyB2YWx1ZTogdGhpcy5idWNrZXROYW1lIH0pLm1ha2VJbXBvcnRWYWx1ZSgpLFxuICAgICAgICB9O1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIEFkZHMgYSBzdGF0ZW1lbnQgdG8gdGhlIHJlc291cmNlIHBvbGljeSBmb3IgYSBwcmluY2lwYWwgKGkuZS5cbiAgICAgKiBhY2NvdW50L3JvbGUvc2VydmljZSkgdG8gcGVyZm9ybSBhY3Rpb25zIG9uIHRoaXMgYnVja2V0IGFuZC9vciBpdCdzXG4gICAgICogY29udGVudHMuIFVzZSBgYnVja2V0QXJuYCBhbmQgYGFybkZvck9iamVjdHMoa2V5cylgIHRvIG9idGFpbiBBUk5zIGZvclxuICAgICAqIHRoaXMgYnVja2V0IG9yIG9iamVjdHMuXG4gICAgICovXG4gICAgcHVibGljIGFkZFRvUmVzb3VyY2VQb2xpY3kocGVybWlzc2lvbjogUG9saWN5U3RhdGVtZW50KSB7XG4gICAgICAgIGlmICghdGhpcy5wb2xpY3kgJiYgdGhpcy5hdXRvQ3JlYXRlUG9saWN5KSB7XG4gICAgICAgICAgICB0aGlzLnBvbGljeSA9IG5ldyBCdWNrZXRQb2xpY3kodGhpcywgJ1BvbGljeScsIHsgYnVja2V0OiB0aGlzIH0pO1xuICAgICAgICB9XG5cbiAgICAgICAgaWYgKHRoaXMucG9saWN5KSB7XG4gICAgICAgICAgICB0aGlzLnBvbGljeS5kb2N1bWVudC5hZGRTdGF0ZW1lbnQocGVybWlzc2lvbik7XG4gICAgICAgIH1cbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBSZXR1cm5zIGFuIEFSTiB0aGF0IHJlcHJlc2VudHMgYWxsIG9iamVjdHMgd2l0aGluIHRoZSBidWNrZXQgdGhhdCBtYXRjaFxuICAgICAqIHRoZSBrZXkgcGF0dGVybiBzcGVjaWZpZWQuIFRvIHJlcHJlc2VudCBhbGwga2V5cywgc3BlY2lmeSBgYFwiKlwiYGAuXG4gICAgICpcbiAgICAgKiBJZiB5b3Ugc3BlY2lmeSBtdWx0aXBsZSBjb21wb25lbnRzIGZvciBrZXlQYXR0ZXJuLCB0aGV5IHdpbGwgYmUgY29uY2F0ZW5hdGVkOjpcbiAgICAgKlxuICAgICAqICAgICBhcm5Gb3JPYmplY3RzKCdob21lLycsIHRlYW0sICcvJywgdXNlciwgJy8qJylcbiAgICAgKlxuICAgICAqL1xuICAgIHB1YmxpYyBhcm5Gb3JPYmplY3RzKC4uLmtleVBhdHRlcm46IGFueVtdKTogQXJuIHtcbiAgICAgICAgcmV0dXJuIG5ldyBGbkNvbmNhdCh0aGlzLmJ1Y2tldEFybiwgJy8nLCAuLi5rZXlQYXR0ZXJuKTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBUZW1wb3JhcnkgQVBJIGZvciBncmFudGluZyByZWFkIHBlcm1pc3Npb25zIGZvciB0aGlzIGJ1Y2tldCBhbmQgaXQnc1xuICAgICAqIGNvbnRlbnRzIHRvIGFuIElBTSBwcmluY2lwYWwgKFJvbGUvR3JvdXAvVXNlcikuXG4gICAgICpcbiAgICAgKiBJZiBhbiBlbmNyeXB0aW9uIGtleSBpcyB1c2VkLCBwZXJtaXNzaW9uIHRvIHVlcyB0aGUga2V5IHRvIGRlY3J5cHQgdGhlXG4gICAgICogY29udGVudHMgb2YgdGhlIGJ1Y2tldCB3aWxsIGFsc28gYmUgZ3JhbnRlZC5cbiAgICAgKi9cbiAgICBwdWJsaWMgZ3JhbnRSZWFkKGlkZW50aXR5PzogSUlkZW50aXR5UmVzb3VyY2UsIG9iamVjdHNLZXlQYXR0ZXJuID0gJyonKSB7XG4gICAgICAgIGlmICghaWRlbnRpdHkpIHtcbiAgICAgICAgICAgIHJldHVybjtcbiAgICAgICAgfVxuICAgICAgICB0aGlzLmdyYW50KGlkZW50aXR5LCBvYmplY3RzS2V5UGF0dGVybiwgcGVybXMuQlVDS0VUX1JFQURfQUNUSU9OUywgcGVybXMuS0VZX1JFQURfQUNUSU9OUyk7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogR3JhbnRzIHJlYWQvd3JpdGUgcGVybWlzc2lvbnMgZm9yIHRoaXMgYnVja2V0IGFuZCBpdCdzIGNvbnRlbnRzIHRvIGFuIElBTVxuICAgICAqIHByaW5jaXBhbCAoUm9sZS9Hcm91cC9Vc2VyKS5cbiAgICAgKlxuICAgICAqIElmIGFuIGVuY3J5cHRpb24ga2V5IGlzIHVzZWQsIHBlcm1pc3Npb24gdG8gdXNlIHRoZSBrZXkgZm9yXG4gICAgICogZW5jcnlwdC9kZWNyeXB0IHdpbGwgYWxzbyBiZSBncmFudGVkLlxuICAgICAqL1xuICAgIHB1YmxpYyBncmFudFJlYWRXcml0ZShpZGVudGl0eT86IElJZGVudGl0eVJlc291cmNlLCBvYmplY3RzS2V5UGF0dGVybiA9ICcqJykge1xuICAgICAgICBpZiAoIWlkZW50aXR5KSB7XG4gICAgICAgICAgICByZXR1cm47XG4gICAgICAgIH1cbiAgICAgICAgY29uc3QgYnVja2V0QWN0aW9ucyA9IHBlcm1zLkJVQ0tFVF9SRUFEX0FDVElPTlMuY29uY2F0KHBlcm1zLkJVQ0tFVF9XUklURV9BQ1RJT05TKTtcbiAgICAgICAgY29uc3Qga2V5QWN0aW9ucyA9IHBlcm1zLktFWV9SRUFEX0FDVElPTlMuY29uY2F0KHBlcm1zLktFWV9XUklURV9BQ1RJT05TKTtcbiAgICAgICAgdGhpcy5ncmFudChpZGVudGl0eSwgb2JqZWN0c0tleVBhdHRlcm4sIGJ1Y2tldEFjdGlvbnMsIGtleUFjdGlvbnMpO1xuICAgIH1cblxuICAgIHByaXZhdGUgZ3JhbnQoaWRlbnRpdHk6IElJZGVudGl0eVJlc291cmNlLCBvYmplY3RzS2V5UGF0dGVybjogc3RyaW5nLCBidWNrZXRBY3Rpb25zOiBzdHJpbmdbXSwga2V5QWN0aW9uczogc3RyaW5nW10pIHtcbiAgICAgICAgY29uc3QgcmVzb3VyY2VzID0gW1xuICAgICAgICAgICAgdGhpcy5idWNrZXRBcm4sXG4gICAgICAgICAgICB0aGlzLmFybkZvck9iamVjdHMob2JqZWN0c0tleVBhdHRlcm4pXG4gICAgICAgIF07XG5cbiAgICAgICAgaWRlbnRpdHkuYWRkVG9Qb2xpY3kobmV3IFBvbGljeVN0YXRlbWVudCgpXG4gICAgICAgICAgICAuYWRkUmVzb3VyY2VzKC4uLnJlc291cmNlcylcbiAgICAgICAgICAgIC5hZGRBY3Rpb25zKC4uLmJ1Y2tldEFjdGlvbnMpKTtcblxuICAgICAgICAvLyBncmFudCBrZXkgcGVybWlzc2lvbnMgaWYgdGhlcmUncyBhbiBhc3NvY2lhdGVkIGtleS5cbiAgICAgICAgaWYgKHRoaXMuZW5jcnlwdGlvbktleSkge1xuICAgICAgICAgICAgLy8gS01TIHBlcm1pc3Npb25zIG5lZWQgdG8gYmUgZ3JhbnRlZCBib3RoIGRpcmVjdGlvbnNcbiAgICAgICAgICAgIGlkZW50aXR5LmFkZFRvUG9saWN5KG5ldyBQb2xpY3lTdGF0ZW1lbnQoKVxuICAgICAgICAgICAgICAgIC5hZGRSZXNvdXJjZSh0aGlzLmVuY3J5cHRpb25LZXkua2V5QXJuKVxuICAgICAgICAgICAgICAgIC5hZGRBY3Rpb25zKC4uLmtleUFjdGlvbnMpKTtcblxuICAgICAgICAgICAgdGhpcy5lbmNyeXB0aW9uS2V5LmFkZFRvUmVzb3VyY2VQb2xpY3kobmV3IFBvbGljeVN0YXRlbWVudCgpXG4gICAgICAgICAgICAgICAgLmFkZFJlc291cmNlKCcqJylcbiAgICAgICAgICAgICAgICAuYWRkUHJpbmNpcGFsKGlkZW50aXR5LnByaW5jaXBhbClcbiAgICAgICAgICAgICAgICAuYWRkQWN0aW9ucyguLi5rZXlBY3Rpb25zKSk7XG4gICAgICAgIH1cbiAgICB9XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgQnVja2V0UHJvcHMge1xuICAgIC8qKlxuICAgICAqIFRoZSBraW5kIG9mIHNlcnZlci1zaWRlIGVuY3J5cHRpb24gdG8gYXBwbHkgdG8gdGhpcyBidWNrZXQuXG4gICAgICpcbiAgICAgKiBJZiB5b3UgY2hvb3NlIEtNUywgeW91IGNhbiBzcGVjaWZ5IGEgS01TIGtleSB2aWEgYGVuY3J5cHRpb25LZXlgLiBJZlxuICAgICAqIGVuY3J5cHRpb24ga2V5IGlzIG5vdCBzcGVjaWZpZWQsIGEga2V5IHdpbGwgYXV0b21hdGljYWxseSBiZSBjcmVhdGVkLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgVW5lbmNyeXB0ZWRcbiAgICAgKi9cbiAgICBlbmNyeXB0aW9uPzogQnVja2V0RW5jcnlwdGlvbjtcblxuICAgIC8qKlxuICAgICAqIEV4dGVybmFsIEtNUyBrZXkgdG8gdXNlIGZvciBidWNrZXQgZW5jcnlwdGlvbi5cbiAgICAgKlxuICAgICAqIFRoZSAnZW5jcnlwdGlvbicgcHJvcGVydHkgbXVzdCBiZSBlaXRoZXIgbm90IHNwZWNpZmllZCBvciBzZXQgdG8gXCJLbXNcIi5cbiAgICAgKiBBbiBlcnJvciB3aWxsIGJlIGVtaXR0ZWQgaWYgZW5jcnlwdGlvbiBpcyBzZXQgdG8gXCJVbmVuY3J5cHRlZFwiIG9yXG4gICAgICogXCJNYW5hZ2VkXCIuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBJZiBlbmNyeXB0aW9uIGlzIHNldCB0byBcIkttc1wiIGFuZCB0aGlzIHByb3BlcnR5IGlzIHVuZGVmaW5lZCwgYVxuICAgICAqIG5ldyBLTVMga2V5IHdpbGwgYmUgY3JlYXRlZCBhbmQgYXNzb2NpYXRlZCB3aXRoIHRoaXMgYnVja2V0LlxuICAgICAqL1xuICAgIGVuY3J5cHRpb25LZXk/OiBrbXMuRW5jcnlwdGlvbktleVJlZjtcblxuICAgIC8qKlxuICAgICAqIFBoeXNpY2FsIG5hbWUgb2YgdGhpcyBidWNrZXQuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBBc3NpZ25lZCBieSBDbG91ZEZvcm1hdGlvbiAocmVjb21tZW5kZWQpXG4gICAgICovXG4gICAgYnVja2V0TmFtZT86IHN0cmluZztcblxuICAgIC8qKlxuICAgICAqIFBvbGljeSB0byBhcHBseSB3aGVuIHRoZSBidWNrZXQgaXMgcmVtb3ZlZCBmcm9tIHRoaXMgc3RhY2suXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBCeSBkZWZhdWx0LCB0aGUgYnVja2V0IHdpbGwgYmUgZGVzdHJveWVkIGlmIGl0IGlzIHJlbW92ZWQgZnJvbSB0aGUgc3RhY2suXG4gICAgICovXG4gICAgcmVtb3ZhbFBvbGljeT86IFJlbW92YWxQb2xpY3k7XG5cbiAgICAvKipcbiAgICAgKiBUaGUgYnVja2V0IHBvbGljeSBhc3NvY2lhdGVkIHdpdGggdGhpcyBidWNrZXQuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBBIGJ1Y2tldCBwb2xpY3kgd2lsbCBiZSBjcmVhdGVkIGF1dG9tYXRpY2FsbHkgaW4gdGhlIGZpcnN0IGNhbGxcbiAgICAgKiB0byBhZGRUb1BvbGljeS5cbiAgICAgKi9cbiAgICBwb2xpY3k/OiBCdWNrZXRQb2xpY3k7XG5cbiAgICAvKipcbiAgICAgKiBXaGV0aGVyIHRoaXMgYnVja2V0IHNob3VsZCBoYXZlIHZlcnNpb25pbmcgdHVybmVkIG9uIG9yIG5vdC5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IGZhbHNlXG4gICAgICovXG4gICAgdmVyc2lvbmVkPzogYm9vbGVhbjtcblxuICAgIC8qKlxuICAgICAqIFJ1bGVzIHRoYXQgZGVmaW5lIGhvdyBBbWF6b24gUzMgbWFuYWdlcyBvYmplY3RzIGR1cmluZyB0aGVpciBsaWZldGltZS5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IE5vIGxpZmVjeWNsZSBydWxlc1xuICAgICAqL1xuICAgIGxpZmVjeWNsZVJ1bGVzPzogTGlmZWN5Y2xlUnVsZVtdO1xufVxuXG4vKipcbiAqIEFuIFMzIGJ1Y2tldCB3aXRoIGFzc29jaWF0ZWQgcG9saWN5IG9iamVjdHNcbiAqXG4gKiBUaGlzIGJ1Y2tldCBkb2VzIG5vdCB5ZXQgaGF2ZSBhbGwgZmVhdHVyZXMgdGhhdCBleHBvc2VkIGJ5IHRoZSB1bmRlcmx5aW5nXG4gKiBCdWNrZXRSZXNvdXJjZS5cbiAqL1xuZXhwb3J0IGNsYXNzIEJ1Y2tldCBleHRlbmRzIEJ1Y2tldFJlZiB7XG4gICAgcHVibGljIHJlYWRvbmx5IGJ1Y2tldEFybjogczMuQnVja2V0QXJuO1xuICAgIHB1YmxpYyByZWFkb25seSBidWNrZXROYW1lOiBCdWNrZXROYW1lO1xuICAgIHB1YmxpYyByZWFkb25seSBkb21haW5OYW1lOiBzMy5CdWNrZXREb21haW5OYW1lO1xuICAgIHB1YmxpYyByZWFkb25seSBkdWFsc3RhY2tEb21haW5OYW1lOiBzMy5CdWNrZXREdWFsU3RhY2tEb21haW5OYW1lO1xuICAgIHB1YmxpYyByZWFkb25seSBlbmNyeXB0aW9uS2V5Pzoga21zLkVuY3J5cHRpb25LZXlSZWY7XG4gICAgcHJvdGVjdGVkIHBvbGljeT86IEJ1Y2tldFBvbGljeTtcbiAgICBwcm90ZWN0ZWQgYXV0b0NyZWF0ZVBvbGljeSA9IHRydWU7XG4gICAgcHJpdmF0ZSByZWFkb25seSBsaWZlY3ljbGVSdWxlczogTGlmZWN5Y2xlUnVsZVtdID0gW107XG4gICAgcHJpdmF0ZSByZWFkb25seSB2ZXJzaW9uZWQ/OiBib29sZWFuO1xuXG4gICAgY29uc3RydWN0b3IocGFyZW50OiBDb25zdHJ1Y3QsIG5hbWU6IHN0cmluZywgcHJvcHM6IEJ1Y2tldFByb3BzID0ge30pIHtcbiAgICAgICAgc3VwZXIocGFyZW50LCBuYW1lKTtcblxuICAgICAgICB2YWxpZGF0ZUJ1Y2tldE5hbWUocHJvcHMgJiYgcHJvcHMuYnVja2V0TmFtZSk7XG5cbiAgICAgICAgY29uc3QgeyBidWNrZXRFbmNyeXB0aW9uLCBlbmNyeXB0aW9uS2V5IH0gPSB0aGlzLnBhcnNlRW5jcnlwdGlvbihwcm9wcyk7XG5cbiAgICAgICAgY29uc3QgcmVzb3VyY2UgPSBuZXcgczMuQnVja2V0UmVzb3VyY2UodGhpcywgJ1Jlc291cmNlJywge1xuICAgICAgICAgICAgYnVja2V0TmFtZTogcHJvcHMgJiYgcHJvcHMuYnVja2V0TmFtZSxcbiAgICAgICAgICAgIGJ1Y2tldEVuY3J5cHRpb24sXG4gICAgICAgICAgICB2ZXJzaW9uaW5nQ29uZmlndXJhdGlvbjogcHJvcHMudmVyc2lvbmVkID8geyBzdGF0dXM6ICdFbmFibGVkJyB9IDogdW5kZWZpbmVkLFxuICAgICAgICAgICAgbGlmZWN5Y2xlQ29uZmlndXJhdGlvbjogbmV3IFRva2VuKCgpID0+IHRoaXMucGFyc2VMaWZlY3ljbGVDb25maWd1cmF0aW9uKCkpLFxuICAgICAgICB9KTtcblxuICAgICAgICBhcHBseVJlbW92YWxQb2xpY3kocmVzb3VyY2UsIHByb3BzLnJlbW92YWxQb2xpY3kpO1xuXG4gICAgICAgIHRoaXMudmVyc2lvbmVkID0gcHJvcHMudmVyc2lvbmVkO1xuICAgICAgICB0aGlzLnBvbGljeSA9IHByb3BzLnBvbGljeTtcbiAgICAgICAgdGhpcy5lbmNyeXB0aW9uS2V5ID0gZW5jcnlwdGlvbktleTtcbiAgICAgICAgdGhpcy5idWNrZXRBcm4gPSByZXNvdXJjZS5idWNrZXRBcm47XG4gICAgICAgIHRoaXMuYnVja2V0TmFtZSA9IHJlc291cmNlLnJlZjtcbiAgICAgICAgdGhpcy5kb21haW5OYW1lID0gcmVzb3VyY2UuYnVja2V0RG9tYWluTmFtZTtcbiAgICAgICAgdGhpcy5kdWFsc3RhY2tEb21haW5OYW1lID0gcmVzb3VyY2UuYnVja2V0RHVhbFN0YWNrRG9tYWluTmFtZTtcblxuICAgICAgICAvLyBBZGQgYWxsIGxpZmVjeWNsZSBydWxlc1xuICAgICAgICAocHJvcHMubGlmZWN5Y2xlUnVsZXMgfHwgW10pLmZvckVhY2godGhpcy5hZGRMaWZlY3ljbGVSdWxlLmJpbmQodGhpcykpO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIEFkZCBhIGxpZmVjeWNsZSBydWxlIHRvIHRoZSBidWNrZXRcbiAgICAgKlxuICAgICAqIEBwYXJhbSBydWxlIFRoZSBydWxlIHRvIGFkZFxuICAgICAqL1xuICAgIHB1YmxpYyBhZGRMaWZlY3ljbGVSdWxlKHJ1bGU6IExpZmVjeWNsZVJ1bGUpIHtcbiAgICAgICAgaWYgKChydWxlLm5vbmN1cnJlbnRWZXJzaW9uRXhwaXJhdGlvbkluRGF5cyAhPT0gdW5kZWZpbmVkXG4gICAgICAgICAgICB8fCAocnVsZS5ub25jdXJyZW50VmVyc2lvblRyYW5zaXRpb25zICYmIHJ1bGUubm9uY3VycmVudFZlcnNpb25UcmFuc2l0aW9ucy5sZW5ndGggPiAwKSlcbiAgICAgICAgICAgICYmICF0aGlzLnZlcnNpb25lZCkge1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKFwiQ2Fubm90IHVzZSAnbm9uY3VycmVudCcgcnVsZXMgb24gYSBub252ZXJzaW9uZWQgYnVja2V0XCIpO1xuICAgICAgICB9XG5cbiAgICAgICAgdGhpcy5saWZlY3ljbGVSdWxlcy5wdXNoKHJ1bGUpO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIFNldCB1cCBrZXkgcHJvcGVydGllcyBhbmQgcmV0dXJuIHRoZSBCdWNrZXQgZW5jcnlwdGlvbiBwcm9wZXJ0eSBmcm9tIHRoZVxuICAgICAqIHVzZXIncyBjb25maWd1cmF0aW9uLlxuICAgICAqL1xuICAgIHByaXZhdGUgcGFyc2VFbmNyeXB0aW9uKHByb3BzOiBCdWNrZXRQcm9wcyk6IHtcbiAgICAgICAgYnVja2V0RW5jcnlwdGlvbj86IHMzLkJ1Y2tldFJlc291cmNlLkJ1Y2tldEVuY3J5cHRpb25Qcm9wZXJ0eSxcbiAgICAgICAgZW5jcnlwdGlvbktleT86IGttcy5FbmNyeXB0aW9uS2V5UmVmXG4gICAgfSB7XG5cbiAgICAgICAgLy8gZGVmYXVsdCB0byB1bmVuY3J5cHRlZC5cbiAgICAgICAgY29uc3QgZW5jcnlwdGlvblR5cGUgPSBwcm9wcy5lbmNyeXB0aW9uIHx8IEJ1Y2tldEVuY3J5cHRpb24uVW5lbmNyeXB0ZWQ7XG5cbiAgICAgICAgLy8gaWYgZW5jcnlwdGlvbiBrZXkgaXMgc2V0LCBlbmNyeXB0aW9uIG11c3QgYmUgc2V0IHRvIEtNUy5cbiAgICAgICAgaWYgKGVuY3J5cHRpb25UeXBlICE9PSBCdWNrZXRFbmNyeXB0aW9uLkttcyAmJiBwcm9wcy5lbmNyeXB0aW9uS2V5KSB7XG4gICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYGVuY3J5cHRpb25LZXkgaXMgc3BlY2lmaWVkLCBzbyAnZW5jcnlwdGlvbicgbXVzdCBiZSBzZXQgdG8gS01TICh2YWx1ZTogJHtlbmNyeXB0aW9uVHlwZX0pYCk7XG4gICAgICAgIH1cblxuICAgICAgICBpZiAoZW5jcnlwdGlvblR5cGUgPT09IEJ1Y2tldEVuY3J5cHRpb24uVW5lbmNyeXB0ZWQpIHtcbiAgICAgICAgICAgIHJldHVybiB7IGJ1Y2tldEVuY3J5cHRpb246IHVuZGVmaW5lZCwgZW5jcnlwdGlvbktleTogdW5kZWZpbmVkIH07XG4gICAgICAgIH1cblxuICAgICAgICBpZiAoZW5jcnlwdGlvblR5cGUgPT09IEJ1Y2tldEVuY3J5cHRpb24uS21zKSB7XG4gICAgICAgICAgICBjb25zdCBlbmNyeXB0aW9uS2V5ID0gcHJvcHMuZW5jcnlwdGlvbktleSB8fCBuZXcga21zLkVuY3J5cHRpb25LZXkodGhpcywgJ0tleScsIHtcbiAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogYENyZWF0ZWQgYnkgJHt0aGlzLnBhdGh9YFxuICAgICAgICAgICAgfSk7XG5cbiAgICAgICAgICAgIGNvbnN0IGJ1Y2tldEVuY3J5cHRpb24gPSB7XG4gICAgICAgICAgICAgICAgc2VydmVyU2lkZUVuY3J5cHRpb25Db25maWd1cmF0aW9uOiBbXG4gICAgICAgICAgICAgICAgICAgIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIHNlcnZlclNpZGVFbmNyeXB0aW9uQnlEZWZhdWx0OiB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgc3NlQWxnb3JpdGhtOiAnYXdzOmttcycsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAga21zTWFzdGVyS2V5SWQ6IGVuY3J5cHRpb25LZXkua2V5QXJuXG4gICAgICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICBdXG4gICAgICAgICAgICB9O1xuICAgICAgICAgICAgcmV0dXJuIHsgZW5jcnlwdGlvbktleSwgYnVja2V0RW5jcnlwdGlvbiB9O1xuICAgICAgICB9XG5cbiAgICAgICAgaWYgKGVuY3J5cHRpb25UeXBlID09PSBCdWNrZXRFbmNyeXB0aW9uLkttc01hbmFnZWQpIHtcbiAgICAgICAgICAgIGNvbnN0IGJ1Y2tldEVuY3J5cHRpb24gPSB7XG4gICAgICAgICAgICAgICAgc2VydmVyU2lkZUVuY3J5cHRpb25Db25maWd1cmF0aW9uOiBbXG4gICAgICAgICAgICAgICAgICAgIHsgc2VydmVyU2lkZUVuY3J5cHRpb25CeURlZmF1bHQ6IHsgc3NlQWxnb3JpdGhtOiAnYXdzOmttcycgfSB9XG4gICAgICAgICAgICAgICAgXVxuICAgICAgICAgICAgfTtcbiAgICAgICAgICAgIHJldHVybiB7IGJ1Y2tldEVuY3J5cHRpb24gfTtcbiAgICAgICAgfVxuXG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgVW5leHBlY3RlZCAnZW5jcnlwdGlvblR5cGUnOiAke2VuY3J5cHRpb25UeXBlfWApO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIFBhcnNlIHRoZSBsaWZlY3ljbGUgY29uZmlndXJhdGlvbiBvdXQgb2YgdGhlIHV1Y2tldCBwcm9wc1xuICAgICAqIEBwYXJhbSBwcm9wcyBQYXJcbiAgICAgKi9cbiAgICBwcml2YXRlIHBhcnNlTGlmZWN5Y2xlQ29uZmlndXJhdGlvbigpOiBzMy5CdWNrZXRSZXNvdXJjZS5MaWZlY3ljbGVDb25maWd1cmF0aW9uUHJvcGVydHkgfCB1bmRlZmluZWQge1xuICAgICAgICBpZiAoIXRoaXMubGlmZWN5Y2xlUnVsZXMgfHwgdGhpcy5saWZlY3ljbGVSdWxlcy5sZW5ndGggPT09IDApIHtcbiAgICAgICAgICAgIHJldHVybiB1bmRlZmluZWQ7XG4gICAgICAgIH1cblxuICAgICAgICByZXR1cm4geyBydWxlczogdGhpcy5saWZlY3ljbGVSdWxlcy5tYXAocGFyc2VMaWZlY3ljbGVSdWxlKSB9O1xuXG4gICAgICAgIGZ1bmN0aW9uIHBhcnNlTGlmZWN5Y2xlUnVsZShydWxlOiBMaWZlY3ljbGVSdWxlKTogczMuQnVja2V0UmVzb3VyY2UuUnVsZVByb3BlcnR5IHtcbiAgICAgICAgICAgIGNvbnN0IGVuYWJsZWQgPSBydWxlLmVuYWJsZWQgIT09IHVuZGVmaW5lZCA/IHJ1bGUuZW5hYmxlZCA6IHRydWU7XG5cbiAgICAgICAgICAgIGNvbnN0IHggPSB7XG4gICAgICAgICAgICAgICAgLy8gdHNsaW50OmRpc2FibGUtbmV4dC1saW5lOm1heC1saW5lLWxlbmd0aFxuICAgICAgICAgICAgICAgIGFib3J0SW5jb21wbGV0ZU11bHRpcGFydFVwbG9hZDogcnVsZS5hYm9ydEluY29tcGxldGVNdWx0aXBhcnRVcGxvYWRBZnRlckRheXMgIT09IHVuZGVmaW5lZCA/IHsgZGF5c0FmdGVySW5pdGlhdGlvbjogcnVsZS5hYm9ydEluY29tcGxldGVNdWx0aXBhcnRVcGxvYWRBZnRlckRheXMgfSA6IHVuZGVmaW5lZCxcbiAgICAgICAgICAgICAgICBleHBpcmF0aW9uRGF0ZTogcnVsZS5leHBpcmF0aW9uRGF0ZSxcbiAgICAgICAgICAgICAgICBleHBpcmF0aW9uSW5EYXlzOiBydWxlLmV4cGlyYXRpb25JbkRheXMsXG4gICAgICAgICAgICAgICAgaWQ6IHJ1bGUuaWQsXG4gICAgICAgICAgICAgICAgbm9uY3VycmVudFZlcnNpb25FeHBpcmF0aW9uSW5EYXlzOiBydWxlLm5vbmN1cnJlbnRWZXJzaW9uRXhwaXJhdGlvbkluRGF5cyxcbiAgICAgICAgICAgICAgICBub25jdXJyZW50VmVyc2lvblRyYW5zaXRpb25zOiBydWxlLm5vbmN1cnJlbnRWZXJzaW9uVHJhbnNpdGlvbnMsXG4gICAgICAgICAgICAgICAgcHJlZml4OiBydWxlLnByZWZpeCxcbiAgICAgICAgICAgICAgICBzdGF0dXM6IGVuYWJsZWQgPyAnRW5hYmxlZCcgOiAnRGlzYWJsZWQnLFxuICAgICAgICAgICAgICAgIHRyYW5zaXRpb25zOiBydWxlLnRyYW5zaXRpb25zLFxuICAgICAgICAgICAgICAgIHRhZ0ZpbHRlcnM6IHBhcnNlVGFnRmlsdGVycyhydWxlLnRhZ0ZpbHRlcnMpXG4gICAgICAgICAgICB9O1xuXG4gICAgICAgICAgICByZXR1cm4geDtcbiAgICAgICAgfVxuXG4gICAgICAgIGZ1bmN0aW9uIHBhcnNlVGFnRmlsdGVycyh0YWdGaWx0ZXJzPzoge1t0YWc6IHN0cmluZ106IGFueX0pIHtcbiAgICAgICAgICAgIGlmICghdGFnRmlsdGVycyB8fCB0YWdGaWx0ZXJzLmxlbmd0aCA9PT0gMCkge1xuICAgICAgICAgICAgICAgIHJldHVybiB1bmRlZmluZWQ7XG4gICAgICAgICAgICB9XG5cbiAgICAgICAgICAgIHJldHVybiBPYmplY3Qua2V5cyh0YWdGaWx0ZXJzKS5tYXAodGFnID0+ICh7XG4gICAgICAgICAgICAgICAga2V5OiB0YWcsXG4gICAgICAgICAgICAgICAgdmFsdWU6IHRhZ0ZpbHRlcnNbdGFnXVxuICAgICAgICAgICAgfSkpO1xuICAgICAgICB9XG4gICAgfVxufVxuXG4vKipcbiAqIFdoYXQga2luZCBvZiBzZXJ2ZXItc2lkZSBlbmNyeXB0aW9uIHRvIGFwcGx5IHRvIHRoaXMgYnVja2V0XG4gKi9cbmV4cG9ydCBlbnVtIEJ1Y2tldEVuY3J5cHRpb24ge1xuICAgIC8qKlxuICAgICAqIE9iamVjdHMgaW4gdGhlIGJ1Y2tldCBhcmUgbm90IGVuY3J5cHRlZC5cbiAgICAgKi9cbiAgICBVbmVuY3J5cHRlZCA9ICdOT05FJyxcblxuICAgIC8qKlxuICAgICAqIFNlcnZlci1zaWRlIEtNUyBlbmNyeXB0aW9uIHdpdGggYSBtYXN0ZXIga2V5IG1hbmFnZWQgYnkgUzMuXG4gICAgICovXG4gICAgS21zTWFuYWdlZCA9ICdNQU5BR0VEJyxcblxuICAgIC8qKlxuICAgICAqIFNlcnZlci1zaWRlIGVuY3J5cHRpb24gd2l0aCBhIEtNUyBrZXkgbWFuYWdlZCBieSB0aGUgdXNlci5cbiAgICAgKiBJZiBgZW5jcnlwdGlvbktleWAgaXMgc3BlY2lmaWVkLCB0aGlzIGtleSB3aWxsIGJlIHVzZWQsIG90aGVyd2lzZSwgb25lIHdpbGwgYmUgZGVmaW5lZC5cbiAgICAgKi9cbiAgICBLbXMgPSAnS01TJyxcbn1cblxuLyoqXG4gKiBUaGUgbmFtZSBvZiB0aGUgYnVja2V0LlxuICovXG5leHBvcnQgY2xhc3MgQnVja2V0TmFtZSBleHRlbmRzIFRva2VuIHtcblxufVxuXG5jbGFzcyBJbXBvcnRlZEJ1Y2tldFJlZiBleHRlbmRzIEJ1Y2tldFJlZiB7XG4gICAgcHVibGljIHJlYWRvbmx5IGJ1Y2tldEFybjogczMuQnVja2V0QXJuO1xuICAgIHB1YmxpYyByZWFkb25seSBidWNrZXROYW1lOiBCdWNrZXROYW1lO1xuICAgIHB1YmxpYyByZWFkb25seSBlbmNyeXB0aW9uS2V5Pzoga21zLkVuY3J5cHRpb25LZXk7XG5cbiAgICBwcm90ZWN0ZWQgcG9saWN5PzogQnVja2V0UG9saWN5O1xuICAgIHByb3RlY3RlZCBhdXRvQ3JlYXRlUG9saWN5OiBib29sZWFuO1xuXG4gICAgY29uc3RydWN0b3IocGFyZW50OiBDb25zdHJ1Y3QsIG5hbWU6IHN0cmluZywgcHJvcHM6IEJ1Y2tldFJlZlByb3BzKSB7XG4gICAgICAgIHN1cGVyKHBhcmVudCwgbmFtZSk7XG5cbiAgICAgICAgdGhpcy5idWNrZXRBcm4gPSBwYXJzZUJ1Y2tldEFybihwcm9wcyk7XG4gICAgICAgIHRoaXMuYnVja2V0TmFtZSA9IHBhcnNlQnVja2V0TmFtZShwcm9wcyk7XG4gICAgICAgIHRoaXMuYXV0b0NyZWF0ZVBvbGljeSA9IGZhbHNlO1xuICAgICAgICB0aGlzLnBvbGljeSA9IHVuZGVmaW5lZDtcbiAgICB9XG59XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9zMy9saWIvYnVja2V0LnRzIiwibW9kdWxlLmV4cG9ydHMgPSBqc2lpJF9hd3NfY2RrX2ttcyQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX2ttcyRcIlxuLy8gbW9kdWxlIGlkID0gNVxuLy8gbW9kdWxlIGNodW5rcyA9IDAiLCJleHBvcnQgY29uc3QgQlVDS0VUX1JFQURfQUNUSU9OUyA9IFtcbiAgICAnczM6R2V0T2JqZWN0KicsXG4gICAgJ3MzOkdldEJ1Y2tldConLFxuICAgICdzMzpMaXN0KicsXG5dO1xuXG5leHBvcnQgY29uc3QgQlVDS0VUX1dSSVRFX0FDVElPTlMgPSBbXG4gICAgJ3MzOlB1dE9iamVjdConLFxuICAgICdzMzpEZWxldGVPYmplY3QqJyxcbiAgICAnczM6QWJvcnQqJ1xuXTtcblxuZXhwb3J0IGNvbnN0IEtFWV9SRUFEX0FDVElPTlMgPSBbXG4gICAgJ2ttczpEZWNyeXB0JyxcbiAgICAna21zOkRlc2NyaWJlS2V5Jyxcbl07XG5cbmV4cG9ydCBjb25zdCBLRVlfV1JJVEVfQUNUSU9OUyA9IFtcbiAgICAna21zOkVuY3J5cHQnLFxuICAgICdrbXM6UmVFbmNyeXB0KicsXG4gICAgJ2ttczpHZW5lcmF0ZURhdGFLZXkqJyxcbl07XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9zMy9saWIvcGVybXMudHMiLCJpbXBvcnQgeyBBcm4gfSBmcm9tICdAYXdzLWNkay9jb3JlJztcbmltcG9ydCB7IEJ1Y2tldFJlZlByb3BzIH0gZnJvbSAnLi9idWNrZXQnO1xuXG5leHBvcnQgZnVuY3Rpb24gdmFsaWRhdGVCdWNrZXROYW1lKGJ1Y2tldE5hbWU/OiBzdHJpbmcpIHtcbiAgICBpZiAoIWJ1Y2tldE5hbWUpIHtcbiAgICAgICAgcmV0dXJuO1xuICAgIH1cblxuICAgIGlmIChidWNrZXROYW1lLnNlYXJjaCgvW15hLXowLTkuLV0vZykgIT09IC0xKSB7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcignQnVja2V0IG5hbWUgY29udGFpbnMgaW52YWxpZCBjaGFyYWN0ZXJzOiAnICsgYnVja2V0TmFtZSk7XG4gICAgfVxufVxuXG5leHBvcnQgZnVuY3Rpb24gcGFyc2VCdWNrZXRBcm4ocHJvcHM6IEJ1Y2tldFJlZlByb3BzKSB7XG5cbiAgICAvLyBpZiB3ZSBoYXZlIGFuIGV4cGxpY2l0IGJ1Y2tldCBBUk4sIHVzZSBpdC5cbiAgICBpZiAocHJvcHMuYnVja2V0QXJuKSB7XG4gICAgICAgIHJldHVybiBwcm9wcy5idWNrZXRBcm47XG4gICAgfVxuXG4gICAgaWYgKHByb3BzLmJ1Y2tldE5hbWUpIHtcbiAgICAgICAgcmV0dXJuIEFybi5mcm9tQ29tcG9uZW50cyh7XG4gICAgICAgICAgICAvLyBTMyBCdWNrZXQgbmFtZXMgYXJlIGdsb2JhbGx5IHVuaXF1ZSBpbiBhIHBhcnRpdGlvbixcbiAgICAgICAgICAgIC8vIGFuZCBzbyB0aGVpciBBUk5zIGhhdmUgZW1wdHkgcmVnaW9uIGFuZCBhY2NvdW50IGNvbXBvbmVudHNcbiAgICAgICAgICAgIHJlZ2lvbjogJycsXG4gICAgICAgICAgICBhY2NvdW50OiAnJyxcbiAgICAgICAgICAgIHNlcnZpY2U6ICdzMycsXG4gICAgICAgICAgICByZXNvdXJjZTogcHJvcHMuYnVja2V0TmFtZVxuICAgICAgICB9KTtcbiAgICB9XG5cbiAgICB0aHJvdyBuZXcgRXJyb3IoJ0Nhbm5vdCBkZXRlcm1pbmUgYnVja2V0IEFSTi4gQXQgbGVhc3QgYGJ1Y2tldEFybmAgb3IgYGJ1Y2tldE5hbWVgIGlzIG5lZWRlZCcpO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gcGFyc2VCdWNrZXROYW1lKHByb3BzOiBCdWNrZXRSZWZQcm9wcykge1xuXG4gICAgLy8gaWYgd2UgaGF2ZSBhbiBleHBsaWNpdCBidWNrZXQgbmFtZSwgdXNlIGl0LlxuICAgIGlmIChwcm9wcy5idWNrZXROYW1lKSB7XG4gICAgICAgIHJldHVybiBwcm9wcy5idWNrZXROYW1lO1xuICAgIH1cblxuICAgIC8vIGlmIHdlIGhhdmUgYSBzdHJpbmcgYXJuLCB3ZSBjYW4gZXh0cmFjdCB0aGUgYnVja2V0IG5hbWUgZnJvbSBpdC5cbiAgICBpZiAocHJvcHMuYnVja2V0QXJuKSB7XG4gICAgICAgIGNvbnN0IHJlc29sdmVkID0gcHJvcHMuYnVja2V0QXJuLnJlc29sdmUoKTtcbiAgICAgICAgaWYgKHR5cGVvZihyZXNvbHZlZCkgPT09ICdzdHJpbmcnKSB7XG4gICAgICAgICAgICBjb25zdCBjb21wb25lbnRzID0gQXJuLnBhcnNlKHJlc29sdmVkKTtcbiAgICAgICAgICAgIGlmIChjb21wb25lbnRzLnNlcnZpY2UgIT09ICdzMycpIHtcbiAgICAgICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoJ0ludmFsaWQgQVJOLiBFeHBlY3RpbmcgXCJzM1wiIHNlcnZpY2U6JyArIHJlc29sdmVkKTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgIGlmIChjb21wb25lbnRzLnJlc291cmNlTmFtZSkge1xuICAgICAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcihgQnVja2V0IEFSTiBtdXN0IG5vdCBjb250YWluIGEgcGF0aGApO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgcmV0dXJuIGNvbXBvbmVudHMucmVzb3VyY2U7XG4gICAgICAgIH1cbiAgICB9XG5cbiAgICAvLyBubyBidWNrZXQgbmFtZSBpcyBva2F5IHNpbmNlIGl0J3Mgb3B0aW9uYWwuXG4gICAgcmV0dXJuIHVuZGVmaW5lZDtcbn1cblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAvcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL3MzL2xpYi91dGlsLnRzIiwiLyoqXG4gKiBEZWNsYXJhdGlvbiBvZiBhIExpZmUgY3ljbGUgcnVsZVxuICovXG5leHBvcnQgaW50ZXJmYWNlIExpZmVjeWNsZVJ1bGUge1xuICAgIC8qKlxuICAgICAqIEEgdW5pcXVlIGlkZW50aWZpZXIgZm9yIHRoaXMgcnVsZS4gVGhlIHZhbHVlIGNhbm5vdCBiZSBtb3JlIHRoYW4gMjU1IGNoYXJhY3RlcnMuXG4gICAgICovXG4gICAgaWQ/OiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBXaGV0aGVyIHRoaXMgcnVsZSBpcyBlbmFibGVkLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgdHJ1ZVxuICAgICAqL1xuICAgIGVuYWJsZWQ/OiBib29sZWFuO1xuXG4gICAgLyoqXG4gICAgICogU3BlY2lmaWVzIGEgbGlmZWN5Y2xlIHJ1bGUgdGhhdCBhYm9ydHMgaW5jb21wbGV0ZSBtdWx0aXBhcnQgdXBsb2FkcyB0byBhbiBBbWF6b24gUzMgYnVja2V0LlxuICAgICAqXG4gICAgICogVGhlIEFib3J0SW5jb21wbGV0ZU11bHRpcGFydFVwbG9hZCBwcm9wZXJ0eSB0eXBlIGNyZWF0ZXMgYSBsaWZlY3ljbGVcbiAgICAgKiBydWxlIHRoYXQgYWJvcnRzIGluY29tcGxldGUgbXVsdGlwYXJ0IHVwbG9hZHMgdG8gYW4gQW1hem9uIFMzIGJ1Y2tldC5cbiAgICAgKiBXaGVuIEFtYXpvbiBTMyBhYm9ydHMgYSBtdWx0aXBhcnQgdXBsb2FkLCBpdCBkZWxldGVzIGFsbCBwYXJ0c1xuICAgICAqIGFzc29jaWF0ZWQgd2l0aCB0aGUgbXVsdGlwYXJ0IHVwbG9hZC5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IEluY29tcGxldGUgdXBsb2FkcyBhcmUgbmV2ZXIgYWJvcnRlZFxuICAgICAqL1xuICAgIGFib3J0SW5jb21wbGV0ZU11bHRpcGFydFVwbG9hZEFmdGVyRGF5cz86IG51bWJlcjtcblxuICAgIC8qKlxuICAgICAqIEluZGljYXRlcyB3aGVuIG9iamVjdHMgYXJlIGRlbGV0ZWQgZnJvbSBBbWF6b24gUzMgYW5kIEFtYXpvbiBHbGFjaWVyLlxuICAgICAqXG4gICAgICogVGhlIGRhdGUgdmFsdWUgbXVzdCBiZSBpbiBJU08gODYwMSBmb3JtYXQuIFRoZSB0aW1lIGlzIGFsd2F5cyBtaWRuaWdodCBVVEMuXG4gICAgICpcbiAgICAgKiBJZiB5b3Ugc3BlY2lmeSBhbiBleHBpcmF0aW9uIGFuZCB0cmFuc2l0aW9uIHRpbWUsIHlvdSBtdXN0IHVzZSB0aGUgc2FtZVxuICAgICAqIHRpbWUgdW5pdCBmb3IgYm90aCBwcm9wZXJ0aWVzIChlaXRoZXIgaW4gZGF5cyBvciBieSBkYXRlKS4gVGhlXG4gICAgICogZXhwaXJhdGlvbiB0aW1lIG11c3QgYWxzbyBiZSBsYXRlciB0aGFuIHRoZSB0cmFuc2l0aW9uIHRpbWUuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBObyBleHBpcmF0aW9uIGRhdGVcbiAgICAgKi9cbiAgICBleHBpcmF0aW9uRGF0ZT86IERhdGU7XG5cbiAgICAvKipcbiAgICAgKiBJbmRpY2F0ZXMgdGhlIG51bWJlciBvZiBkYXlzIGFmdGVyIGNyZWF0aW9uIHdoZW4gb2JqZWN0cyBhcmUgZGVsZXRlZCBmcm9tIEFtYXpvbiBTMyBhbmQgQW1hem9uIEdsYWNpZXIuXG4gICAgICpcbiAgICAgKiBJZiB5b3Ugc3BlY2lmeSBhbiBleHBpcmF0aW9uIGFuZCB0cmFuc2l0aW9uIHRpbWUsIHlvdSBtdXN0IHVzZSB0aGUgc2FtZVxuICAgICAqIHRpbWUgdW5pdCBmb3IgYm90aCBwcm9wZXJ0aWVzIChlaXRoZXIgaW4gZGF5cyBvciBieSBkYXRlKS4gVGhlXG4gICAgICogZXhwaXJhdGlvbiB0aW1lIG11c3QgYWxzbyBiZSBsYXRlciB0aGFuIHRoZSB0cmFuc2l0aW9uIHRpbWUuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBObyBleHBpcmF0aW9uIHRpbWVvdXRcbiAgICAgKi9cbiAgICBleHBpcmF0aW9uSW5EYXlzPzogbnVtYmVyO1xuXG4gICAgLyoqXG4gICAgICogVGltZSBiZXR3ZWVuIHdoZW4gYSBuZXcgdmVyc2lvbiBvZiB0aGUgb2JqZWN0IGlzIHVwbG9hZGVkIHRvIHRoZSBidWNrZXQgYW5kIHdoZW4gb2xkIHZlcnNpb25zIG9mIHRoZSBvYmplY3QgZXhwaXJlLlxuICAgICAqXG4gICAgICogRm9yIGJ1Y2tldHMgd2l0aCB2ZXJzaW9uaW5nIGVuYWJsZWQgKG9yIHN1c3BlbmRlZCksIHNwZWNpZmllcyB0aGUgdGltZSxcbiAgICAgKiBpbiBkYXlzLCBiZXR3ZWVuIHdoZW4gYSBuZXcgdmVyc2lvbiBvZiB0aGUgb2JqZWN0IGlzIHVwbG9hZGVkIHRvIHRoZVxuICAgICAqIGJ1Y2tldCBhbmQgd2hlbiBvbGQgdmVyc2lvbnMgb2YgdGhlIG9iamVjdCBleHBpcmUuIFdoZW4gb2JqZWN0IHZlcnNpb25zXG4gICAgICogZXhwaXJlLCBBbWF6b24gUzMgcGVybWFuZW50bHkgZGVsZXRlcyB0aGVtLiBJZiB5b3Ugc3BlY2lmeSBhIHRyYW5zaXRpb25cbiAgICAgKiBhbmQgZXhwaXJhdGlvbiB0aW1lLCB0aGUgZXhwaXJhdGlvbiB0aW1lIG11c3QgYmUgbGF0ZXIgdGhhbiB0aGVcbiAgICAgKiB0cmFuc2l0aW9uIHRpbWUuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBObyBub25jdXJyZW50IHZlcnNpb24gZXhwaXJhdGlvblxuICAgICAqL1xuICAgIG5vbmN1cnJlbnRWZXJzaW9uRXhwaXJhdGlvbkluRGF5cz86IG51bWJlcjtcblxuICAgIC8qKlxuICAgICAqIE9uZSBvciBtb3JlIHRyYW5zaXRpb24gcnVsZXMgdGhhdCBzcGVjaWZ5IHdoZW4gbm9uLWN1cnJlbnQgb2JqZWN0cyB0cmFuc2l0aW9uIHRvIGEgc3BlY2lmaWVkIHN0b3JhZ2UgY2xhc3MuXG4gICAgICpcbiAgICAgKiBPbmx5IGZvciBmb3IgYnVja2V0cyB3aXRoIHZlcnNpb25pbmcgZW5hYmxlZCAob3Igc3VzcGVuZGVkKS5cbiAgICAgKlxuICAgICAqIElmIHlvdSBzcGVjaWZ5IGEgdHJhbnNpdGlvbiBhbmQgZXhwaXJhdGlvbiB0aW1lLCB0aGUgZXhwaXJhdGlvbiB0aW1lXG4gICAgICogbXVzdCBiZSBsYXRlciB0aGFuIHRoZSB0cmFuc2l0aW9uIHRpbWUuXG4gICAgICovXG4gICAgbm9uY3VycmVudFZlcnNpb25UcmFuc2l0aW9ucz86IE5vbmN1cnJlbnRWZXJzaW9uVHJhbnNpdGlvbltdO1xuXG4gICAgLyoqXG4gICAgICogT25lIG9yIG1vcmUgdHJhbnNpdGlvbiBydWxlcyB0aGF0IHNwZWNpZnkgd2hlbiBhbiBvYmplY3QgdHJhbnNpdGlvbnMgdG8gYSBzcGVjaWZpZWQgc3RvcmFnZSBjbGFzcy5cbiAgICAgKlxuICAgICAqIElmIHlvdSBzcGVjaWZ5IGFuIGV4cGlyYXRpb24gYW5kIHRyYW5zaXRpb24gdGltZSwgeW91IG11c3QgdXNlIHRoZSBzYW1lXG4gICAgICogdGltZSB1bml0IGZvciBib3RoIHByb3BlcnRpZXMgKGVpdGhlciBpbiBkYXlzIG9yIGJ5IGRhdGUpLiBUaGVcbiAgICAgKiBleHBpcmF0aW9uIHRpbWUgbXVzdCBhbHNvIGJlIGxhdGVyIHRoYW4gdGhlIHRyYW5zaXRpb24gdGltZS5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IE5vIHRyYW5zaXRpb24gcnVsZXNcbiAgICAgKi9cbiAgICB0cmFuc2l0aW9ucz86IFRyYW5zaXRpb25bXTtcblxuICAgIC8qKlxuICAgICAqIE9iamVjdCBrZXkgcHJlZml4IHRoYXQgaWRlbnRpZmllcyBvbmUgb3IgbW9yZSBvYmplY3RzIHRvIHdoaWNoIHRoaXMgcnVsZSBhcHBsaWVzLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgUnVsZSBhcHBsaWVzIHRvIGFsbCBvYmplY3RzXG4gICAgICovXG4gICAgcHJlZml4Pzogc3RyaW5nO1xuXG4gICAgLyoqXG4gICAgICogVGhlIFRhZ0ZpbHRlciBwcm9wZXJ0eSB0eXBlIHNwZWNpZmllcyB0YWdzIHRvIHVzZSB0byBpZGVudGlmeSBhIHN1YnNldCBvZiBvYmplY3RzIGZvciBhbiBBbWF6b24gUzMgYnVja2V0LlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgUnVsZSBhcHBsaWVzIHRvIGFsbCBvYmplY3RzXG4gICAgICovXG4gICAgdGFnRmlsdGVycz86IHtbdGFnOiBzdHJpbmddOiBhbnl9O1xufVxuXG4vKipcbiAqIERlc2NyaWJlcyB3aGVuIGFuIG9iamVjdCB0cmFuc2l0aW9ucyB0byBhIHNwZWNpZmllZCBzdG9yYWdlIGNsYXNzLlxuICovXG5leHBvcnQgaW50ZXJmYWNlIFRyYW5zaXRpb24ge1xuICAgIC8qKlxuICAgICAqIFRoZSBzdG9yYWdlIGNsYXNzIHRvIHdoaWNoIHlvdSB3YW50IHRoZSBvYmplY3QgdG8gdHJhbnNpdGlvbi5cbiAgICAgKi9cbiAgICBzdG9yYWdlQ2xhc3M6IFN0b3JhZ2VDbGFzcztcblxuICAgIC8qKlxuICAgICAqIEluZGljYXRlcyB3aGVuIG9iamVjdHMgYXJlIHRyYW5zaXRpb25lZCB0byB0aGUgc3BlY2lmaWVkIHN0b3JhZ2UgY2xhc3MuXG4gICAgICpcbiAgICAgKiBUaGUgZGF0ZSB2YWx1ZSBtdXN0IGJlIGluIElTTyA4NjAxIGZvcm1hdC4gVGhlIHRpbWUgaXMgYWx3YXlzIG1pZG5pZ2h0IFVUQy5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IE5vIHRyYW5zaXRpb24gZGF0ZS5cbiAgICAgKi9cbiAgICB0cmFuc2l0aW9uRGF0ZT86IERhdGU7XG5cbiAgICAvKipcbiAgICAgKiBJbmRpY2F0ZXMgdGhlIG51bWJlciBvZiBkYXlzIGFmdGVyIGNyZWF0aW9uIHdoZW4gb2JqZWN0cyBhcmUgdHJhbnNpdGlvbmVkIHRvIHRoZSBzcGVjaWZpZWQgc3RvcmFnZSBjbGFzcy5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IE5vIHRyYW5zaXRpb24gY291bnQuXG4gICAgICovXG4gICAgdHJhbnNpdGlvbkluRGF5cz86IG51bWJlcjtcbn1cblxuLyoqXG4gKiBEZXNjcmliZXMgd2hlbiBub25jdXJyZW50IHZlcnNpb25zIHRyYW5zaXRpb24gdG8gYSBzcGVjaWZpZWQgc3RvcmFnZSBjbGFzcy5cbiAqL1xuZXhwb3J0IGludGVyZmFjZSBOb25jdXJyZW50VmVyc2lvblRyYW5zaXRpb24ge1xuICAgIC8qKlxuICAgICAqIFRoZSBzdG9yYWdlIGNsYXNzIHRvIHdoaWNoIHlvdSB3YW50IHRoZSBvYmplY3QgdG8gdHJhbnNpdGlvbi5cbiAgICAgKi9cbiAgICBzdG9yYWdlQ2xhc3M6IFN0b3JhZ2VDbGFzcztcblxuICAgIC8qKlxuICAgICAqIEluZGljYXRlcyB0aGUgbnVtYmVyIG9mIGRheXMgYWZ0ZXIgY3JlYXRpb24gd2hlbiBvYmplY3RzIGFyZSB0cmFuc2l0aW9uZWQgdG8gdGhlIHNwZWNpZmllZCBzdG9yYWdlIGNsYXNzLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgTm8gdHJhbnNpdGlvbiBjb3VudC5cbiAgICAgKi9cbiAgICB0cmFuc2l0aW9uSW5EYXlzOiBudW1iZXI7XG59XG5cbi8qKlxuICogU3RvcmFnZSBjbGFzcyB0byBtb3ZlIGFuIG9iamVjdCB0b1xuICovXG5leHBvcnQgZW51bSBTdG9yYWdlQ2xhc3Mge1xuICAgIC8qKlxuICAgICAqIFN0b3JhZ2UgY2xhc3MgZm9yIGRhdGEgdGhhdCBpcyBhY2Nlc3NlZCBsZXNzIGZyZXF1ZW50bHksIGJ1dCByZXF1aXJlcyByYXBpZCBhY2Nlc3Mgd2hlbiBuZWVkZWQuXG4gICAgICpcbiAgICAgKiBIYXMgbG93ZXIgYXZhaWxhYmlsaXR5IHRoYW4gU3RhbmRhcmQgc3RvcmFnZS5cbiAgICAgKi9cbiAgICBJbmZyZXF1ZW50QWNjZXNzID0gJ1NUQU5EQVJEX0lBJyxcblxuICAgIC8qKlxuICAgICAqIEluZnJlcXVlbnQgQWNjZXNzIHRoYXQncyBvbmx5IHN0b3JlZCBpbiBvbmUgYXZhaWxhYmlsaXR5IHpvbmUuXG4gICAgICpcbiAgICAgKiBIYXMgbG93ZXIgYXZhaWxhYmlsaXR5IHRoYW4gc3RhbmRhcmQgSW5mcmVxdWVudEFjY2Vzcy5cbiAgICAgKi9cbiAgICBPbmVab25lSW5mcmVxdWVudEFjY2VzcyA9ICdPTkVaT05FX0lBJyxcblxuICAgIC8qKlxuICAgICAqIFN0b3JhZ2UgY2xhc3MgZm9yIGxvbmctdGVybSBhcmNoaXZhbCB0aGF0IGNhbiB0YWtlIGJldHdlZW4gbWludXRlcyBhbmQgaG91cnMgdG8gYWNjZXNzLlxuICAgICAqL1xuICAgIEdsYWNpZXIgPSAnR0xBQ0lFUidcbn1cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9zMy9saWIvcnVsZS50cyJdLCJzb3VyY2VSb290IjoiIn0="
+}

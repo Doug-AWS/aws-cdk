@@ -1,0 +1,1457 @@
+{
+  "schema": "jsii/1.0",
+  "types": {
+    "jsii$_aws_cdk_codecommit$.RepositoryRefProps": {
+      "docs": {
+        "comment": "Properties for the {@link RepositoryRef.import} method."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The name of an existing CodeCommit Repository that we are referencing.\nMust be in the same account and region as the root Stack."
+          },
+          "name": "repositoryName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryName"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codecommit$.RepositoryRefProps",
+      "module": "jsii$_aws_cdk_codecommit$",
+      "namespace": "jsii$_aws_cdk_codecommit$",
+      "name": "RepositoryRefProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_codecommit$.RepositoryRef": {
+      "docs": {
+        "comment": "Represents a reference to a CodeCommit Repository.\n\nIf you want to create a new Repository managed alongside your CDK code,\nuse the {@link Repository} class.\n\nIf you want to reference an already existing Repository,\nuse the {@link RepositoryRef.import} method."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of this Repository. "
+          },
+          "name": "repositoryArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryArn"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The human-visible name of this Repository. "
+          },
+          "name": "repositoryName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryName"
+          },
+          "immutable": true,
+          "abstract": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "parent the parent Construct for the Repository",
+                "comment": "the parent Construct for the Repository"
+              },
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "docs": {
+                "param": "name the name of the Repository Construct",
+                "comment": "the name of the Repository Construct"
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "props the properties used to identify the existing Repository",
+                "comment": "the properties used to identify the existing Repository"
+              },
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_codecommit$.RepositoryRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "a reference to the existing Repository",
+            "comment": "Import a Repository defined either outside the CDK, or in a different Stack\n(exported with the {@link export} method)."
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_codecommit$.RepositoryRef"
+          }
+        },
+        {
+          "docs": {
+            "see": "import",
+            "comment": "Exports this Repository. Allows the same Repository to be used in 2 different Stacks."
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_codecommit$.RepositoryRefProps"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines a CloudWatch event rule which triggers for repository events. Use\n`rule.addEventPattern(pattern)` to specify a filter."
+          },
+          "name": "onEvent",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines a CloudWatch event rule which triggers when a \"CodeCommit\nRepository State Change\" event occurs."
+          },
+          "name": "onStateChange",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines a CloudWatch event rule which triggers when a reference is\ncreated (i.e. a new brach/tag is created) to the repository."
+          },
+          "name": "onReferenceCreated",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines a CloudWatch event rule which triggers when a reference is\nupdated (i.e. a commit is pushed to an existig branch) from the repository."
+          },
+          "name": "onReferenceUpdated",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines a CloudWatch event rule which triggers when a reference is\ndelete (i.e. a branch/tag is deleted) from the repository."
+          },
+          "name": "onReferenceDeleted",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines a CloudWatch event rule which triggers when a pull request state is changed."
+          },
+          "name": "onPullRequestStateChange",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines a CloudWatch event rule which triggers when a comment is made on a pull request."
+          },
+          "name": "onCommentOnPullRequest",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines a CloudWatch event rule which triggers when a comment is made on a commit."
+          },
+          "name": "onCommentOnCommit",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "target The target of the event",
+                "comment": "The target of the event"
+              },
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "docs": {
+                "param": "branch The branch to monitor. Defaults to all branches.",
+                "comment": "The branch to monitor. Defaults to all branches."
+              },
+              "name": "branch",
+              "type": {
+                "primitive": "string",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines a CloudWatch event rule which triggers when a commit is pushed to a branch."
+          },
+          "name": "onCommit",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codecommit$.RepositoryRef",
+      "module": "jsii$_aws_cdk_codecommit$",
+      "namespace": "jsii$_aws_cdk_codecommit$",
+      "name": "RepositoryRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codecommit$.RepositoryProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Name of the repository. This property is required for all repositories."
+          },
+          "name": "repositoryName",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "comment": "A description of the repository. Use the description to identify the\npurpose of the repository."
+          },
+          "name": "description",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codecommit$.RepositoryProps",
+      "module": "jsii$_aws_cdk_codecommit$",
+      "namespace": "jsii$_aws_cdk_codecommit$",
+      "name": "RepositoryProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_codecommit$.Repository": {
+      "docs": {
+        "comment": "Provides a CodeCommit Repository"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of this Repository. "
+          },
+          "name": "repositoryArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryArn"
+          },
+          "immutable": true
+        },
+        {
+          "name": "repositoryCloneUrlHttp",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryCloneUrlHttp"
+          },
+          "immutable": true
+        },
+        {
+          "name": "repositoryCloneUrlSsh",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryCloneUrlSsh"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The human-visible name of this Repository. "
+          },
+          "name": "repositoryName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryName"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "arn Arn of the resource that repository events will notify",
+                "comment": "Arn of the resource that repository events will notify"
+              },
+              "name": "arn",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "options Trigger options to run actions",
+                "comment": "Trigger options to run actions"
+              },
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_codecommit$.RepositoryTriggerOptions",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Create a trigger to notify another service to run actions on repository events."
+          },
+          "name": "notify",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_codecommit$.Repository"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codecommit$.Repository",
+      "module": "jsii$_aws_cdk_codecommit$",
+      "namespace": "jsii$_aws_cdk_codecommit$",
+      "name": "Repository",
+      "base": {
+        "fqn": "jsii$_aws_cdk_codecommit$.RepositoryRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_codecommit$.RepositoryProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codecommit$.RepositoryTriggerOptions": {
+      "docs": {
+        "comment": "Creates for a repository trigger to an SNS topic or Lambda function."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "A name for the trigger.Triggers on a repository must have unique names"
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The repository events for which AWS CodeCommit sends information to the\ntarget, which you specified in the DestinationArn property.If you don't\nspecify events, the trigger runs for all repository events."
+          },
+          "name": "events",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_codecommit$.RepositoryEventTrigger"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The names of the branches in the AWS CodeCommit repository that contain\nevents that you want to include in the trigger. If you don't specify at\nleast one branch, the trigger applies to all branches."
+          },
+          "name": "branches",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "When an event is triggered, additional information that AWS CodeCommit\nincludes when it sends information to the target."
+          },
+          "name": "customData",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codecommit$.RepositoryTriggerOptions",
+      "module": "jsii$_aws_cdk_codecommit$",
+      "namespace": "jsii$_aws_cdk_codecommit$",
+      "name": "RepositoryTriggerOptions",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_codecommit$.RepositoryEventTrigger": {
+      "docs": {
+        "comment": "Repository events that will cause the trigger to run actions in another service."
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "All"
+        },
+        {
+          "name": "UpdateRef"
+        },
+        {
+          "name": "CreateRef"
+        },
+        {
+          "name": "DeleteRef"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codecommit$.RepositoryEventTrigger",
+      "module": "jsii$_aws_cdk_codecommit$",
+      "namespace": "jsii$_aws_cdk_codecommit$",
+      "name": "RepositoryEventTrigger"
+    }
+  },
+  "nametree": {
+    "jsii$_aws_cdk_codecommit$": {
+      "RepositoryRefProps": {
+        "_": "jsii$_aws_cdk_codecommit$.RepositoryRefProps"
+      },
+      "RepositoryRef": {
+        "_": "jsii$_aws_cdk_codecommit$.RepositoryRef"
+      },
+      "RepositoryProps": {
+        "_": "jsii$_aws_cdk_codecommit$.RepositoryProps"
+      },
+      "Repository": {
+        "_": "jsii$_aws_cdk_codecommit$.Repository"
+      },
+      "RepositoryTriggerOptions": {
+        "_": "jsii$_aws_cdk_codecommit$.RepositoryTriggerOptions"
+      },
+      "RepositoryEventTrigger": {
+        "_": "jsii$_aws_cdk_codecommit$.RepositoryEventTrigger"
+      }
+    }
+  },
+  "typecount": 6,
+  "externalTypes": {
+    "jsii$_aws_cdk_resources$.codecommit.RepositoryName": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryName",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.codecommit",
+      "name": "RepositoryName",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.Construct": {
+      "docs": {
+        "comment": "Represents the building block of the construct graph.\nWhen a construct is created, it is always added as a child"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the parent of this node or undefined if this is a root node."
+          },
+          "name": "parent",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of this construct"
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "All direct children of this construct."
+          },
+          "name": "children",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "returns": "/-separated path of this Construct.",
+            "comment": "Returns the path of all constructs from root to this construct, in string form."
+          },
+          "name": "path",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "An array of metadata objects associated with this construct.\nThis can be used, for example, to implement support for deprecation notices, source mapping, etc."
+          },
+          "name": "metadata",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.MetadataEntry"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "docs": {
+            "comment": "Returns a string representation of this construct."
+          },
+          "name": "toString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "depth",
+              "type": {
+                "primitive": "number",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Returns a string with a tree representation of this construct and it's children."
+          },
+          "name": "toTreeString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "a child by path or undefined if not found.",
+            "comment": "Return a descendant by path, or undefined"
+          },
+          "name": "tryFindChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "Child with the given path.",
+            "comment": "Return a descendant by path\n\nThrows an exception if the descendant is not found."
+          },
+          "name": "findChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "value The context value",
+                "comment": "The context value"
+              },
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "This can be used to set contextual values.\nContext must be set before any children are added, since children may consult context info during construction.\nIf the key already exists, it will be overridden."
+          },
+          "name": "setContext"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The context value or undefined",
+            "comment": "Retrieves a value from tree context.\n\nContext is usually initialized at the root, but can be overridden at any point in the tree."
+          },
+          "name": "getContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Retrieve a value from tree-global context\n\nIt is an error if the context object is not available."
+          },
+          "name": "requireContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "type a string denoting the type of metadata",
+                "comment": "a string denoting the type of metadata"
+              },
+              "name": "type",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "data the value of the metadata (can be a Token). If null/undefined, metadata will not be added.",
+                "comment": "the value of the metadata (can be a Token). If null/undefined, metadata will not be added."
+              },
+              "name": "data",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "from a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)",
+                "comment": "a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)"
+              },
+              "name": "from",
+              "type": {
+                "primitive": "any",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a metadata entry to this construct.\nEntries are arbitrary values and will also include a stack trace to allow tracing back to\nthe code location for when the entry was added. It can be used, for example, to include source\nmapping in CloudFormation templates to improve diagnostics."
+          },
+          "name": "addMetadata",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "message The warning message.",
+                "comment": "The warning message."
+              },
+              "name": "message",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a { warning: <message> } metadata entry to this construct."
+          },
+          "name": "addWarning",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "docs": {
+            "returns": "An array of validation error messages, or an empty array if there the construct is valid.",
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "returns": "A list of validation errors. If the list is empty, all constructs are valid.",
+            "comment": "Invokes 'validate' on all child constructs and then on this construct (depth-first)."
+          },
+          "name": "validateTree",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.ValidationError"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "upTo",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Return the ancestors (including self) of this Construct up until and excluding the indicated component"
+          },
+          "name": "ancestors",
+          "protected": true,
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "props The props bag.",
+                "comment": "The props bag."
+              },
+              "name": "props",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the required property.",
+                "comment": "The name of the required property."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Throws if the `props` bag doesn't include the property `name`.\nIn the future we can add some type-checking here, maybe even auto-generate during compilation."
+          },
+          "name": "required",
+          "protected": true,
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "child The child construct",
+                "comment": "The child construct"
+              },
+              "name": "child",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "childName",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The resolved path part name of the child",
+            "comment": "Adds a child construct to this node."
+          },
+          "name": "addChild",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Locks this construct from allowing more children to be added. After this\ncall, no more children can be added to this construct or to any children."
+          },
+          "name": "lock",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Unlocks this costruct and allows mutations (adding children)."
+          },
+          "name": "unlock",
+          "protected": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Construct",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Construct",
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.codecommit.RepositoryArn": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryArn",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.codecommit",
+      "name": "RepositoryArn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Arn"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_events$.EventRule": {
+      "docs": {
+        "comment": "Defines a CloudWatch Event Rule in this stack."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The value of the event rule Amazon Resource Name (ARN), such as\narn:aws:events:us-east-2:123456789012:rule/example."
+          },
+          "name": "ruleArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleArn"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "inputOptions",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.TargetInputTemplate",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a target to the rule. The abstract class RuleTarget can be extended to define new\ntargets.\n\nNo-op if target is undefined."
+          },
+          "name": "addTarget"
+        },
+        {
+          "parameters": [
+            {
+              "name": "eventPattern",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventPattern",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds an event pattern filter to this rule. If a pattern was already specified,\nthese values are merged into the existing pattern.\n\nFor example, if the rule already contains the pattern:\n\n      {\n          \"resources\": [ \"r1\" ],\n          \"detail\": {\n              \"hello\": [ 1 ]\n          }\n      }\n\nAnd `addEventPattern` is called with the pattern:\n\n      {\n          \"resources\": [ \"r2\" ],\n          \"detail\": {\n              \"foo\": [ \"bar\" ]\n          }\n      }\n\nThe resulting event pattern will be:\n\n      {\n          \"resources\": [ \"r1\", \"r2\" ],\n          \"detail\": {\n              \"hello\": [ 1 ],\n              \"foo\": [ \"bar\" ]\n          }\n      }"
+          },
+          "name": "addEventPattern"
+        },
+        {
+          "docs": {
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.EventRule",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "EventRule",
+      "base": {
+        "fqn": "jsii$_aws_cdk_events$.EventRuleRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+              "optional": true
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_events$.IEventRuleTarget": {
+      "docs": {
+        "comment": "An abstract target for EventRules."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the rule target specification.\nNOTE: Do not use the various `inputXxx` options. They can be set in a call to `addTarget`."
+          },
+          "name": "eventRuleTarget",
+          "type": {
+            "fqn": "jsii$_aws_cdk_events$.EventRuleTarget"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "IEventRuleTarget",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_events$.EventRuleProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "A description of the rule's purpose."
+          },
+          "name": "description",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "A name for the rule. If you don't specify a name, AWS CloudFormation\ngenerates a unique physical ID and uses that ID for the rule name. For\nmore information, see Name Type."
+          },
+          "name": "ruleName",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "Rule is enabled",
+            "comment": "Indicates whether the rule is enabled."
+          },
+          "name": "enabled",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "see": "http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html\n\nYou must specify this property, the `eventPattern` property, or both.",
+            "comment": "The schedule or rate (frequency) that determines when CloudWatch Events\nruns the rule. For more information, see Schedule Expression Syntax for\nRules in the Amazon CloudWatch User Guide."
+          },
+          "name": "scheduleExpression",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "see": "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CloudWatchEventsandEventPatterns.html\n\nYou must specify this property (either via props or via\n`addEventPattern`), the `scheduleExpression` property, or both. The\nmethod `addEventPattern` can be used to add filter values to the event\npattern.",
+            "comment": "Describes which events CloudWatch Events routes to the specified target.\nThese routed events are matched events. For more information, see Events\nand Event Patterns in the Amazon CloudWatch User Guide."
+          },
+          "name": "eventPattern",
+          "type": {
+            "fqn": "jsii$_aws_cdk_events$.EventPattern",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Targets to invoke when this rule matches an event.\n\nInput will be the full matched event. If you wish to specify custom\ntarget input, use `addTarget(target[, inputOptions])`."
+          },
+          "name": "targets",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "EventRuleProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_resources$.codecommit.RepositoryCloneUrlHttp": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryCloneUrlHttp",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.codecommit",
+      "name": "RepositoryCloneUrlHttp",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.codecommit.RepositoryCloneUrlSsh": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryCloneUrlSsh",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.codecommit",
+      "name": "RepositoryCloneUrlSsh",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    }
+  },
+  "name": "jsii$_aws_cdk_codecommit$",
+  "package": "@aws-cdk/codecommit",
+  "version": "0.7.2-beta",
+  "dependencies": {
+    "jsii$_aws_cdk_core$": {
+      "package": "@aws-cdk/core",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_events$": {
+      "package": "@aws-cdk/events",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "package": "@aws-cdk/iam",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "package": "@aws-cdk/resources",
+      "version": "0.7.2-beta"
+    }
+  },
+  "names": {
+    "java": "com.amazonaws.cdk.codecommit",
+    "dotnet": "AWS.Cdk.CodeCommit",
+    "js": "@aws-cdk/codecommit"
+  },
+  "nativenames": {
+    "jsii$_aws_cdk_core$": {
+      "java": "com.amazonaws.cdk",
+      "dotnet": "AWS.Cdk",
+      "js": "@aws-cdk/core"
+    },
+    "jsii$_aws_cdk_events$": {
+      "java": "com.amazonaws.cdk.events",
+      "dotnet": "AWS.Cdk.Events",
+      "js": "@aws-cdk/events"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "java": "com.amazonaws.cdk.iam",
+      "dotnet": "AWS.Cdk.Iam",
+      "js": "@aws-cdk/iam"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "java": "com.amazonaws.cdk.resources",
+      "dotnet": "AWS.Cdk.Resources",
+      "js": "@aws-cdk/resources"
+    },
+    "jsii$_aws_cdk_codecommit$": {
+      "java": "com.amazonaws.cdk.codecommit",
+      "dotnet": "AWS.Cdk.CodeCommit",
+      "js": "@aws-cdk/codecommit"
+    }
+  },
+  "readme": {
+    "markdown": "## AWS CodeCommit Construct Library\n\nTo add a CodeCommit Repository to your stack:\n\n```ts\nimport { Repository } from '@aws-cdk/codecommit';\n\nconst repository = new Repository(stack, 'Repository' ,{\n    repositoryName: 'MyRepositoryName'\n});\n```\n\nTo add an SNS trigger to your repository:\n\n```ts\nimport { Repository } from '@aws-cdk/codecommit';\n\nconst repository = new Repository(stack, 'Repository', {\n    repositoryName: 'MyRepositoryName'\n});\n\n// trigger is established for all repository actions on all branches by default.\nrepository.notify('arn:aws:sns:*:123456789012:my_topic');\n```\n\n### Events\n\nCodeCommit repositories emit CloudWatch events for certain activity. Use the\n`repo.onXxx` methods to define rules that trigger on these events and invoke\ntargets as a result:\n\n```ts\n// starts a CodeBuild project when a commit is pushed to the \"master\" branch of the repo\nrepo.onCommit('CommitToMaster', buildProject, 'master');\n\n// publishes a message to an SNS topic when a comment is made on a pull request\nconst rule = repo.onCommentOnPullRequest('CommentOnPullRequest');\nrule.addTarget(myTopic);\n```\n"
+  },
+  "code": "var jsii$_aws_cdk_codecommit$ =\n/******/ (function(modules) { // webpackBootstrap\n/******/ \t// The module cache\n/******/ \tvar installedModules = {};\n/******/\n/******/ \t// The require function\n/******/ \tfunction __webpack_require__(moduleId) {\n/******/\n/******/ \t\t// Check if module is in cache\n/******/ \t\tif(installedModules[moduleId]) {\n/******/ \t\t\treturn installedModules[moduleId].exports;\n/******/ \t\t}\n/******/ \t\t// Create a new module (and put it into the cache)\n/******/ \t\tvar module = installedModules[moduleId] = {\n/******/ \t\t\ti: moduleId,\n/******/ \t\t\tl: false,\n/******/ \t\t\texports: {}\n/******/ \t\t};\n/******/\n/******/ \t\t// Execute the module function\n/******/ \t\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\n/******/\n/******/ \t\t// Flag the module as loaded\n/******/ \t\tmodule.l = true;\n/******/\n/******/ \t\t// Return the exports of the module\n/******/ \t\treturn module.exports;\n/******/ \t}\n/******/\n/******/\n/******/ \t// expose the modules object (__webpack_modules__)\n/******/ \t__webpack_require__.m = modules;\n/******/\n/******/ \t// expose the module cache\n/******/ \t__webpack_require__.c = installedModules;\n/******/\n/******/ \t// define getter function for harmony exports\n/******/ \t__webpack_require__.d = function(exports, name, getter) {\n/******/ \t\tif(!__webpack_require__.o(exports, name)) {\n/******/ \t\t\tObject.defineProperty(exports, name, {\n/******/ \t\t\t\tconfigurable: false,\n/******/ \t\t\t\tenumerable: true,\n/******/ \t\t\t\tget: getter\n/******/ \t\t\t});\n/******/ \t\t}\n/******/ \t};\n/******/\n/******/ \t// getDefaultExport function for compatibility with non-harmony modules\n/******/ \t__webpack_require__.n = function(module) {\n/******/ \t\tvar getter = module && module.__esModule ?\n/******/ \t\t\tfunction getDefault() { return module['default']; } :\n/******/ \t\t\tfunction getModuleExports() { return module; };\n/******/ \t\t__webpack_require__.d(getter, 'a', getter);\n/******/ \t\treturn getter;\n/******/ \t};\n/******/\n/******/ \t// Object.prototype.hasOwnProperty.call\n/******/ \t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\n/******/\n/******/ \t// __webpack_public_path__\n/******/ \t__webpack_require__.p = \"\";\n/******/\n/******/ \t// Load entry module and return exports\n/******/ \treturn __webpack_require__(__webpack_require__.s = 0);\n/******/ })\n/************************************************************************/\n/******/ ([\n/* 0 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(1));\n\n\n/***/ }),\n/* 1 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(2);\nconst events_1 = __webpack_require__(3);\nconst resources_1 = __webpack_require__(4);\n/**\n * Represents a reference to a CodeCommit Repository.\n *\n * If you want to create a new Repository managed alongside your CDK code,\n * use the {@link Repository} class.\n *\n * If you want to reference an already existing Repository,\n * use the {@link RepositoryRef.import} method.\n */\nclass RepositoryRef extends core_1.Construct {\n    /**\n     * Import a Repository defined either outside the CDK, or in a different Stack\n     * (exported with the {@link export} method).\n     *\n     * @param parent the parent Construct for the Repository\n     * @param name the name of the Repository Construct\n     * @param props the properties used to identify the existing Repository\n     * @returns a reference to the existing Repository\n     */\n    static import(parent, name, props) {\n        return new ImportedRepositoryRef(parent, name, props);\n    }\n    /**\n     * Exports this Repository. Allows the same Repository to be used in 2 different Stacks.\n     *\n     * @see import\n     */\n    export() {\n        return {\n            repositoryName: new core_1.Output(this, 'RepositoryName', { value: this.repositoryName }).makeImportValue(),\n        };\n    }\n    /**\n     * Defines a CloudWatch event rule which triggers for repository events. Use\n     * `rule.addEventPattern(pattern)` to specify a filter.\n     */\n    onEvent(name, target, options) {\n        const rule = new events_1.EventRule(this, name, options);\n        rule.addEventPattern({\n            source: ['aws.codecommit'],\n            resources: [this.repositoryArn]\n        });\n        rule.addTarget(target);\n        return rule;\n    }\n    /**\n     * Defines a CloudWatch event rule which triggers when a \"CodeCommit\n     * Repository State Change\" event occurs.\n     */\n    onStateChange(name, target, options) {\n        const rule = this.onEvent(name, target, options);\n        rule.addEventPattern({\n            detailType: ['CodeCommit Repository State Change'],\n        });\n        return rule;\n    }\n    /**\n     * Defines a CloudWatch event rule which triggers when a reference is\n     * created (i.e. a new brach/tag is created) to the repository.\n     */\n    onReferenceCreated(name, target, options) {\n        const rule = this.onStateChange(name, target, options);\n        rule.addEventPattern({ detail: { event: ['referenceCreated'] } });\n        return rule;\n    }\n    /**\n     * Defines a CloudWatch event rule which triggers when a reference is\n     * updated (i.e. a commit is pushed to an existig branch) from the repository.\n     */\n    onReferenceUpdated(name, target, options) {\n        const rule = this.onStateChange(name, target, options);\n        rule.addEventPattern({ detail: { event: ['referenceUpdated'] } });\n        return rule;\n    }\n    /**\n     * Defines a CloudWatch event rule which triggers when a reference is\n     * delete (i.e. a branch/tag is deleted) from the repository.\n     */\n    onReferenceDeleted(name, target, options) {\n        const rule = this.onStateChange(name, target, options);\n        rule.addEventPattern({ detail: { event: ['referenceDeleted'] } });\n        return rule;\n    }\n    /**\n     * Defines a CloudWatch event rule which triggers when a pull request state is changed.\n     */\n    onPullRequestStateChange(name, target, options) {\n        const rule = this.onEvent(name, target, options);\n        rule.addEventPattern({ detailType: ['CodeCommit Pull Request State Change'] });\n        return rule;\n    }\n    /**\n     * Defines a CloudWatch event rule which triggers when a comment is made on a pull request.\n     */\n    onCommentOnPullRequest(name, target, options) {\n        const rule = this.onEvent(name, target, options);\n        rule.addEventPattern({ detailType: ['CodeCommit Comment on Pull Request'] });\n        return rule;\n    }\n    /**\n     * Defines a CloudWatch event rule which triggers when a comment is made on a commit.\n     */\n    onCommentOnCommit(name, target, options) {\n        const rule = this.onEvent(name, target, options);\n        rule.addEventPattern({ detailType: ['CodeCommit Comment on Commit'] });\n        return rule;\n    }\n    /**\n     * Defines a CloudWatch event rule which triggers when a commit is pushed to a branch.\n     * @param target The target of the event\n     * @param branch The branch to monitor. Defaults to all branches.\n     */\n    onCommit(name, target, branch) {\n        const rule = this.onReferenceUpdated(name, target);\n        if (branch) {\n            rule.addEventPattern({ detail: { referenceName: [branch] } });\n        }\n        return rule;\n    }\n}\nexports.RepositoryRef = RepositoryRef;\nclass ImportedRepositoryRef extends RepositoryRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        this.repositoryArn = core_1.Arn.fromComponents({\n            service: 'codecommit',\n            resource: props.repositoryName,\n        });\n        this.repositoryName = props.repositoryName;\n    }\n}\n/**\n * Provides a CodeCommit Repository\n */\nclass Repository extends RepositoryRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        this.triggers = new Array();\n        this.repository = new resources_1.codecommit.RepositoryResource(this, 'Resource', {\n            repositoryName: props.repositoryName,\n            repositoryDescription: props.description,\n            triggers: this.triggers\n        });\n    }\n    get repositoryArn() {\n        return this.repository.repositoryArn;\n    }\n    get repositoryCloneUrlHttp() {\n        return this.repository.repositoryCloneUrlHttp;\n    }\n    get repositoryCloneUrlSsh() {\n        return this.repository.repositoryCloneUrlSsh;\n    }\n    get repositoryName() {\n        return this.repository.repositoryName;\n    }\n    /**\n     * Create a trigger to notify another service to run actions on repository events.\n     * @param arn     Arn of the resource that repository events will notify\n     * @param options Trigger options to run actions\n     */\n    notify(arn, options) {\n        let events = options && options.events;\n        if (events && events.length > 1 && events.indexOf(RepositoryEventTrigger.All) > -1) {\n            events = [RepositoryEventTrigger.All];\n        }\n        const customData = options && options.customData;\n        const branches = options && options.branches;\n        let name = options && options.name;\n        if (!name) {\n            name = this.path + '/' + arn;\n        }\n        if (this.triggers.find(prop => prop.name === name)) {\n            throw new Error(`Unable to set repository trigger named ${name} because trigger names must be unique`);\n        }\n        this.triggers.push({\n            destinationArn: arn,\n            name,\n            customData,\n            branches,\n            events: events || [RepositoryEventTrigger.All],\n        });\n        return this;\n    }\n}\nexports.Repository = Repository;\n/**\n * Repository events that will cause the trigger to run actions in another service.\n */\nvar RepositoryEventTrigger;\n(function (RepositoryEventTrigger) {\n    RepositoryEventTrigger[\"All\"] = \"all\";\n    RepositoryEventTrigger[\"UpdateRef\"] = \"updateReference\";\n    RepositoryEventTrigger[\"CreateRef\"] = \"createReference\";\n    RepositoryEventTrigger[\"DeleteRef\"] = \"deleteReference\";\n})(RepositoryEventTrigger = exports.RepositoryEventTrigger || (exports.RepositoryEventTrigger = {}));\n\n\n/***/ }),\n/* 2 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_core$;\n\n/***/ }),\n/* 3 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_events$;\n\n/***/ }),\n/* 4 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_resources$;\n\n/***/ })\n/******/ ]);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vd2VicGFjay9ib290c3RyYXAgZTliNmQyNjkxZWY1YzgyZDE4ZDgiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvY29kZWNvbW1pdC9saWIvaW5kZXgudHMiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvY29kZWNvbW1pdC9saWIvY29kZWNvbW1pdC50cyIsIndlYnBhY2s6Ly8vZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX2NvcmUkXCIiLCJ3ZWJwYWNrOi8vL2V4dGVybmFsIFwianNpaSRfYXdzX2Nka19ldmVudHMkXCIiLCJ3ZWJwYWNrOi8vL2V4dGVybmFsIFwianNpaSRfYXdzX2Nka19yZXNvdXJjZXMkXCIiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTs7O0FBR0E7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsYUFBSztBQUNMO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0EsbUNBQTJCLDBCQUEwQixFQUFFO0FBQ3ZELHlDQUFpQyxlQUFlO0FBQ2hEO0FBQ0E7QUFDQTs7QUFFQTtBQUNBLDhEQUFzRCwrREFBK0Q7O0FBRXJIO0FBQ0E7O0FBRUE7QUFDQTs7Ozs7Ozs7Ozs7OztBQzdEQSxpQ0FBNkI7Ozs7Ozs7Ozs7QUNBN0Isc0NBQXVEO0FBQ3ZELHdDQUE4RTtBQUM5RSwyQ0FBZ0Q7QUFhaEQ7Ozs7Ozs7O0dBUUc7QUFDSCxtQkFBb0MsU0FBUSxnQkFBUztJQUNqRDs7Ozs7Ozs7T0FRRztJQUNJLE1BQU0sQ0FBQyxNQUFNLENBQUMsTUFBaUIsRUFBRSxJQUFZLEVBQUUsS0FBeUI7UUFD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ZSI6ImJ1bmRsZS5qcyIsInNvdXJjZXNDb250ZW50IjpbIiBcdC8vIFRoZSBtb2R1bGUgY2FjaGVcbiBcdHZhciBpbnN0YWxsZWRNb2R1bGVzID0ge307XG5cbiBcdC8vIFRoZSByZXF1aXJlIGZ1bmN0aW9uXG4gXHRmdW5jdGlvbiBfX3dlYnBhY2tfcmVxdWlyZV9fKG1vZHVsZUlkKSB7XG5cbiBcdFx0Ly8gQ2hlY2sgaWYgbW9kdWxlIGlzIGluIGNhY2hlXG4gXHRcdGlmKGluc3RhbGxlZE1vZHVsZXNbbW9kdWxlSWRdKSB7XG4gXHRcdFx0cmV0dXJuIGluc3RhbGxlZE1vZHVsZXNbbW9kdWxlSWRdLmV4cG9ydHM7XG4gXHRcdH1cbiBcdFx0Ly8gQ3JlYXRlIGEgbmV3IG1vZHVsZSAoYW5kIHB1dCBpdCBpbnRvIHRoZSBjYWNoZSlcbiBcdFx0dmFyIG1vZHVsZSA9IGluc3RhbGxlZE1vZHVsZXNbbW9kdWxlSWRdID0ge1xuIFx0XHRcdGk6IG1vZHVsZUlkLFxuIFx0XHRcdGw6IGZhbHNlLFxuIFx0XHRcdGV4cG9ydHM6IHt9XG4gXHRcdH07XG5cbiBcdFx0Ly8gRXhlY3V0ZSB0aGUgbW9kdWxlIGZ1bmN0aW9uXG4gXHRcdG1vZHVsZXNbbW9kdWxlSWRdLmNhbGwobW9kdWxlLmV4cG9ydHMsIG1vZHVsZSwgbW9kdWxlLmV4cG9ydHMsIF9fd2VicGFja19yZXF1aXJlX18pO1xuXG4gXHRcdC8vIEZsYWcgdGhlIG1vZHVsZSBhcyBsb2FkZWRcbiBcdFx0bW9kdWxlLmwgPSB0cnVlO1xuXG4gXHRcdC8vIFJldHVybiB0aGUgZXhwb3J0cyBvZiB0aGUgbW9kdWxlXG4gXHRcdHJldHVybiBtb2R1bGUuZXhwb3J0cztcbiBcdH1cblxuXG4gXHQvLyBleHBvc2UgdGhlIG1vZHVsZXMgb2JqZWN0IChfX3dlYnBhY2tfbW9kdWxlc19fKVxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5tID0gbW9kdWxlcztcblxuIFx0Ly8gZXhwb3NlIHRoZSBtb2R1bGUgY2FjaGVcbiBcdF9fd2VicGFja19yZXF1aXJlX18uYyA9IGluc3RhbGxlZE1vZHVsZXM7XG5cbiBcdC8vIGRlZmluZSBnZXR0ZXIgZnVuY3Rpb24gZm9yIGhhcm1vbnkgZXhwb3J0c1xuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5kID0gZnVuY3Rpb24oZXhwb3J0cywgbmFtZSwgZ2V0dGVyKSB7XG4gXHRcdGlmKCFfX3dlYnBhY2tfcmVxdWlyZV9fLm8oZXhwb3J0cywgbmFtZSkpIHtcbiBcdFx0XHRPYmplY3QuZGVmaW5lUHJvcGVydHkoZXhwb3J0cywgbmFtZSwge1xuIFx0XHRcdFx0Y29uZmlndXJhYmxlOiBmYWxzZSxcbiBcdFx0XHRcdGVudW1lcmFibGU6IHRydWUsXG4gXHRcdFx0XHRnZXQ6IGdldHRlclxuIFx0XHRcdH0pO1xuIFx0XHR9XG4gXHR9O1xuXG4gXHQvLyBnZXREZWZhdWx0RXhwb3J0IGZ1bmN0aW9uIGZvciBjb21wYXRpYmlsaXR5IHdpdGggbm9uLWhhcm1vbnkgbW9kdWxlc1xuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5uID0gZnVuY3Rpb24obW9kdWxlKSB7XG4gXHRcdHZhciBnZXR0ZXIgPSBtb2R1bGUgJiYgbW9kdWxlLl9fZXNNb2R1bGUgP1xuIFx0XHRcdGZ1bmN0aW9uIGdldERlZmF1bHQoKSB7IHJldHVybiBtb2R1bGVbJ2RlZmF1bHQnXTsgfSA6XG4gXHRcdFx0ZnVuY3Rpb24gZ2V0TW9kdWxlRXhwb3J0cygpIHsgcmV0dXJuIG1vZHVsZTsgfTtcbiBcdFx0X193ZWJwYWNrX3JlcXVpcmVfXy5kKGdldHRlciwgJ2EnLCBnZXR0ZXIpO1xuIFx0XHRyZXR1cm4gZ2V0dGVyO1xuIFx0fTtcblxuIFx0Ly8gT2JqZWN0LnByb3RvdHlwZS5oYXNPd25Qcm9wZXJ0eS5jYWxsXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLm8gPSBmdW5jdGlvbihvYmplY3QsIHByb3BlcnR5KSB7IHJldHVybiBPYmplY3QucHJvdG90eXBlLmhhc093blByb3BlcnR5LmNhbGwob2JqZWN0LCBwcm9wZXJ0eSk7IH07XG5cbiBcdC8vIF9fd2VicGFja19wdWJsaWNfcGF0aF9fXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLnAgPSBcIlwiO1xuXG4gXHQvLyBMb2FkIGVudHJ5IG1vZHVsZSBhbmQgcmV0dXJuIGV4cG9ydHNcbiBcdHJldHVybiBfX3dlYnBhY2tfcmVxdWlyZV9fKF9fd2VicGFja19yZXF1aXJlX18ucyA9IDApO1xuXG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIHdlYnBhY2svYm9vdHN0cmFwIGU5YjZkMjY5MWVmNWM4MmQxOGQ4IiwiZXhwb3J0ICogZnJvbSAnLi9jb2RlY29tbWl0JztcblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAvcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2NvZGVjb21taXQvbGliL2luZGV4LnRzIiwiaW1wb3J0IHsgQXJuLCBDb25zdHJ1Y3QsIE91dHB1dCB9IGZyb20gJ0Bhd3MtY2RrL2NvcmUnO1xuaW1wb3J0IHsgRXZlbnRSdWxlLCBFdmVudFJ1bGVQcm9wcywgSUV2ZW50UnVsZVRhcmdldCB9IGZyb20gJ0Bhd3MtY2RrL2V2ZW50cyc7XG5pbXBvcnQgeyBjb2RlY29tbWl0IH0gZnJvbSAnQGF3cy1jZGsvcmVzb3VyY2VzJztcblxuLyoqXG4gKiBQcm9wZXJ0aWVzIGZvciB0aGUge0BsaW5rIFJlcG9zaXRvcnlSZWYuaW1wb3J0fSBtZXRob2QuXG4gKi9cbmV4cG9ydCBpbnRlcmZhY2UgUmVwb3NpdG9yeVJlZlByb3BzIHtcbiAgICAvKipcbiAgICAgKiBUaGUgbmFtZSBvZiBhbiBleGlzdGluZyBDb2RlQ29tbWl0IFJlcG9zaXRvcnkgdGhhdCB3ZSBhcmUgcmVmZXJlbmNpbmcuXG4gICAgICogTXVzdCBiZSBpbiB0aGUgc2FtZSBhY2NvdW50IGFuZCByZWdpb24gYXMgdGhlIHJvb3QgU3RhY2suXG4gICAgICovXG4gICAgcmVwb3NpdG9yeU5hbWU6IGNvZGVjb21taXQuUmVwb3NpdG9yeU5hbWU7XG59XG5cbi8qKlxuICogUmVwcmVzZW50cyBhIHJlZmVyZW5jZSB0byBhIENvZGVDb21taXQgUmVwb3NpdG9yeS5cbiAqXG4gKiBJZiB5b3Ugd2FudCB0byBjcmVhdGUgYSBuZXcgUmVwb3NpdG9yeSBtYW5hZ2VkIGFsb25nc2lkZSB5b3VyIENESyBjb2RlLFxuICogdXNlIHRoZSB7QGxpbmsgUmVwb3NpdG9yeX0gY2xhc3MuXG4gKlxuICogSWYgeW91IHdhbnQgdG8gcmVmZXJlbmNlIGFuIGFscmVhZHkgZXhpc3RpbmcgUmVwb3NpdG9yeSxcbiAqIHVzZSB0aGUge0BsaW5rIFJlcG9zaXRvcnlSZWYuaW1wb3J0fSBtZXRob2QuXG4gKi9cbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBSZXBvc2l0b3J5UmVmIGV4dGVuZHMgQ29uc3RydWN0IHtcbiAgICAvKipcbiAgICAgKiBJbXBvcnQgYSBSZXBvc2l0b3J5IGRlZmluZWQgZWl0aGVyIG91dHNpZGUgdGhlIENESywgb3IgaW4gYSBkaWZmZXJlbnQgU3RhY2tcbiAgICAgKiAoZXhwb3J0ZWQgd2l0aCB0aGUge0BsaW5rIGV4cG9ydH0gbWV0aG9kKS5cbiAgICAgKlxuICAgICAqIEBwYXJhbSBwYXJlbnQgdGhlIHBhcmVudCBDb25zdHJ1Y3QgZm9yIHRoZSBSZXBvc2l0b3J5XG4gICAgICogQHBhcmFtIG5hbWUgdGhlIG5hbWUgb2YgdGhlIFJlcG9zaXRvcnkgQ29uc3RydWN0XG4gICAgICogQHBhcmFtIHByb3BzIHRoZSBwcm9wZXJ0aWVzIHVzZWQgdG8gaWRlbnRpZnkgdGhlIGV4aXN0aW5nIFJlcG9zaXRvcnlcbiAgICAgKiBAcmV0dXJucyBhIHJlZmVyZW5jZSB0byB0aGUgZXhpc3RpbmcgUmVwb3NpdG9yeVxuICAgICAqL1xuICAgIHB1YmxpYyBzdGF0aWMgaW1wb3J0KHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBSZXBvc2l0b3J5UmVmUHJvcHMpOiBSZXBvc2l0b3J5UmVmIHtcbiAgICAgICAgcmV0dXJuIG5ldyBJbXBvcnRlZFJlcG9zaXRvcnlSZWYocGFyZW50LCBuYW1lLCBwcm9wcyk7XG4gICAgfVxuXG4gICAgLyoqIFRoZSBBUk4gb2YgdGhpcyBSZXBvc2l0b3J5LiAqL1xuICAgIHB1YmxpYyBhYnN0cmFjdCByZWFkb25seSByZXBvc2l0b3J5QXJuOiBjb2RlY29tbWl0LlJlcG9zaXRvcnlBcm47XG5cbiAgICAvKiogVGhlIGh1bWFuLXZpc2libGUgbmFtZSBvZiB0aGlzIFJlcG9zaXRvcnkuICovXG4gICAgcHVibGljIGFic3RyYWN0IHJlYWRvbmx5IHJlcG9zaXRvcnlOYW1lOiBjb2RlY29tbWl0LlJlcG9zaXRvcnlOYW1lO1xuXG4gICAgLyoqXG4gICAgICogRXhwb3J0cyB0aGlzIFJlcG9zaXRvcnkuIEFsbG93cyB0aGUgc2FtZSBSZXBvc2l0b3J5IHRvIGJlIHVzZWQgaW4gMiBkaWZmZXJlbnQgU3RhY2tzLlxuICAgICAqXG4gICAgICogQHNlZSBpbXBvcnRcbiAgICAgKi9cbiAgICBwdWJsaWMgZXhwb3J0KCk6IFJlcG9zaXRvcnlSZWZQcm9wcyB7XG4gICAgICAgIHJldHVybiB7XG4gICAgICAgICAgICByZXBvc2l0b3J5TmFtZTogbmV3IE91dHB1dCh0aGlzLCAnUmVwb3NpdG9yeU5hbWUnLCB7IHZhbHVlOiB0aGlzLnJlcG9zaXRvcnlOYW1lIH0pLm1ha2VJbXBvcnRWYWx1ZSgpLFxuICAgICAgICB9O1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIERlZmluZXMgYSBDbG91ZFdhdGNoIGV2ZW50IHJ1bGUgd2hpY2ggdHJpZ2dlcnMgZm9yIHJlcG9zaXRvcnkgZXZlbnRzLiBVc2VcbiAgICAgKiBgcnVsZS5hZGRFdmVudFBhdHRlcm4ocGF0dGVybilgIHRvIHNwZWNpZnkgYSBmaWx0ZXIuXG4gICAgICovXG4gICAgcHVibGljIG9uRXZlbnQobmFtZTogc3RyaW5nLCB0YXJnZXQ/OiBJRXZlbnRSdWxlVGFyZ2V0LCBvcHRpb25zPzogRXZlbnRSdWxlUHJvcHMpIHtcbiAgICAgICAgY29uc3QgcnVsZSA9IG5ldyBFdmVudFJ1bGUodGhpcywgbmFtZSwgb3B0aW9ucyk7XG4gICAgICAgIHJ1bGUuYWRkRXZlbnRQYXR0ZXJuKHtcbiAgICAgICAgICAgIHNvdXJjZTogWyAnYXdzLmNvZGVjb21taXQnIF0sXG4gICAgICAgICAgICByZXNvdXJjZXM6IFsgdGhpcy5yZXBvc2l0b3J5QXJuIF1cbiAgICAgICAgfSk7XG4gICAgICAgIHJ1bGUuYWRkVGFyZ2V0KHRhcmdldCk7XG4gICAgICAgIHJldHVybiBydWxlO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIERlZmluZXMgYSBDbG91ZFdhdGNoIGV2ZW50IHJ1bGUgd2hpY2ggdHJpZ2dlcnMgd2hlbiBhIFwiQ29kZUNvbW1pdFxuICAgICAqIFJlcG9zaXRvcnkgU3RhdGUgQ2hhbmdlXCIgZXZlbnQgb2NjdXJzLlxuICAgICAqL1xuICAgIHB1YmxpYyBvblN0YXRlQ2hhbmdlKG5hbWU6IHN0cmluZywgdGFyZ2V0PzogSUV2ZW50UnVsZVRhcmdldCwgb3B0aW9ucz86IEV2ZW50UnVsZVByb3BzKSB7XG4gICAgICAgIGNvbnN0IHJ1bGUgPSB0aGlzLm9uRXZlbnQobmFtZSwgdGFyZ2V0LCBvcHRpb25zKTtcbiAgICAgICAgcnVsZS5hZGRFdmVudFBhdHRlcm4oe1xuICAgICAgICAgICAgZGV0YWlsVHlwZTogWyAnQ29kZUNvbW1pdCBSZXBvc2l0b3J5IFN0YXRlIENoYW5nZScgXSxcbiAgICAgICAgfSk7XG4gICAgICAgIHJldHVybiBydWxlO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIERlZmluZXMgYSBDbG91ZFdhdGNoIGV2ZW50IHJ1bGUgd2hpY2ggdHJpZ2dlcnMgd2hlbiBhIHJlZmVyZW5jZSBpc1xuICAgICAqIGNyZWF0ZWQgKGkuZS4gYSBuZXcgYnJhY2gvdGFnIGlzIGNyZWF0ZWQpIHRvIHRoZSByZXBvc2l0b3J5LlxuICAgICAqL1xuICAgIHB1YmxpYyBvblJlZmVyZW5jZUNyZWF0ZWQobmFtZTogc3RyaW5nLCB0YXJnZXQ/OiBJRXZlbnRSdWxlVGFyZ2V0LCBvcHRpb25zPzogRXZlbnRSdWxlUHJvcHMpIHtcbiAgICAgICAgY29uc3QgcnVsZSA9IHRoaXMub25TdGF0ZUNoYW5nZShuYW1lLCB0YXJnZXQsIG9wdGlvbnMpO1xuICAgICAgICBydWxlLmFkZEV2ZW50UGF0dGVybih7IGRldGFpbDogeyBldmVudDogWyAncmVmZXJlbmNlQ3JlYXRlZCcgXSB9IH0pO1xuICAgICAgICByZXR1cm4gcnVsZTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBEZWZpbmVzIGEgQ2xvdWRXYXRjaCBldmVudCBydWxlIHdoaWNoIHRyaWdnZXJzIHdoZW4gYSByZWZlcmVuY2UgaXNcbiAgICAgKiB1cGRhdGVkIChpLmUuIGEgY29tbWl0IGlzIHB1c2hlZCB0byBhbiBleGlzdGlnIGJyYW5jaCkgZnJvbSB0aGUgcmVwb3NpdG9yeS5cbiAgICAgKi9cbiAgICBwdWJsaWMgb25SZWZlcmVuY2VVcGRhdGVkKG5hbWU6IHN0cmluZywgdGFyZ2V0PzogSUV2ZW50UnVsZVRhcmdldCwgb3B0aW9ucz86IEV2ZW50UnVsZVByb3BzKSB7XG4gICAgICAgIGNvbnN0IHJ1bGUgPSB0aGlzLm9uU3RhdGVDaGFuZ2UobmFtZSwgdGFyZ2V0LCBvcHRpb25zKTtcbiAgICAgICAgcnVsZS5hZGRFdmVudFBhdHRlcm4oeyBkZXRhaWw6IHsgZXZlbnQ6IFsgJ3JlZmVyZW5jZVVwZGF0ZWQnIF0gfSB9KTtcbiAgICAgICAgcmV0dXJuIHJ1bGU7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogRGVmaW5lcyBhIENsb3VkV2F0Y2ggZXZlbnQgcnVsZSB3aGljaCB0cmlnZ2VycyB3aGVuIGEgcmVmZXJlbmNlIGlzXG4gICAgICogZGVsZXRlIChpLmUuIGEgYnJhbmNoL3RhZyBpcyBkZWxldGVkKSBmcm9tIHRoZSByZXBvc2l0b3J5LlxuICAgICAqL1xuICAgIHB1YmxpYyBvblJlZmVyZW5jZURlbGV0ZWQobmFtZTogc3RyaW5nLCB0YXJnZXQ/OiBJRXZlbnRSdWxlVGFyZ2V0LCBvcHRpb25zPzogRXZlbnRSdWxlUHJvcHMpIHtcbiAgICAgICAgY29uc3QgcnVsZSA9IHRoaXMub25TdGF0ZUNoYW5nZShuYW1lLCB0YXJnZXQsIG9wdGlvbnMpO1xuICAgICAgICBydWxlLmFkZEV2ZW50UGF0dGVybih7IGRldGFpbDogeyBldmVudDogWyAncmVmZXJlbmNlRGVsZXRlZCcgXSB9IH0pO1xuICAgICAgICByZXR1cm4gcnVsZTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBEZWZpbmVzIGEgQ2xvdWRXYXRjaCBldmVudCBydWxlIHdoaWNoIHRyaWdnZXJzIHdoZW4gYSBwdWxsIHJlcXVlc3Qgc3RhdGUgaXMgY2hhbmdlZC5cbiAgICAgKi9cbiAgICBwdWJsaWMgb25QdWxsUmVxdWVzdFN0YXRlQ2hhbmdlKG5hbWU6IHN0cmluZywgdGFyZ2V0PzogSUV2ZW50UnVsZVRhcmdldCwgb3B0aW9ucz86IEV2ZW50UnVsZVByb3BzKSB7XG4gICAgICAgIGNvbnN0IHJ1bGUgPSB0aGlzLm9uRXZlbnQobmFtZSwgdGFyZ2V0LCBvcHRpb25zKTtcbiAgICAgICAgcnVsZS5hZGRFdmVudFBhdHRlcm4oeyBkZXRhaWxUeXBlOiBbICdDb2RlQ29tbWl0IFB1bGwgUmVxdWVzdCBTdGF0ZSBDaGFuZ2UnIF0gfSk7XG4gICAgICAgIHJldHVybiBydWxlO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIERlZmluZXMgYSBDbG91ZFdhdGNoIGV2ZW50IHJ1bGUgd2hpY2ggdHJpZ2dlcnMgd2hlbiBhIGNvbW1lbnQgaXMgbWFkZSBvbiBhIHB1bGwgcmVxdWVzdC5cbiAgICAgKi9cbiAgICBwdWJsaWMgb25Db21tZW50T25QdWxsUmVxdWVzdChuYW1lOiBzdHJpbmcsIHRhcmdldD86IElFdmVudFJ1bGVUYXJnZXQsIG9wdGlvbnM/OiBFdmVudFJ1bGVQcm9wcykge1xuICAgICAgICBjb25zdCBydWxlID0gdGhpcy5vbkV2ZW50KG5hbWUsIHRhcmdldCwgb3B0aW9ucyk7XG4gICAgICAgIHJ1bGUuYWRkRXZlbnRQYXR0ZXJuKHsgZGV0YWlsVHlwZTogWyAnQ29kZUNvbW1pdCBDb21tZW50IG9uIFB1bGwgUmVxdWVzdCcgXSB9KTtcbiAgICAgICAgcmV0dXJuIHJ1bGU7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogRGVmaW5lcyBhIENsb3VkV2F0Y2ggZXZlbnQgcnVsZSB3aGljaCB0cmlnZ2VycyB3aGVuIGEgY29tbWVudCBpcyBtYWRlIG9uIGEgY29tbWl0LlxuICAgICAqL1xuICAgIHB1YmxpYyBvbkNvbW1lbnRPbkNvbW1pdChuYW1lOiBzdHJpbmcsIHRhcmdldD86IElFdmVudFJ1bGVUYXJnZXQsIG9wdGlvbnM/OiBFdmVudFJ1bGVQcm9wcykge1xuICAgICAgICBjb25zdCBydWxlID0gdGhpcy5vbkV2ZW50KG5hbWUsIHRhcmdldCwgb3B0aW9ucyk7XG4gICAgICAgIHJ1bGUuYWRkRXZlbnRQYXR0ZXJuKHsgZGV0YWlsVHlwZTogWyAnQ29kZUNvbW1pdCBDb21tZW50IG9uIENvbW1pdCcgXSB9KTtcbiAgICAgICAgcmV0dXJuIHJ1bGU7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogRGVmaW5lcyBhIENsb3VkV2F0Y2ggZXZlbnQgcnVsZSB3aGljaCB0cmlnZ2VycyB3aGVuIGEgY29tbWl0IGlzIHB1c2hlZCB0byBhIGJyYW5jaC5cbiAgICAgKiBAcGFyYW0gdGFyZ2V0IFRoZSB0YXJnZXQgb2YgdGhlIGV2ZW50XG4gICAgICogQHBhcmFtIGJyYW5jaCBUaGUgYnJhbmNoIHRvIG1vbml0b3IuIERlZmF1bHRzIHRvIGFsbCBicmFuY2hlcy5cbiAgICAgKi9cbiAgICBwdWJsaWMgb25Db21taXQobmFtZTogc3RyaW5nLCB0YXJnZXQ/OiBJRXZlbnRSdWxlVGFyZ2V0LCBicmFuY2g/OiBzdHJpbmcpIHtcbiAgICAgICAgY29uc3QgcnVsZSA9IHRoaXMub25SZWZlcmVuY2VVcGRhdGVkKG5hbWUsIHRhcmdldCk7XG4gICAgICAgIGlmIChicmFuY2gpIHtcbiAgICAgICAgICAgIHJ1bGUuYWRkRXZlbnRQYXR0ZXJuKHsgZGV0YWlsOiB7IHJlZmVyZW5jZU5hbWU6IFsgYnJhbmNoIF0gfX0pO1xuICAgICAgICB9XG4gICAgICAgIHJldHVybiBydWxlO1xuICAgIH1cbn1cblxuY2xhc3MgSW1wb3J0ZWRSZXBvc2l0b3J5UmVmIGV4dGVuZHMgUmVwb3NpdG9yeVJlZiB7XG4gICAgcHVibGljIHJlYWRvbmx5IHJlcG9zaXRvcnlBcm46IGNvZGVjb21taXQuUmVwb3NpdG9yeUFybjtcbiAgICBwdWJsaWMgcmVhZG9ubHkgcmVwb3NpdG9yeU5hbWU6IGNvZGVjb21taXQuUmVwb3NpdG9yeU5hbWU7XG5cbiAgICBjb25zdHJ1Y3RvcihwYXJlbnQ6IENvbnN0cnVjdCwgbmFtZTogc3RyaW5nLCBwcm9wczogUmVwb3NpdG9yeVJlZlByb3BzKSB7XG4gICAgICAgIHN1cGVyKHBhcmVudCwgbmFtZSk7XG5cbiAgICAgICAgdGhpcy5yZXBvc2l0b3J5QXJuID0gQXJuLmZyb21Db21wb25lbnRzKHtcbiAgICAgICAgICAgIHNlcnZpY2U6ICdjb2RlY29tbWl0JyxcbiAgICAgICAgICAgIHJlc291cmNlOiBwcm9wcy5yZXBvc2l0b3J5TmFtZSxcbiAgICAgICAgfSk7XG4gICAgICAgIHRoaXMucmVwb3NpdG9yeU5hbWUgPSBwcm9wcy5yZXBvc2l0b3J5TmFtZTtcbiAgICB9XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgUmVwb3NpdG9yeVByb3BzIHtcbiAgICAvKipcbiAgICAgKiBOYW1lIG9mIHRoZSByZXBvc2l0b3J5LiBUaGlzIHByb3BlcnR5IGlzIHJlcXVpcmVkIGZvciBhbGwgcmVwb3NpdG9yaWVzLlxuICAgICAqL1xuICAgIHJlcG9zaXRvcnlOYW1lOiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBBIGRlc2NyaXB0aW9uIG9mIHRoZSByZXBvc2l0b3J5LiBVc2UgdGhlIGRlc2NyaXB0aW9uIHRvIGlkZW50aWZ5IHRoZVxuICAgICAqIHB1cnBvc2Ugb2YgdGhlIHJlcG9zaXRvcnkuXG4gICAgICovXG4gICAgZGVzY3JpcHRpb24/OiBzdHJpbmc7XG59XG5cbi8qKlxuICogUHJvdmlkZXMgYSBDb2RlQ29tbWl0IFJlcG9zaXRvcnlcbiAqL1xuZXhwb3J0IGNsYXNzIFJlcG9zaXRvcnkgZXh0ZW5kcyBSZXBvc2l0b3J5UmVmIHtcbiAgICBwcml2YXRlIHJlYWRvbmx5IHJlcG9zaXRvcnk6IGNvZGVjb21taXQuUmVwb3NpdG9yeVJlc291cmNlO1xuICAgIHByaXZhdGUgcmVhZG9ubHkgdHJpZ2dlcnMgPSBuZXcgQXJyYXk8Y29kZWNvbW1pdC5SZXBvc2l0b3J5UmVzb3VyY2UuUmVwb3NpdG9yeVRyaWdnZXJQcm9wZXJ0eT4oKTtcblxuICAgIGNvbnN0cnVjdG9yKHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBSZXBvc2l0b3J5UHJvcHMpIHtcbiAgICAgICAgc3VwZXIocGFyZW50LCBuYW1lKTtcblxuICAgICAgICB0aGlzLnJlcG9zaXRvcnkgPSBuZXcgY29kZWNvbW1pdC5SZXBvc2l0b3J5UmVzb3VyY2UodGhpcywgJ1Jlc291cmNlJywge1xuICAgICAgICAgICAgcmVwb3NpdG9yeU5hbWU6IHByb3BzLnJlcG9zaXRvcnlOYW1lLFxuICAgICAgICAgICAgcmVwb3NpdG9yeURlc2NyaXB0aW9uOiBwcm9wcy5kZXNjcmlwdGlvbixcbiAgICAgICAgICAgIHRyaWdnZXJzOiB0aGlzLnRyaWdnZXJzXG4gICAgICAgIH0pO1xuICAgIH1cblxuICAgIHB1YmxpYyBnZXQgcmVwb3NpdG9yeUFybigpIHtcbiAgICAgICAgcmV0dXJuIHRoaXMucmVwb3NpdG9yeS5yZXBvc2l0b3J5QXJuO1xuICAgIH1cblxuICAgIHB1YmxpYyBnZXQgcmVwb3NpdG9yeUNsb25lVXJsSHR0cCgpIHtcbiAgICAgICAgcmV0dXJuIHRoaXMucmVwb3NpdG9yeS5yZXBvc2l0b3J5Q2xvbmVVcmxIdHRwO1xuICAgIH1cblxuICAgIHB1YmxpYyBnZXQgcmVwb3NpdG9yeUNsb25lVXJsU3NoKCkge1xuICAgICAgICByZXR1cm4gdGhpcy5yZXBvc2l0b3J5LnJlcG9zaXRvcnlDbG9uZVVybFNzaDtcbiAgICB9XG5cbiAgICBwdWJsaWMgZ2V0IHJlcG9zaXRvcnlOYW1lKCkge1xuICAgICAgICByZXR1cm4gdGhpcy5yZXBvc2l0b3J5LnJlcG9zaXRvcnlOYW1lO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIENyZWF0ZSBhIHRyaWdnZXIgdG8gbm90aWZ5IGFub3RoZXIgc2VydmljZSB0byBydW4gYWN0aW9ucyBvbiByZXBvc2l0b3J5IGV2ZW50cy5cbiAgICAgKiBAcGFyYW0gYXJuICAgICBBcm4gb2YgdGhlIHJlc291cmNlIHRoYXQgcmVwb3NpdG9yeSBldmVudHMgd2lsbCBub3RpZnlcbiAgICAgKiBAcGFyYW0gb3B0aW9ucyBUcmlnZ2VyIG9wdGlvbnMgdG8gcnVuIGFjdGlvbnNcbiAgICAgKi9cbiAgICBwdWJsaWMgbm90aWZ5KGFybjogc3RyaW5nLCBvcHRpb25zPzogUmVwb3NpdG9yeVRyaWdnZXJPcHRpb25zKTogUmVwb3NpdG9yeSB7XG5cbiAgICAgICAgbGV0IGV2ZW50cyA9IG9wdGlvbnMgJiYgb3B0aW9ucy5ldmVudHM7XG4gICAgICAgIGlmIChldmVudHMgJiYgZXZlbnRzLmxlbmd0aCA+IDEgJiYgZXZlbnRzLmluZGV4T2YoUmVwb3NpdG9yeUV2ZW50VHJpZ2dlci5BbGwpID4gLTEpIHtcbiAgICAgICAgICAgIGV2ZW50cyA9IFtSZXBvc2l0b3J5RXZlbnRUcmlnZ2VyLkFsbF07XG4gICAgICAgIH1cblxuICAgICAgICBjb25zdCBjdXN0b21EYXRhID0gb3B0aW9ucyAmJiBvcHRpb25zLmN1c3RvbURhdGE7XG4gICAgICAgIGNvbnN0IGJyYW5jaGVzID0gb3B0aW9ucyAmJiBvcHRpb25zLmJyYW5jaGVzO1xuXG4gICAgICAgIGxldCBuYW1lID0gb3B0aW9ucyAmJiBvcHRpb25zLm5hbWU7XG4gICAgICAgIGlmICghbmFtZSkge1xuICAgICAgICAgICAgbmFtZSA9IHRoaXMucGF0aCArICcvJyArIGFybjtcbiAgICAgICAgfVxuXG4gICAgICAgIGlmICh0aGlzLnRyaWdnZXJzLmZpbmQocHJvcCA9PiBwcm9wLm5hbWUgPT09IG5hbWUpKSB7XG4gICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYFVuYWJsZSB0byBzZXQgcmVwb3NpdG9yeSB0cmlnZ2VyIG5hbWVkICR7bmFtZX0gYmVjYXVzZSB0cmlnZ2VyIG5hbWVzIG11c3QgYmUgdW5pcXVlYCk7XG4gICAgICAgIH1cblxuICAgICAgICB0aGlzLnRyaWdnZXJzLnB1c2goe1xuICAgICAgICAgICAgZGVzdGluYXRpb25Bcm46IGFybixcbiAgICAgICAgICAgIG5hbWUsXG4gICAgICAgICAgICBjdXN0b21EYXRhLFxuICAgICAgICAgICAgYnJhbmNoZXMsXG4gICAgICAgICAgICBldmVudHM6IGV2ZW50cyB8fCBbUmVwb3NpdG9yeUV2ZW50VHJpZ2dlci5BbGxdLFxuICAgICAgICB9KTtcbiAgICAgICAgcmV0dXJuIHRoaXM7XG4gICAgfVxufVxuXG4vKipcbiAqIENyZWF0ZXMgZm9yIGEgcmVwb3NpdG9yeSB0cmlnZ2VyIHRvIGFuIFNOUyB0b3BpYyBvciBMYW1iZGEgZnVuY3Rpb24uXG4gKi9cbmV4cG9ydCBpbnRlcmZhY2UgUmVwb3NpdG9yeVRyaWdnZXJPcHRpb25zIHtcbiAgICAgLyoqXG4gICAgICAqIEEgbmFtZSBmb3IgdGhlIHRyaWdnZXIuVHJpZ2dlcnMgb24gYSByZXBvc2l0b3J5IG11c3QgaGF2ZSB1bmlxdWUgbmFtZXNcbiAgICAgICovXG4gICAgbmFtZT86IHN0cmluZztcblxuICAgIC8qKlxuICAgICAqIFRoZSByZXBvc2l0b3J5IGV2ZW50cyBmb3Igd2hpY2ggQVdTIENvZGVDb21taXQgc2VuZHMgaW5mb3JtYXRpb24gdG8gdGhlXG4gICAgICogdGFyZ2V0LCB3aGljaCB5b3Ugc3BlY2lmaWVkIGluIHRoZSBEZXN0aW5hdGlvbkFybiBwcm9wZXJ0eS5JZiB5b3UgZG9uJ3RcbiAgICAgKiBzcGVjaWZ5IGV2ZW50cywgdGhlIHRyaWdnZXIgcnVucyBmb3IgYWxsIHJlcG9zaXRvcnkgZXZlbnRzLlxuICAgICAqL1xuICAgIGV2ZW50cz86IFJlcG9zaXRvcnlFdmVudFRyaWdnZXJbXTtcblxuICAgIC8qKlxuICAgICAqIFRoZSBuYW1lcyBvZiB0aGUgYnJhbmNoZXMgaW4gdGhlIEFXUyBDb2RlQ29tbWl0IHJlcG9zaXRvcnkgdGhhdCBjb250YWluXG4gICAgICogZXZlbnRzIHRoYXQgeW91IHdhbnQgdG8gaW5jbHVkZSBpbiB0aGUgdHJpZ2dlci4gSWYgeW91IGRvbid0IHNwZWNpZnkgYXRcbiAgICAgKiBsZWFzdCBvbmUgYnJhbmNoLCB0aGUgdHJpZ2dlciBhcHBsaWVzIHRvIGFsbCBicmFuY2hlcy5cbiAgICAgKi9cbiAgICBicmFuY2hlcz86IHN0cmluZ1tdO1xuXG4gICAgLyoqXG4gICAgICogV2hlbiBhbiBldmVudCBpcyB0cmlnZ2VyZWQsIGFkZGl0aW9uYWwgaW5mb3JtYXRpb24gdGhhdCBBV1MgQ29kZUNvbW1pdFxuICAgICAqIGluY2x1ZGVzIHdoZW4gaXQgc2VuZHMgaW5mb3JtYXRpb24gdG8gdGhlIHRhcmdldC5cbiAgICAgKi9cbiAgICBjdXN0b21EYXRhPzogc3RyaW5nO1xufVxuXG4vKipcbiAqIFJlcG9zaXRvcnkgZXZlbnRzIHRoYXQgd2lsbCBjYXVzZSB0aGUgdHJpZ2dlciB0byBydW4gYWN0aW9ucyBpbiBhbm90aGVyIHNlcnZpY2UuXG4gKi9cbmV4cG9ydCBlbnVtIFJlcG9zaXRvcnlFdmVudFRyaWdnZXIge1xuICAgIEFsbCA9ICdhbGwnLFxuICAgIFVwZGF0ZVJlZiA9ICd1cGRhdGVSZWZlcmVuY2UnLFxuICAgIENyZWF0ZVJlZiA9ICdjcmVhdGVSZWZlcmVuY2UnLFxuICAgIERlbGV0ZVJlZiA9ICdkZWxldGVSZWZlcmVuY2UnXG59XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9jb2RlY29tbWl0L2xpYi9jb2RlY29tbWl0LnRzIiwibW9kdWxlLmV4cG9ydHMgPSBqc2lpJF9hd3NfY2RrX2NvcmUkO1xuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIGV4dGVybmFsIFwianNpaSRfYXdzX2Nka19jb3JlJFwiXG4vLyBtb2R1bGUgaWQgPSAyXG4vLyBtb2R1bGUgY2h1bmtzID0gMCIsIm1vZHVsZS5leHBvcnRzID0ganNpaSRfYXdzX2Nka19ldmVudHMkO1xuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIGV4dGVybmFsIFwianNpaSRfYXdzX2Nka19ldmVudHMkXCJcbi8vIG1vZHVsZSBpZCA9IDNcbi8vIG1vZHVsZSBjaHVua3MgPSAwIiwibW9kdWxlLmV4cG9ydHMgPSBqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyRcIlxuLy8gbW9kdWxlIGlkID0gNFxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwic291cmNlUm9vdCI6IiJ9"
+}

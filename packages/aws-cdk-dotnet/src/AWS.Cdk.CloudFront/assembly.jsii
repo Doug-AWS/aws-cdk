@@ -1,0 +1,2087 @@
+{
+  "schema": "jsii/1.0",
+  "types": {
+    "jsii$_aws_cdk_cloudfront$.HttpVersion": {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "HTTP1_1"
+        },
+        {
+          "name": "HTTP2"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.HttpVersion",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "HttpVersion"
+    },
+    "jsii$_aws_cdk_cloudfront$.PriceClass": {
+      "docs": {
+        "comment": "The price class determines how many edge locations CloudFront will use for your distribution."
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "PriceClass100"
+        },
+        {
+          "name": "PriceClass200"
+        },
+        {
+          "name": "PriceClassAll"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.PriceClass",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "PriceClass"
+    },
+    "jsii$_aws_cdk_cloudfront$.ViewerProtocolPolicy": {
+      "docs": {
+        "comment": "How HTTPs should be handled with your distribution."
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "HTTPSOnly"
+        },
+        {
+          "name": "RedirectToHTTPS"
+        },
+        {
+          "name": "AllowAll"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.ViewerProtocolPolicy",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "ViewerProtocolPolicy"
+    },
+    "jsii$_aws_cdk_cloudfront$.AliasConfiguration": {
+      "docs": {
+        "default": "sslMethod: SNI by default",
+        "comment": "CloudFront can use a custom domain that you provide instead of a \"cloudfront.net\" domain.\nTo use this feature - you must provide the list of additional domains,\nand the ACM Certificate that CloudFront should use for these additional domains.\n\nNote - CloudFront only accepts one additional certificate - therefore the certificate *must*\nuse have SANs (Subject Alternative Names) for all domains listed.\n\nsslMethod is optional - we default to SNI if not specified. See the notes on SSLMethod if you wish to use other SSL termination types."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "name": "names",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        },
+        {
+          "name": "acmCertRef",
+          "type": {
+            "fqn": "jsii$_aws_cdk_acm$.CertificateArn"
+          },
+          "immutable": true
+        },
+        {
+          "name": "sslMethod",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.AliasConfiguration",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "AliasConfiguration",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cloudfront$.SSLMethod": {
+      "docs": {
+        "comment": "The SSL method CloudFront will use for your distribution.\n\nServer Name Indication (SNI) - is an extension to the TLS computer networking protocol by which a client indicates\n  which hostname it is attempting to connect to at the start of the handshaking process. This allows a server to present\n  multiple certificates on the same IP address and TCP port number and hence allows multiple secure (HTTPS) websites\n(or any other service over TLS) to be served by the same IP address without requiring all those sites to use the same certificate.\n\nCloudFront can use SNI to host multiple distributions on the same IP - which a large majority of clients will support.\n\nIf your clients cannot support SNI however - CloudFront can use dedicated IPs for your distribution - but there is a prorated monthly charge for\nusing this feature. By default, we use SNI - but you can optionally enable dedicated IPs (VIP).\n\nSee the CloudFront SSL for more details about pricing : https://aws.amazon.com/cloudfront/custom-ssl-domains/"
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "SNI"
+        },
+        {
+          "name": "VIP"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.SSLMethod",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "SSLMethod"
+    },
+    "jsii$_aws_cdk_cloudfront$.LoggingConfiguration": {
+      "docs": {
+        "default": "prefix: no prefix is set by default.",
+        "comment": "CloudFront supports logging of incoming requests and can log details to a given S3 Bucket.\n\nIf you wish to configure logging you can configure details about it."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "name": "bucket",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRef",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "name": "includeCookies",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "name": "prefix",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.LoggingConfiguration",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "LoggingConfiguration",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cloudfront$.SourceConfiguration": {
+      "docs": {
+        "comment": "A source configuration is a wrapper for CloudFront origins and behaviors.\nAn origin is what CloudFront will \"be in front of\" - that is, CloudFront will pull it's assets from an origin.\n\nIf you're using s3 as a source - pass the `s3Origin` property, otherwise, pass the `customOriginSource` property.\n\nOne or the other must be passed, and it is invalid to pass both in the same SourceConfiguration."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "An s3 origin source - if you're using s3 for your assets"
+          },
+          "name": "s3OriginSource",
+          "type": {
+            "fqn": "jsii$_aws_cdk_cloudfront$.S3OriginConfig",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "A custom origin source - for all non-s3 sources."
+          },
+          "name": "customOriginSource",
+          "type": {
+            "fqn": "jsii$_aws_cdk_cloudfront$.CustomOriginConfig",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The behaviors associated with this source.\nAt least one (default) behavior must be included."
+          },
+          "name": "behaviors",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_cloudfront$.Behavior"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "default": "/",
+            "comment": "The relative path to the origin root to use for sources."
+          },
+          "name": "originPath",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "default": "no additional headers are passed",
+            "comment": "Any additional headers to pass to the origin"
+          },
+          "name": "originHeaders",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "map"
+            },
+            "optional": true
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.SourceConfiguration",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "SourceConfiguration",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cloudfront$.CustomOriginConfig": {
+      "docs": {
+        "comment": "A custom origin configuration"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The domain name of the custom origin. Should not include the path - that should be in the parent SourceConfiguration"
+          },
+          "name": "domainName",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "default": "80",
+            "comment": "The origin HTTP port"
+          },
+          "name": "httpPort",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "default": "443",
+            "comment": "The origin HTTPS port"
+          },
+          "name": "httpsPort",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "default": ": 5 seconds",
+            "comment": "The keep alive timeout when making calls in seconds."
+          },
+          "name": "originKeepaliveTimeoutSeconds",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "default": ": HttpsOnly",
+            "comment": "The protocol (http or https) policy to use when interacting with the origin."
+          },
+          "name": "originProtocolPolicy",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "default": "30 seconds",
+            "comment": "The read timeout when calling the origin in seconds"
+          },
+          "name": "originReadTimeoutSeconds",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "default": "[TLSv1_2]",
+            "comment": "The SSL versions to use when interacting with the origin."
+          },
+          "name": "allowedOriginSSLVersions",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_cloudfront$.OriginSslPolicy"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.CustomOriginConfig",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "CustomOriginConfig",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cloudfront$.OriginSslPolicy": {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "SSLv3"
+        },
+        {
+          "name": "TLSv1"
+        },
+        {
+          "name": "TLSv1_1"
+        },
+        {
+          "name": "TLSv1_2"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.OriginSslPolicy",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "OriginSslPolicy"
+    },
+    "jsii$_aws_cdk_cloudfront$.OriginProtocolPolicy": {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "HttpOnly"
+        },
+        {
+          "name": "MatchViewer"
+        },
+        {
+          "name": "HttpsOnly"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.OriginProtocolPolicy",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "OriginProtocolPolicy"
+    },
+    "jsii$_aws_cdk_cloudfront$.S3OriginConfig": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The source bucket to serve content from"
+          },
+          "name": "s3BucketSource",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.Bucket"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The optional origin identity cloudfront will use when calling your s3 bucket."
+          },
+          "name": "originAccessIdentity",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.cloudfront.CloudFrontOriginAccessIdentityResource",
+            "optional": true
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.S3OriginConfig",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "S3OriginConfig",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cloudfront$.CloudFrontAllowedMethods": {
+      "docs": {
+        "comment": "An enum for the supported methods to a CloudFront distribution."
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "GET_HEAD"
+        },
+        {
+          "name": "GET_HEAD_OPTIONS"
+        },
+        {
+          "name": "ALL"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.CloudFrontAllowedMethods",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "CloudFrontAllowedMethods"
+    },
+    "jsii$_aws_cdk_cloudfront$.CloudFrontAllowedCachedMethods": {
+      "docs": {
+        "comment": "Enums for the methods CloudFront can cache."
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "GET_HEAD"
+        },
+        {
+          "name": "GET_HEAD_OPTIONS"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.CloudFrontAllowedCachedMethods",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "CloudFrontAllowedCachedMethods"
+    },
+    "jsii$_aws_cdk_cloudfront$.Behavior": {
+      "docs": {
+        "comment": "A CloudFront behavior wrapper."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "default": "true",
+            "comment": "If CloudFront should automatically compress some content types."
+          },
+          "name": "compress",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "If this behavior is the default behavior for the distribution.\n\nYou must specify exactly one default distribution per CloudFront distribution.\nThe default behavior is allowed to omit the \"path\" property."
+          },
+          "name": "isDefaultBehavior",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Trusted signers is how CloudFront allows you to serve private content.\nThe signers are the account IDs that are allowed to sign cookies/presigned URLs for this distribution.\n\nIf you pass a non empty value, all requests for this behavior must be signed (no public access will be allowed)"
+          },
+          "name": "trustedSigners",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "86400 (1 day)",
+            "comment": "The default amount of time CloudFront will cache an object.\n\nThis value applies only when your custom origin does not add HTTP headers,\nsuch as Cache-Control max-age, Cache-Control s-maxage, and Expires to objects."
+          },
+          "name": "defaultTtlSeconds",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "GET_HEAD",
+            "comment": "The method this CloudFront distribution responds do."
+          },
+          "name": "allowedMethods",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The path this behavior responds to.\nRequired for all non-default behaviors. (The default behavior implicitly has \"*\" as the path pattern. )"
+          },
+          "name": "pathPattern",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "GET_HEAD",
+            "comment": "Which methods are cached by CloudFront by default."
+          },
+          "name": "cachedMethods",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "none (no cookies - no headers)",
+            "comment": "The values CloudFront will forward to the origin when making a request."
+          },
+          "name": "forwardedValues",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.cloudfront.DistributionResource.ForwardedValuesProperty",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The minimum amount of time that you want objects to stay in the cache\nbefore CloudFront queries your origin."
+          },
+          "name": "minTtlSeconds",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "31536000 (one year)",
+            "comment": "The max amount of time you want objects to stay in the cache\nbefore CloudFront queries your origin."
+          },
+          "name": "maxTtlSeconds",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.Behavior",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "Behavior",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cloudfront$.ErrorConfiguration": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The error code matched from the origin"
+          },
+          "name": "originErrorCode",
+          "type": {
+            "primitive": "number"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The error code that is sent to the caller."
+          },
+          "name": "respondWithErrorCode",
+          "type": {
+            "primitive": "number"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The path to service instead"
+          },
+          "name": "respondWithPage",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "comment": "How long before this error is retried."
+          },
+          "name": "cacheTtl",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.ErrorConfiguration",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "ErrorConfiguration",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cloudfront$.CloudFrontWebDistributionProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "default": "none",
+            "comment": "AliasConfiguration is used to configured CloudFront to respond to requests on custom domain names."
+          },
+          "name": "aliasConfiguration",
+          "type": {
+            "fqn": "jsii$_aws_cdk_cloudfront$.AliasConfiguration",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "A comment for this distribution in the cloud front console."
+          },
+          "name": "comment",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "\"index.html\"",
+            "comment": "The default object to serve."
+          },
+          "name": "defaultRootObject",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "true",
+            "comment": "If your distribution should have IPv6 enabled."
+          },
+          "name": "enableIpV6",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "HttpVersion.HTTP2",
+            "comment": "The max supported HTTP Versions."
+          },
+          "name": "httpVersion",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "PriceClass_100: the cheapest option for CloudFront is picked by default.",
+            "comment": "The price class for the distribution (this impacts how many locations CloudFront uses for your distribution, and billing)"
+          },
+          "name": "priceClass",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "RedirectToHTTPs",
+            "comment": "The default viewer policy for incoming clients."
+          },
+          "name": "viewerProtocolPolicy",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The origin configurations for this distribution. Behaviors are a part of the origin."
+          },
+          "name": "originConfigs",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_cloudfront$.SourceConfiguration"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "default": ": no logging is enabled by default.",
+            "comment": "Optional - if we should enable logging.\nYou can pass an empty object ({}) to have us auto create a bucket for logging.\nOmission of this property indicates no logging is to be enabled."
+          },
+          "name": "loggingConfig",
+          "type": {
+            "fqn": "jsii$_aws_cdk_cloudfront$.LoggingConfiguration",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "How CloudFront should handle requests that are no successful (eg PageNotFound)"
+          },
+          "name": "errorConfigurations",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_resources$.cloudfront.DistributionResource.CustomErrorResponseProperty"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.CloudFrontWebDistributionProps",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "CloudFrontWebDistributionProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_cloudfront$.CloudFrontWebDistribution": {
+      "docs": {
+        "comment": "Amazon CloudFront is a global content delivery network (CDN) service that securely delivers data, videos,\napplications, and APIs to your viewers with low latency and high transfer speeds.\nCloudFront fronts user provided content and caches it at edge locations across the world.\n\nHere's how you can use this construct:\n\n```ts\n * import { CloudFront } from '@aws-cdk/cloudfront'\n *\n * const sourceBucket = new Bucket(this, 'Bucket');\n *\n * const distribution = new CloudFrontDistribution(this, 'MyDistribution', {\n *  originConfigs: [\n *      {\n *          s3OriginSource: {\n *            s3BucketSource: sourceBucket\n *          },\n *          behaviors : [ {isDefaultBehavior}]\n *      }\n *  ]\n * });\n * ```\n\nThis will create a CloudFront distribution that uses your S3Bucket as it's origin.\n\nYou can customize the distribution using additional properties from the CloudFrontWebDistributionProps interface."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The hosted zone Id if using an alias record in Route53.\nThis value never changes."
+          },
+          "name": "aliasHostedZoneId",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The logging bucket for this CloudFront distribution.\nIf logging is not enabled for this distribution - this property will be undefined."
+          },
+          "name": "loggingBucket",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRef",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The domain name created by CloudFront for this distribution.\nIf you are using aliases for your distribution, this is the domainName your DNS records should point to.\n(In Route53, you could create an ALIAS record to this value, for example. )"
+          },
+          "name": "domainName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.cloudfront.DistributionDomainName"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_cloudfront$.CloudFrontWebDistribution",
+      "module": "jsii$_aws_cdk_cloudfront$",
+      "namespace": "jsii$_aws_cdk_cloudfront$",
+      "name": "CloudFrontWebDistribution",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_cloudfront$.CloudFrontWebDistributionProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    }
+  },
+  "nametree": {
+    "jsii$_aws_cdk_cloudfront$": {
+      "HttpVersion": {
+        "_": "jsii$_aws_cdk_cloudfront$.HttpVersion"
+      },
+      "PriceClass": {
+        "_": "jsii$_aws_cdk_cloudfront$.PriceClass"
+      },
+      "ViewerProtocolPolicy": {
+        "_": "jsii$_aws_cdk_cloudfront$.ViewerProtocolPolicy"
+      },
+      "AliasConfiguration": {
+        "_": "jsii$_aws_cdk_cloudfront$.AliasConfiguration"
+      },
+      "SSLMethod": {
+        "_": "jsii$_aws_cdk_cloudfront$.SSLMethod"
+      },
+      "LoggingConfiguration": {
+        "_": "jsii$_aws_cdk_cloudfront$.LoggingConfiguration"
+      },
+      "SourceConfiguration": {
+        "_": "jsii$_aws_cdk_cloudfront$.SourceConfiguration"
+      },
+      "CustomOriginConfig": {
+        "_": "jsii$_aws_cdk_cloudfront$.CustomOriginConfig"
+      },
+      "OriginSslPolicy": {
+        "_": "jsii$_aws_cdk_cloudfront$.OriginSslPolicy"
+      },
+      "OriginProtocolPolicy": {
+        "_": "jsii$_aws_cdk_cloudfront$.OriginProtocolPolicy"
+      },
+      "S3OriginConfig": {
+        "_": "jsii$_aws_cdk_cloudfront$.S3OriginConfig"
+      },
+      "CloudFrontAllowedMethods": {
+        "_": "jsii$_aws_cdk_cloudfront$.CloudFrontAllowedMethods"
+      },
+      "CloudFrontAllowedCachedMethods": {
+        "_": "jsii$_aws_cdk_cloudfront$.CloudFrontAllowedCachedMethods"
+      },
+      "Behavior": {
+        "_": "jsii$_aws_cdk_cloudfront$.Behavior"
+      },
+      "ErrorConfiguration": {
+        "_": "jsii$_aws_cdk_cloudfront$.ErrorConfiguration"
+      },
+      "CloudFrontWebDistributionProps": {
+        "_": "jsii$_aws_cdk_cloudfront$.CloudFrontWebDistributionProps"
+      },
+      "CloudFrontWebDistribution": {
+        "_": "jsii$_aws_cdk_cloudfront$.CloudFrontWebDistribution"
+      }
+    }
+  },
+  "typecount": 17,
+  "externalTypes": {
+    "jsii$_aws_cdk_acm$.CertificateArn": {
+      "docs": {
+        "comment": "Represents the ARN of a certificate"
+      },
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_acm$.CertificateArn",
+      "module": "jsii$_aws_cdk_acm$",
+      "namespace": "jsii$_aws_cdk_acm$",
+      "name": "CertificateArn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Arn"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_s3$.BucketRef": {
+      "docs": {
+        "comment": "Represents an S3 Bucket.\n\nBuckets can be either defined within this stack:\n\n     new Bucket(this, 'MyBucket', { props });\n\nOr imported from an existing bucket:\n\n     BucketRef.import(this, 'MyImportedBucket', { bucketArn: ... });\n\nYou can also export a bucket and import it into another stack:\n\n     const ref = myBucket.export();\n     BucketRef.import(this, 'MyImportedBucket', ref);"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the bucket."
+          },
+          "name": "bucketArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.s3.BucketArn"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The name of the bucket."
+          },
+          "name": "bucketName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketName"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Optional KMS encryption key associated with this bucket."
+          },
+          "name": "encryptionKey",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+            "optional": true
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The resource policy assoicated with this bucket.\n\nIf `autoCreatePolicy` is true, a `BucketPolicy` will be created upon the\nfirst call to addToResourcePolicy(s)."
+          },
+          "name": "policy",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketPolicy",
+            "optional": true
+          },
+          "protected": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Indicates if a bucket resource policy should automatically created upon\nthe first call to `addToResourcePolicy`."
+          },
+          "name": "autoCreatePolicy",
+          "type": {
+            "primitive": "boolean"
+          },
+          "protected": true,
+          "abstract": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "parent The parent creating construct (usually `this`).",
+                "comment": "The parent creating construct (usually `this`)."
+              },
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The construct's name.",
+                "comment": "The construct's name."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_s3$.BucketRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Creates a Bucket construct that represents an external bucket."
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRef"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Exports this bucket from the stack."
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRefProps"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "permission",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a statement to the resource policy for a principal (i.e.\naccount/role/service) to perform actions on this bucket and/or it's\ncontents. Use `bucketArn` and `arnForObjects(keys)` to obtain ARNs for\nthis bucket or objects."
+          },
+          "name": "addToResourcePolicy"
+        },
+        {
+          "parameters": [
+            {
+              "name": "keyPattern",
+              "type": {
+                "primitive": "any"
+              },
+              "variadic": true
+            }
+          ],
+          "docs": {
+            "comment": "Returns an ARN that represents all objects within the bucket that match\nthe key pattern specified. To represent all keys, specify ``\"*\"``.\n\nIf you specify multiple components for keyPattern, they will be concatenated::\n\n     arnForObjects('home/', team, '/', user, '/*')"
+          },
+          "name": "arnForObjects",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Arn"
+          },
+          "variadic": true
+        },
+        {
+          "parameters": [
+            {
+              "name": "identity",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+                "optional": true
+              }
+            },
+            {
+              "name": "objectsKeyPattern",
+              "type": {
+                "primitive": "string",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Temporary API for granting read permissions for this bucket and it's\ncontents to an IAM principal (Role/Group/User).\n\nIf an encryption key is used, permission to ues the key to decrypt the\ncontents of the bucket will also be granted."
+          },
+          "name": "grantRead"
+        },
+        {
+          "parameters": [
+            {
+              "name": "identity",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+                "optional": true
+              }
+            },
+            {
+              "name": "objectsKeyPattern",
+              "type": {
+                "primitive": "string",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Grants read/write permissions for this bucket and it's contents to an IAM\nprincipal (Role/Group/User).\n\nIf an encryption key is used, permission to use the key for\nencrypt/decrypt will also be granted."
+          },
+          "name": "grantReadWrite"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.BucketRef",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "BucketRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_s3$.Bucket": {
+      "docs": {
+        "comment": "An S3 bucket with associated policy objects\n\nThis bucket does not yet have all features that exposed by the underlying\nBucketResource."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the bucket."
+          },
+          "name": "bucketArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.s3.BucketArn"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of the bucket."
+          },
+          "name": "bucketName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketName"
+          },
+          "immutable": true
+        },
+        {
+          "name": "domainName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.s3.BucketDomainName"
+          },
+          "immutable": true
+        },
+        {
+          "name": "dualstackDomainName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.s3.BucketDualStackDomainName"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Optional KMS encryption key associated with this bucket."
+          },
+          "name": "encryptionKey",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The resource policy assoicated with this bucket.\n\nIf `autoCreatePolicy` is true, a `BucketPolicy` will be created upon the\nfirst call to addToResourcePolicy(s)."
+          },
+          "name": "policy",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketPolicy",
+            "optional": true
+          },
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Indicates if a bucket resource policy should automatically created upon\nthe first call to `addToResourcePolicy`."
+          },
+          "name": "autoCreatePolicy",
+          "type": {
+            "primitive": "boolean"
+          },
+          "protected": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "rule The rule to add",
+                "comment": "The rule to add"
+              },
+              "name": "rule",
+              "type": {
+                "fqn": "jsii$_aws_cdk_s3$.LifecycleRule"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Add a lifecycle rule to the bucket"
+          },
+          "name": "addLifecycleRule"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.Bucket",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "Bucket",
+      "base": {
+        "fqn": "jsii$_aws_cdk_s3$.BucketRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_s3$.BucketProps",
+              "optional": true
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.cloudfront.CloudFrontOriginAccessIdentityResource": {
+      "docs": {
+        "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-cloudfrontoriginaccessidentity.html"
+      },
+      "subtypes": [
+        "jsii$_aws_cdk_resources$.cloudfront.CloudFrontOriginAccessIdentityResource.CloudFrontOriginAccessIdentityConfigProperty"
+      ],
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The CloudFormation resource type name for this resource class."
+          },
+          "name": "resourceTypeName",
+          "static": true,
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true,
+          "const": true
+        },
+        {
+          "docs": {
+            "comment": "The list of properties on the CloudFormation model for this resource, with their attache metadata."
+          },
+          "name": "resourceProperties",
+          "static": true,
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_resources$.PropertySpecification"
+              },
+              "kind": "map"
+            }
+          },
+          "immutable": true,
+          "const": true
+        },
+        {
+          "docs": {
+            "cloudformation_attribute": "S3CanonicalUserId"
+          },
+          "name": "cloudFrontOriginAccessIdentityS3CanonicalUserId",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.cloudfront.CloudFrontOriginAccessIdentityS3CanonicalUserId"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "name": "renderProperties",
+          "protected": true,
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "any"
+              },
+              "kind": "map"
+            }
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_resources$.cloudfront.CloudFrontOriginAccessIdentityResource",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.cloudfront",
+      "name": "CloudFrontOriginAccessIdentityResource",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Resource"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent the core.Construct this CloudFrontOriginAccessIdentityResource is a part of",
+              "comment": "the core.Construct this CloudFrontOriginAccessIdentityResource is a part of"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "docs": {
+              "param": "props the properties of this CloudFrontOriginAccessIdentityResource",
+              "comment": "the properties of this CloudFrontOriginAccessIdentityResource"
+            },
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_resources$.cloudfront.CloudFrontOriginAccessIdentityResourceProps",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new AWS::CloudFront::CloudFrontOriginAccessIdentity."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.cloudfront.DistributionResource.ForwardedValuesProperty": {
+      "docs": {
+        "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-forwardedvalues.html"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-forwardedvalues.html#cfn-cloudfront-distribution-forwardedvalues-cookies",
+            "comment": "DistributionResource.ForwardedValuesProperty.Cookies"
+          },
+          "name": "cookies",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_resources$.cloudfront.DistributionResource.CookiesProperty"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-forwardedvalues.html#cfn-cloudfront-distribution-forwardedvalues-headers",
+            "comment": "DistributionResource.ForwardedValuesProperty.Headers"
+          },
+          "name": "headers",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                },
+                {
+                  "collection": {
+                    "elementtype": {
+                      "union": {
+                        "types": [
+                          {
+                            "primitive": "string"
+                          },
+                          {
+                            "fqn": "jsii$_aws_cdk_core$.Token"
+                          }
+                        ]
+                      }
+                    },
+                    "kind": "array"
+                  }
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-forwardedvalues.html#cfn-cloudfront-distribution-forwardedvalues-querystring",
+            "comment": "DistributionResource.ForwardedValuesProperty.QueryString"
+          },
+          "name": "queryString",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "boolean"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-forwardedvalues.html#cfn-cloudfront-distribution-forwardedvalues-querystringcachekeys",
+            "comment": "DistributionResource.ForwardedValuesProperty.QueryStringCacheKeys"
+          },
+          "name": "queryStringCacheKeys",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                },
+                {
+                  "collection": {
+                    "elementtype": {
+                      "union": {
+                        "types": [
+                          {
+                            "primitive": "string"
+                          },
+                          {
+                            "fqn": "jsii$_aws_cdk_core$.Token"
+                          }
+                        ]
+                      }
+                    },
+                    "kind": "array"
+                  }
+                }
+              ]
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_resources$.cloudfront.DistributionResource.ForwardedValuesProperty",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.cloudfront.DistributionResource",
+      "name": "ForwardedValuesProperty",
+      "datatype": true,
+      "parenttype": "jsii$_aws_cdk_resources$.cloudfront.DistributionResource"
+    },
+    "jsii$_aws_cdk_resources$.cloudfront.DistributionResource.CustomErrorResponseProperty": {
+      "docs": {
+        "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-customerrorresponse.html"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-customerrorresponse.html#cfn-cloudfront-distribution-customerrorresponse-responsecode",
+            "comment": "DistributionResource.CustomErrorResponseProperty.ResponseCode"
+          },
+          "name": "responseCode",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "number"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-customerrorresponse.html#cfn-cloudfront-distribution-customerrorresponse-errorcachingminttl",
+            "comment": "DistributionResource.CustomErrorResponseProperty.ErrorCachingMinTTL"
+          },
+          "name": "errorCachingMinTtl",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "number"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-customerrorresponse.html#cfn-cloudfront-distribution-customerrorresponse-errorcode",
+            "comment": "DistributionResource.CustomErrorResponseProperty.ErrorCode"
+          },
+          "name": "errorCode",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "number"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-customerrorresponse.html#cfn-cloudfront-distribution-customerrorresponse-responsepagepath",
+            "comment": "DistributionResource.CustomErrorResponseProperty.ResponsePagePath"
+          },
+          "name": "responsePagePath",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_resources$.cloudfront.DistributionResource.CustomErrorResponseProperty",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.cloudfront.DistributionResource",
+      "name": "CustomErrorResponseProperty",
+      "datatype": true,
+      "parenttype": "jsii$_aws_cdk_resources$.cloudfront.DistributionResource"
+    },
+    "jsii$_aws_cdk_core$.Construct": {
+      "docs": {
+        "comment": "Represents the building block of the construct graph.\nWhen a construct is created, it is always added as a child"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the parent of this node or undefined if this is a root node."
+          },
+          "name": "parent",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of this construct"
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "All direct children of this construct."
+          },
+          "name": "children",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "returns": "/-separated path of this Construct.",
+            "comment": "Returns the path of all constructs from root to this construct, in string form."
+          },
+          "name": "path",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "An array of metadata objects associated with this construct.\nThis can be used, for example, to implement support for deprecation notices, source mapping, etc."
+          },
+          "name": "metadata",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.MetadataEntry"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "docs": {
+            "comment": "Returns a string representation of this construct."
+          },
+          "name": "toString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "depth",
+              "type": {
+                "primitive": "number",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Returns a string with a tree representation of this construct and it's children."
+          },
+          "name": "toTreeString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "a child by path or undefined if not found.",
+            "comment": "Return a descendant by path, or undefined"
+          },
+          "name": "tryFindChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "Child with the given path.",
+            "comment": "Return a descendant by path\n\nThrows an exception if the descendant is not found."
+          },
+          "name": "findChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "value The context value",
+                "comment": "The context value"
+              },
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "This can be used to set contextual values.\nContext must be set before any children are added, since children may consult context info during construction.\nIf the key already exists, it will be overridden."
+          },
+          "name": "setContext"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The context value or undefined",
+            "comment": "Retrieves a value from tree context.\n\nContext is usually initialized at the root, but can be overridden at any point in the tree."
+          },
+          "name": "getContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Retrieve a value from tree-global context\n\nIt is an error if the context object is not available."
+          },
+          "name": "requireContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "type a string denoting the type of metadata",
+                "comment": "a string denoting the type of metadata"
+              },
+              "name": "type",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "data the value of the metadata (can be a Token). If null/undefined, metadata will not be added.",
+                "comment": "the value of the metadata (can be a Token). If null/undefined, metadata will not be added."
+              },
+              "name": "data",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "from a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)",
+                "comment": "a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)"
+              },
+              "name": "from",
+              "type": {
+                "primitive": "any",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a metadata entry to this construct.\nEntries are arbitrary values and will also include a stack trace to allow tracing back to\nthe code location for when the entry was added. It can be used, for example, to include source\nmapping in CloudFormation templates to improve diagnostics."
+          },
+          "name": "addMetadata",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "message The warning message.",
+                "comment": "The warning message."
+              },
+              "name": "message",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a { warning: <message> } metadata entry to this construct."
+          },
+          "name": "addWarning",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "docs": {
+            "returns": "An array of validation error messages, or an empty array if there the construct is valid.",
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "returns": "A list of validation errors. If the list is empty, all constructs are valid.",
+            "comment": "Invokes 'validate' on all child constructs and then on this construct (depth-first)."
+          },
+          "name": "validateTree",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.ValidationError"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "upTo",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Return the ancestors (including self) of this Construct up until and excluding the indicated component"
+          },
+          "name": "ancestors",
+          "protected": true,
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "props The props bag.",
+                "comment": "The props bag."
+              },
+              "name": "props",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the required property.",
+                "comment": "The name of the required property."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Throws if the `props` bag doesn't include the property `name`.\nIn the future we can add some type-checking here, maybe even auto-generate during compilation."
+          },
+          "name": "required",
+          "protected": true,
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "child The child construct",
+                "comment": "The child construct"
+              },
+              "name": "child",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "childName",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The resolved path part name of the child",
+            "comment": "Adds a child construct to this node."
+          },
+          "name": "addChild",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Locks this construct from allowing more children to be added. After this\ncall, no more children can be added to this construct or to any children."
+          },
+          "name": "lock",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Unlocks this costruct and allows mutations (adding children)."
+          },
+          "name": "unlock",
+          "protected": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Construct",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Construct",
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.cloudfront.DistributionDomainName": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.cloudfront.DistributionDomainName",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.cloudfront",
+      "name": "DistributionDomainName",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    }
+  },
+  "name": "jsii$_aws_cdk_cloudfront$",
+  "package": "@aws-cdk/cloudfront",
+  "version": "0.7.2-beta",
+  "dependencies": {
+    "jsii$_aws_cdk_acm$": {
+      "package": "@aws-cdk/acm",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_core$": {
+      "package": "@aws-cdk/core",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "package": "@aws-cdk/iam",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_kms$": {
+      "package": "@aws-cdk/kms",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "package": "@aws-cdk/resources",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_s3$": {
+      "package": "@aws-cdk/s3",
+      "version": "0.7.2-beta"
+    }
+  },
+  "names": {
+    "java": "com.amazonaws.cdk.cloudfront",
+    "dotnet": "AWS.Cdk.CloudFront",
+    "js": "@aws-cdk/cloudfront"
+  },
+  "nativenames": {
+    "jsii$_aws_cdk_acm$": {
+      "java": "com.amazonaws.cdk.acm",
+      "dotnet": "AWS.Cdk.Acm",
+      "js": "@aws-cdk/acm"
+    },
+    "jsii$_aws_cdk_core$": {
+      "java": "com.amazonaws.cdk",
+      "dotnet": "AWS.Cdk",
+      "js": "@aws-cdk/core"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "java": "com.amazonaws.cdk.iam",
+      "dotnet": "AWS.Cdk.Iam",
+      "js": "@aws-cdk/iam"
+    },
+    "jsii$_aws_cdk_kms$": {
+      "java": "com.amazonaws.cdk.kms",
+      "dotnet": "AWS.Cdk.Kms",
+      "js": "@aws-cdk/kms"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "java": "com.amazonaws.cdk.resources",
+      "dotnet": "AWS.Cdk.Resources",
+      "js": "@aws-cdk/resources"
+    },
+    "jsii$_aws_cdk_s3$": {
+      "java": "com.amazonaws.cdk.s3",
+      "dotnet": "AWS.Cdk.S3",
+      "js": "@aws-cdk/s3"
+    },
+    "jsii$_aws_cdk_cloudfront$": {
+      "java": "com.amazonaws.cdk.cloudfront",
+      "dotnet": "AWS.Cdk.CloudFront",
+      "js": "@aws-cdk/cloudfront"
+    }
+  },
+  "readme": {
+    "markdown": "## AWS CloudFront Construct Library\nA CloudFront construct - for setting up the AWS CDN with ease!\n\nExample usage:\n\n```ts\nconst sourceBucket = new Bucket(this, 'Bucket');\n\nconst distribution = new CloudFrontDistribution(this, 'MyDistribution', {\n    originConfigs: [\n        {\n            s3OriginSource: {\n                s3BucketSource: sourceBucket\n            },\n            behaviors : [ {isDefaultBehavior}]\n        }\n    ]\n });\n```\n"
+  },
+  "code": "var jsii$_aws_cdk_cloudfront$ =\n/******/ (function(modules) { // webpackBootstrap\n/******/ \t// The module cache\n/******/ \tvar installedModules = {};\n/******/\n/******/ \t// The require function\n/******/ \tfunction __webpack_require__(moduleId) {\n/******/\n/******/ \t\t// Check if module is in cache\n/******/ \t\tif(installedModules[moduleId]) {\n/******/ \t\t\treturn installedModules[moduleId].exports;\n/******/ \t\t}\n/******/ \t\t// Create a new module (and put it into the cache)\n/******/ \t\tvar module = installedModules[moduleId] = {\n/******/ \t\t\ti: moduleId,\n/******/ \t\t\tl: false,\n/******/ \t\t\texports: {}\n/******/ \t\t};\n/******/\n/******/ \t\t// Execute the module function\n/******/ \t\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\n/******/\n/******/ \t\t// Flag the module as loaded\n/******/ \t\tmodule.l = true;\n/******/\n/******/ \t\t// Return the exports of the module\n/******/ \t\treturn module.exports;\n/******/ \t}\n/******/\n/******/\n/******/ \t// expose the modules object (__webpack_modules__)\n/******/ \t__webpack_require__.m = modules;\n/******/\n/******/ \t// expose the module cache\n/******/ \t__webpack_require__.c = installedModules;\n/******/\n/******/ \t// define getter function for harmony exports\n/******/ \t__webpack_require__.d = function(exports, name, getter) {\n/******/ \t\tif(!__webpack_require__.o(exports, name)) {\n/******/ \t\t\tObject.defineProperty(exports, name, {\n/******/ \t\t\t\tconfigurable: false,\n/******/ \t\t\t\tenumerable: true,\n/******/ \t\t\t\tget: getter\n/******/ \t\t\t});\n/******/ \t\t}\n/******/ \t};\n/******/\n/******/ \t// getDefaultExport function for compatibility with non-harmony modules\n/******/ \t__webpack_require__.n = function(module) {\n/******/ \t\tvar getter = module && module.__esModule ?\n/******/ \t\t\tfunction getDefault() { return module['default']; } :\n/******/ \t\t\tfunction getModuleExports() { return module; };\n/******/ \t\t__webpack_require__.d(getter, 'a', getter);\n/******/ \t\treturn getter;\n/******/ \t};\n/******/\n/******/ \t// Object.prototype.hasOwnProperty.call\n/******/ \t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\n/******/\n/******/ \t// __webpack_public_path__\n/******/ \t__webpack_require__.p = \"\";\n/******/\n/******/ \t// Load entry module and return exports\n/******/ \treturn __webpack_require__(__webpack_require__.s = 0);\n/******/ })\n/************************************************************************/\n/******/ ([\n/* 0 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(1));\n\n\n/***/ }),\n/* 1 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(2);\nconst resources_1 = __webpack_require__(3);\nvar HttpVersion;\n(function (HttpVersion) {\n    HttpVersion[\"HTTP1_1\"] = \"http1.1\";\n    HttpVersion[\"HTTP2\"] = \"http2\";\n})(HttpVersion = exports.HttpVersion || (exports.HttpVersion = {}));\n/**\n * The price class determines how many edge locations CloudFront will use for your distribution.\n */\nvar PriceClass;\n(function (PriceClass) {\n    PriceClass[\"PriceClass100\"] = \"PriceClass_100\";\n    PriceClass[\"PriceClass200\"] = \"PriceClass_200\";\n    PriceClass[\"PriceClassAll\"] = \"PriceClass_All\";\n})(PriceClass = exports.PriceClass || (exports.PriceClass = {}));\n/**\n * How HTTPs should be handled with your distribution.\n */\nvar ViewerProtocolPolicy;\n(function (ViewerProtocolPolicy) {\n    ViewerProtocolPolicy[\"HTTPSOnly\"] = \"https-only\";\n    ViewerProtocolPolicy[\"RedirectToHTTPS\"] = \"https-only\";\n    ViewerProtocolPolicy[\"AllowAll\"] = \"allow-all\";\n})(ViewerProtocolPolicy = exports.ViewerProtocolPolicy || (exports.ViewerProtocolPolicy = {}));\n/**\n * The SSL method CloudFront will use for your distribution.\n *\n * Server Name Indication (SNI) - is an extension to the TLS computer networking protocol by which a client indicates\n *  which hostname it is attempting to connect to at the start of the handshaking process. This allows a server to present\n *  multiple certificates on the same IP address and TCP port number and hence allows multiple secure (HTTPS) websites\n * (or any other service over TLS) to be served by the same IP address without requiring all those sites to use the same certificate.\n *\n * CloudFront can use SNI to host multiple distributions on the same IP - which a large majority of clients will support.\n *\n * If your clients cannot support SNI however - CloudFront can use dedicated IPs for your distribution - but there is a prorated monthly charge for\n * using this feature. By default, we use SNI - but you can optionally enable dedicated IPs (VIP).\n *\n * See the CloudFront SSL for more details about pricing : https://aws.amazon.com/cloudfront/custom-ssl-domains/\n *\n */\nvar SSLMethod;\n(function (SSLMethod) {\n    SSLMethod[\"SNI\"] = \"sni-only\";\n    SSLMethod[\"VIP\"] = \"vip\";\n})(SSLMethod = exports.SSLMethod || (exports.SSLMethod = {}));\nvar OriginSslPolicy;\n(function (OriginSslPolicy) {\n    OriginSslPolicy[\"SSLv3\"] = \"SSLv3\";\n    OriginSslPolicy[\"TLSv1\"] = \"TLSv1\";\n    OriginSslPolicy[\"TLSv1_1\"] = \"TLSv1.1\";\n    OriginSslPolicy[\"TLSv1_2\"] = \"TLSv1.2\";\n})(OriginSslPolicy = exports.OriginSslPolicy || (exports.OriginSslPolicy = {}));\nvar OriginProtocolPolicy;\n(function (OriginProtocolPolicy) {\n    OriginProtocolPolicy[\"HttpOnly\"] = \"http-only\";\n    OriginProtocolPolicy[\"MatchViewer\"] = \"match-viewer\";\n    OriginProtocolPolicy[\"HttpsOnly\"] = \"https-only\";\n})(OriginProtocolPolicy = exports.OriginProtocolPolicy || (exports.OriginProtocolPolicy = {}));\n/**\n * An enum for the supported methods to a CloudFront distribution.\n */\nvar CloudFrontAllowedMethods;\n(function (CloudFrontAllowedMethods) {\n    CloudFrontAllowedMethods[\"GET_HEAD\"] = \"GH\";\n    CloudFrontAllowedMethods[\"GET_HEAD_OPTIONS\"] = \"GHO\";\n    CloudFrontAllowedMethods[\"ALL\"] = \"ALL\";\n})(CloudFrontAllowedMethods = exports.CloudFrontAllowedMethods || (exports.CloudFrontAllowedMethods = {}));\n/**\n * Enums for the methods CloudFront can cache.\n */\nvar CloudFrontAllowedCachedMethods;\n(function (CloudFrontAllowedCachedMethods) {\n    CloudFrontAllowedCachedMethods[\"GET_HEAD\"] = \"GH\";\n    CloudFrontAllowedCachedMethods[\"GET_HEAD_OPTIONS\"] = \"GHO\";\n})(CloudFrontAllowedCachedMethods = exports.CloudFrontAllowedCachedMethods || (exports.CloudFrontAllowedCachedMethods = {}));\n/**\n * Amazon CloudFront is a global content delivery network (CDN) service that securely delivers data, videos,\n * applications, and APIs to your viewers with low latency and high transfer speeds.\n * CloudFront fronts user provided content and caches it at edge locations across the world.\n *\n * Here's how you can use this construct:\n *\n * ```ts\n * import { CloudFront } from '@aws-cdk/cloudfront'\n *\n * const sourceBucket = new Bucket(this, 'Bucket');\n *\n * const distribution = new CloudFrontDistribution(this, 'MyDistribution', {\n *  originConfigs: [\n *      {\n *          s3OriginSource: {\n *            s3BucketSource: sourceBucket\n *          },\n *          behaviors : [ {isDefaultBehavior}]\n *      }\n *  ]\n * });\n * ```\n *\n * This will create a CloudFront distribution that uses your S3Bucket as it's origin.\n *\n * You can customize the distribution using additional properties from the CloudFrontWebDistributionProps interface.\n *\n *\n */\nclass CloudFrontWebDistribution extends core_1.Construct {\n    constructor(parent, name, props) {\n        super(parent, name);\n        /**\n         * The hosted zone Id if using an alias record in Route53.\n         * This value never changes.\n         */\n        this.aliasHostedZoneId = \"Z2FDTNDATAQYW2\";\n        /**\n         * Maps our methods to the string arrays they are\n         */\n        this.METHOD_LOOKUP_MAP = {\n            GH: [\"GET\", \"HEAD\"],\n            GHO: [\"GET\", \"HEAD\", \"OPTIONS\"],\n            ALL: [\"DELETE\", \"GET\", \"HEAD\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\"],\n        };\n        const distributionConfig = {\n            comment: props.comment,\n            enabled: true,\n            defaultRootObject: props.defaultRootObject || \"index.html\",\n            httpVersion: props.httpVersion || HttpVersion.HTTP2,\n            priceClass: props.priceClass || PriceClass.PriceClass100,\n            ipv6Enabled: props.enableIpV6 || true,\n            // tslint:disable-next-line:max-line-length\n            customErrorResponses: props.errorConfigurations,\n        };\n        const behaviors = [];\n        const origins = [];\n        let originIndex = 1;\n        for (const originConfig of props.originConfigs) {\n            const originId = `origin${originIndex}`;\n            if (!originConfig.s3OriginSource && !originConfig.customOriginSource) {\n                throw new Error(\"There must be at least one origin source - either an s3OriginSource or a customOriginSource\");\n            }\n            if (originConfig.customOriginSource && originConfig.s3OriginSource) {\n                throw new Error(\"There cannot be both an s3OriginSource and a customOriginSource in the same SourceConfiguration.\");\n            }\n            const originHeaders = [];\n            if (originConfig.originHeaders) {\n                Object.keys(originConfig.originHeaders).forEach(key => {\n                    const oHeader = {\n                        headerName: key,\n                        headerValue: originConfig.originHeaders[key]\n                    };\n                    originHeaders.push(oHeader);\n                });\n            }\n            const originProperty = {\n                id: originId,\n                domainName: originConfig.s3OriginSource ?\n                    originConfig.s3OriginSource.s3BucketSource.domainName :\n                    originConfig.customOriginSource.domainName,\n                originPath: originConfig.originPath,\n                originCustomHeaders: originHeaders.length > 0 ? originHeaders : undefined,\n            };\n            if (originConfig.s3OriginSource && originConfig.s3OriginSource.originAccessIdentity) {\n                originProperty.s3OriginConfig = {\n                    originAccessIdentity: new core_1.FnConcat(\"origin-access-identity/cloudfront/\", originConfig.s3OriginSource.originAccessIdentity.ref),\n                };\n            }\n            if (originConfig.customOriginSource) {\n                originProperty.customOriginConfig = {\n                    httpPort: originConfig.customOriginSource.httpPort || 80,\n                    httpsPort: originConfig.customOriginSource.httpsPort || 443,\n                    originKeepaliveTimeout: originConfig.customOriginSource.originKeepaliveTimeoutSeconds || 5,\n                    originReadTimeout: originConfig.customOriginSource.originReadTimeoutSeconds || 30,\n                    originProtocolPolicy: originConfig.customOriginSource.originProtocolPolicy || OriginProtocolPolicy.HttpsOnly,\n                    originSslProtocols: originConfig.customOriginSource.allowedOriginSSLVersions || [OriginSslPolicy.TLSv1_2]\n                };\n            }\n            for (const behavior of originConfig.behaviors) {\n                behaviors.push(Object.assign({}, behavior, { targetOriginId: originId }));\n            }\n            origins.push(originProperty);\n            originIndex++;\n        }\n        distributionConfig.origins = origins;\n        const defaultBehaviors = behaviors.filter(behavior => behavior.isDefaultBehavior);\n        if (defaultBehaviors.length !== 1) {\n            throw new Error(\"There can only be one default behavior across all sources. [ One default behavior per distribution ].\");\n        }\n        distributionConfig.defaultCacheBehavior = this.toBehavior(defaultBehaviors[0]);\n        const otherBehaviors = [];\n        for (const behavior of behaviors.filter(b => !b.isDefaultBehavior)) {\n            if (!behavior.pathPattern) {\n                throw new Error(\"pathPattern is required for all non-default behaviors\");\n            }\n            otherBehaviors.push(this.toBehavior(behavior));\n        }\n        distributionConfig.cacheBehaviors = otherBehaviors;\n        if (props.aliasConfiguration) {\n            distributionConfig.aliases = props.aliasConfiguration.names;\n            distributionConfig.viewerCertificate = {\n                acmCertificateArn: props.aliasConfiguration.acmCertRef,\n                sslSupportMethod: props.aliasConfiguration.sslMethod || SSLMethod.SNI,\n            };\n        }\n        else {\n            distributionConfig.viewerCertificate = {\n                cloudFrontDefaultCertificate: true\n            };\n        }\n        const distribution = new resources_1.cloudfront.DistributionResource(this, 'CFDistribution', { distributionConfig });\n        this.domainName = distribution.distributionDomainName;\n    }\n    toBehavior(input, protoPolicy) {\n        let toReturn = {\n            allowedMethods: this.METHOD_LOOKUP_MAP[input.allowedMethods || CloudFrontAllowedMethods.GET_HEAD],\n            cachedMethods: this.METHOD_LOOKUP_MAP[input.cachedMethods || CloudFrontAllowedCachedMethods.GET_HEAD],\n            compress: input.compress,\n            defaultTtl: input.defaultTtlSeconds,\n            forwardedValues: input.forwardedValues || { queryString: false, cookies: { forward: \"none\" } },\n            maxTtl: input.maxTtlSeconds,\n            minTtl: input.minTtlSeconds,\n            trustedSigners: input.trustedSigners,\n            targetOriginId: input.targetOriginId,\n            viewerProtocolPolicy: protoPolicy || ViewerProtocolPolicy.RedirectToHTTPS,\n        };\n        if (!input.isDefaultBehavior) {\n            toReturn = Object.assign(toReturn, { pathPattern: input.pathPattern });\n        }\n        return toReturn;\n    }\n}\nexports.CloudFrontWebDistribution = CloudFrontWebDistribution;\n\n\n/***/ }),\n/* 2 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_core$;\n\n/***/ }),\n/* 3 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_resources$;\n\n/***/ })\n/******/ ]);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vd2VicGFjay9ib290c3RyYXAgMjU4NGUxYmYyOTEwNGU1MzQzNTUiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvY2xvdWRmcm9udC9saWIvaW5kZXgudHMiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvY2xvdWRmcm9udC9saWIvd2ViX2Rpc3RyaWJ1dGlvbi50cyIsIndlYnBhY2s6Ly8vZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX2NvcmUkXCIiLCJ3ZWJwYWNrOi8vL2V4dGVybmFsIFwianNpaSRfYXdzX2Nka19yZXNvdXJjZXMkXCIiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTs7O0FBR0E7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsYUFBSztBQUNMO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0EsbUNBQTJCLDBCQUEwQixFQUFFO0FBQ3ZELHlDQUFpQyxlQUFlO0FBQ2hEO0FBQ0E7QUFDQTs7QUFFQTtBQUNBLDhEQUFzRCwrREFBK0Q7O0FBRXJIO0FBQ0E7O0FBRUE7QUFDQTs7Ozs7Ozs7Ozs7OztBQzdEQSxpQ0FBbUM7Ozs7Ozs7Ozs7QUNDbkMsc0NBQXNEO0FBQ3RELDJDQUFnRDtBQUdoRCxJQUFZLFdBR1g7QUFIRCxXQUFZLFdBQVc7SUFDbkIsa0NBQW1CO0lBQ25CLDhCQUFlO0FBQ25CLENBQUMsRUFIVyxXQUFXLEdBQVgsbUJBQVcsS0FBWCxtQkFBVyxRQUd0QjtBQUVEOztHQUVHO0FBQ0gsSUFBWSxVQUlYO0FBSkQsV0FBWSxVQUFVO0lBQ2xCLDhDQUFnQztJQUNoQyw4Q0FB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RCxDQUFDO0lBRU8sVUFBVSxDQUFDLEtBQXlCLEVBQUUsV0FBa0M7UUFDNUUsSUFBSSxRQUFRLEdBQUk7WUFDWixjQUFjLEVBQUUsSUFBSSxDQUFDLGlCQUFpQixDQUFDLEtBQUssQ0FBQyxjQUFjLElBQUksd0JBQXdCLENBQUMsUUFBUSxDQUFDO1lBQ2pHLGFBQWEsRUFBRSxJQUFJLENBQUMsaUJBQWlCLENBQUMsS0FBSyxDQUFDLGFBQWEsSUFBSSw4QkFBOEIsQ0FBQyxRQUFRLENBQUM7WUFDckcsUUFBUSxFQUFFLEtBQUssQ0FBQyxRQUFRO1lBQ3hCLFVBQVUsRUFBRSxLQUFLLENBQUMsaUJBQWlCO1lBQ25DLGVBQWUsRUFBRSxLQUFLLENBQUMsZUFBZSxJQUFJLEVBQUUsV0FBVyxFQUFFLEtBQUssRUFBRSxPQUFPLEVBQUUsRUFBQyxPQUFPLEVBQUUsTUFBTSxFQUFDLEVBQUU7WUFDNUYsTUFBTSxFQUFFLEtBQUssQ0FBQyxhQUFhO1lBQzNCLE1BQU0sRUFBRSxLQUFLLENBQUMsYUFBYTtZQUMzQixjQUFjLEVBQUUsS0FBSyxDQUFDLGNBQWM7WUFDcEMsY0FBYyxFQUFFLEtBQUssQ0FBQyxjQUFjO1lBQ3BDLG9CQUFvQixFQUFFLFdBQVcsSUFBSSxvQkFBb0IsQ0FBQyxlQUFlO1NBQzVFLENBQUM7UUFDRixJQUFJLENBQUMsS0FBSyxDQUFDLGlCQUFpQixFQUFFO1lBQzFCLFFBQVEsR0FBRyxNQUFNLENBQUMsTUFBTSxDQUFDLFFBQVEsRUFBRSxFQUFDLFdBQVcsRUFBRSxLQUFLLENBQUMsV0FBVyxFQUFDLENBQUMsQ0FBQztTQUN4RTtRQUNELE9BQU8sUUFBUSxDQUFDO0lBQ3BCLENBQUM7Q0FDSjtBQXRKRCw4REFzSkM7Ozs7Ozs7QUNoa0JELHFDOzs7Ozs7QUNBQSwwQyIsImZpbGUiOiJidW5kbGUuanMiLCJzb3VyY2VzQ29udGVudCI6WyIgXHQvLyBUaGUgbW9kdWxlIGNhY2hlXG4gXHR2YXIgaW5zdGFsbGVkTW9kdWxlcyA9IHt9O1xuXG4gXHQvLyBUaGUgcmVxdWlyZSBmdW5jdGlvblxuIFx0ZnVuY3Rpb24gX193ZWJwYWNrX3JlcXVpcmVfXyhtb2R1bGVJZCkge1xuXG4gXHRcdC8vIENoZWNrIGlmIG1vZHVsZSBpcyBpbiBjYWNoZVxuIFx0XHRpZihpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXSkge1xuIFx0XHRcdHJldHVybiBpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXS5leHBvcnRzO1xuIFx0XHR9XG4gXHRcdC8vIENyZWF0ZSBhIG5ldyBtb2R1bGUgKGFuZCBwdXQgaXQgaW50byB0aGUgY2FjaGUpXG4gXHRcdHZhciBtb2R1bGUgPSBpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXSA9IHtcbiBcdFx0XHRpOiBtb2R1bGVJZCxcbiBcdFx0XHRsOiBmYWxzZSxcbiBcdFx0XHRleHBvcnRzOiB7fVxuIFx0XHR9O1xuXG4gXHRcdC8vIEV4ZWN1dGUgdGhlIG1vZHVsZSBmdW5jdGlvblxuIFx0XHRtb2R1bGVzW21vZHVsZUlkXS5jYWxsKG1vZHVsZS5leHBvcnRzLCBtb2R1bGUsIG1vZHVsZS5leHBvcnRzLCBfX3dlYnBhY2tfcmVxdWlyZV9fKTtcblxuIFx0XHQvLyBGbGFnIHRoZSBtb2R1bGUgYXMgbG9hZGVkXG4gXHRcdG1vZHVsZS5sID0gdHJ1ZTtcblxuIFx0XHQvLyBSZXR1cm4gdGhlIGV4cG9ydHMgb2YgdGhlIG1vZHVsZVxuIFx0XHRyZXR1cm4gbW9kdWxlLmV4cG9ydHM7XG4gXHR9XG5cblxuIFx0Ly8gZXhwb3NlIHRoZSBtb2R1bGVzIG9iamVjdCAoX193ZWJwYWNrX21vZHVsZXNfXylcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubSA9IG1vZHVsZXM7XG5cbiBcdC8vIGV4cG9zZSB0aGUgbW9kdWxlIGNhY2hlXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLmMgPSBpbnN0YWxsZWRNb2R1bGVzO1xuXG4gXHQvLyBkZWZpbmUgZ2V0dGVyIGZ1bmN0aW9uIGZvciBoYXJtb255IGV4cG9ydHNcbiBcdF9fd2VicGFja19yZXF1aXJlX18uZCA9IGZ1bmN0aW9uKGV4cG9ydHMsIG5hbWUsIGdldHRlcikge1xuIFx0XHRpZighX193ZWJwYWNrX3JlcXVpcmVfXy5vKGV4cG9ydHMsIG5hbWUpKSB7XG4gXHRcdFx0T2JqZWN0LmRlZmluZVByb3BlcnR5KGV4cG9ydHMsIG5hbWUsIHtcbiBcdFx0XHRcdGNvbmZpZ3VyYWJsZTogZmFsc2UsXG4gXHRcdFx0XHRlbnVtZXJhYmxlOiB0cnVlLFxuIFx0XHRcdFx0Z2V0OiBnZXR0ZXJcbiBcdFx0XHR9KTtcbiBcdFx0fVxuIFx0fTtcblxuIFx0Ly8gZ2V0RGVmYXVsdEV4cG9ydCBmdW5jdGlvbiBmb3IgY29tcGF0aWJpbGl0eSB3aXRoIG5vbi1oYXJtb255IG1vZHVsZXNcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubiA9IGZ1bmN0aW9uKG1vZHVsZSkge1xuIFx0XHR2YXIgZ2V0dGVyID0gbW9kdWxlICYmIG1vZHVsZS5fX2VzTW9kdWxlID9cbiBcdFx0XHRmdW5jdGlvbiBnZXREZWZhdWx0KCkgeyByZXR1cm4gbW9kdWxlWydkZWZhdWx0J107IH0gOlxuIFx0XHRcdGZ1bmN0aW9uIGdldE1vZHVsZUV4cG9ydHMoKSB7IHJldHVybiBtb2R1bGU7IH07XG4gXHRcdF9fd2VicGFja19yZXF1aXJlX18uZChnZXR0ZXIsICdhJywgZ2V0dGVyKTtcbiBcdFx0cmV0dXJuIGdldHRlcjtcbiBcdH07XG5cbiBcdC8vIE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbFxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5vID0gZnVuY3Rpb24ob2JqZWN0LCBwcm9wZXJ0eSkgeyByZXR1cm4gT2JqZWN0LnByb3RvdHlwZS5oYXNPd25Qcm9wZXJ0eS5jYWxsKG9iamVjdCwgcHJvcGVydHkpOyB9O1xuXG4gXHQvLyBfX3dlYnBhY2tfcHVibGljX3BhdGhfX1xuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5wID0gXCJcIjtcblxuIFx0Ly8gTG9hZCBlbnRyeSBtb2R1bGUgYW5kIHJldHVybiBleHBvcnRzXG4gXHRyZXR1cm4gX193ZWJwYWNrX3JlcXVpcmVfXyhfX3dlYnBhY2tfcmVxdWlyZV9fLnMgPSAwKTtcblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyB3ZWJwYWNrL2Jvb3RzdHJhcCAyNTg0ZTFiZjI5MTA0ZTUzNDM1NSIsImV4cG9ydCAqIGZyb20gJy4vd2ViX2Rpc3RyaWJ1dGlvbic7XG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvY2xvdWRmcm9udC9saWIvaW5kZXgudHMiLCJpbXBvcnQgeyBDZXJ0aWZpY2F0ZUFybiB9IGZyb20gJ0Bhd3MtY2RrL2FjbSc7XG5pbXBvcnQgeyBDb25zdHJ1Y3QsIEZuQ29uY2F0LCAgfSBmcm9tICdAYXdzLWNkay9jb3JlJztcbmltcG9ydCB7IGNsb3VkZnJvbnQgfSBmcm9tICdAYXdzLWNkay9yZXNvdXJjZXMnO1xuaW1wb3J0IHsgQnVja2V0LCBCdWNrZXRSZWYgfSBmcm9tICdAYXdzLWNkay9zMyc7XG5cbmV4cG9ydCBlbnVtIEh0dHBWZXJzaW9uIHtcbiAgICBIVFRQMV8xID0gXCJodHRwMS4xXCIsXG4gICAgSFRUUDIgPSBcImh0dHAyXCJcbn1cblxuLyoqXG4gKiBUaGUgcHJpY2UgY2xhc3MgZGV0ZXJtaW5lcyBob3cgbWFueSBlZGdlIGxvY2F0aW9ucyBDbG91ZEZyb250IHdpbGwgdXNlIGZvciB5b3VyIGRpc3RyaWJ1dGlvbi5cbiAqL1xuZXhwb3J0IGVudW0gUHJpY2VDbGFzcyB7XG4gICAgUHJpY2VDbGFzczEwMCA9IFwiUHJpY2VDbGFzc18xMDBcIixcbiAgICBQcmljZUNsYXNzMjAwID0gXCJQcmljZUNsYXNzXzIwMFwiLFxuICAgIFByaWNlQ2xhc3NBbGwgPSBcIlByaWNlQ2xhc3NfQWxsXCJcbn1cblxuLyoqXG4gKiBIb3cgSFRUUHMgc2hvdWxkIGJlIGhhbmRsZWQgd2l0aCB5b3VyIGRpc3RyaWJ1dGlvbi5cbiAqL1xuZXhwb3J0IGVudW0gVmlld2VyUHJvdG9jb2xQb2xpY3kge1xuICAgIEhUVFBTT25seSA9IFwiaHR0cHMtb25seVwiLFxuICAgIFJlZGlyZWN0VG9IVFRQUyA9IFwiaHR0cHMtb25seVwiLFxuICAgIEFsbG93QWxsID0gXCJhbGxvdy1hbGxcIlxufVxuXG4vKipcbiAqIENsb3VkRnJvbnQgY2FuIHVzZSBhIGN1c3RvbSBkb21haW4gdGhhdCB5b3UgcHJvdmlkZSBpbnN0ZWFkIG9mIGEgXCJjbG91ZGZyb250Lm5ldFwiIGRvbWFpbi5cbiAqIFRvIHVzZSB0aGlzIGZlYXR1cmUgLSB5b3UgbXVzdCBwcm92aWRlIHRoZSBsaXN0IG9mIGFkZGl0aW9uYWwgZG9tYWlucyxcbiAqIGFuZCB0aGUgQUNNIENlcnRpZmljYXRlIHRoYXQgQ2xvdWRGcm9udCBzaG91bGQgdXNlIGZvciB0aGVzZSBhZGRpdGlvbmFsIGRvbWFpbnMuXG4gKlxuICogTm90ZSAtIENsb3VkRnJvbnQgb25seSBhY2NlcHRzIG9uZSBhZGRpdGlvbmFsIGNlcnRpZmljYXRlIC0gdGhlcmVmb3JlIHRoZSBjZXJ0aWZpY2F0ZSAqbXVzdCpcbiAqIHVzZSBoYXZlIFNBTnMgKFN1YmplY3QgQWx0ZXJuYXRpdmUgTmFtZXMpIGZvciBhbGwgZG9tYWlucyBsaXN0ZWQuXG4gKlxuICogc3NsTWV0aG9kIGlzIG9wdGlvbmFsIC0gd2UgZGVmYXVsdCB0byBTTkkgaWYgbm90IHNwZWNpZmllZC4gU2VlIHRoZSBub3RlcyBvbiBTU0xNZXRob2QgaWYgeW91IHdpc2ggdG8gdXNlIG90aGVyIFNTTCB0ZXJtaW5hdGlvbiB0eXBlcy5cbiAqXG4gKiBAZGVmYXVsdCBzc2xNZXRob2Q6IFNOSSBieSBkZWZhdWx0XG4gKi9cbmV4cG9ydCBpbnRlcmZhY2UgQWxpYXNDb25maWd1cmF0aW9uIHtcbiAgICByZWFkb25seSBuYW1lczogc3RyaW5nW10sXG4gICAgcmVhZG9ubHkgYWNtQ2VydFJlZjogQ2VydGlmaWNhdGVBcm4sXG4gICAgcmVhZG9ubHkgc3NsTWV0aG9kPzogU1NMTWV0aG9kLFxufVxuXG4vKipcbiAqIFRoZSBTU0wgbWV0aG9kIENsb3VkRnJvbnQgd2lsbCB1c2UgZm9yIHlvdXIgZGlzdHJpYnV0aW9uLlxuICpcbiAqIFNlcnZlciBOYW1lIEluZGljYXRpb24gKFNOSSkgLSBpcyBhbiBleHRlbnNpb24gdG8gdGhlIFRMUyBjb21wdXRlciBuZXR3b3JraW5nIHByb3RvY29sIGJ5IHdoaWNoIGEgY2xpZW50IGluZGljYXRlc1xuICogIHdoaWNoIGhvc3RuYW1lIGl0IGlzIGF0dGVtcHRpbmcgdG8gY29ubmVjdCB0byBhdCB0aGUgc3RhcnQgb2YgdGhlIGhhbmRzaGFraW5nIHByb2Nlc3MuIFRoaXMgYWxsb3dzIGEgc2VydmVyIHRvIHByZXNlbnRcbiAqICBtdWx0aXBsZSBjZXJ0aWZpY2F0ZXMgb24gdGhlIHNhbWUgSVAgYWRkcmVzcyBhbmQgVENQIHBvcnQgbnVtYmVyIGFuZCBoZW5jZSBhbGxvd3MgbXVsdGlwbGUgc2VjdXJlIChIVFRQUykgd2Vic2l0ZXNcbiAqIChvciBhbnkgb3RoZXIgc2VydmljZSBvdmVyIFRMUykgdG8gYmUgc2VydmVkIGJ5IHRoZSBzYW1lIElQIGFkZHJlc3Mgd2l0aG91dCByZXF1aXJpbmcgYWxsIHRob3NlIHNpdGVzIHRvIHVzZSB0aGUgc2FtZSBjZXJ0aWZpY2F0ZS5cbiAqXG4gKiBDbG91ZEZyb250IGNhbiB1c2UgU05JIHRvIGhvc3QgbXVsdGlwbGUgZGlzdHJpYnV0aW9ucyBvbiB0aGUgc2FtZSBJUCAtIHdoaWNoIGEgbGFyZ2UgbWFqb3JpdHkgb2YgY2xpZW50cyB3aWxsIHN1cHBvcnQuXG4gKlxuICogSWYgeW91ciBjbGllbnRzIGNhbm5vdCBzdXBwb3J0IFNOSSBob3dldmVyIC0gQ2xvdWRGcm9udCBjYW4gdXNlIGRlZGljYXRlZCBJUHMgZm9yIHlvdXIgZGlzdHJpYnV0aW9uIC0gYnV0IHRoZXJlIGlzIGEgcHJvcmF0ZWQgbW9udGhseSBjaGFyZ2UgZm9yXG4gKiB1c2luZyB0aGlzIGZlYXR1cmUuIEJ5IGRlZmF1bHQsIHdlIHVzZSBTTkkgLSBidXQgeW91IGNhbiBvcHRpb25hbGx5IGVuYWJsZSBkZWRpY2F0ZWQgSVBzIChWSVApLlxuICpcbiAqIFNlZSB0aGUgQ2xvdWRGcm9udCBTU0wgZm9yIG1vcmUgZGV0YWlscyBhYm91dCBwcmljaW5nIDogaHR0cHM6Ly9hd3MuYW1hem9uLmNvbS9jbG91ZGZyb250L2N1c3RvbS1zc2wtZG9tYWlucy9cbiAqXG4gKi9cbmV4cG9ydCBlbnVtIFNTTE1ldGhvZCB7XG4gICAgU05JID0gXCJzbmktb25seVwiLFxuICAgIFZJUCA9IFwidmlwXCJcbn1cblxuLyoqXG4gKiBDbG91ZEZyb250IHN1cHBvcnRzIGxvZ2dpbmcgb2YgaW5jb21pbmcgcmVxdWVzdHMgYW5kIGNhbiBsb2cgZGV0YWlscyB0byBhIGdpdmVuIFMzIEJ1Y2tldC5cbiAqXG4gKiBJZiB5b3Ugd2lzaCB0byBjb25maWd1cmUgbG9nZ2luZyB5b3UgY2FuIGNvbmZpZ3VyZSBkZXRhaWxzIGFib3V0IGl0LlxuICpcbiAqIEBkZWZhdWx0IGJ1Y2tldDogaWYgeW91IGRvIG5vdCBwYXNzIGEgYnVja2V0IGZvciBsb2dnaW5nIC0gd2UnbGwgY3JlYXRlIG9uZVxuICogQGRlZmF1bHQgaW5jbHVkZUNvb2tpZXM6IGZhbHNlIGJ5IGRlZmF1bHRcbiAqIEBkZWZhdWx0IHByZWZpeDogbm8gcHJlZml4IGlzIHNldCBieSBkZWZhdWx0LlxuICovXG5leHBvcnQgaW50ZXJmYWNlIExvZ2dpbmdDb25maWd1cmF0aW9uIHtcbiAgICByZWFkb25seSBidWNrZXQ/OiBCdWNrZXRSZWYsXG4gICAgcmVhZG9ubHkgaW5jbHVkZUNvb2tpZXM/OiBib29sZWFuLFxuICAgIHJlYWRvbmx5IHByZWZpeD86IHN0cmluZ1xufVxuXG4vKipcbiAqIEEgc291cmNlIGNvbmZpZ3VyYXRpb24gaXMgYSB3cmFwcGVyIGZvciBDbG91ZEZyb250IG9yaWdpbnMgYW5kIGJlaGF2aW9ycy5cbiAqIEFuIG9yaWdpbiBpcyB3aGF0IENsb3VkRnJvbnQgd2lsbCBcImJlIGluIGZyb250IG9mXCIgLSB0aGF0IGlzLCBDbG91ZEZyb250IHdpbGwgcHVsbCBpdCdzIGFzc2V0cyBmcm9tIGFuIG9yaWdpbi5cbiAqXG4gKiBJZiB5b3UncmUgdXNpbmcgczMgYXMgYSBzb3VyY2UgLSBwYXNzIHRoZSBgczNPcmlnaW5gIHByb3BlcnR5LCBvdGhlcndpc2UsIHBhc3MgdGhlIGBjdXN0b21PcmlnaW5Tb3VyY2VgIHByb3BlcnR5LlxuICpcbiAqIE9uZSBvciB0aGUgb3RoZXIgbXVzdCBiZSBwYXNzZWQsIGFuZCBpdCBpcyBpbnZhbGlkIHRvIHBhc3MgYm90aCBpbiB0aGUgc2FtZSBTb3VyY2VDb25maWd1cmF0aW9uLlxuICovXG5leHBvcnQgaW50ZXJmYWNlIFNvdXJjZUNvbmZpZ3VyYXRpb24ge1xuICAgIC8qKlxuICAgICAqIEFuIHMzIG9yaWdpbiBzb3VyY2UgLSBpZiB5b3UncmUgdXNpbmcgczMgZm9yIHlvdXIgYXNzZXRzXG4gICAgICovXG4gICAgcmVhZG9ubHkgczNPcmlnaW5Tb3VyY2U/OiBTM09yaWdpbkNvbmZpZ1xuXG4gICAgLyoqXG4gICAgICogQSBjdXN0b20gb3JpZ2luIHNvdXJjZSAtIGZvciBhbGwgbm9uLXMzIHNvdXJjZXMuXG4gICAgICovXG4gICAgcmVhZG9ubHkgY3VzdG9tT3JpZ2luU291cmNlPzogQ3VzdG9tT3JpZ2luQ29uZmlnLFxuXG4gICAgLyoqXG4gICAgICogVGhlIGJlaGF2aW9ycyBhc3NvY2lhdGVkIHdpdGggdGhpcyBzb3VyY2UuXG4gICAgICogQXQgbGVhc3Qgb25lIChkZWZhdWx0KSBiZWhhdmlvciBtdXN0IGJlIGluY2x1ZGVkLlxuICAgICAqL1xuICAgIHJlYWRvbmx5IGJlaGF2aW9yczogQmVoYXZpb3JbXTtcblxuICAgIC8qKlxuICAgICAqIFRoZSByZWxhdGl2ZSBwYXRoIHRvIHRoZSBvcmlnaW4gcm9vdCB0byB1c2UgZm9yIHNvdXJjZXMuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCAvXG4gICAgICovXG4gICAgcmVhZG9ubHkgb3JpZ2luUGF0aD86IHN0cmluZyxcblxuICAgIC8qKlxuICAgICAqIEFueSBhZGRpdGlvbmFsIGhlYWRlcnMgdG8gcGFzcyB0byB0aGUgb3JpZ2luXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBubyBhZGRpdGlvbmFsIGhlYWRlcnMgYXJlIHBhc3NlZFxuICAgICAqL1xuICAgIHJlYWRvbmx5IG9yaWdpbkhlYWRlcnM/OiB7W2tleTogc3RyaW5nXTogc3RyaW5nfTtcbn1cblxuLyoqXG4gKiBBIGN1c3RvbSBvcmlnaW4gY29uZmlndXJhdGlvblxuICovXG5leHBvcnQgaW50ZXJmYWNlIEN1c3RvbU9yaWdpbkNvbmZpZyB7XG4gICAgLyoqXG4gICAgICogVGhlIGRvbWFpbiBuYW1lIG9mIHRoZSBjdXN0b20gb3JpZ2luLiBTaG91bGQgbm90IGluY2x1ZGUgdGhlIHBhdGggLSB0aGF0IHNob3VsZCBiZSBpbiB0aGUgcGFyZW50IFNvdXJjZUNvbmZpZ3VyYXRpb25cbiAgICAgKi9cbiAgICByZWFkb25seSBkb21haW5OYW1lOiBzdHJpbmcsXG5cbiAgICAvKipcbiAgICAgKiBUaGUgb3JpZ2luIEhUVFAgcG9ydFxuICAgICAqXG4gICAgICogQGRlZmF1bHQgODBcbiAgICAgKi9cbiAgICByZWFkb25seSBodHRwUG9ydD86IG51bWJlcixcblxuICAgIC8qKlxuICAgICAqIFRoZSBvcmlnaW4gSFRUUFMgcG9ydFxuICAgICAqXG4gICAgICogQGRlZmF1bHQgNDQzXG4gICAgICovXG4gICAgcmVhZG9ubHkgaHR0cHNQb3J0PzogbnVtYmVyLFxuXG4gICAgLyoqXG4gICAgICogVGhlIGtlZXAgYWxpdmUgdGltZW91dCB3aGVuIG1ha2luZyBjYWxscyBpbiBzZWNvbmRzLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQ6IDUgc2Vjb25kc1xuICAgICAqL1xuICAgIHJlYWRvbmx5IG9yaWdpbktlZXBhbGl2ZVRpbWVvdXRTZWNvbmRzPzogbnVtYmVyLFxuXG4gICAgLyoqXG4gICAgICogVGhlIHByb3RvY29sIChodHRwIG9yIGh0dHBzKSBwb2xpY3kgdG8gdXNlIHdoZW4gaW50ZXJhY3Rpbmcgd2l0aCB0aGUgb3JpZ2luLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQ6IEh0dHBzT25seVxuICAgICAqL1xuICAgIHJlYWRvbmx5IG9yaWdpblByb3RvY29sUG9saWN5PzogT3JpZ2luUHJvdG9jb2xQb2xpY3ksXG5cbiAgICAvKipcbiAgICAgKiBUaGUgcmVhZCB0aW1lb3V0IHdoZW4gY2FsbGluZyB0aGUgb3JpZ2luIGluIHNlY29uZHNcbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IDMwIHNlY29uZHNcbiAgICAgKi9cbiAgICByZWFkb25seSBvcmlnaW5SZWFkVGltZW91dFNlY29uZHM/OiBudW1iZXJcblxuICAgIC8qKlxuICAgICAqIFRoZSBTU0wgdmVyc2lvbnMgdG8gdXNlIHdoZW4gaW50ZXJhY3Rpbmcgd2l0aCB0aGUgb3JpZ2luLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgW1RMU3YxXzJdXG4gICAgICovXG4gICAgcmVhZG9ubHkgYWxsb3dlZE9yaWdpblNTTFZlcnNpb25zPzogT3JpZ2luU3NsUG9saWN5W107XG5cbn1cblxuZXhwb3J0IGVudW0gT3JpZ2luU3NsUG9saWN5IHtcbiAgICBTU0x2MyA9IFwiU1NMdjNcIixcbiAgICBUTFN2MSA9IFwiVExTdjFcIixcbiAgICBUTFN2MV8xID0gXCJUTFN2MS4xXCIsXG4gICAgVExTdjFfMiA9IFwiVExTdjEuMlwiLFxufVxuXG5leHBvcnQgZW51bSBPcmlnaW5Qcm90b2NvbFBvbGljeSB7XG4gICAgSHR0cE9ubHkgPSBcImh0dHAtb25seVwiLFxuICAgIE1hdGNoVmlld2VyID0gXCJtYXRjaC12aWV3ZXJcIixcbiAgICBIdHRwc09ubHkgPSBcImh0dHBzLW9ubHlcIixcbn1cblxuZXhwb3J0IGludGVyZmFjZSBTM09yaWdpbkNvbmZpZyB7XG4gICAgLyoqXG4gICAgICogVGhlIHNvdXJjZSBidWNrZXQgdG8gc2VydmUgY29udGVudCBmcm9tXG4gICAgICovXG4gICAgcmVhZG9ubHkgczNCdWNrZXRTb3VyY2U6IEJ1Y2tldCxcblxuICAgIC8qKlxuICAgICAqIFRoZSBvcHRpb25hbCBvcmlnaW4gaWRlbnRpdHkgY2xvdWRmcm9udCB3aWxsIHVzZSB3aGVuIGNhbGxpbmcgeW91ciBzMyBidWNrZXQuXG4gICAgICovXG4gICAgcmVhZG9ubHkgb3JpZ2luQWNjZXNzSWRlbnRpdHk/OiBjbG91ZGZyb250LkNsb3VkRnJvbnRPcmlnaW5BY2Nlc3NJZGVudGl0eVJlc291cmNlXG59XG5cbi8qKlxuICogQW4gZW51bSBmb3IgdGhlIHN1cHBvcnRlZCBtZXRob2RzIHRvIGEgQ2xvdWRGcm9udCBkaXN0cmlidXRpb24uXG4gKi9cbmV4cG9ydCBlbnVtIENsb3VkRnJvbnRBbGxvd2VkTWV0aG9kcyB7XG4gICAgR0VUX0hFQUQgPSBcIkdIXCIsXG4gICAgR0VUX0hFQURfT1BUSU9OUyA9IFwiR0hPXCIsXG4gICAgQUxMID0gXCJBTExcIlxufVxuXG4vKipcbiAqIEVudW1zIGZvciB0aGUgbWV0aG9kcyBDbG91ZEZyb250IGNhbiBjYWNoZS5cbiAqL1xuZXhwb3J0IGVudW0gQ2xvdWRGcm9udEFsbG93ZWRDYWNoZWRNZXRob2RzIHtcbiAgICBHRVRfSEVBRCA9IFwiR0hcIixcbiAgICBHRVRfSEVBRF9PUFRJT05TID0gXCJHSE9cIixcbn1cblxuLyoqXG4gKiBBIENsb3VkRnJvbnQgYmVoYXZpb3Igd3JhcHBlci5cbiAqL1xuZXhwb3J0IGludGVyZmFjZSBCZWhhdmlvciB7XG5cbiAgICAvKipcbiAgICAgKiBJZiBDbG91ZEZyb250IHNob3VsZCBhdXRvbWF0aWNhbGx5IGNvbXByZXNzIHNvbWUgY29udGVudCB0eXBlcy5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IHRydWVcbiAgICAgKi9cbiAgICBjb21wcmVzcz86IGJvb2xlYW47XG5cbiAgICAvKipcbiAgICAgKiBJZiB0aGlzIGJlaGF2aW9yIGlzIHRoZSBkZWZhdWx0IGJlaGF2aW9yIGZvciB0aGUgZGlzdHJpYnV0aW9uLlxuICAgICAqXG4gICAgICogWW91IG11c3Qgc3BlY2lmeSBleGFjdGx5IG9uZSBkZWZhdWx0IGRpc3RyaWJ1dGlvbiBwZXIgQ2xvdWRGcm9udCBkaXN0cmlidXRpb24uXG4gICAgICogVGhlIGRlZmF1bHQgYmVoYXZpb3IgaXMgYWxsb3dlZCB0byBvbWl0IHRoZSBcInBhdGhcIiBwcm9wZXJ0eS5cbiAgICAgKi9cbiAgICBpc0RlZmF1bHRCZWhhdmlvcj86IGJvb2xlYW47XG5cbiAgICAvKipcbiAgICAgKiBUcnVzdGVkIHNpZ25lcnMgaXMgaG93IENsb3VkRnJvbnQgYWxsb3dzIHlvdSB0byBzZXJ2ZSBwcml2YXRlIGNvbnRlbnQuXG4gICAgICogVGhlIHNpZ25lcnMgYXJlIHRoZSBhY2NvdW50IElEcyB0aGF0IGFyZSBhbGxvd2VkIHRvIHNpZ24gY29va2llcy9wcmVzaWduZWQgVVJMcyBmb3IgdGhpcyBkaXN0cmlidXRpb24uXG4gICAgICpcbiAgICAgKiBJZiB5b3UgcGFzcyBhIG5vbiBlbXB0eSB2YWx1ZSwgYWxsIHJlcXVlc3RzIGZvciB0aGlzIGJlaGF2aW9yIG11c3QgYmUgc2lnbmVkIChubyBwdWJsaWMgYWNjZXNzIHdpbGwgYmUgYWxsb3dlZClcbiAgICAgKi9cbiAgICB0cnVzdGVkU2lnbmVycz86IHN0cmluZ1tdO1xuXG4gICAgLyoqXG4gICAgICpcbiAgICAgKiBUaGUgZGVmYXVsdCBhbW91bnQgb2YgdGltZSBDbG91ZEZyb250IHdpbGwgY2FjaGUgYW4gb2JqZWN0LlxuICAgICAqXG4gICAgICogVGhpcyB2YWx1ZSBhcHBsaWVzIG9ubHkgd2hlbiB5b3VyIGN1c3RvbSBvcmlnaW4gZG9lcyBub3QgYWRkIEhUVFAgaGVhZGVycyxcbiAgICAgKiBzdWNoIGFzIENhY2hlLUNvbnRyb2wgbWF4LWFnZSwgQ2FjaGUtQ29udHJvbCBzLW1heGFnZSwgYW5kIEV4cGlyZXMgdG8gb2JqZWN0cy5cbiAgICAgKiBAZGVmYXVsdCA4NjQwMCAoMSBkYXkpXG4gICAgICpcbiAgICAgKi9cbiAgICBkZWZhdWx0VHRsU2Vjb25kcz86IG51bWJlcjtcblxuICAgIC8qKlxuICAgICAqIFRoZSBtZXRob2QgdGhpcyBDbG91ZEZyb250IGRpc3RyaWJ1dGlvbiByZXNwb25kcyBkby5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IEdFVF9IRUFEXG4gICAgICovXG4gICAgYWxsb3dlZE1ldGhvZHM/OiBDbG91ZEZyb250QWxsb3dlZE1ldGhvZHM7XG5cbiAgICAvKipcbiAgICAgKiBUaGUgcGF0aCB0aGlzIGJlaGF2aW9yIHJlc3BvbmRzIHRvLlxuICAgICAqIFJlcXVpcmVkIGZvciBhbGwgbm9uLWRlZmF1bHQgYmVoYXZpb3JzLiAoVGhlIGRlZmF1bHQgYmVoYXZpb3IgaW1wbGljaXRseSBoYXMgXCIqXCIgYXMgdGhlIHBhdGggcGF0dGVybi4gKVxuICAgICAqXG4gICAgICovXG4gICAgcGF0aFBhdHRlcm4/OiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBXaGljaCBtZXRob2RzIGFyZSBjYWNoZWQgYnkgQ2xvdWRGcm9udCBieSBkZWZhdWx0LlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgR0VUX0hFQURcbiAgICAgKi9cbiAgICBjYWNoZWRNZXRob2RzPzogQ2xvdWRGcm9udEFsbG93ZWRDYWNoZWRNZXRob2RzO1xuXG4gICAgLyoqXG4gICAgICogVGhlIHZhbHVlcyBDbG91ZEZyb250IHdpbGwgZm9yd2FyZCB0byB0aGUgb3JpZ2luIHdoZW4gbWFraW5nIGEgcmVxdWVzdC5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IG5vbmUgKG5vIGNvb2tpZXMgLSBubyBoZWFkZXJzKVxuICAgICAqXG4gICAgICovXG4gICAgZm9yd2FyZGVkVmFsdWVzPzogY2xvdWRmcm9udC5EaXN0cmlidXRpb25SZXNvdXJjZS5Gb3J3YXJkZWRWYWx1ZXNQcm9wZXJ0eTtcblxuICAgIC8qKlxuICAgICAqIFRoZSBtaW5pbXVtIGFtb3VudCBvZiB0aW1lIHRoYXQgeW91IHdhbnQgb2JqZWN0cyB0byBzdGF5IGluIHRoZSBjYWNoZVxuICAgICAqIGJlZm9yZSBDbG91ZEZyb250IHF1ZXJpZXMgeW91ciBvcmlnaW4uXG4gICAgICovXG4gICAgbWluVHRsU2Vjb25kcz86IG51bWJlcjtcblxuICAgIC8qKlxuICAgICAqIFRoZSBtYXggYW1vdW50IG9mIHRpbWUgeW91IHdhbnQgb2JqZWN0cyB0byBzdGF5IGluIHRoZSBjYWNoZVxuICAgICAqIGJlZm9yZSBDbG91ZEZyb250IHF1ZXJpZXMgeW91ciBvcmlnaW4uXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCAzMTUzNjAwMCAob25lIHllYXIpXG4gICAgICovXG4gICAgbWF4VHRsU2Vjb25kcz86IG51bWJlcjtcblxufVxuXG5leHBvcnQgaW50ZXJmYWNlIEVycm9yQ29uZmlndXJhdGlvbiB7XG4gICAgLyoqXG4gICAgICogVGhlIGVycm9yIGNvZGUgbWF0Y2hlZCBmcm9tIHRoZSBvcmlnaW5cbiAgICAgKi9cbiAgICBvcmlnaW5FcnJvckNvZGU6IG51bWJlcixcbiAgICAvKipcbiAgICAgKiBUaGUgZXJyb3IgY29kZSB0aGF0IGlzIHNlbnQgdG8gdGhlIGNhbGxlci5cbiAgICAgKi9cbiAgICByZXNwb25kV2l0aEVycm9yQ29kZTogbnVtYmVyLFxuICAgIC8qKlxuICAgICAqIFRoZSBwYXRoIHRvIHNlcnZpY2UgaW5zdGVhZFxuICAgICAqL1xuICAgIHJlc3BvbmRXaXRoUGFnZTogc3RyaW5nLFxuICAgIC8qKlxuICAgICAqIEhvdyBsb25nIGJlZm9yZSB0aGlzIGVycm9yIGlzIHJldHJpZWQuXG4gICAgICovXG4gICAgY2FjaGVUdGw/OiBudW1iZXJcbn1cblxuZXhwb3J0IGludGVyZmFjZSBDbG91ZEZyb250V2ViRGlzdHJpYnV0aW9uUHJvcHMge1xuXG4gICAgLyoqXG4gICAgICogQWxpYXNDb25maWd1cmF0aW9uIGlzIHVzZWQgdG8gY29uZmlndXJlZCBDbG91ZEZyb250IHRvIHJlc3BvbmQgdG8gcmVxdWVzdHMgb24gY3VzdG9tIGRvbWFpbiBuYW1lcy5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IG5vbmVcbiAgICAgKi9cbiAgICBhbGlhc0NvbmZpZ3VyYXRpb24/OiBBbGlhc0NvbmZpZ3VyYXRpb247XG5cbiAgICAvKipcbiAgICAgKiBBIGNvbW1lbnQgZm9yIHRoaXMgZGlzdHJpYnV0aW9uIGluIHRoZSBjbG91ZCBmcm9udCBjb25zb2xlLlxuICAgICAqL1xuICAgIGNvbW1lbnQ/OiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBUaGUgZGVmYXVsdCBvYmplY3QgdG8gc2VydmUuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBcImluZGV4Lmh0bWxcIlxuICAgICAqL1xuICAgIGRlZmF1bHRSb290T2JqZWN0Pzogc3RyaW5nO1xuXG4gICAgLyoqXG4gICAgICogSWYgeW91ciBkaXN0cmlidXRpb24gc2hvdWxkIGhhdmUgSVB2NiBlbmFibGVkLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgdHJ1ZVxuICAgICAqL1xuICAgIGVuYWJsZUlwVjY/OiBib29sZWFuO1xuXG4gICAgLyoqXG4gICAgICogVGhlIG1heCBzdXBwb3J0ZWQgSFRUUCBWZXJzaW9ucy5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IEh0dHBWZXJzaW9uLkhUVFAyXG4gICAgICovXG4gICAgaHR0cFZlcnNpb24/OiBIdHRwVmVyc2lvbjtcblxuICAgIC8qKlxuICAgICAqIFRoZSBwcmljZSBjbGFzcyBmb3IgdGhlIGRpc3RyaWJ1dGlvbiAodGhpcyBpbXBhY3RzIGhvdyBtYW55IGxvY2F0aW9ucyBDbG91ZEZyb250IHVzZXMgZm9yIHlvdXIgZGlzdHJpYnV0aW9uLCBhbmQgYmlsbGluZylcbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IFByaWNlQ2xhc3NfMTAwOiB0aGUgY2hlYXBlc3Qgb3B0aW9uIGZvciBDbG91ZEZyb250IGlzIHBpY2tlZCBieSBkZWZhdWx0LlxuICAgICAqL1xuICAgIHByaWNlQ2xhc3M/OiBQcmljZUNsYXNzO1xuXG4gICAgLyoqXG4gICAgICogVGhlIGRlZmF1bHQgdmlld2VyIHBvbGljeSBmb3IgaW5jb21pbmcgY2xpZW50cy5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IFJlZGlyZWN0VG9IVFRQc1xuICAgICAqL1xuICAgIHZpZXdlclByb3RvY29sUG9saWN5PzogVmlld2VyUHJvdG9jb2xQb2xpY3k7XG5cbiAgICAvKipcbiAgICAgKiBUaGUgb3JpZ2luIGNvbmZpZ3VyYXRpb25zIGZvciB0aGlzIGRpc3RyaWJ1dGlvbi4gQmVoYXZpb3JzIGFyZSBhIHBhcnQgb2YgdGhlIG9yaWdpbi5cbiAgICAgKi9cbiAgICBvcmlnaW5Db25maWdzOiBTb3VyY2VDb25maWd1cmF0aW9uW107XG5cbiAgICAvKipcbiAgICAgKiBPcHRpb25hbCAtIGlmIHdlIHNob3VsZCBlbmFibGUgbG9nZ2luZy5cbiAgICAgKiBZb3UgY2FuIHBhc3MgYW4gZW1wdHkgb2JqZWN0ICh7fSkgdG8gaGF2ZSB1cyBhdXRvIGNyZWF0ZSBhIGJ1Y2tldCBmb3IgbG9nZ2luZy5cbiAgICAgKiBPbWlzc2lvbiBvZiB0aGlzIHByb3BlcnR5IGluZGljYXRlcyBubyBsb2dnaW5nIGlzIHRvIGJlIGVuYWJsZWQuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdDogbm8gbG9nZ2luZyBpcyBlbmFibGVkIGJ5IGRlZmF1bHQuXG4gICAgICovXG4gICAgbG9nZ2luZ0NvbmZpZz86IExvZ2dpbmdDb25maWd1cmF0aW9uO1xuXG4gICAgLyoqXG4gICAgICogSG93IENsb3VkRnJvbnQgc2hvdWxkIGhhbmRsZSByZXF1ZXN0cyB0aGF0IGFyZSBubyBzdWNjZXNzZnVsIChlZyBQYWdlTm90Rm91bmQpXG4gICAgICovXG4gICAgZXJyb3JDb25maWd1cmF0aW9ucz86IGNsb3VkZnJvbnQuRGlzdHJpYnV0aW9uUmVzb3VyY2UuQ3VzdG9tRXJyb3JSZXNwb25zZVByb3BlcnR5W107XG59XG5cbi8qKlxuICogSW50ZXJuYWwgb25seSAtIGp1c3QgYWRkcyB0aGUgb3JpZ2luSWQgc3RyaW5nIHRvIHRoZSBCZWhhdmlvclxuICovXG5pbnRlcmZhY2UgQmVoYXZpb3JXaXRoT3JpZ2luIGV4dGVuZHMgQmVoYXZpb3Ige1xuICAgIHRhcmdldE9yaWdpbklkOiBzdHJpbmc7XG59XG5cbi8qKlxuICogQW1hem9uIENsb3VkRnJvbnQgaXMgYSBnbG9iYWwgY29udGVudCBkZWxpdmVyeSBuZXR3b3JrIChDRE4pIHNlcnZpY2UgdGhhdCBzZWN1cmVseSBkZWxpdmVycyBkYXRhLCB2aWRlb3MsXG4gKiBhcHBsaWNhdGlvbnMsIGFuZCBBUElzIHRvIHlvdXIgdmlld2VycyB3aXRoIGxvdyBsYXRlbmN5IGFuZCBoaWdoIHRyYW5zZmVyIHNwZWVkcy5cbiAqIENsb3VkRnJvbnQgZnJvbnRzIHVzZXIgcHJvdmlkZWQgY29udGVudCBhbmQgY2FjaGVzIGl0IGF0IGVkZ2UgbG9jYXRpb25zIGFjcm9zcyB0aGUgd29ybGQuXG4gKlxuICogSGVyZSdzIGhvdyB5b3UgY2FuIHVzZSB0aGlzIGNvbnN0cnVjdDpcbiAqXG4gKiBgYGB0c1xuICogaW1wb3J0IHsgQ2xvdWRGcm9udCB9IGZyb20gJ0Bhd3MtY2RrL2Nsb3VkZnJvbnQnXG4gKlxuICogY29uc3Qgc291cmNlQnVja2V0ID0gbmV3IEJ1Y2tldCh0aGlzLCAnQnVja2V0Jyk7XG4gKlxuICogY29uc3QgZGlzdHJpYnV0aW9uID0gbmV3IENsb3VkRnJvbnREaXN0cmlidXRpb24odGhpcywgJ015RGlzdHJpYnV0aW9uJywge1xuICogIG9yaWdpbkNvbmZpZ3M6IFtcbiAqICAgICAge1xuICogICAgICAgICAgczNPcmlnaW5Tb3VyY2U6IHtcbiAqICAgICAgICAgICAgczNCdWNrZXRTb3VyY2U6IHNvdXJjZUJ1Y2tldFxuICogICAgICAgICAgfSxcbiAqICAgICAgICAgIGJlaGF2aW9ycyA6IFsge2lzRGVmYXVsdEJlaGF2aW9yfV1cbiAqICAgICAgfVxuICogIF1cbiAqIH0pO1xuICogYGBgXG4gKlxuICogVGhpcyB3aWxsIGNyZWF0ZSBhIENsb3VkRnJvbnQgZGlzdHJpYnV0aW9uIHRoYXQgdXNlcyB5b3VyIFMzQnVja2V0IGFzIGl0J3Mgb3JpZ2luLlxuICpcbiAqIFlvdSBjYW4gY3VzdG9taXplIHRoZSBkaXN0cmlidXRpb24gdXNpbmcgYWRkaXRpb25hbCBwcm9wZXJ0aWVzIGZyb20gdGhlIENsb3VkRnJvbnRXZWJEaXN0cmlidXRpb25Qcm9wcyBpbnRlcmZhY2UuXG4gKlxuICpcbiAqL1xuZXhwb3J0IGNsYXNzIENsb3VkRnJvbnRXZWJEaXN0cmlidXRpb24gZXh0ZW5kcyBDb25zdHJ1Y3Qge1xuXG4gICAgLyoqXG4gICAgICogVGhlIGhvc3RlZCB6b25lIElkIGlmIHVzaW5nIGFuIGFsaWFzIHJlY29yZCBpbiBSb3V0ZTUzLlxuICAgICAqIFRoaXMgdmFsdWUgbmV2ZXIgY2hhbmdlcy5cbiAgICAgKi9cbiAgICBwdWJsaWMgcmVhZG9ubHkgYWxpYXNIb3N0ZWRab25lSWQ6IHN0cmluZyA9IFwiWjJGRFROREFUQVFZVzJcIjtcblxuICAgIC8qKlxuICAgICAqIFRoZSBsb2dnaW5nIGJ1Y2tldCBmb3IgdGhpcyBDbG91ZEZyb250IGRpc3RyaWJ1dGlvbi5cbiAgICAgKiBJZiBsb2dnaW5nIGlzIG5vdCBlbmFibGVkIGZvciB0aGlzIGRpc3RyaWJ1dGlvbiAtIHRoaXMgcHJvcGVydHkgd2lsbCBiZSB1bmRlZmluZWQuXG4gICAgICovXG4gICAgcHVibGljIHJlYWRvbmx5IGxvZ2dpbmdCdWNrZXQ/OiBCdWNrZXRSZWY7XG5cbiAgICAvKipcbiAgICAgKiBUaGUgZG9tYWluIG5hbWUgY3JlYXRlZCBieSBDbG91ZEZyb250IGZvciB0aGlzIGRpc3RyaWJ1dGlvbi5cbiAgICAgKiBJZiB5b3UgYXJlIHVzaW5nIGFsaWFzZXMgZm9yIHlvdXIgZGlzdHJpYnV0aW9uLCB0aGlzIGlzIHRoZSBkb21haW5OYW1lIHlvdXIgRE5TIHJlY29yZHMgc2hvdWxkIHBvaW50IHRvLlxuICAgICAqIChJbiBSb3V0ZTUzLCB5b3UgY291bGQgY3JlYXRlIGFuIEFMSUFTIHJlY29yZCB0byB0aGlzIHZhbHVlLCBmb3IgZXhhbXBsZS4gKVxuICAgICAqL1xuICAgIHB1YmxpYyByZWFkb25seSBkb21haW5OYW1lOiBjbG91ZGZyb250LkRpc3RyaWJ1dGlvbkRvbWFpbk5hbWU7XG5cbiAgICAvKipcbiAgICAgKiBNYXBzIG91ciBtZXRob2RzIHRvIHRoZSBzdHJpbmcgYXJyYXlzIHRoZXkgYXJlXG4gICAgICovXG4gICAgcHJpdmF0ZSByZWFkb25seSBNRVRIT0RfTE9PS1VQX01BUCA9IHtcbiAgICAgICAgR0g6IFtcIkdFVFwiLCBcIkhFQURcIl0sXG4gICAgICAgIEdITzogW1wiR0VUXCIsIFwiSEVBRFwiLCBcIk9QVElPTlNcIl0sXG4gICAgICAgIEFMTDogW1wiREVMRVRFXCIsIFwiR0VUXCIsIFwiSEVBRFwiLCBcIk9QVElPTlNcIiwgXCJQQVRDSFwiLCBcIlBPU1RcIiwgXCJQVVRcIl0sXG4gICAgfTtcblxuICAgIGNvbnN0cnVjdG9yKHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBDbG91ZEZyb250V2ViRGlzdHJpYnV0aW9uUHJvcHMpIHtcbiAgICAgICAgc3VwZXIocGFyZW50LCBuYW1lKTtcblxuICAgICAgICBjb25zdCBkaXN0cmlidXRpb25Db25maWc6IGNsb3VkZnJvbnQuRGlzdHJpYnV0aW9uUmVzb3VyY2UuRGlzdHJpYnV0aW9uQ29uZmlnUHJvcGVydHkgPSB7XG4gICAgICAgICAgICBjb21tZW50OiBwcm9wcy5jb21tZW50LFxuICAgICAgICAgICAgZW5hYmxlZDogdHJ1ZSxcbiAgICAgICAgICAgIGRlZmF1bHRSb290T2JqZWN0OiBwcm9wcy5kZWZhdWx0Um9vdE9iamVjdCB8fCBcImluZGV4Lmh0bWxcIixcbiAgICAgICAgICAgIGh0dHBWZXJzaW9uOiBwcm9wcy5odHRwVmVyc2lvbiB8fCBIdHRwVmVyc2lvbi5IVFRQMixcbiAgICAgICAgICAgIHByaWNlQ2xhc3M6IHByb3BzLnByaWNlQ2xhc3MgfHwgUHJpY2VDbGFzcy5QcmljZUNsYXNzMTAwLFxuICAgICAgICAgICAgaXB2NkVuYWJsZWQ6IHByb3BzLmVuYWJsZUlwVjYgfHwgdHJ1ZSxcbiAgICAgICAgICAgIC8vIHRzbGludDpkaXNhYmxlLW5leHQtbGluZTptYXgtbGluZS1sZW5ndGhcbiAgICAgICAgICAgIGN1c3RvbUVycm9yUmVzcG9uc2VzOiBwcm9wcy5lcnJvckNvbmZpZ3VyYXRpb25zLCAvLyBUT0RPOiB2YWxpZGF0aW9uIDogaHR0cHM6Ly9kb2NzLmF3cy5hbWF6b24uY29tL0FXU0Nsb3VkRm9ybWF0aW9uL2xhdGVzdC9Vc2VyR3VpZGUvYXdzLXByb3BlcnRpZXMtY2xvdWRmcm9udC1kaXN0cmlidXRpb24tY3VzdG9tZXJyb3JyZXNwb25zZS5odG1sI2Nmbi1jbG91ZGZyb250LWRpc3RyaWJ1dGlvbi1jdXN0b21lcnJvcnJlc3BvbnNlLWVycm9yY2FjaGluZ21pbnR0bFxuICAgICAgICB9O1xuXG4gICAgICAgIGNvbnN0IGJlaGF2aW9yczogQmVoYXZpb3JXaXRoT3JpZ2luW10gPSBbXTtcblxuICAgICAgICBjb25zdCBvcmlnaW5zOiBjbG91ZGZyb250LkRpc3RyaWJ1dGlvblJlc291cmNlLk9yaWdpblByb3BlcnR5W10gPSBbXTtcblxuICAgICAgICBsZXQgb3JpZ2luSW5kZXggPSAxO1xuICAgICAgICBmb3IgKGNvbnN0IG9yaWdpbkNvbmZpZyBvZiBwcm9wcy5vcmlnaW5Db25maWdzKSB7XG4gICAgICAgICAgICBjb25zdCBvcmlnaW5JZCA9IGBvcmlnaW4ke29yaWdpbkluZGV4fWA7XG4gICAgICAgICAgICBpZiAoIW9yaWdpbkNvbmZpZy5zM09yaWdpblNvdXJjZSAmJiAhb3JpZ2luQ29uZmlnLmN1c3RvbU9yaWdpblNvdXJjZSkge1xuICAgICAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcihcIlRoZXJlIG11c3QgYmUgYXQgbGVhc3Qgb25lIG9yaWdpbiBzb3VyY2UgLSBlaXRoZXIgYW4gczNPcmlnaW5Tb3VyY2Ugb3IgYSBjdXN0b21PcmlnaW5Tb3VyY2VcIik7XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICBpZiAob3JpZ2luQ29uZmlnLmN1c3RvbU9yaWdpblNvdXJjZSAmJiBvcmlnaW5Db25maWcuczNPcmlnaW5Tb3VyY2UpIHtcbiAgICAgICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoXCJUaGVyZSBjYW5ub3QgYmUgYm90aCBhbiBzM09yaWdpblNvdXJjZSBhbmQgYSBjdXN0b21PcmlnaW5Tb3VyY2UgaW4gdGhlIHNhbWUgU291cmNlQ29uZmlndXJhdGlvbi5cIik7XG4gICAgICAgICAgICB9XG5cbiAgICAgICAgICAgIGNvbnN0IG9yaWdpbkhlYWRlcnM6IGNsb3VkZnJvbnQuRGlzdHJpYnV0aW9uUmVzb3VyY2UuT3JpZ2luQ3VzdG9tSGVhZGVyUHJvcGVydHlbXSA9IFtdO1xuICAgICAgICAgICAgaWYgKG9yaWdpbkNvbmZpZy5vcmlnaW5IZWFkZXJzKSB7XG4gICAgICAgICAgICAgICAgT2JqZWN0LmtleXMob3JpZ2luQ29uZmlnLm9yaWdpbkhlYWRlcnMpLmZvckVhY2goa2V5ID0+IHtcbiAgICAgICAgICAgICAgICAgICAgY29uc3Qgb0hlYWRlcjogY2xvdWRmcm9udC5EaXN0cmlidXRpb25SZXNvdXJjZS5PcmlnaW5DdXN0b21IZWFkZXJQcm9wZXJ0eSA9IHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlck5hbWU6IGtleSxcbiAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlclZhbHVlOiBvcmlnaW5Db25maWcub3JpZ2luSGVhZGVycyFba2V5XVxuICAgICAgICAgICAgICAgICAgICB9O1xuICAgICAgICAgICAgICAgICAgICBvcmlnaW5IZWFkZXJzLnB1c2gob0hlYWRlcik7XG4gICAgICAgICAgICAgICAgfSk7XG4gICAgICAgICAgICB9XG5cbiAgICAgICAgICAgIGNvbnN0IG9yaWdpblByb3BlcnR5OiBjbG91ZGZyb250LkRpc3RyaWJ1dGlvblJlc291cmNlLk9yaWdpblByb3BlcnR5ID0ge1xuICAgICAgICAgICAgICAgIGlkOiBvcmlnaW5JZCxcbiAgICAgICAgICAgICAgICBkb21haW5OYW1lOiBvcmlnaW5Db25maWcuczNPcmlnaW5Tb3VyY2UgP1xuICAgICAgICAgICAgICAgICAgICBvcmlnaW5Db25maWcuczNPcmlnaW5Tb3VyY2UuczNCdWNrZXRTb3VyY2UuZG9tYWluTmFtZSA6XG4gICAgICAgICAgICAgICAgICAgIG9yaWdpbkNvbmZpZy5jdXN0b21PcmlnaW5Tb3VyY2UhLmRvbWFpbk5hbWUsXG4gICAgICAgICAgICAgICAgb3JpZ2luUGF0aDogb3JpZ2luQ29uZmlnLm9yaWdpblBhdGgsXG4gICAgICAgICAgICAgICAgb3JpZ2luQ3VzdG9tSGVhZGVyczogb3JpZ2luSGVhZGVycy5sZW5ndGggPiAwID8gb3JpZ2luSGVhZGVycyA6IHVuZGVmaW5lZCxcbiAgICAgICAgICAgIH07XG5cbiAgICAgICAgICAgIGlmIChvcmlnaW5Db25maWcuczNPcmlnaW5Tb3VyY2UgJiYgb3JpZ2luQ29uZmlnLnMzT3JpZ2luU291cmNlLm9yaWdpbkFjY2Vzc0lkZW50aXR5KSB7XG4gICAgICAgICAgICAgICAgb3JpZ2luUHJvcGVydHkuczNPcmlnaW5Db25maWcgPSB7XG4gICAgICAgICAgICAgICAgICAgIG9yaWdpbkFjY2Vzc0lkZW50aXR5OiBuZXcgRm5Db25jYXQoXCJvcmlnaW4tYWNjZXNzLWlkZW50aXR5L2Nsb3VkZnJvbnQvXCIsIG9yaWdpbkNvbmZpZy5zM09yaWdpblNvdXJjZS5vcmlnaW5BY2Nlc3NJZGVudGl0eS5yZWYpLFxuICAgICAgICAgICAgICAgIH07XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICBpZiAob3JpZ2luQ29uZmlnLmN1c3RvbU9yaWdpblNvdXJjZSkge1xuICAgICAgICAgICAgICAgIG9yaWdpblByb3BlcnR5LmN1c3RvbU9yaWdpbkNvbmZpZyA9IHtcbiAgICAgICAgICAgICAgICAgICAgaHR0cFBvcnQ6IG9yaWdpbkNvbmZpZy5jdXN0b21PcmlnaW5Tb3VyY2UuaHR0cFBvcnQgfHwgODAsXG4gICAgICAgICAgICAgICAgICAgIGh0dHBzUG9ydDogb3JpZ2luQ29uZmlnLmN1c3RvbU9yaWdpblNvdXJjZS5odHRwc1BvcnQgfHwgNDQzLFxuICAgICAgICAgICAgICAgICAgICBvcmlnaW5LZWVwYWxpdmVUaW1lb3V0OiBvcmlnaW5Db25maWcuY3VzdG9tT3JpZ2luU291cmNlLm9yaWdpbktlZXBhbGl2ZVRpbWVvdXRTZWNvbmRzIHx8IDUsXG4gICAgICAgICAgICAgICAgICAgIG9yaWdpblJlYWRUaW1lb3V0OiBvcmlnaW5Db25maWcuY3VzdG9tT3JpZ2luU291cmNlLm9yaWdpblJlYWRUaW1lb3V0U2Vjb25kcyB8fCAzMCxcbiAgICAgICAgICAgICAgICAgICAgb3JpZ2luUHJvdG9jb2xQb2xpY3k6IG9yaWdpbkNvbmZpZy5jdXN0b21PcmlnaW5Tb3VyY2Uub3JpZ2luUHJvdG9jb2xQb2xpY3kgfHwgT3JpZ2luUHJvdG9jb2xQb2xpY3kuSHR0cHNPbmx5LFxuICAgICAgICAgICAgICAgICAgICBvcmlnaW5Tc2xQcm90b2NvbHM6IG9yaWdpbkNvbmZpZy5jdXN0b21PcmlnaW5Tb3VyY2UuYWxsb3dlZE9yaWdpblNTTFZlcnNpb25zIHx8IFtPcmlnaW5Tc2xQb2xpY3kuVExTdjFfMl1cbiAgICAgICAgICAgICAgICB9O1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgZm9yIChjb25zdCBiZWhhdmlvciBvZiBvcmlnaW5Db25maWcuYmVoYXZpb3JzKSB7XG4gICAgICAgICAgICAgICAgYmVoYXZpb3JzLnB1c2goey4uLmJlaGF2aW9yLCB0YXJnZXRPcmlnaW5JZDogb3JpZ2luSWR9KTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgIG9yaWdpbnMucHVzaChvcmlnaW5Qcm9wZXJ0eSk7XG4gICAgICAgICAgICBvcmlnaW5JbmRleCsrO1xuICAgICAgICB9XG4gICAgICAgIGRpc3RyaWJ1dGlvbkNvbmZpZy5vcmlnaW5zID0gb3JpZ2lucztcblxuICAgICAgICBjb25zdCBkZWZhdWx0QmVoYXZpb3JzID0gYmVoYXZpb3JzLmZpbHRlcihiZWhhdmlvciA9PiBiZWhhdmlvci5pc0RlZmF1bHRCZWhhdmlvcik7XG4gICAgICAgIGlmIChkZWZhdWx0QmVoYXZpb3JzLmxlbmd0aCAhPT0gMSkge1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKFwiVGhlcmUgY2FuIG9ubHkgYmUgb25lIGRlZmF1bHQgYmVoYXZpb3IgYWNyb3NzIGFsbCBzb3VyY2VzLiBbIE9uZSBkZWZhdWx0IGJlaGF2aW9yIHBlciBkaXN0cmlidXRpb24gXS5cIik7XG4gICAgICAgIH1cbiAgICAgICAgZGlzdHJpYnV0aW9uQ29uZmlnLmRlZmF1bHRDYWNoZUJlaGF2aW9yID0gdGhpcy50b0JlaGF2aW9yKGRlZmF1bHRCZWhhdmlvcnNbMF0pO1xuICAgICAgICBjb25zdCBvdGhlckJlaGF2aW9yczogY2xvdWRmcm9udC5EaXN0cmlidXRpb25SZXNvdXJjZS5DYWNoZUJlaGF2aW9yUHJvcGVydHlbXSA9IFtdO1xuICAgICAgICBmb3IgKGNvbnN0IGJlaGF2aW9yIG9mIGJlaGF2aW9ycy5maWx0ZXIoYiA9PiAhYi5pc0RlZmF1bHRCZWhhdmlvcikpIHtcbiAgICAgICAgICAgIGlmICghYmVoYXZpb3IucGF0aFBhdHRlcm4pIHtcbiAgICAgICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoXCJwYXRoUGF0dGVybiBpcyByZXF1aXJlZCBmb3IgYWxsIG5vbi1kZWZhdWx0IGJlaGF2aW9yc1wiKTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgIG90aGVyQmVoYXZpb3JzLnB1c2godGhpcy50b0JlaGF2aW9yKGJlaGF2aW9yKSBhcyBjbG91ZGZyb250LkRpc3RyaWJ1dGlvblJlc291cmNlLkNhY2hlQmVoYXZpb3JQcm9wZXJ0eSk7XG4gICAgICAgIH1cbiAgICAgICAgZGlzdHJpYnV0aW9uQ29uZmlnLmNhY2hlQmVoYXZpb3JzID0gb3RoZXJCZWhhdmlvcnM7XG5cbiAgICAgICAgaWYgKHByb3BzLmFsaWFzQ29uZmlndXJhdGlvbikge1xuICAgICAgICAgICAgZGlzdHJpYnV0aW9uQ29uZmlnLmFsaWFzZXMgPSBwcm9wcy5hbGlhc0NvbmZpZ3VyYXRpb24ubmFtZXM7XG4gICAgICAgICAgICBkaXN0cmlidXRpb25Db25maWcudmlld2VyQ2VydGlmaWNhdGUgPSB7XG4gICAgICAgICAgICAgICAgYWNtQ2VydGlmaWNhdGVBcm46IHByb3BzLmFsaWFzQ29uZmlndXJhdGlvbi5hY21DZXJ0UmVmLFxuICAgICAgICAgICAgICAgIHNzbFN1cHBvcnRNZXRob2Q6IHByb3BzLmFsaWFzQ29uZmlndXJhdGlvbi5zc2xNZXRob2QgfHwgU1NMTWV0aG9kLlNOSSxcbiAgICAgICAgICAgIH07XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICBkaXN0cmlidXRpb25Db25maWcudmlld2VyQ2VydGlmaWNhdGUgPSB7XG4gICAgICAgICAgICAgICAgY2xvdWRGcm9udERlZmF1bHRDZXJ0aWZpY2F0ZTogdHJ1ZVxuICAgICAgICAgICAgfTtcbiAgICAgICAgfVxuXG4gICAgICAgIGNvbnN0IGRpc3RyaWJ1dGlvbiA9IG5ldyBjbG91ZGZyb250LkRpc3RyaWJ1dGlvblJlc291cmNlKHRoaXMsICdDRkRpc3RyaWJ1dGlvbicsIHtkaXN0cmlidXRpb25Db25maWd9KTtcbiAgICAgICAgdGhpcy5kb21haW5OYW1lID0gZGlzdHJpYnV0aW9uLmRpc3RyaWJ1dGlvbkRvbWFpbk5hbWU7XG5cbiAgICB9XG5cbiAgICBwcml2YXRlIHRvQmVoYXZpb3IoaW5wdXQ6IEJlaGF2aW9yV2l0aE9yaWdpbiwgcHJvdG9Qb2xpY3k/OiBWaWV3ZXJQcm90b2NvbFBvbGljeSkge1xuICAgICAgICBsZXQgdG9SZXR1cm4gPSAge1xuICAgICAgICAgICAgYWxsb3dlZE1ldGhvZHM6IHRoaXMuTUVUSE9EX0xPT0tVUF9NQVBbaW5wdXQuYWxsb3dlZE1ldGhvZHMgfHwgQ2xvdWRGcm9udEFsbG93ZWRNZXRob2RzLkdFVF9IRUFEXSxcbiAgICAgICAgICAgIGNhY2hlZE1ldGhvZHM6IHRoaXMuTUVUSE9EX0xPT0tVUF9NQVBbaW5wdXQuY2FjaGVkTWV0aG9kcyB8fCBDbG91ZEZyb250QWxsb3dlZENhY2hlZE1ldGhvZHMuR0VUX0hFQURdLFxuICAgICAgICAgICAgY29tcHJlc3M6IGlucHV0LmNvbXByZXNzLFxuICAgICAgICAgICAgZGVmYXVsdFR0bDogaW5wdXQuZGVmYXVsdFR0bFNlY29uZHMsXG4gICAgICAgICAgICBmb3J3YXJkZWRWYWx1ZXM6IGlucHV0LmZvcndhcmRlZFZhbHVlcyB8fCB7IHF1ZXJ5U3RyaW5nOiBmYWxzZSwgY29va2llczoge2ZvcndhcmQ6IFwibm9uZVwifSB9LFxuICAgICAgICAgICAgbWF4VHRsOiBpbnB1dC5tYXhUdGxTZWNvbmRzLFxuICAgICAgICAgICAgbWluVHRsOiBpbnB1dC5taW5UdGxTZWNvbmRzLFxuICAgICAgICAgICAgdHJ1c3RlZFNpZ25lcnM6IGlucHV0LnRydXN0ZWRTaWduZXJzLFxuICAgICAgICAgICAgdGFyZ2V0T3JpZ2luSWQ6IGlucHV0LnRhcmdldE9yaWdpbklkLFxuICAgICAgICAgICAgdmlld2VyUHJvdG9jb2xQb2xpY3k6IHByb3RvUG9saWN5IHx8IFZpZXdlclByb3RvY29sUG9saWN5LlJlZGlyZWN0VG9IVFRQUyxcbiAgICAgICAgfTtcbiAgICAgICAgaWYgKCFpbnB1dC5pc0RlZmF1bHRCZWhhdmlvcikge1xuICAgICAgICAgICAgdG9SZXR1cm4gPSBPYmplY3QuYXNzaWduKHRvUmV0dXJuLCB7cGF0aFBhdHRlcm46IGlucHV0LnBhdGhQYXR0ZXJufSk7XG4gICAgICAgIH1cbiAgICAgICAgcmV0dXJuIHRvUmV0dXJuO1xuICAgIH1cbn1cblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAvcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2Nsb3VkZnJvbnQvbGliL3dlYl9kaXN0cmlidXRpb24udHMiLCJtb2R1bGUuZXhwb3J0cyA9IGpzaWkkX2F3c19jZGtfY29yZSQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX2NvcmUkXCJcbi8vIG1vZHVsZSBpZCA9IDJcbi8vIG1vZHVsZSBjaHVua3MgPSAwIiwibW9kdWxlLmV4cG9ydHMgPSBqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyRcIlxuLy8gbW9kdWxlIGlkID0gM1xuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwic291cmNlUm9vdCI6IiJ9"
+}

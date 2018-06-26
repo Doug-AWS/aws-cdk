@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors></Authors>
+    <Company></Company>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AWS.Jsii.Runtime" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AWS.Cdk\AWS.Cdk.csproj" />
+    <ProjectReference Include="..\AWS.Cdk.Ec2\AWS.Cdk.Ec2.csproj" />
+    <ProjectReference Include="..\AWS.Cdk.Iam\AWS.Cdk.Iam.csproj" />
+    <ProjectReference Include="..\AWS.Cdk.Resources\AWS.Cdk.Resources.csproj" />
+  </ItemGroup>
+</Project>

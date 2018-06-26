@@ -1,0 +1,780 @@
+{
+  "schema": "jsii/1.0",
+  "types": {
+    "jsii$_aws_cdk_dynamodb$.TableProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "default": "5",
+            "comment": "The read capacity for the table. Careful if you add Global Secondary Indexes, as\nthose will share the table's provisioned throughput."
+          },
+          "name": "readCapacity",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "5",
+            "comment": "The write capacity for the table. Careful if you add Global Secondary Indexes, as\nthose will share the table's provisioned throughput."
+          },
+          "name": "writeCapacity",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "<generated>",
+            "comment": "Enforces a particular physical table name."
+          },
+          "name": "tableName",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_dynamodb$.TableProps",
+      "module": "jsii$_aws_cdk_dynamodb$",
+      "namespace": "jsii$_aws_cdk_dynamodb$",
+      "name": "TableProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_dynamodb$.Table": {
+      "docs": {
+        "comment": "Provides a DynamoDB table."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "name": "tableArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.dynamodb.TableArn"
+          },
+          "immutable": true
+        },
+        {
+          "name": "tableName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_dynamodb$.TableName"
+          },
+          "immutable": true
+        },
+        {
+          "name": "tableStreamArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.dynamodb.TableStreamArn"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "type",
+              "type": {
+                "fqn": "jsii$_aws_cdk_dynamodb$.KeyAttributeType"
+              }
+            }
+          ],
+          "name": "addPartitionKey",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_dynamodb$.Table"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "type",
+              "type": {
+                "fqn": "jsii$_aws_cdk_dynamodb$.KeyAttributeType"
+              }
+            }
+          ],
+          "name": "addSortKey",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_dynamodb$.Table"
+          }
+        },
+        {
+          "docs": {
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_dynamodb$.Table",
+      "module": "jsii$_aws_cdk_dynamodb$",
+      "namespace": "jsii$_aws_cdk_dynamodb$",
+      "name": "Table",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_dynamodb$.TableProps",
+              "optional": true
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_dynamodb$.TableName": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_dynamodb$.TableName",
+      "module": "jsii$_aws_cdk_dynamodb$",
+      "namespace": "jsii$_aws_cdk_dynamodb$",
+      "name": "TableName",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_dynamodb$.KeyAttributeType": {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "Binary"
+        },
+        {
+          "name": "Number"
+        },
+        {
+          "name": "String"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_dynamodb$.KeyAttributeType",
+      "module": "jsii$_aws_cdk_dynamodb$",
+      "namespace": "jsii$_aws_cdk_dynamodb$",
+      "name": "KeyAttributeType"
+    }
+  },
+  "nametree": {
+    "jsii$_aws_cdk_dynamodb$": {
+      "TableProps": {
+        "_": "jsii$_aws_cdk_dynamodb$.TableProps"
+      },
+      "Table": {
+        "_": "jsii$_aws_cdk_dynamodb$.Table"
+      },
+      "TableName": {
+        "_": "jsii$_aws_cdk_dynamodb$.TableName"
+      },
+      "KeyAttributeType": {
+        "_": "jsii$_aws_cdk_dynamodb$.KeyAttributeType"
+      }
+    }
+  },
+  "typecount": 4,
+  "externalTypes": {
+    "jsii$_aws_cdk_core$.Construct": {
+      "docs": {
+        "comment": "Represents the building block of the construct graph.\nWhen a construct is created, it is always added as a child"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the parent of this node or undefined if this is a root node."
+          },
+          "name": "parent",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of this construct"
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "All direct children of this construct."
+          },
+          "name": "children",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "returns": "/-separated path of this Construct.",
+            "comment": "Returns the path of all constructs from root to this construct, in string form."
+          },
+          "name": "path",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "An array of metadata objects associated with this construct.\nThis can be used, for example, to implement support for deprecation notices, source mapping, etc."
+          },
+          "name": "metadata",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.MetadataEntry"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "docs": {
+            "comment": "Returns a string representation of this construct."
+          },
+          "name": "toString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "depth",
+              "type": {
+                "primitive": "number",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Returns a string with a tree representation of this construct and it's children."
+          },
+          "name": "toTreeString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "a child by path or undefined if not found.",
+            "comment": "Return a descendant by path, or undefined"
+          },
+          "name": "tryFindChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "Child with the given path.",
+            "comment": "Return a descendant by path\n\nThrows an exception if the descendant is not found."
+          },
+          "name": "findChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "value The context value",
+                "comment": "The context value"
+              },
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "This can be used to set contextual values.\nContext must be set before any children are added, since children may consult context info during construction.\nIf the key already exists, it will be overridden."
+          },
+          "name": "setContext"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The context value or undefined",
+            "comment": "Retrieves a value from tree context.\n\nContext is usually initialized at the root, but can be overridden at any point in the tree."
+          },
+          "name": "getContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Retrieve a value from tree-global context\n\nIt is an error if the context object is not available."
+          },
+          "name": "requireContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "type a string denoting the type of metadata",
+                "comment": "a string denoting the type of metadata"
+              },
+              "name": "type",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "data the value of the metadata (can be a Token). If null/undefined, metadata will not be added.",
+                "comment": "the value of the metadata (can be a Token). If null/undefined, metadata will not be added."
+              },
+              "name": "data",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "from a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)",
+                "comment": "a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)"
+              },
+              "name": "from",
+              "type": {
+                "primitive": "any",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a metadata entry to this construct.\nEntries are arbitrary values and will also include a stack trace to allow tracing back to\nthe code location for when the entry was added. It can be used, for example, to include source\nmapping in CloudFormation templates to improve diagnostics."
+          },
+          "name": "addMetadata",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "message The warning message.",
+                "comment": "The warning message."
+              },
+              "name": "message",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a { warning: <message> } metadata entry to this construct."
+          },
+          "name": "addWarning",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "docs": {
+            "returns": "An array of validation error messages, or an empty array if there the construct is valid.",
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "returns": "A list of validation errors. If the list is empty, all constructs are valid.",
+            "comment": "Invokes 'validate' on all child constructs and then on this construct (depth-first)."
+          },
+          "name": "validateTree",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.ValidationError"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "upTo",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Return the ancestors (including self) of this Construct up until and excluding the indicated component"
+          },
+          "name": "ancestors",
+          "protected": true,
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "props The props bag.",
+                "comment": "The props bag."
+              },
+              "name": "props",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the required property.",
+                "comment": "The name of the required property."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Throws if the `props` bag doesn't include the property `name`.\nIn the future we can add some type-checking here, maybe even auto-generate during compilation."
+          },
+          "name": "required",
+          "protected": true,
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "child The child construct",
+                "comment": "The child construct"
+              },
+              "name": "child",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "childName",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The resolved path part name of the child",
+            "comment": "Adds a child construct to this node."
+          },
+          "name": "addChild",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Locks this construct from allowing more children to be added. After this\ncall, no more children can be added to this construct or to any children."
+          },
+          "name": "lock",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Unlocks this costruct and allows mutations (adding children)."
+          },
+          "name": "unlock",
+          "protected": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Construct",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Construct",
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.dynamodb.TableArn": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.dynamodb.TableArn",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.dynamodb",
+      "name": "TableArn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Arn"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.dynamodb.TableStreamArn": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.dynamodb.TableStreamArn",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.dynamodb",
+      "name": "TableStreamArn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Arn"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.Token": {
+      "docs": {
+        "comment": "Represents a lazy-evaluated value. Can be used to delay evaluation of a certain value\nin case, for example, that it requires some context or late-bound data."
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "docs": {
+            "returns": "The resolved value for this token."
+          },
+          "name": "resolve",
+          "returns": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Token",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Token",
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    }
+  },
+  "name": "jsii$_aws_cdk_dynamodb$",
+  "package": "@aws-cdk/dynamodb",
+  "version": "0.7.2-beta",
+  "dependencies": {
+    "jsii$_aws_cdk_core$": {
+      "package": "@aws-cdk/core",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "package": "@aws-cdk/iam",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "package": "@aws-cdk/resources",
+      "version": "0.7.2-beta"
+    }
+  },
+  "names": {
+    "java": "com.amazonaws.cdk.dynamodb",
+    "dotnet": "AWS.Cdk.DynamoDb",
+    "js": "@aws-cdk/dynamodb"
+  },
+  "nativenames": {
+    "jsii$_aws_cdk_core$": {
+      "java": "com.amazonaws.cdk",
+      "dotnet": "AWS.Cdk",
+      "js": "@aws-cdk/core"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "java": "com.amazonaws.cdk.iam",
+      "dotnet": "AWS.Cdk.Iam",
+      "js": "@aws-cdk/iam"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "java": "com.amazonaws.cdk.resources",
+      "dotnet": "AWS.Cdk.Resources",
+      "js": "@aws-cdk/resources"
+    },
+    "jsii$_aws_cdk_dynamodb$": {
+      "java": "com.amazonaws.cdk.dynamodb",
+      "dotnet": "AWS.Cdk.DynamoDb",
+      "js": "@aws-cdk/dynamodb"
+    }
+  },
+  "readme": {
+    "markdown": "## AWS DynamoDB Construct Library\nAdd a DynamoDB table to you stack like so:\n```ts\nimport { Table } from '@aws-cdk/dynamodb';\n\nconst defaultTable = new Table(stack, 'TableName');\n\nconst customTable = new Table(stack, 'CustomTable', {\n    readCapacity: readUnits, // Default is 5\n    writeCapacity: writeUnits, // Default is 5\n    tableName: 'MyTableName' // Default is CloudFormation-generated, which is the preferred approach\n})\n```\n"
+  },
+  "code": "var jsii$_aws_cdk_dynamodb$ =\n/******/ (function(modules) { // webpackBootstrap\n/******/ \t// The module cache\n/******/ \tvar installedModules = {};\n/******/\n/******/ \t// The require function\n/******/ \tfunction __webpack_require__(moduleId) {\n/******/\n/******/ \t\t// Check if module is in cache\n/******/ \t\tif(installedModules[moduleId]) {\n/******/ \t\t\treturn installedModules[moduleId].exports;\n/******/ \t\t}\n/******/ \t\t// Create a new module (and put it into the cache)\n/******/ \t\tvar module = installedModules[moduleId] = {\n/******/ \t\t\ti: moduleId,\n/******/ \t\t\tl: false,\n/******/ \t\t\texports: {}\n/******/ \t\t};\n/******/\n/******/ \t\t// Execute the module function\n/******/ \t\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\n/******/\n/******/ \t\t// Flag the module as loaded\n/******/ \t\tmodule.l = true;\n/******/\n/******/ \t\t// Return the exports of the module\n/******/ \t\treturn module.exports;\n/******/ \t}\n/******/\n/******/\n/******/ \t// expose the modules object (__webpack_modules__)\n/******/ \t__webpack_require__.m = modules;\n/******/\n/******/ \t// expose the module cache\n/******/ \t__webpack_require__.c = installedModules;\n/******/\n/******/ \t// define getter function for harmony exports\n/******/ \t__webpack_require__.d = function(exports, name, getter) {\n/******/ \t\tif(!__webpack_require__.o(exports, name)) {\n/******/ \t\t\tObject.defineProperty(exports, name, {\n/******/ \t\t\t\tconfigurable: false,\n/******/ \t\t\t\tenumerable: true,\n/******/ \t\t\t\tget: getter\n/******/ \t\t\t});\n/******/ \t\t}\n/******/ \t};\n/******/\n/******/ \t// getDefaultExport function for compatibility with non-harmony modules\n/******/ \t__webpack_require__.n = function(module) {\n/******/ \t\tvar getter = module && module.__esModule ?\n/******/ \t\t\tfunction getDefault() { return module['default']; } :\n/******/ \t\t\tfunction getModuleExports() { return module; };\n/******/ \t\t__webpack_require__.d(getter, 'a', getter);\n/******/ \t\treturn getter;\n/******/ \t};\n/******/\n/******/ \t// Object.prototype.hasOwnProperty.call\n/******/ \t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\n/******/\n/******/ \t// __webpack_public_path__\n/******/ \t__webpack_require__.p = \"\";\n/******/\n/******/ \t// Load entry module and return exports\n/******/ \treturn __webpack_require__(__webpack_require__.s = 0);\n/******/ })\n/************************************************************************/\n/******/ ([\n/* 0 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(1);\nconst resources_1 = __webpack_require__(2);\nconst HASH_KEY_TYPE = 'HASH';\nconst RANGE_KEY_TYPE = 'RANGE';\n/**\n * Provides a DynamoDB table.\n */\nclass Table extends core_1.Construct {\n    constructor(parent, name, props = {}) {\n        super(parent, name);\n        this.keySchema = new Array();\n        this.attributeDefinitions = new Array();\n        const readCapacityUnits = props.readCapacity || 5;\n        const writeCapacityUnits = props.writeCapacity || 5;\n        this.table = new resources_1.dynamodb.TableResource(this, 'Resource', {\n            tableName: props.tableName,\n            keySchema: this.keySchema,\n            attributeDefinitions: this.attributeDefinitions,\n            provisionedThroughput: { readCapacityUnits, writeCapacityUnits }\n        });\n        if (props.tableName) {\n            this.addMetadata('aws:cdk:hasPhysicalName', props.tableName);\n        }\n    }\n    get tableArn() {\n        return this.table.tableArn;\n    }\n    get tableName() {\n        return this.table.ref;\n    }\n    get tableStreamArn() {\n        return this.table.tableStreamArn;\n    }\n    addPartitionKey(name, type) {\n        this.addKey(name, type, HASH_KEY_TYPE);\n        return this;\n    }\n    addSortKey(name, type) {\n        this.addKey(name, type, RANGE_KEY_TYPE);\n        return this;\n    }\n    validate() {\n        const errors = new Array();\n        if (!this.findKey(HASH_KEY_TYPE)) {\n            errors.push('a partition key must be specified');\n        }\n        return errors;\n    }\n    findKey(keyType) {\n        return this.keySchema.find(prop => prop.keyType === keyType);\n    }\n    addKey(name, type, keyType) {\n        const existingProp = this.findKey(keyType);\n        if (existingProp) {\n            throw new Error(`Unable to set ${name} as a ${keyType} key, because ${existingProp.attributeName} is a ${keyType} key`);\n        }\n        this.registerAttribute(name, type);\n        this.keySchema.push({\n            attributeName: name,\n            keyType\n        });\n        return this;\n    }\n    registerAttribute(name, type) {\n        const existingDef = this.attributeDefinitions.find(def => def.attributeName === name);\n        if (existingDef && existingDef.attributeType !== type) {\n            throw new Error(`Unable to specify ${name} as ${type} because it was already defined as ${existingDef.attributeType}`);\n        }\n        if (!existingDef) {\n            this.attributeDefinitions.push({\n                attributeName: name,\n                attributeType: type\n            });\n        }\n    }\n}\nexports.Table = Table;\nclass TableName extends core_1.Token {\n}\nexports.TableName = TableName;\nvar KeyAttributeType;\n(function (KeyAttributeType) {\n    KeyAttributeType[\"Binary\"] = \"B\";\n    KeyAttributeType[\"Number\"] = \"N\";\n    KeyAttributeType[\"String\"] = \"S\";\n})(KeyAttributeType = exports.KeyAttributeType || (exports.KeyAttributeType = {}));\n\n\n/***/ }),\n/* 1 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_core$;\n\n/***/ }),\n/* 2 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_resources$;\n\n/***/ })\n/******/ ]);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vd2VicGFjay9ib290c3RyYXAgYzUxYmZkZTc0YzYyMjc0NzI4ZTkiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvZHluYW1vZGIvbGliL2luZGV4LnRzIiwid2VicGFjazovLy9leHRlcm5hbCBcImpzaWkkX2F3c19jZGtfY29yZSRcIiIsIndlYnBhY2s6Ly8vZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyRcIiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBOzs7QUFHQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxhQUFLO0FBQ0w7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQSxtQ0FBMkIsMEJBQTBCLEVBQUU7QUFDdkQseUNBQWlDLGVBQWU7QUFDaEQ7QUFDQTtBQUNBOztBQUVBO0FBQ0EsOERBQXNELCtEQUErRDs7QUFFckg7QUFDQTs7QUFFQTtBQUNBOzs7Ozs7Ozs7O0FDN0RBLHNDQUFpRDtBQUNqRCwyQ0FBOEM7QUFFOUMsTUFBTSxhQUFhLEdBQUcsTUFBTSxDQUFDO0FBQzdCLE1BQU0sY0FBYyxHQUFHLE9BQU8sQ0FBQztBQXVCL0I7O0dBRUc7QUFDSCxXQUFtQixTQUFRLGdCQUFTO0lBTWhDLFlBQVksTUFBaUIsRUFBRSxJQUFZLEVBQUUsUUFBb0IsRUFBRTtRQUMvRCxLQUFLLENBQUMsTUFBTSxFQUFFLElBQUksQ0FBQyxDQUFDO1FBSlAsY0FBUyxHQUFHLElBQUksS0FBSyxFQUE0QyxDQUFDO1FBQ2xFLHlCQUFvQixHQUFHLElBQUksS0FBSyxFQUFzRCxDQUFDO1FBS3BHLE1BQU0saUJBQWlCLEdBQUcsS0FB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LHNDQUFzQyxXQUFXLENBQUMsYUFBYSxFQUFFLENBQUMsQ0FBQztTQUMxSDtRQUNELElBQUksQ0FBQyxXQUFXLEVBQUU7WUFDZCxJQUFJLENBQUMsb0JBQW9CLENBQUMsSUFBSSxDQUFDO2dCQUMzQixhQUFhLEVBQUUsSUFBSTtnQkFDbkIsYUFBYSxFQUFFLElBQUk7YUFDdEIsQ0FBQyxDQUFDO1NBQ047SUFDTCxDQUFDO0NBQ0o7QUFqRkQsc0JBaUZDO0FBRUQsZUFBdUIsU0FBUSxZQUFLO0NBQUc7QUFBdkMsOEJBQXVDO0FBRXZDLElBQVksZ0JBSVg7QUFKRCxXQUFZLGdCQUFnQjtJQUN4QixnQ0FBWTtJQUNaLGdDQUFZO0lBQ1osZ0NBQVk7QUFDaEIsQ0FBQyxFQUpXLGdCQUFnQixHQUFoQix3QkFBZ0IsS0FBaEIsd0JBQWdCLFFBSTNCOzs7Ozs7O0FDdkhELHFDOzs7Ozs7QUNBQSwwQyIsImZpbGUiOiJidW5kbGUuanMiLCJzb3VyY2VzQ29udGVudCI6WyIgXHQvLyBUaGUgbW9kdWxlIGNhY2hlXG4gXHR2YXIgaW5zdGFsbGVkTW9kdWxlcyA9IHt9O1xuXG4gXHQvLyBUaGUgcmVxdWlyZSBmdW5jdGlvblxuIFx0ZnVuY3Rpb24gX193ZWJwYWNrX3JlcXVpcmVfXyhtb2R1bGVJZCkge1xuXG4gXHRcdC8vIENoZWNrIGlmIG1vZHVsZSBpcyBpbiBjYWNoZVxuIFx0XHRpZihpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXSkge1xuIFx0XHRcdHJldHVybiBpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXS5leHBvcnRzO1xuIFx0XHR9XG4gXHRcdC8vIENyZWF0ZSBhIG5ldyBtb2R1bGUgKGFuZCBwdXQgaXQgaW50byB0aGUgY2FjaGUpXG4gXHRcdHZhciBtb2R1bGUgPSBpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXSA9IHtcbiBcdFx0XHRpOiBtb2R1bGVJZCxcbiBcdFx0XHRsOiBmYWxzZSxcbiBcdFx0XHRleHBvcnRzOiB7fVxuIFx0XHR9O1xuXG4gXHRcdC8vIEV4ZWN1dGUgdGhlIG1vZHVsZSBmdW5jdGlvblxuIFx0XHRtb2R1bGVzW21vZHVsZUlkXS5jYWxsKG1vZHVsZS5leHBvcnRzLCBtb2R1bGUsIG1vZHVsZS5leHBvcnRzLCBfX3dlYnBhY2tfcmVxdWlyZV9fKTtcblxuIFx0XHQvLyBGbGFnIHRoZSBtb2R1bGUgYXMgbG9hZGVkXG4gXHRcdG1vZHVsZS5sID0gdHJ1ZTtcblxuIFx0XHQvLyBSZXR1cm4gdGhlIGV4cG9ydHMgb2YgdGhlIG1vZHVsZVxuIFx0XHRyZXR1cm4gbW9kdWxlLmV4cG9ydHM7XG4gXHR9XG5cblxuIFx0Ly8gZXhwb3NlIHRoZSBtb2R1bGVzIG9iamVjdCAoX193ZWJwYWNrX21vZHVsZXNfXylcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubSA9IG1vZHVsZXM7XG5cbiBcdC8vIGV4cG9zZSB0aGUgbW9kdWxlIGNhY2hlXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLmMgPSBpbnN0YWxsZWRNb2R1bGVzO1xuXG4gXHQvLyBkZWZpbmUgZ2V0dGVyIGZ1bmN0aW9uIGZvciBoYXJtb255IGV4cG9ydHNcbiBcdF9fd2VicGFja19yZXF1aXJlX18uZCA9IGZ1bmN0aW9uKGV4cG9ydHMsIG5hbWUsIGdldHRlcikge1xuIFx0XHRpZighX193ZWJwYWNrX3JlcXVpcmVfXy5vKGV4cG9ydHMsIG5hbWUpKSB7XG4gXHRcdFx0T2JqZWN0LmRlZmluZVByb3BlcnR5KGV4cG9ydHMsIG5hbWUsIHtcbiBcdFx0XHRcdGNvbmZpZ3VyYWJsZTogZmFsc2UsXG4gXHRcdFx0XHRlbnVtZXJhYmxlOiB0cnVlLFxuIFx0XHRcdFx0Z2V0OiBnZXR0ZXJcbiBcdFx0XHR9KTtcbiBcdFx0fVxuIFx0fTtcblxuIFx0Ly8gZ2V0RGVmYXVsdEV4cG9ydCBmdW5jdGlvbiBmb3IgY29tcGF0aWJpbGl0eSB3aXRoIG5vbi1oYXJtb255IG1vZHVsZXNcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubiA9IGZ1bmN0aW9uKG1vZHVsZSkge1xuIFx0XHR2YXIgZ2V0dGVyID0gbW9kdWxlICYmIG1vZHVsZS5fX2VzTW9kdWxlID9cbiBcdFx0XHRmdW5jdGlvbiBnZXREZWZhdWx0KCkgeyByZXR1cm4gbW9kdWxlWydkZWZhdWx0J107IH0gOlxuIFx0XHRcdGZ1bmN0aW9uIGdldE1vZHVsZUV4cG9ydHMoKSB7IHJldHVybiBtb2R1bGU7IH07XG4gXHRcdF9fd2VicGFja19yZXF1aXJlX18uZChnZXR0ZXIsICdhJywgZ2V0dGVyKTtcbiBcdFx0cmV0dXJuIGdldHRlcjtcbiBcdH07XG5cbiBcdC8vIE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbFxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5vID0gZnVuY3Rpb24ob2JqZWN0LCBwcm9wZXJ0eSkgeyByZXR1cm4gT2JqZWN0LnByb3RvdHlwZS5oYXNPd25Qcm9wZXJ0eS5jYWxsKG9iamVjdCwgcHJvcGVydHkpOyB9O1xuXG4gXHQvLyBfX3dlYnBhY2tfcHVibGljX3BhdGhfX1xuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5wID0gXCJcIjtcblxuIFx0Ly8gTG9hZCBlbnRyeSBtb2R1bGUgYW5kIHJldHVybiBleHBvcnRzXG4gXHRyZXR1cm4gX193ZWJwYWNrX3JlcXVpcmVfXyhfX3dlYnBhY2tfcmVxdWlyZV9fLnMgPSAwKTtcblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyB3ZWJwYWNrL2Jvb3RzdHJhcCBjNTFiZmRlNzRjNjIyNzQ3MjhlOSIsImltcG9ydCB7IENvbnN0cnVjdCwgVG9rZW4gfSBmcm9tICdAYXdzLWNkay9jb3JlJztcbmltcG9ydCB7IGR5bmFtb2RiIH0gZnJvbSAnQGF3cy1jZGsvcmVzb3VyY2VzJztcblxuY29uc3QgSEFTSF9LRVlfVFlQRSA9ICdIQVNIJztcbmNvbnN0IFJBTkdFX0tFWV9UWVBFID0gJ1JBTkdFJztcblxuZXhwb3J0IGludGVyZmFjZSBUYWJsZVByb3BzIHtcbiAgICAvKipcbiAgICAgKiBUaGUgcmVhZCBjYXBhY2l0eSBmb3IgdGhlIHRhYmxlLiBDYXJlZnVsIGlmIHlvdSBhZGQgR2xvYmFsIFNlY29uZGFyeSBJbmRleGVzLCBhc1xuICAgICAqIHRob3NlIHdpbGwgc2hhcmUgdGhlIHRhYmxlJ3MgcHJvdmlzaW9uZWQgdGhyb3VnaHB1dC5cbiAgICAgKiBAZGVmYXVsdCA1XG4gICAgICovXG4gICAgcmVhZENhcGFjaXR5PzogbnVtYmVyO1xuICAgIC8qKlxuICAgICAqIFRoZSB3cml0ZSBjYXBhY2l0eSBmb3IgdGhlIHRhYmxlLiBDYXJlZnVsIGlmIHlvdSBhZGQgR2xvYmFsIFNlY29uZGFyeSBJbmRleGVzLCBhc1xuICAgICAqIHRob3NlIHdpbGwgc2hhcmUgdGhlIHRhYmxlJ3MgcHJvdmlzaW9uZWQgdGhyb3VnaHB1dC5cbiAgICAgKiBAZGVmYXVsdCA1XG4gICAgICovXG4gICAgd3JpdGVDYXBhY2l0eT86IG51bWJlcjtcblxuICAgIC8qKlxuICAgICAqIEVuZm9yY2VzIGEgcGFydGljdWxhciBwaHlzaWNhbCB0YWJsZSBuYW1lLlxuICAgICAqIEBkZWZhdWx0IDxnZW5lcmF0ZWQ+XG4gICAgICovXG4gICAgdGFibGVOYW1lPzogc3RyaW5nO1xufVxuXG4vKipcbiAqIFByb3ZpZGVzIGEgRHluYW1vREIgdGFibGUuXG4gKi9cbmV4cG9ydCBjbGFzcyBUYWJsZSBleHRlbmRzIENvbnN0cnVjdCB7XG4gICAgcHJpdmF0ZSByZWFkb25seSB0YWJsZTogZHluYW1vZGIuVGFibGVSZXNvdXJjZTtcblxuICAgIHByaXZhdGUgcmVhZG9ubHkga2V5U2NoZW1hID0gbmV3IEFycmF5PGR5bmFtb2RiLlRhYmxlUmVzb3VyY2UuS2V5U2NoZW1hUHJvcGVydHk+KCk7XG4gICAgcHJpdmF0ZSByZWFkb25seSBhdHRyaWJ1dGVEZWZpbml0aW9ucyA9IG5ldyBBcnJheTxkeW5hbW9kYi5UYWJsZVJlc291cmNlLkF0dHJpYnV0ZURlZmluaXRpb25Qcm9wZXJ0eT4oKTtcblxuICAgIGNvbnN0cnVjdG9yKHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBUYWJsZVByb3BzID0ge30pIHtcbiAgICAgICAgc3VwZXIocGFyZW50LCBuYW1lKTtcblxuICAgICAgICBjb25zdCByZWFkQ2FwYWNpdHlVbml0cyA9IHByb3BzLnJlYWRDYXBhY2l0eSB8fCA1O1xuICAgICAgICBjb25zdCB3cml0ZUNhcGFjaXR5VW5pdHMgPSBwcm9wcy53cml0ZUNhcGFjaXR5IHx8IDU7XG5cbiAgICAgICAgdGhpcy50YWJsZSA9IG5ldyBkeW5hbW9kYi5UYWJsZVJlc291cmNlKHRoaXMsICdSZXNvdXJjZScsIHtcbiAgICAgICAgICAgIHRhYmxlTmFtZTogcHJvcHMudGFibGVOYW1lLFxuICAgICAgICAgICAga2V5U2NoZW1hOiB0aGlzLmtleVNjaGVtYSxcbiAgICAgICAgICAgIGF0dHJpYnV0ZURlZmluaXRpb25zOiB0aGlzLmF0dHJpYnV0ZURlZmluaXRpb25zLFxuICAgICAgICAgICAgcHJvdmlzaW9uZWRUaHJvdWdocHV0OiB7IHJlYWRDYXBhY2l0eVVuaXRzLCB3cml0ZUNhcGFjaXR5VW5pdHMgfVxuICAgICAgICB9KTtcblxuICAgICAgICBpZiAocHJvcHMudGFibGVOYW1lKSB7IHRoaXMuYWRkTWV0YWRhdGEoJ2F3czpjZGs6aGFzUGh5c2ljYWxOYW1lJywgcHJvcHMudGFibGVOYW1lKTsgfVxuICAgIH1cblxuICAgIHB1YmxpYyBnZXQgdGFibGVBcm4oKSB7XG4gICAgICAgIHJldHVybiB0aGlzLnRhYmxlLnRhYmxlQXJuO1xuICAgIH1cblxuICAgIHB1YmxpYyBnZXQgdGFibGVOYW1lKCkge1xuICAgICAgICByZXR1cm4gdGhpcy50YWJsZS5yZWYgYXMgVGFibGVOYW1lO1xuICAgIH1cblxuICAgIHB1YmxpYyBnZXQgdGFibGVTdHJlYW1Bcm4oKSB7XG4gICAgICAgIHJldHVybiB0aGlzLnRhYmxlLnRhYmxlU3RyZWFtQXJuO1xuICAgIH1cblxuICAgIHB1YmxpYyBhZGRQYXJ0aXRpb25LZXkobmFtZTogc3RyaW5nLCB0eXBlOiBLZXlBdHRyaWJ1dGVUeXBlKTogdGhpcyB7XG4gICAgICAgIHRoaXMuYWRkS2V5KG5hbWUsIHR5cGUsIEhBU0hfS0VZX1RZUEUpO1xuICAgICAgICByZXR1cm4gdGhpcztcbiAgICB9XG5cbiAgICBwdWJsaWMgYWRkU29ydEtleShuYW1lOiBzdHJpbmcsIHR5cGU6IEtleUF0dHJpYnV0ZVR5cGUpOiB0aGlzIHtcbiAgICAgICAgdGhpcy5hZGRLZXkobmFtZSwgdHlwZSwgUkFOR0VfS0VZX1RZUEUpO1xuICAgICAgICByZXR1cm4gdGhpcztcbiAgICB9XG5cbiAgICBwdWJsaWMgdmFsaWRhdGUoKTogc3RyaW5nW10ge1xuICAgICAgICBjb25zdCBlcnJvcnMgPSBuZXcgQXJyYXk8c3RyaW5nPigpO1xuICAgICAgICBpZiAoIXRoaXMuZmluZEtleShIQVNIX0tFWV9UWVBFKSkge1xuICAgICAgICAgICAgZXJyb3JzLnB1c2goJ2EgcGFydGl0aW9uIGtleSBtdXN0IGJlIHNwZWNpZmllZCcpO1xuICAgICAgICB9XG4gICAgICAgIHJldHVybiBlcnJvcnM7XG4gICAgfVxuXG4gICAgcHJpdmF0ZSBmaW5kS2V5KGtleVR5cGU6IHN0cmluZykge1xuICAgICAgICByZXR1cm4gdGhpcy5rZXlTY2hlbWEuZmluZChwcm9wID0+IHByb3Aua2V5VHlwZSA9PT0ga2V5VHlwZSk7XG4gICAgfVxuXG4gICAgcHJpdmF0ZSBhZGRLZXkobmFtZTogc3RyaW5nLCB0eXBlOiBLZXlBdHRyaWJ1dGVUeXBlLCBrZXlUeXBlOiBzdHJpbmcpIHtcbiAgICAgICAgY29uc3QgZXhpc3RpbmdQcm9wID0gdGhpcy5maW5kS2V5KGtleVR5cGUpO1xuICAgICAgICBpZiAoZXhpc3RpbmdQcm9wKSB7XG4gICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYFVuYWJsZSB0byBzZXQgJHtuYW1lfSBhcyBhICR7a2V5VHlwZX0ga2V5LCBiZWNhdXNlICR7ZXhpc3RpbmdQcm9wLmF0dHJpYnV0ZU5hbWV9IGlzIGEgJHtrZXlUeXBlfSBrZXlgKTtcbiAgICAgICAgfVxuICAgICAgICB0aGlzLnJlZ2lzdGVyQXR0cmlidXRlKG5hbWUsIHR5cGUpO1xuICAgICAgICB0aGlzLmtleVNjaGVtYS5wdXNoKHtcbiAgICAgICAgICAgIGF0dHJpYnV0ZU5hbWU6IG5hbWUsXG4gICAgICAgICAgICBrZXlUeXBlXG4gICAgICAgIH0pO1xuICAgICAgICByZXR1cm4gdGhpcztcbiAgICB9XG5cbiAgICBwcml2YXRlIHJlZ2lzdGVyQXR0cmlidXRlKG5hbWU6IHN0cmluZywgdHlwZTogS2V5QXR0cmlidXRlVHlwZSkge1xuICAgICAgICBjb25zdCBleGlzdGluZ0RlZiA9IHRoaXMuYXR0cmlidXRlRGVmaW5pdGlvbnMuZmluZChkZWYgPT4gZGVmLmF0dHJpYnV0ZU5hbWUgPT09IG5hbWUpO1xuICAgICAgICBpZiAoZXhpc3RpbmdEZWYgJiYgZXhpc3RpbmdEZWYuYXR0cmlidXRlVHlwZSAhPT0gdHlwZSkge1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBVbmFibGUgdG8gc3BlY2lmeSAke25hbWV9IGFzICR7dHlwZX0gYmVjYXVzZSBpdCB3YXMgYWxyZWFkeSBkZWZpbmVkIGFzICR7ZXhpc3RpbmdEZWYuYXR0cmlidXRlVHlwZX1gKTtcbiAgICAgICAgfVxuICAgICAgICBpZiAoIWV4aXN0aW5nRGVmKSB7XG4gICAgICAgICAgICB0aGlzLmF0dHJpYnV0ZURlZmluaXRpb25zLnB1c2goe1xuICAgICAgICAgICAgICAgIGF0dHJpYnV0ZU5hbWU6IG5hbWUsXG4gICAgICAgICAgICAgICAgYXR0cmlidXRlVHlwZTogdHlwZVxuICAgICAgICAgICAgfSk7XG4gICAgICAgIH1cbiAgICB9XG59XG5cbmV4cG9ydCBjbGFzcyBUYWJsZU5hbWUgZXh0ZW5kcyBUb2tlbiB7fVxuXG5leHBvcnQgZW51bSBLZXlBdHRyaWJ1dGVUeXBlIHtcbiAgICBCaW5hcnkgPSAnQicsXG4gICAgTnVtYmVyID0gJ04nLFxuICAgIFN0cmluZyA9ICdTJyxcbn1cblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAvcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2R5bmFtb2RiL2xpYi9pbmRleC50cyIsIm1vZHVsZS5leHBvcnRzID0ganNpaSRfYXdzX2Nka19jb3JlJDtcblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyBleHRlcm5hbCBcImpzaWkkX2F3c19jZGtfY29yZSRcIlxuLy8gbW9kdWxlIGlkID0gMVxuLy8gbW9kdWxlIGNodW5rcyA9IDAiLCJtb2R1bGUuZXhwb3J0cyA9IGpzaWkkX2F3c19jZGtfcmVzb3VyY2VzJDtcblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyBleHRlcm5hbCBcImpzaWkkX2F3c19jZGtfcmVzb3VyY2VzJFwiXG4vLyBtb2R1bGUgaWQgPSAyXG4vLyBtb2R1bGUgY2h1bmtzID0gMCJdLCJzb3VyY2VSb290IjoiIn0="
+}

@@ -1,0 +1,3340 @@
+{
+  "schema": "jsii/1.0",
+  "types": {
+    "jsii$_aws_cdk_codebuild$.BuildProjectRefProps": {
+      "docs": {
+        "see": "BuildProjectRef.export",
+        "comment": "Properties of a reference to a CodeBuild Project."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The human-readable name of the CodeBuild Project we're referencing.\nThe Project must be in the same account and region as the root Stack."
+          },
+          "name": "projectName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_codebuild$.ProjectName"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.BuildProjectRefProps",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "BuildProjectRefProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_codebuild$.BuildProjectRef": {
+      "docs": {
+        "comment": "Represents a reference to a CodeBuild Project.\n\nIf you're managing the Project alongside the rest of your CDK resources,\nuse the {@link BuildProject} class.\n\nIf you want to reference an already existing Project\n(or one defined in a different CDK Stack),\nuse the {@link import} method."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of this Project. "
+          },
+          "name": "projectArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectArn"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The human-visible name of this Project. "
+          },
+          "name": "projectName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_codebuild$.ProjectName"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The IAM service Role of this Project. Undefined for imported Projects. "
+          },
+          "name": "role",
+          "type": {
+            "fqn": "jsii$_aws_cdk_iam$.Role",
+            "optional": true
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Allows using build projects as event rule targets."
+          },
+          "name": "eventRuleTarget",
+          "type": {
+            "fqn": "jsii$_aws_cdk_events$.EventRuleTarget"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "parent the parent Construct for this Construct",
+                "comment": "the parent Construct for this Construct"
+              },
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "docs": {
+                "param": "name the logical name of this Construct",
+                "comment": "the logical name of this Construct"
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "props the properties of the referenced Project",
+                "comment": "the properties of the referenced Project"
+              },
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_codebuild$.BuildProjectRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "note": "if you're importing a CodeBuild Project for use\nin a CodePipeline, make sure the existing Project\nhas permissions to access the S3 Bucket of that Pipeline -\notherwise, builds in that Pipeline will always fail.",
+            "returns": "a reference to the existing Project",
+            "comment": "Import a Project defined either outside the CDK,\nor in a different CDK Stack\n(and exported using the {@link export} method)."
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_codebuild$.BuildProjectRef"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Export this Project. Allows referencing this Project in a different CDK Stack."
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_codebuild$.BuildProjectRefProps"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "see": "https://docs.aws.amazon.com/codebuild/latest/userguide/sample-build-notifications.html",
+            "comment": "Defines a CloudWatch event rule triggered when the build project state\nchanges. You can filter specific build status events using an event\npattern filter on the `build-status` detail field:\n\n      const rule = project.onStateChange('OnBuildStarted', target);\n      rule.addEventPattern({\n          detail: {\n              'build-status': [\n                  \"IN_PROGRESS\",\n                  \"SUCCEEDED\",\n                  \"FAILED\",\n                  \"STOPPED\"\n              ]\n          }\n      });\n\nYou can also use the methods `onBuildFailed` and `onBuildSucceeded` to define rules for\nthese specific state changes."
+          },
+          "name": "onStateChange",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "see": "https://docs.aws.amazon.com/codebuild/latest/userguide/sample-build-notifications.html",
+            "comment": "Defines a CloudWatch event rule that triggers upon phase change of this\nbuild project."
+          },
+          "name": "onPhaseChange",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines an event rule which triggers when a build starts."
+          },
+          "name": "onBuildStarted",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines an event rule which triggers when a build fails."
+          },
+          "name": "onBuildFailed",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines an event rule which triggers when a build completes successfully."
+          },
+          "name": "onBuildSucceeded",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_events$.EventRule"
+          }
+        }
+      ],
+      "interfaces": [
+        {
+          "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.BuildProjectRef",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "BuildProjectRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.BuildProjectProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The source of the build."
+          },
+          "name": "source",
+          "type": {
+            "fqn": "jsii$_aws_cdk_codebuild$.BuildSource"
+          }
+        },
+        {
+          "docs": {
+            "comment": "A description of the project. Use the description to identify the purpose\nof the project."
+          },
+          "name": "description",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "see": "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-example",
+            "comment": "Filename or contents of buildspec in JSON format."
+          },
+          "name": "buildSpec",
+          "type": {
+            "primitive": "json",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Service Role to assume while running the build.\nIf not specified, a role will be created."
+          },
+          "name": "role",
+          "type": {
+            "fqn": "jsii$_aws_cdk_iam$.Role",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Encryption key to use to read and write artifacts\nIf not specified, a role will be created."
+          },
+          "name": "encryptionKey",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Bucket to store cached source artifacts\nIf not specified, source artifacts will not be cached."
+          },
+          "name": "cacheBucket",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRef",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Subdirectory to store cached artifacts"
+          },
+          "name": "cacheDir",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Build environment to use for the build."
+          },
+          "name": "environment",
+          "type": {
+            "fqn": "jsii$_aws_cdk_codebuild$.BuildEnvironment",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Indicates whether AWS CodeBuild generates a publicly accessible URL for\nyour project's build badge. For more information, see Build Badges Sample\nin the AWS CodeBuild User Guide."
+          },
+          "name": "badge",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The number of minutes after which AWS CodeBuild stops the build if it's\nnot complete. For valid values, see the timeoutInMinutes field in the AWS\nCodeBuild User Guide."
+          },
+          "name": "timeout",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "NoBuildArtifacts",
+            "comment": "Defines where build artifacts will be stored.\nCould be: PipelineBuildArtifacts, NoBuildArtifacts and S3BucketBuildArtifacts."
+          },
+          "name": "artifacts",
+          "type": {
+            "fqn": "jsii$_aws_cdk_codebuild$.BuildArtifacts",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Additional environment variables to add to the build environment."
+          },
+          "name": "environmentVariables",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_codebuild$.BuildEnvironmentVariable"
+              },
+              "kind": "map"
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.BuildProjectProps",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "BuildProjectProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_codebuild$.BuildProject": {
+      "docs": {
+        "comment": "A CodeBuild project that is completely driven\nfrom CodePipeline (does not hot have its own input or output)"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The IAM role for this project."
+          },
+          "name": "role",
+          "type": {
+            "fqn": "jsii$_aws_cdk_iam$.Role"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The ARN of the project."
+          },
+          "name": "projectArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectArn"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of the project."
+          },
+          "name": "projectName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_codebuild$.ProjectName"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "statement The permissions statement to add",
+                "comment": "The permissions statement to add"
+              },
+              "name": "statement",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Add a permission only if there's a policy attached."
+          },
+          "name": "addToRolePolicy"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.BuildProject",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "BuildProject",
+      "base": {
+        "fqn": "jsii$_aws_cdk_codebuild$.BuildProjectRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_codebuild$.BuildProjectProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.BuildEnvironment": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "default": "LINUX_CONTAINER",
+            "comment": "The type of build environment. The only allowed value is LINUX_CONTAINER."
+          },
+          "name": "type",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "see": "https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html",
+            "default": "aws/codebuild/ubuntu-base:14.04",
+            "comment": "The Docker image identifier that the build environment uses."
+          },
+          "name": "image",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "ComputeType.Small",
+            "comment": "The type of compute to use for this build. See the\nComputeType enum for options."
+          },
+          "name": "computeType",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "false",
+            "comment": "Indicates how the project builds Docker images. Specify true to enable\nrunning the Docker daemon inside a Docker container. This value must be\nset to true only if this build project will be used to build Docker\nimages, and the specified build environment image is not one provided by\nAWS CodeBuild with Docker support. Otherwise, all associated builds that\nattempt to interact with the Docker daemon will fail."
+          },
+          "name": "priviledged",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The environment variables that your builds can use."
+          },
+          "name": "environmentVariables",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_codebuild$.BuildEnvironmentVariable"
+              },
+              "kind": "map"
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.BuildEnvironment",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "BuildEnvironment",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_codebuild$.BuildEnvironmentVariable": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "default": "PlainText",
+            "comment": "The type of environment variable."
+          },
+          "name": "type",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The value of the environment variable (or the name of the parameter in\nthe SSM parameter store.)"
+          },
+          "name": "value",
+          "type": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.BuildEnvironmentVariable",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "BuildEnvironmentVariable",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_codebuild$.BuildEnvironmentVariableType": {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "PlainText"
+        },
+        {
+          "name": "ParameterStore"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.BuildEnvironmentVariableType",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "BuildEnvironmentVariableType"
+    },
+    "jsii$_aws_cdk_codebuild$.ComputeType": {
+      "docs": {
+        "comment": "Build machine compute type."
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "Small"
+        },
+        {
+          "name": "Medium"
+        },
+        {
+          "name": "Large"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.ComputeType",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "ComputeType"
+    },
+    "jsii$_aws_cdk_codebuild$.ProjectName": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_codebuild$.ProjectName",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "ProjectName",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.BuildSource": {
+      "docs": {
+        "comment": "Source Provider definition for a CodeBuild project\nTODO: Abstract class should be an interface"
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "_project",
+              "type": {
+                "fqn": "jsii$_aws_cdk_codebuild$.BuildProject"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Called by the project when the source is added so that the source can perform\nbinding operations on the source. For example, it can grant permissions to the\ncode build project to read from the S3 bucket."
+          },
+          "name": "bind"
+        },
+        {
+          "name": "toSourceJSON",
+          "abstract": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.SourceProperty"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.BuildSource",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "BuildSource",
+      "abstract": true,
+      "initializer": {
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.CodeCommitSource": {
+      "docs": {
+        "comment": "CodeCommit Source definition for a CodeBuild project"
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "project",
+              "type": {
+                "fqn": "jsii$_aws_cdk_codebuild$.BuildProject"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Called by the project when the source is added so that the source can perform\nbinding operations on the source. For example, it can grant permissions to the\ncode build project to read from the S3 bucket."
+          },
+          "name": "bind"
+        },
+        {
+          "name": "toSourceJSON",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.SourceProperty"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.CodeCommitSource",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "CodeCommitSource",
+      "base": {
+        "fqn": "jsii$_aws_cdk_codebuild$.BuildSource"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "repo",
+            "type": {
+              "fqn": "jsii$_aws_cdk_codecommit$.Repository"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.CodePipelineSource": {
+      "docs": {
+        "comment": "CodePipeline Source definition for a CodeBuild project"
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "name": "toSourceJSON",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.SourceProperty"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "_project",
+              "type": {
+                "fqn": "jsii$_aws_cdk_codebuild$.BuildProject"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Called by the project when the source is added so that the source can perform\nbinding operations on the source. For example, it can grant permissions to the\ncode build project to read from the S3 bucket."
+          },
+          "name": "bind"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.CodePipelineSource",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "CodePipelineSource",
+      "base": {
+        "fqn": "jsii$_aws_cdk_codebuild$.BuildSource"
+      },
+      "initializer": {
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.GitHubSource": {
+      "docs": {
+        "comment": "GitHub Source definition for a CodeBuild project"
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "name": "toSourceJSON",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.SourceProperty"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.GitHubSource",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "GitHubSource",
+      "base": {
+        "fqn": "jsii$_aws_cdk_codebuild$.BuildSource"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "httpscloneUrl",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "oauthToken",
+            "type": {
+              "primitive": "any"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.GitHubEnterpriseSource": {
+      "docs": {
+        "comment": "GitHub Enterprice Source definition for a CodeBuild project"
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "name": "toSourceJSON",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.SourceProperty"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.GitHubEnterpriseSource",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "GitHubEnterpriseSource",
+      "base": {
+        "fqn": "jsii$_aws_cdk_codebuild$.BuildSource"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "cloneUrl",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.BitBucketSource": {
+      "docs": {
+        "comment": "BitBucket Source definition for a CodeBuild project"
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "name": "toSourceJSON",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.SourceProperty"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.BitBucketSource",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "BitBucketSource",
+      "base": {
+        "fqn": "jsii$_aws_cdk_codebuild$.BuildSource"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "httpsCloneUrl",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.S3BucketSource": {
+      "docs": {
+        "comment": "S3 bucket definition for a CodeBuild project."
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "name": "toSourceJSON",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.SourceProperty"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "project",
+              "type": {
+                "fqn": "jsii$_aws_cdk_codebuild$.BuildProject"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Called by the project when the source is added so that the source can perform\nbinding operations on the source. For example, it can grant permissions to the\ncode build project to read from the S3 bucket."
+          },
+          "name": "bind"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.S3BucketSource",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "S3BucketSource",
+      "base": {
+        "fqn": "jsii$_aws_cdk_codebuild$.BuildSource"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "bucket",
+            "type": {
+              "fqn": "jsii$_aws_cdk_s3$.BucketRef"
+            }
+          },
+          {
+            "name": "path",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.SourceType": {
+      "docs": {
+        "comment": "Source types for CodeBuild Project"
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "CodeCommit"
+        },
+        {
+          "name": "CodePipeline"
+        },
+        {
+          "name": "GitHub"
+        },
+        {
+          "name": "GitHubEnterPrise"
+        },
+        {
+          "name": "BitBucket"
+        },
+        {
+          "name": "S3"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.SourceType",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "SourceType"
+    },
+    "jsii$_aws_cdk_codebuild$.BuildArtifacts": {
+      "kind": "class",
+      "methods": [
+        {
+          "name": "toArtifactsJSON",
+          "abstract": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.ArtifactsProperty"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "_project",
+              "type": {
+                "fqn": "jsii$_aws_cdk_codebuild$.BuildProject"
+              }
+            }
+          ],
+          "name": "bind"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.BuildArtifacts",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "BuildArtifacts",
+      "abstract": true,
+      "initializer": {
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.NoBuildArtifacts": {
+      "kind": "class",
+      "methods": [
+        {
+          "name": "toArtifactsJSON",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.ArtifactsProperty"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.NoBuildArtifacts",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "NoBuildArtifacts",
+      "base": {
+        "fqn": "jsii$_aws_cdk_codebuild$.BuildArtifacts"
+      },
+      "initializer": {
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.CodePipelineBuildArtifacts": {
+      "kind": "class",
+      "methods": [
+        {
+          "name": "toArtifactsJSON",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.ArtifactsProperty"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.CodePipelineBuildArtifacts",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "CodePipelineBuildArtifacts",
+      "base": {
+        "fqn": "jsii$_aws_cdk_codebuild$.BuildArtifacts"
+      },
+      "initializer": {
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_codebuild$.S3BucketBuildArtifactsProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The name of the output bucket."
+          },
+          "name": "bucket",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRef"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The path inside of the bucket for the build output .zip file or folder.\nIf a value is not specified, then build output will be stored at the root of the\nbucket (or under the <build-id> directory if `includeBuildId` is set to true)."
+          },
+          "name": "path",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The name of the build output ZIP file or folder inside the bucket.\n\nThe full S3 object key will be \"<path>/build-ID/<name>\" or\n\"<path>/<artifactsName>\" depending on whether `includeBuildId` is set to true."
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "default": "true",
+            "comment": "Indicates if the build ID should be included in the path. If this is set to true,\nthen the build artifact will be stored in \"<path>/<build-id>/<name>\"."
+          },
+          "name": "includeBuildID",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "true - files will be archived",
+            "comment": "If this is true, all build output will be packaged into a single .zip file.\nOtherwise, all files will be uploaded to <path>/<name>"
+          },
+          "name": "packageZip",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.S3BucketBuildArtifactsProps",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "S3BucketBuildArtifactsProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_codebuild$.S3BucketBuildArtifacts": {
+      "kind": "class",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "project",
+              "type": {
+                "fqn": "jsii$_aws_cdk_codebuild$.BuildProject"
+              }
+            }
+          ],
+          "name": "bind"
+        },
+        {
+          "name": "toArtifactsJSON",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.ArtifactsProperty"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codebuild$.S3BucketBuildArtifacts",
+      "module": "jsii$_aws_cdk_codebuild$",
+      "namespace": "jsii$_aws_cdk_codebuild$",
+      "name": "S3BucketBuildArtifacts",
+      "base": {
+        "fqn": "jsii$_aws_cdk_codebuild$.BuildArtifacts"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_codebuild$.S3BucketBuildArtifactsProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    }
+  },
+  "nametree": {
+    "jsii$_aws_cdk_codebuild$": {
+      "BuildProjectRefProps": {
+        "_": "jsii$_aws_cdk_codebuild$.BuildProjectRefProps"
+      },
+      "BuildProjectRef": {
+        "_": "jsii$_aws_cdk_codebuild$.BuildProjectRef"
+      },
+      "BuildProjectProps": {
+        "_": "jsii$_aws_cdk_codebuild$.BuildProjectProps"
+      },
+      "BuildProject": {
+        "_": "jsii$_aws_cdk_codebuild$.BuildProject"
+      },
+      "BuildEnvironment": {
+        "_": "jsii$_aws_cdk_codebuild$.BuildEnvironment"
+      },
+      "BuildEnvironmentVariable": {
+        "_": "jsii$_aws_cdk_codebuild$.BuildEnvironmentVariable"
+      },
+      "BuildEnvironmentVariableType": {
+        "_": "jsii$_aws_cdk_codebuild$.BuildEnvironmentVariableType"
+      },
+      "ComputeType": {
+        "_": "jsii$_aws_cdk_codebuild$.ComputeType"
+      },
+      "ProjectName": {
+        "_": "jsii$_aws_cdk_codebuild$.ProjectName"
+      },
+      "BuildSource": {
+        "_": "jsii$_aws_cdk_codebuild$.BuildSource"
+      },
+      "CodeCommitSource": {
+        "_": "jsii$_aws_cdk_codebuild$.CodeCommitSource"
+      },
+      "CodePipelineSource": {
+        "_": "jsii$_aws_cdk_codebuild$.CodePipelineSource"
+      },
+      "GitHubSource": {
+        "_": "jsii$_aws_cdk_codebuild$.GitHubSource"
+      },
+      "GitHubEnterpriseSource": {
+        "_": "jsii$_aws_cdk_codebuild$.GitHubEnterpriseSource"
+      },
+      "BitBucketSource": {
+        "_": "jsii$_aws_cdk_codebuild$.BitBucketSource"
+      },
+      "S3BucketSource": {
+        "_": "jsii$_aws_cdk_codebuild$.S3BucketSource"
+      },
+      "SourceType": {
+        "_": "jsii$_aws_cdk_codebuild$.SourceType"
+      },
+      "BuildArtifacts": {
+        "_": "jsii$_aws_cdk_codebuild$.BuildArtifacts"
+      },
+      "NoBuildArtifacts": {
+        "_": "jsii$_aws_cdk_codebuild$.NoBuildArtifacts"
+      },
+      "CodePipelineBuildArtifacts": {
+        "_": "jsii$_aws_cdk_codebuild$.CodePipelineBuildArtifacts"
+      },
+      "S3BucketBuildArtifactsProps": {
+        "_": "jsii$_aws_cdk_codebuild$.S3BucketBuildArtifactsProps"
+      },
+      "S3BucketBuildArtifacts": {
+        "_": "jsii$_aws_cdk_codebuild$.S3BucketBuildArtifacts"
+      }
+    }
+  },
+  "typecount": 22,
+  "externalTypes": {
+    "jsii$_aws_cdk_core$.Construct": {
+      "docs": {
+        "comment": "Represents the building block of the construct graph.\nWhen a construct is created, it is always added as a child"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the parent of this node or undefined if this is a root node."
+          },
+          "name": "parent",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of this construct"
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "All direct children of this construct."
+          },
+          "name": "children",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "returns": "/-separated path of this Construct.",
+            "comment": "Returns the path of all constructs from root to this construct, in string form."
+          },
+          "name": "path",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "An array of metadata objects associated with this construct.\nThis can be used, for example, to implement support for deprecation notices, source mapping, etc."
+          },
+          "name": "metadata",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.MetadataEntry"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "docs": {
+            "comment": "Returns a string representation of this construct."
+          },
+          "name": "toString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "depth",
+              "type": {
+                "primitive": "number",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Returns a string with a tree representation of this construct and it's children."
+          },
+          "name": "toTreeString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "a child by path or undefined if not found.",
+            "comment": "Return a descendant by path, or undefined"
+          },
+          "name": "tryFindChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "Child with the given path.",
+            "comment": "Return a descendant by path\n\nThrows an exception if the descendant is not found."
+          },
+          "name": "findChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "value The context value",
+                "comment": "The context value"
+              },
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "This can be used to set contextual values.\nContext must be set before any children are added, since children may consult context info during construction.\nIf the key already exists, it will be overridden."
+          },
+          "name": "setContext"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The context value or undefined",
+            "comment": "Retrieves a value from tree context.\n\nContext is usually initialized at the root, but can be overridden at any point in the tree."
+          },
+          "name": "getContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Retrieve a value from tree-global context\n\nIt is an error if the context object is not available."
+          },
+          "name": "requireContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "type a string denoting the type of metadata",
+                "comment": "a string denoting the type of metadata"
+              },
+              "name": "type",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "data the value of the metadata (can be a Token). If null/undefined, metadata will not be added.",
+                "comment": "the value of the metadata (can be a Token). If null/undefined, metadata will not be added."
+              },
+              "name": "data",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "from a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)",
+                "comment": "a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)"
+              },
+              "name": "from",
+              "type": {
+                "primitive": "any",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a metadata entry to this construct.\nEntries are arbitrary values and will also include a stack trace to allow tracing back to\nthe code location for when the entry was added. It can be used, for example, to include source\nmapping in CloudFormation templates to improve diagnostics."
+          },
+          "name": "addMetadata",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "message The warning message.",
+                "comment": "The warning message."
+              },
+              "name": "message",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a { warning: <message> } metadata entry to this construct."
+          },
+          "name": "addWarning",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "docs": {
+            "returns": "An array of validation error messages, or an empty array if there the construct is valid.",
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "returns": "A list of validation errors. If the list is empty, all constructs are valid.",
+            "comment": "Invokes 'validate' on all child constructs and then on this construct (depth-first)."
+          },
+          "name": "validateTree",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.ValidationError"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "upTo",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Return the ancestors (including self) of this Construct up until and excluding the indicated component"
+          },
+          "name": "ancestors",
+          "protected": true,
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "props The props bag.",
+                "comment": "The props bag."
+              },
+              "name": "props",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the required property.",
+                "comment": "The name of the required property."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Throws if the `props` bag doesn't include the property `name`.\nIn the future we can add some type-checking here, maybe even auto-generate during compilation."
+          },
+          "name": "required",
+          "protected": true,
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "child The child construct",
+                "comment": "The child construct"
+              },
+              "name": "child",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "childName",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The resolved path part name of the child",
+            "comment": "Adds a child construct to this node."
+          },
+          "name": "addChild",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Locks this construct from allowing more children to be added. After this\ncall, no more children can be added to this construct or to any children."
+          },
+          "name": "lock",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Unlocks this costruct and allows mutations (adding children)."
+          },
+          "name": "unlock",
+          "protected": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Construct",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Construct",
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_events$.IEventRuleTarget": {
+      "docs": {
+        "comment": "An abstract target for EventRules."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the rule target specification.\nNOTE: Do not use the various `inputXxx` options. They can be set in a call to `addTarget`."
+          },
+          "name": "eventRuleTarget",
+          "type": {
+            "fqn": "jsii$_aws_cdk_events$.EventRuleTarget"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "IEventRuleTarget",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_resources$.codebuild.ProjectArn": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectArn",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.codebuild",
+      "name": "ProjectArn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Arn"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_iam$.Role": {
+      "docs": {
+        "comment": "IAM Role\n\nDefines an IAM role. The role is created with an assume policy document associated with\nthe specified AWS service principal defined in `serviceAssumeRole`."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The assume role policy document associated with this role."
+          },
+          "name": "assumeRolePolicy",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyDocument",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Returns the ARN of this role."
+          },
+          "name": "roleArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.iam.RoleArn"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Returns the name of the role."
+          },
+          "name": "roleName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_iam$.RoleName"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Returns the ARN of this role."
+          },
+          "name": "principal",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyPrincipal"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Returns the role."
+          },
+          "name": "dependencyElements",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.IDependable"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "statement",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a permission to the role's default policy document.\nIf there is no default policy attached to this role, it will be created."
+          },
+          "name": "addToPolicy"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "arn The ARN of the managed policy to attach.",
+                "comment": "The ARN of the managed policy to attach."
+              },
+              "name": "arn",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Attaches a managed policy to this role."
+          },
+          "name": "attachManagedPolicy"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "policy The policy to attach",
+                "comment": "The policy to attach"
+              },
+              "name": "policy",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.Policy"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Attaches a policy to this role."
+          },
+          "name": "attachInlinePolicy"
+        }
+      ],
+      "interfaces": [
+        {
+          "fqn": "jsii$_aws_cdk_iam$.IIdentityResource"
+        },
+        {
+          "fqn": "jsii$_aws_cdk_core$.IDependable"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_iam$.Role",
+      "module": "jsii$_aws_cdk_iam$",
+      "namespace": "jsii$_aws_cdk_iam$",
+      "name": "Role",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_iam$.RoleProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_events$.EventRule": {
+      "docs": {
+        "comment": "Defines a CloudWatch Event Rule in this stack."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The value of the event rule Amazon Resource Name (ARN), such as\narn:aws:events:us-east-2:123456789012:rule/example."
+          },
+          "name": "ruleArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleArn"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "target",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+                "optional": true
+              }
+            },
+            {
+              "name": "inputOptions",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.TargetInputTemplate",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a target to the rule. The abstract class RuleTarget can be extended to define new\ntargets.\n\nNo-op if target is undefined."
+          },
+          "name": "addTarget"
+        },
+        {
+          "parameters": [
+            {
+              "name": "eventPattern",
+              "type": {
+                "fqn": "jsii$_aws_cdk_events$.EventPattern",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds an event pattern filter to this rule. If a pattern was already specified,\nthese values are merged into the existing pattern.\n\nFor example, if the rule already contains the pattern:\n\n      {\n          \"resources\": [ \"r1\" ],\n          \"detail\": {\n              \"hello\": [ 1 ]\n          }\n      }\n\nAnd `addEventPattern` is called with the pattern:\n\n      {\n          \"resources\": [ \"r2\" ],\n          \"detail\": {\n              \"foo\": [ \"bar\" ]\n          }\n      }\n\nThe resulting event pattern will be:\n\n      {\n          \"resources\": [ \"r1\", \"r2\" ],\n          \"detail\": {\n              \"hello\": [ 1 ],\n              \"foo\": [ \"bar\" ]\n          }\n      }"
+          },
+          "name": "addEventPattern"
+        },
+        {
+          "docs": {
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.EventRule",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "EventRule",
+      "base": {
+        "fqn": "jsii$_aws_cdk_events$.EventRuleRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+              "optional": true
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_events$.EventRuleProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "A description of the rule's purpose."
+          },
+          "name": "description",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "A name for the rule. If you don't specify a name, AWS CloudFormation\ngenerates a unique physical ID and uses that ID for the rule name. For\nmore information, see Name Type."
+          },
+          "name": "ruleName",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "Rule is enabled",
+            "comment": "Indicates whether the rule is enabled."
+          },
+          "name": "enabled",
+          "type": {
+            "primitive": "boolean",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "see": "http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html\n\nYou must specify this property, the `eventPattern` property, or both.",
+            "comment": "The schedule or rate (frequency) that determines when CloudWatch Events\nruns the rule. For more information, see Schedule Expression Syntax for\nRules in the Amazon CloudWatch User Guide."
+          },
+          "name": "scheduleExpression",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "see": "http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CloudWatchEventsandEventPatterns.html\n\nYou must specify this property (either via props or via\n`addEventPattern`), the `scheduleExpression` property, or both. The\nmethod `addEventPattern` can be used to add filter values to the event\npattern.",
+            "comment": "Describes which events CloudWatch Events routes to the specified target.\nThese routed events are matched events. For more information, see Events\nand Event Patterns in the Amazon CloudWatch User Guide."
+          },
+          "name": "eventPattern",
+          "type": {
+            "fqn": "jsii$_aws_cdk_events$.EventPattern",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Targets to invoke when this rule matches an event.\n\nInput will be the full matched event. If you wish to specify custom\ntarget input, use `addTarget(target[, inputOptions])`."
+          },
+          "name": "targets",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.EventRuleProps",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "EventRuleProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_events$.EventRuleTarget": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "A unique, user-defined identifier for the target. Acceptable values\ninclude alphanumeric characters, periods (.), hyphens (-), and\nunderscores (_)."
+          },
+          "name": "id",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The Amazon Resource Name (ARN) of the target."
+          },
+          "name": "arn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Arn"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The Amazon Resource Name (ARN) of the AWS Identity and Access Management\n(IAM) role to use for this target when the rule is triggered. If one rule\ntriggers multiple targets, you can use a different IAM role for each\ntarget."
+          },
+          "name": "roleArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.iam.RoleArn",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The Amazon ECS task definition and task count to use, if the event target\nis an Amazon ECS task."
+          },
+          "name": "ecsParameters",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.EcsParametersProperty",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Settings that control shard assignment, when the target is a Kinesis\nstream. If you don't include this parameter, eventId is used as the\npartition key."
+          },
+          "name": "kinesisParameters",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.KinesisParametersProperty",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Parameters used when the rule invokes Amazon EC2 Systems Manager Run\nCommand."
+          },
+          "name": "runCommandParameters",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.RunCommandParametersProperty",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.EventRuleTarget",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "EventRuleTarget",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_kms$.EncryptionKeyRef": {
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the key."
+          },
+          "name": "keyArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.kms.KeyArn"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Optional policy document that represents the resource policy of this key.\n\nIf specified, addToResourcePolicy can be used to edit this policy.\nOtherwise this method will no-op."
+          },
+          "name": "policy",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyDocument",
+            "optional": true
+          },
+          "immutable": true,
+          "protected": true,
+          "abstract": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "parent The parent construct.",
+                "comment": "The parent construct."
+              },
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the construct.",
+                "comment": "The name of the construct."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "props The key reference.",
+                "comment": "The key reference."
+              },
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines an imported encryption key.\n\n`ref` can be obtained either via a call to `key.export()` or using\nliterals.\n\nFor example:\n\n     const keyRefProps = key.export();\n     const keyRef1 = EncryptionKeyRef.import(this, 'MyImportedKey1', keyRefProps);\n     const keyRef2 = EncryptionKeyRef.import(this, 'MyImportedKey2', {\n         keyArn: new KeyArn('arn:aws:kms:...')\n     });"
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "alias",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines a new alias for the key."
+          },
+          "name": "addAlias",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyAlias"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "statement",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a statement to the KMS key resource policy."
+          },
+          "name": "addToResourcePolicy"
+        },
+        {
+          "docs": {
+            "returns": "a key ref which can be used in a call to `EncryptionKey.import(ref)`.",
+            "comment": "Exports this key from the current stack."
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRefProps"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+      "module": "jsii$_aws_cdk_kms$",
+      "namespace": "jsii$_aws_cdk_kms$",
+      "name": "EncryptionKeyRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_s3$.BucketRef": {
+      "docs": {
+        "comment": "Represents an S3 Bucket.\n\nBuckets can be either defined within this stack:\n\n     new Bucket(this, 'MyBucket', { props });\n\nOr imported from an existing bucket:\n\n     BucketRef.import(this, 'MyImportedBucket', { bucketArn: ... });\n\nYou can also export a bucket and import it into another stack:\n\n     const ref = myBucket.export();\n     BucketRef.import(this, 'MyImportedBucket', ref);"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the bucket."
+          },
+          "name": "bucketArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.s3.BucketArn"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The name of the bucket."
+          },
+          "name": "bucketName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketName"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Optional KMS encryption key associated with this bucket."
+          },
+          "name": "encryptionKey",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+            "optional": true
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The resource policy assoicated with this bucket.\n\nIf `autoCreatePolicy` is true, a `BucketPolicy` will be created upon the\nfirst call to addToResourcePolicy(s)."
+          },
+          "name": "policy",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketPolicy",
+            "optional": true
+          },
+          "protected": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Indicates if a bucket resource policy should automatically created upon\nthe first call to `addToResourcePolicy`."
+          },
+          "name": "autoCreatePolicy",
+          "type": {
+            "primitive": "boolean"
+          },
+          "protected": true,
+          "abstract": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "parent The parent creating construct (usually `this`).",
+                "comment": "The parent creating construct (usually `this`)."
+              },
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The construct's name.",
+                "comment": "The construct's name."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_s3$.BucketRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Creates a Bucket construct that represents an external bucket."
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRef"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Exports this bucket from the stack."
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRefProps"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "permission",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a statement to the resource policy for a principal (i.e.\naccount/role/service) to perform actions on this bucket and/or it's\ncontents. Use `bucketArn` and `arnForObjects(keys)` to obtain ARNs for\nthis bucket or objects."
+          },
+          "name": "addToResourcePolicy"
+        },
+        {
+          "parameters": [
+            {
+              "name": "keyPattern",
+              "type": {
+                "primitive": "any"
+              },
+              "variadic": true
+            }
+          ],
+          "docs": {
+            "comment": "Returns an ARN that represents all objects within the bucket that match\nthe key pattern specified. To represent all keys, specify ``\"*\"``.\n\nIf you specify multiple components for keyPattern, they will be concatenated::\n\n     arnForObjects('home/', team, '/', user, '/*')"
+          },
+          "name": "arnForObjects",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Arn"
+          },
+          "variadic": true
+        },
+        {
+          "parameters": [
+            {
+              "name": "identity",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+                "optional": true
+              }
+            },
+            {
+              "name": "objectsKeyPattern",
+              "type": {
+                "primitive": "string",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Temporary API for granting read permissions for this bucket and it's\ncontents to an IAM principal (Role/Group/User).\n\nIf an encryption key is used, permission to ues the key to decrypt the\ncontents of the bucket will also be granted."
+          },
+          "name": "grantRead"
+        },
+        {
+          "parameters": [
+            {
+              "name": "identity",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+                "optional": true
+              }
+            },
+            {
+              "name": "objectsKeyPattern",
+              "type": {
+                "primitive": "string",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Grants read/write permissions for this bucket and it's contents to an IAM\nprincipal (Role/Group/User).\n\nIf an encryption key is used, permission to use the key for\nencrypt/decrypt will also be granted."
+          },
+          "name": "grantReadWrite"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.BucketRef",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "BucketRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.PolicyStatement": {
+      "docs": {
+        "comment": "Represents a statement in an IAM policy document."
+      },
+      "subtypes": [
+        "jsii$_aws_cdk_core$.PolicyStatement.Effect"
+      ],
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Indicates if this permission has a \"Principal\" section."
+          },
+          "name": "hasPrincipal",
+          "type": {
+            "primitive": "boolean"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Indicates if this permission as at least one resource associated with it."
+          },
+          "name": "hasResource",
+          "type": {
+            "primitive": "boolean"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Indicates if this permission has only a ``\"*\"`` resource associated with it."
+          },
+          "name": "isOnlyStarResource",
+          "type": {
+            "primitive": "boolean"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "action",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "name": "addAction",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "actions",
+              "type": {
+                "primitive": "string"
+              },
+              "variadic": true
+            }
+          ],
+          "name": "addActions",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          },
+          "variadic": true
+        },
+        {
+          "parameters": [
+            {
+              "name": "principal",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyPrincipal"
+              }
+            }
+          ],
+          "name": "addPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "arn",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "addAwsPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "accountId",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "addAwsAccountPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "service",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "addServicePrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "federated",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "name": "conditions",
+              "type": {
+                "collection": {
+                  "elementtype": {
+                    "primitive": "any"
+                  },
+                  "kind": "map"
+                }
+              }
+            }
+          ],
+          "name": "addFederatedPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "name": "addAccountRootPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "resource",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "addResource",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Adds a ``\"*\"`` resource to this statement."
+          },
+          "name": "addAllResources",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "resources",
+              "type": {
+                "primitive": "any"
+              },
+              "variadic": true
+            }
+          ],
+          "name": "addResources",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          },
+          "variadic": true
+        },
+        {
+          "parameters": [
+            {
+              "name": "sid",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "describe",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Sets the permission effect to deny access to resources."
+          },
+          "name": "allow",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Sets the permission effect to allow access to resources."
+          },
+          "name": "deny",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Add a condition to the Policy"
+          },
+          "name": "addCondition",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "conditions",
+              "type": {
+                "collection": {
+                  "elementtype": {
+                    "primitive": "any"
+                  },
+                  "kind": "map"
+                }
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Add multiple conditions to the Policy"
+          },
+          "name": "addConditions",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "deprecated": "For backwards compatibility. Use addCondition() instead.",
+            "comment": "Add a condition to the Policy."
+          },
+          "name": "setCondition",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "accountId",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "limitToAccount",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "name": "resolve",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "name": "toJson",
+          "returns": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.PolicyStatement",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "PolicyStatement",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "effect",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.PolicyStatement.Effect",
+              "optional": true
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.Token": {
+      "docs": {
+        "comment": "Represents a lazy-evaluated value. Can be used to delay evaluation of a certain value\nin case, for example, that it requires some context or late-bound data."
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "docs": {
+            "returns": "The resolved value for this token."
+          },
+          "name": "resolve",
+          "returns": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Token",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Token",
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.codebuild.ProjectResource.SourceProperty": {
+      "docs": {
+        "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-source.html"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-source.html#cfn-codebuild-project-source-type",
+            "comment": "ProjectResource.SourceProperty.Type"
+          },
+          "name": "type",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-source.html#cfn-codebuild-project-source-auth",
+            "comment": "ProjectResource.SourceProperty.Auth"
+          },
+          "name": "auth",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.SourceAuthProperty"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-source.html#cfn-codebuild-project-source-buildspec",
+            "comment": "ProjectResource.SourceProperty.BuildSpec"
+          },
+          "name": "buildSpec",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-source.html#cfn-codebuild-project-source-gitclonedepth",
+            "comment": "ProjectResource.SourceProperty.GitCloneDepth"
+          },
+          "name": "gitCloneDepth",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "number"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-source.html#cfn-codebuild-project-source-insecuressl",
+            "comment": "ProjectResource.SourceProperty.InsecureSsl"
+          },
+          "name": "insecureSsl",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "boolean"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-source.html#cfn-codebuild-project-source-location",
+            "comment": "ProjectResource.SourceProperty.Location"
+          },
+          "name": "location",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.SourceProperty",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.codebuild.ProjectResource",
+      "name": "SourceProperty",
+      "datatype": true,
+      "parenttype": "jsii$_aws_cdk_resources$.codebuild.ProjectResource"
+    },
+    "jsii$_aws_cdk_codecommit$.Repository": {
+      "docs": {
+        "comment": "Provides a CodeCommit Repository"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of this Repository. "
+          },
+          "name": "repositoryArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryArn"
+          },
+          "immutable": true
+        },
+        {
+          "name": "repositoryCloneUrlHttp",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryCloneUrlHttp"
+          },
+          "immutable": true
+        },
+        {
+          "name": "repositoryCloneUrlSsh",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryCloneUrlSsh"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The human-visible name of this Repository. "
+          },
+          "name": "repositoryName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.codecommit.RepositoryName"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "arn Arn of the resource that repository events will notify",
+                "comment": "Arn of the resource that repository events will notify"
+              },
+              "name": "arn",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "options Trigger options to run actions",
+                "comment": "Trigger options to run actions"
+              },
+              "name": "options",
+              "type": {
+                "fqn": "jsii$_aws_cdk_codecommit$.RepositoryTriggerOptions",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Create a trigger to notify another service to run actions on repository events."
+          },
+          "name": "notify",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_codecommit$.Repository"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_codecommit$.Repository",
+      "module": "jsii$_aws_cdk_codecommit$",
+      "namespace": "jsii$_aws_cdk_codecommit$",
+      "name": "Repository",
+      "base": {
+        "fqn": "jsii$_aws_cdk_codecommit$.RepositoryRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_codecommit$.RepositoryProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.codebuild.ProjectResource.ArtifactsProperty": {
+      "docs": {
+        "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-artifacts.html"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-artifacts.html#cfn-codebuild-project-artifacts-path",
+            "comment": "ProjectResource.ArtifactsProperty.Path"
+          },
+          "name": "path",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-artifacts.html#cfn-codebuild-project-artifacts-type",
+            "comment": "ProjectResource.ArtifactsProperty.Type"
+          },
+          "name": "type",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-artifacts.html#cfn-codebuild-project-artifacts-packaging",
+            "comment": "ProjectResource.ArtifactsProperty.Packaging"
+          },
+          "name": "packaging",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-artifacts.html#cfn-codebuild-project-artifacts-location",
+            "comment": "ProjectResource.ArtifactsProperty.Location"
+          },
+          "name": "location",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-artifacts.html#cfn-codebuild-project-artifacts-name",
+            "comment": "ProjectResource.ArtifactsProperty.Name"
+          },
+          "name": "name",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-artifacts.html#cfn-codebuild-project-artifacts-namespacetype",
+            "comment": "ProjectResource.ArtifactsProperty.NamespaceType"
+          },
+          "name": "namespaceType",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_resources$.codebuild.ProjectResource.ArtifactsProperty",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.codebuild.ProjectResource",
+      "name": "ArtifactsProperty",
+      "datatype": true,
+      "parenttype": "jsii$_aws_cdk_resources$.codebuild.ProjectResource"
+    }
+  },
+  "name": "jsii$_aws_cdk_codebuild$",
+  "package": "@aws-cdk/codebuild",
+  "version": "0.7.2-beta",
+  "dependencies": {
+    "jsii$_aws_cdk_codecommit$": {
+      "package": "@aws-cdk/codecommit",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_core$": {
+      "package": "@aws-cdk/core",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_events$": {
+      "package": "@aws-cdk/events",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "package": "@aws-cdk/iam",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_kms$": {
+      "package": "@aws-cdk/kms",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "package": "@aws-cdk/resources",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_s3$": {
+      "package": "@aws-cdk/s3",
+      "version": "0.7.2-beta"
+    }
+  },
+  "names": {
+    "java": "com.amazonaws.cdk.codebuild",
+    "dotnet": "AWS.Cdk.CodeBuild",
+    "js": "@aws-cdk/codebuild"
+  },
+  "nativenames": {
+    "jsii$_aws_cdk_codecommit$": {
+      "java": "com.amazonaws.cdk.codecommit",
+      "dotnet": "AWS.Cdk.CodeCommit",
+      "js": "@aws-cdk/codecommit"
+    },
+    "jsii$_aws_cdk_core$": {
+      "java": "com.amazonaws.cdk",
+      "dotnet": "AWS.Cdk",
+      "js": "@aws-cdk/core"
+    },
+    "jsii$_aws_cdk_events$": {
+      "java": "com.amazonaws.cdk.events",
+      "dotnet": "AWS.Cdk.Events",
+      "js": "@aws-cdk/events"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "java": "com.amazonaws.cdk.iam",
+      "dotnet": "AWS.Cdk.Iam",
+      "js": "@aws-cdk/iam"
+    },
+    "jsii$_aws_cdk_kms$": {
+      "java": "com.amazonaws.cdk.kms",
+      "dotnet": "AWS.Cdk.Kms",
+      "js": "@aws-cdk/kms"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "java": "com.amazonaws.cdk.resources",
+      "dotnet": "AWS.Cdk.Resources",
+      "js": "@aws-cdk/resources"
+    },
+    "jsii$_aws_cdk_s3$": {
+      "java": "com.amazonaws.cdk.s3",
+      "dotnet": "AWS.Cdk.S3",
+      "js": "@aws-cdk/s3"
+    },
+    "jsii$_aws_cdk_codebuild$": {
+      "java": "com.amazonaws.cdk.codebuild",
+      "dotnet": "AWS.Cdk.CodeBuild",
+      "js": "@aws-cdk/codebuild"
+    }
+  },
+  "readme": {
+    "markdown": "## AWS CodeBuild Construct Library\n\nDefine a project. This will also create an IAM Role and IAM Policy for CodeBuildRole to use.\n\nCreate a CodeBuild project with CodePipeline as the source:\n\n```ts\nnew BuildProject(this, 'MyFirstProject', {\n    source: new CodePipelineSource()\n});\n```\n\nCreate a CodeBuild project with CodeCommit as the source:\n\n```ts\nconst repo = new Repository(this, 'MyRepo', { repositoryName: 'foo' });\nnew BuildProject(this, 'MyFirstCodeCommitProject', {\n    source: new CodeCommitSource(repo)\n});\n```\n\nCreate a CodeBuild project with an S3 bucket as the source:\n\n```ts\nconst bucket = new Bucket(this, 'MyBucket');\nnew BuildProject(this, 'MyProject', {\n    source: new S3BucketSource(bucket, 'path/to/source.zip')\n});\n```\n\n### Using BuildProject as an event target\n\nThe `BuildProject` construct implements the `IEventRuleTarget` interface. This means that it can be\nused as a target for event rules:\n\n```ts\n// start build when a commit is pushed\ncodeCommitRepository.onCommit('OnCommit', buildProject);\n```\n\n### Using BuildProject as an event source\n\nTo define CloudWatch event rules for build projects, use one of the `onXxx` methods:\n\n```ts\nconst rule = project.onStateChange('BuildStateChange');\nrule.addTarget(lambda);\n```\n"
+  },
+  "code": "var jsii$_aws_cdk_codebuild$ =\n/******/ (function(modules) { // webpackBootstrap\n/******/ \t// The module cache\n/******/ \tvar installedModules = {};\n/******/\n/******/ \t// The require function\n/******/ \tfunction __webpack_require__(moduleId) {\n/******/\n/******/ \t\t// Check if module is in cache\n/******/ \t\tif(installedModules[moduleId]) {\n/******/ \t\t\treturn installedModules[moduleId].exports;\n/******/ \t\t}\n/******/ \t\t// Create a new module (and put it into the cache)\n/******/ \t\tvar module = installedModules[moduleId] = {\n/******/ \t\t\ti: moduleId,\n/******/ \t\t\tl: false,\n/******/ \t\t\texports: {}\n/******/ \t\t};\n/******/\n/******/ \t\t// Execute the module function\n/******/ \t\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\n/******/\n/******/ \t\t// Flag the module as loaded\n/******/ \t\tmodule.l = true;\n/******/\n/******/ \t\t// Return the exports of the module\n/******/ \t\treturn module.exports;\n/******/ \t}\n/******/\n/******/\n/******/ \t// expose the modules object (__webpack_modules__)\n/******/ \t__webpack_require__.m = modules;\n/******/\n/******/ \t// expose the module cache\n/******/ \t__webpack_require__.c = installedModules;\n/******/\n/******/ \t// define getter function for harmony exports\n/******/ \t__webpack_require__.d = function(exports, name, getter) {\n/******/ \t\tif(!__webpack_require__.o(exports, name)) {\n/******/ \t\t\tObject.defineProperty(exports, name, {\n/******/ \t\t\t\tconfigurable: false,\n/******/ \t\t\t\tenumerable: true,\n/******/ \t\t\t\tget: getter\n/******/ \t\t\t});\n/******/ \t\t}\n/******/ \t};\n/******/\n/******/ \t// getDefaultExport function for compatibility with non-harmony modules\n/******/ \t__webpack_require__.n = function(module) {\n/******/ \t\tvar getter = module && module.__esModule ?\n/******/ \t\t\tfunction getDefault() { return module['default']; } :\n/******/ \t\t\tfunction getModuleExports() { return module; };\n/******/ \t\t__webpack_require__.d(getter, 'a', getter);\n/******/ \t\treturn getter;\n/******/ \t};\n/******/\n/******/ \t// Object.prototype.hasOwnProperty.call\n/******/ \t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\n/******/\n/******/ \t// __webpack_public_path__\n/******/ \t__webpack_require__.p = \"\";\n/******/\n/******/ \t// Load entry module and return exports\n/******/ \treturn __webpack_require__(__webpack_require__.s = 2);\n/******/ })\n/************************************************************************/\n/******/ ([\n/* 0 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_core$;\n\n/***/ }),\n/* 1 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nclass BuildArtifacts {\n    bind(_project) {\n        return;\n    }\n}\nexports.BuildArtifacts = BuildArtifacts;\nclass NoBuildArtifacts extends BuildArtifacts {\n    toArtifactsJSON() {\n        return { type: 'NO_ARTIFACTS' };\n    }\n}\nexports.NoBuildArtifacts = NoBuildArtifacts;\nclass CodePipelineBuildArtifacts extends BuildArtifacts {\n    toArtifactsJSON() {\n        return { type: 'CODEPIPELINE' };\n    }\n}\nexports.CodePipelineBuildArtifacts = CodePipelineBuildArtifacts;\nclass S3BucketBuildArtifacts extends BuildArtifacts {\n    constructor(props) {\n        super();\n        this.props = props;\n    }\n    bind(project) {\n        this.props.bucket.grantReadWrite(project.role);\n    }\n    toArtifactsJSON() {\n        return {\n            type: 'S3',\n            location: this.props.bucket.bucketName,\n            path: this.props.bucket.path,\n            namespaceType: this.parseNamespaceType(this.props.includeBuildID),\n            name: this.props.name,\n            packaging: this.parsePackaging(this.props.packageZip),\n        };\n    }\n    parseNamespaceType(includeBuildID) {\n        if (includeBuildID != null) {\n            return includeBuildID ? 'BUILD_ID' : 'NONE';\n        }\n        else {\n            return 'BUILD_ID';\n        }\n    }\n    parsePackaging(packageZip) {\n        if (packageZip != null) {\n            return packageZip ? 'ZIP' : 'NONE';\n        }\n        else {\n            return 'ZIP';\n        }\n    }\n}\nexports.S3BucketBuildArtifacts = S3BucketBuildArtifacts;\n\n\n/***/ }),\n/* 2 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(3));\n__export(__webpack_require__(7));\n__export(__webpack_require__(1));\n\n\n/***/ }),\n/* 3 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(0);\nconst events_1 = __webpack_require__(4);\nconst iam_1 = __webpack_require__(5);\nconst resources_1 = __webpack_require__(6);\nconst artifacts_1 = __webpack_require__(1);\nconst CODEPIPELINE_TYPE = 'CODEPIPELINE';\n/**\n * Represents a reference to a CodeBuild Project.\n *\n * If you're managing the Project alongside the rest of your CDK resources,\n * use the {@link BuildProject} class.\n *\n * If you want to reference an already existing Project\n * (or one defined in a different CDK Stack),\n * use the {@link import} method.\n */\nclass BuildProjectRef extends core_1.Construct {\n    /**\n     * Import a Project defined either outside the CDK,\n     * or in a different CDK Stack\n     * (and exported using the {@link export} method).\n     *\n     * @note if you're importing a CodeBuild Project for use\n     *   in a CodePipeline, make sure the existing Project\n     *   has permissions to access the S3 Bucket of that Pipeline -\n     *   otherwise, builds in that Pipeline will always fail.\n     *\n     * @param parent the parent Construct for this Construct\n     * @param name the logical name of this Construct\n     * @param props the properties of the referenced Project\n     * @returns a reference to the existing Project\n     */\n    static import(parent, name, props) {\n        return new ImportedBuildProjectRef(parent, name, props);\n    }\n    /**\n     * Export this Project. Allows referencing this Project in a different CDK Stack.\n     */\n    export() {\n        return {\n            projectName: new core_1.Output(this, 'ProjectName', { value: this.projectName }).makeImportValue(),\n        };\n    }\n    /**\n     * Defines a CloudWatch event rule triggered when the build project state\n     * changes. You can filter specific build status events using an event\n     * pattern filter on the `build-status` detail field:\n     *\n     *      const rule = project.onStateChange('OnBuildStarted', target);\n     *      rule.addEventPattern({\n     *          detail: {\n     *              'build-status': [\n     *                  \"IN_PROGRESS\",\n     *                  \"SUCCEEDED\",\n     *                  \"FAILED\",\n     *                  \"STOPPED\"\n     *              ]\n     *          }\n     *      });\n     *\n     * You can also use the methods `onBuildFailed` and `onBuildSucceeded` to define rules for\n     * these specific state changes.\n     *\n     * @see https://docs.aws.amazon.com/codebuild/latest/userguide/sample-build-notifications.html\n     */\n    onStateChange(name, target, options) {\n        const rule = new events_1.EventRule(this, name, options);\n        rule.addTarget(target);\n        rule.addEventPattern({\n            source: ['aws.codebuild'],\n            detailType: ['CodeBuild Build State Change'],\n            detail: {\n                'project-name': [\n                    this.projectName\n                ]\n            }\n        });\n        return rule;\n    }\n    /**\n     * Defines a CloudWatch event rule that triggers upon phase change of this\n     * build project.\n     *\n     * @see https://docs.aws.amazon.com/codebuild/latest/userguide/sample-build-notifications.html\n     */\n    onPhaseChange(name, target, options) {\n        const rule = new events_1.EventRule(this, name, options);\n        rule.addTarget(target);\n        rule.addEventPattern({\n            source: ['aws.codebuild'],\n            detailType: ['CodeBuild Build Phase Change'],\n            detail: {\n                'project-name': [\n                    this.projectName\n                ]\n            }\n        });\n        return rule;\n    }\n    /**\n     * Defines an event rule which triggers when a build starts.\n     */\n    onBuildStarted(name, target, options) {\n        const rule = this.onStateChange(name, target, options);\n        rule.addEventPattern({\n            detail: {\n                'build-status': ['IN_PROGRESS']\n            }\n        });\n        return rule;\n    }\n    /**\n     * Defines an event rule which triggers when a build fails.\n     */\n    onBuildFailed(name, target, options) {\n        const rule = this.onStateChange(name, target, options);\n        rule.addEventPattern({\n            detail: {\n                'build-status': ['FAILED']\n            }\n        });\n        return rule;\n    }\n    /**\n     * Defines an event rule which triggers when a build completes successfully.\n     */\n    onBuildSucceeded(name, target, options) {\n        const rule = this.onStateChange(name, target, options);\n        rule.addEventPattern({\n            detail: {\n                'build-status': ['SUCCEEDED']\n            }\n        });\n        return rule;\n    }\n    /**\n     * Allows using build projects as event rule targets.\n     */\n    get eventRuleTarget() {\n        if (!this.eventsRole) {\n            this.eventsRole = new iam_1.Role(this, 'EventsRole', {\n                assumedBy: new core_1.ServicePrincipal('events.amazonaws.com')\n            });\n            this.eventsRole.addToPolicy(new core_1.PolicyStatement()\n                .addAction('codebuild:StartBuild')\n                .addResource(this.projectArn));\n        }\n        return {\n            id: this.name,\n            arn: this.projectArn,\n            roleArn: this.eventsRole.roleArn,\n        };\n    }\n}\nexports.BuildProjectRef = BuildProjectRef;\nclass ImportedBuildProjectRef extends BuildProjectRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        this.role = undefined;\n        this.projectArn = core_1.Arn.fromComponents({\n            service: 'codebuild',\n            resource: 'project',\n            resourceName: props.projectName,\n        });\n        this.projectName = props.projectName;\n    }\n}\n/**\n * A CodeBuild project that is completely driven\n * from CodePipeline (does not hot have its own input or output)\n */\nclass BuildProject extends BuildProjectRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        this.role = props.role || new iam_1.Role(this, 'Role', {\n            assumedBy: new core_1.ServicePrincipal('codebuild.amazonaws.com')\n        });\n        const environment = this.renderEnvironment(props.environment, props.environmentVariables);\n        let cache;\n        if (props.cacheBucket) {\n            const cacheDir = props.cacheDir != null ? props.cacheDir : '';\n            cache = {\n                type: 'S3',\n                location: props.cacheBucket.arnForObjects(cacheDir)\n            };\n            props.cacheBucket.grantReadWrite(this.role);\n        }\n        // let source \"bind\" to the project. this usually involves granting permissions\n        // for the code build role to interact with the source.\n        const source = props.source;\n        source.bind(this);\n        const artifacts = this.parseArtifacts(props);\n        artifacts.bind(this);\n        const sourceJson = source.toSourceJSON();\n        if (props.buildSpec) {\n            sourceJson.buildSpec = JSON.stringify(props.buildSpec);\n        }\n        this.validateCodePipelineSettings(source, artifacts);\n        const resource = new resources_1.codebuild.ProjectResource(this, 'Resource', {\n            description: props.description,\n            source: sourceJson,\n            artifacts: artifacts.toArtifactsJSON(),\n            serviceRole: this.role.roleArn,\n            environment,\n            encryptionKey: props.encryptionKey && props.encryptionKey.keyArn,\n            badgeEnabled: props.badge,\n            cache,\n        });\n        this.projectArn = resource.projectArn;\n        this.projectName = resource.ref;\n        this.addToRolePolicy(this.createLoggingPermission());\n    }\n    /**\n     * Add a permission only if there's a policy attached.\n     * @param statement The permissions statement to add\n     */\n    addToRolePolicy(statement) {\n        return this.role.addToPolicy(statement);\n    }\n    createLoggingPermission() {\n        const logGroupArn = core_1.Arn.fromComponents({\n            service: 'logs',\n            resource: 'log-group',\n            sep: ':',\n            resourceName: new core_1.FnConcat('/aws/codebuild/', this.projectName),\n        });\n        const logGroupStarArn = new core_1.FnConcat(logGroupArn, ':*');\n        const p = new core_1.PolicyStatement();\n        p.allow();\n        p.addResource(logGroupArn);\n        p.addResource(logGroupStarArn);\n        p.addAction('logs:CreateLogGroup');\n        p.addAction('logs:CreateLogStream');\n        p.addAction('logs:PutLogEvents');\n        return p;\n    }\n    renderEnvironment(env = {}, projectVars = {}) {\n        const vars = {};\n        const containerVars = env.environmentVariables || {};\n        // first apply environment variables from the container definition\n        for (const name of Object.keys(containerVars)) {\n            vars[name] = containerVars[name];\n        }\n        // now apply project-level vars\n        for (const name of Object.keys(projectVars)) {\n            vars[name] = projectVars[name];\n        }\n        const hasEnvironmentVars = Object.keys(vars).length > 0;\n        return {\n            type: env.type || 'LINUX_CONTAINER',\n            image: env.image || 'aws/codebuild/ubuntu-base:14.04',\n            privilegedMode: env.priviledged || false,\n            computeType: env.computeType || ComputeType.Small,\n            environmentVariables: !hasEnvironmentVars ? undefined : Object.keys(vars).map(name => ({\n                name,\n                type: vars[name].type || BuildEnvironmentVariableType.PlainText,\n                value: vars[name].value\n            }))\n        };\n    }\n    parseArtifacts(props) {\n        if (props.artifacts) {\n            return props.artifacts;\n        }\n        if (props.source.toSourceJSON().type === CODEPIPELINE_TYPE) {\n            return new artifacts_1.CodePipelineBuildArtifacts();\n        }\n        else {\n            return new artifacts_1.NoBuildArtifacts();\n        }\n    }\n    validateCodePipelineSettings(source, artifacts) {\n        const sourceType = source.toSourceJSON().type;\n        const artifactsType = artifacts.toArtifactsJSON().type;\n        if ((sourceType === CODEPIPELINE_TYPE || artifactsType === CODEPIPELINE_TYPE) &&\n            (sourceType !== artifactsType)) {\n            throw new Error('Both source and artifacts must be set to CodePipeline');\n        }\n    }\n}\nexports.BuildProject = BuildProject;\nvar BuildEnvironmentVariableType;\n(function (BuildEnvironmentVariableType) {\n    /**\n     * An environment variable in plaintext format.\n     */\n    BuildEnvironmentVariableType[\"PlainText\"] = \"PLAINTEXT\";\n    /**\n     * An environment variable stored in Systems Manager Parameter Store.\n     */\n    BuildEnvironmentVariableType[\"ParameterStore\"] = \"PARAMETER_STORE\";\n})(BuildEnvironmentVariableType = exports.BuildEnvironmentVariableType || (exports.BuildEnvironmentVariableType = {}));\n/**\n * Build machine compute type.\n */\nvar ComputeType;\n(function (ComputeType) {\n    ComputeType[\"Small\"] = \"BUILD_GENERAL1_SMALL\";\n    ComputeType[\"Medium\"] = \"BUILD_GENERAL1_MEDIUM\";\n    ComputeType[\"Large\"] = \"BUILD_GENERAL1_LARGE\";\n})(ComputeType = exports.ComputeType || (exports.ComputeType = {}));\nclass ProjectName extends core_1.Token {\n}\nexports.ProjectName = ProjectName;\n\n\n/***/ }),\n/* 4 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_events$;\n\n/***/ }),\n/* 5 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_iam$;\n\n/***/ }),\n/* 6 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_resources$;\n\n/***/ }),\n/* 7 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(0);\n/**\n * Source Provider definition for a CodeBuild project\n * TODO: Abstract class should be an interface\n */\nclass BuildSource {\n    /**\n     * Called by the project when the source is added so that the source can perform\n     * binding operations on the source. For example, it can grant permissions to the\n     * code build project to read from the S3 bucket.\n     */\n    bind(_project) {\n        return;\n    }\n}\nexports.BuildSource = BuildSource;\n/**\n * CodeCommit Source definition for a CodeBuild project\n */\nclass CodeCommitSource extends BuildSource {\n    constructor(repo) {\n        super();\n        this.repo = repo;\n    }\n    bind(project) {\n        // https://docs.aws.amazon.com/codebuild/latest/userguide/setting-up.html\n        project.addToRolePolicy(new core_1.PolicyStatement()\n            .addAction('codecommit:GitPull')\n            .addResource(this.repo.repositoryArn));\n    }\n    toSourceJSON() {\n        return {\n            type: SourceType.CodeCommit,\n            location: this.repo.repositoryCloneUrlHttp\n        };\n    }\n}\nexports.CodeCommitSource = CodeCommitSource;\n/**\n * CodePipeline Source definition for a CodeBuild project\n */\nclass CodePipelineSource extends BuildSource {\n    toSourceJSON() {\n        return {\n            type: SourceType.CodePipeline\n        };\n    }\n    bind(_project) {\n        // TODO: permissions on the pipeline bucket?\n    }\n}\nexports.CodePipelineSource = CodePipelineSource;\n/**\n * GitHub Source definition for a CodeBuild project\n */\nclass GitHubSource extends BuildSource {\n    constructor(httpscloneUrl, oauthToken) {\n        super();\n        this.httpscloneUrl = httpscloneUrl;\n        this.oauthToken = oauthToken;\n        this.httpscloneUrl = httpscloneUrl;\n        this.oauthToken = oauthToken;\n    }\n    toSourceJSON() {\n        return {\n            type: SourceType.GitHub,\n            auth: this.oauthToken != null ? { type: 'OAUTH', resource: this.oauthToken } : undefined,\n            location: this.httpscloneUrl\n        };\n    }\n}\nexports.GitHubSource = GitHubSource;\n/**\n * GitHub Enterprice Source definition for a CodeBuild project\n */\nclass GitHubEnterpriseSource extends BuildSource {\n    constructor(cloneUrl) {\n        super();\n        this.cloneUrl = cloneUrl;\n        this.cloneUrl = cloneUrl;\n    }\n    toSourceJSON() {\n        return {\n            type: SourceType.GitHubEnterPrise,\n            location: this.cloneUrl,\n        };\n    }\n}\nexports.GitHubEnterpriseSource = GitHubEnterpriseSource;\n/**\n * BitBucket Source definition for a CodeBuild project\n */\nclass BitBucketSource extends BuildSource {\n    constructor(httpsCloneUrl) {\n        super();\n        this.httpsCloneUrl = httpsCloneUrl;\n        this.httpsCloneUrl = httpsCloneUrl;\n    }\n    toSourceJSON() {\n        return {\n            type: SourceType.BitBucket,\n            location: this.httpsCloneUrl\n        };\n    }\n}\nexports.BitBucketSource = BitBucketSource;\n/**\n * S3 bucket definition for a CodeBuild project.\n */\nclass S3BucketSource extends BuildSource {\n    constructor(bucket, path) {\n        super();\n        this.bucket = bucket;\n        this.path = path;\n    }\n    toSourceJSON() {\n        return {\n            type: SourceType.S3,\n            location: new core_1.FnConcat(this.bucket.bucketName, '/', this.path)\n        };\n    }\n    bind(project) {\n        this.bucket.grantRead(project.role);\n    }\n}\nexports.S3BucketSource = S3BucketSource;\n/**\n * Source types for CodeBuild Project\n */\nvar SourceType;\n(function (SourceType) {\n    SourceType[\"CodeCommit\"] = \"CODECOMMIT\";\n    SourceType[\"CodePipeline\"] = \"CODEPIPELINE\";\n    SourceType[\"GitHub\"] = \"GITHUB\";\n    SourceType[\"GitHubEnterPrise\"] = \"GITHUB_ENTERPRISE\";\n    SourceType[\"BitBucket\"] = \"BITBUCKET\";\n    SourceType[\"S3\"] = \"S3\";\n})(SourceType = exports.SourceType || (exports.SourceType = {}));\n\n\n/***/ })\n/******/ ]);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vd2VicGFjay9ib290c3RyYXAgNzc3ZTU3M2E0YTZlZmRhYTVkYjIiLCJ3ZWJwYWNrOi8vL2V4dGVybmFsIFwianNpaSRfYXdzX2Nka19jb3JlJFwiIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2NvZGVidWlsZC9saWIvYXJ0aWZhY3RzLnRzIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2NvZGVidWlsZC9saWIvaW5kZXgudHMiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvY29kZWJ1aWxkL2xpYi9wcm9qZWN0LnRzIiwid2VicGFjazovLy9leHRlcm5hbCBcImpzaWkkX2F3c19jZGtfZXZlbnRzJFwiIiwid2VicGFjazovLy9leHRlcm5hbCBcImpzaWkkX2F3c19jZGtfaWFtJFwiIiwid2VicGFjazovLy9leHRlcm5hbCBcImpzaWkkX2F3c19jZGtfcmVzb3VyY2VzJFwiIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2NvZGVidWlsZC9saWIvc291cmNlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUE7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7OztBQUdBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLGFBQUs7QUFDTDtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBLG1DQUEyQiwwQkFBMEIsRUFBRTtBQUN2RCx5Q0FBaUMsZUFBZTtBQUNoRDtBQUNBO0FBQ0E7O0FBRUE7QUFDQSw4REFBc0QsK0RBQStEOztBQUVySDtBQUNBOztBQUVB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bUIsU0FBSSxHQUFKLElBQUksQ0FBUTtJQUU3RSxDQUFDO0lBRU0sWUFBWTtRQUNmLE9BQU87WUFDSCxJQUFJLEVBQUUsVUFBVSxDQUFDLEVBQUU7WUFDbkIsUUFBUSxFQUFFLElBQUksZUFBUSxDQUFDLElBQUksQ0FBQyxNQUFNLENBQUMsVUFBVSxFQUFFLEdBQUcsRUFBRSxJQUFJLENBQUMsSUFBSSxDQUFDO1NBQ2pFLENBQUM7SUFDTixDQUFDO0lBRU0sSUFBSSxDQUFDLE9BQXFCO1FBQzdCLElBQUksQ0FBQyxNQUFNLENBQUMsU0FBUyxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQztJQUN4QyxDQUFDO0NBQ0o7QUFmRCx3Q0FlQztBQUVEOztHQUVHO0FBQ0gsSUFBWSxVQU9YO0FBUEQsV0FBWSxVQUFVO0lBQ2xCLHVDQUF5QjtJQUN6QiwyQ0FBNkI7SUFDN0IsK0JBQWlCO0lBQ2pCLG9EQUFzQztJQUN0QyxxQ0FBdUI7SUFDdkIsdUJBQVM7QUFDYixDQUFDLEVBUFcsVUFBVSxHQUFWLGtCQUFVLEtBQVYsa0JBQVUsUUFPckIiLCJmaWxlIjoiYnVuZGxlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiIFx0Ly8gVGhlIG1vZHVsZSBjYWNoZVxuIFx0dmFyIGluc3RhbGxlZE1vZHVsZXMgPSB7fTtcblxuIFx0Ly8gVGhlIHJlcXVpcmUgZnVuY3Rpb25cbiBcdGZ1bmN0aW9uIF9fd2VicGFja19yZXF1aXJlX18obW9kdWxlSWQpIHtcblxuIFx0XHQvLyBDaGVjayBpZiBtb2R1bGUgaXMgaW4gY2FjaGVcbiBcdFx0aWYoaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0pIHtcbiBcdFx0XHRyZXR1cm4gaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0uZXhwb3J0cztcbiBcdFx0fVxuIFx0XHQvLyBDcmVhdGUgYSBuZXcgbW9kdWxlIChhbmQgcHV0IGl0IGludG8gdGhlIGNhY2hlKVxuIFx0XHR2YXIgbW9kdWxlID0gaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0gPSB7XG4gXHRcdFx0aTogbW9kdWxlSWQsXG4gXHRcdFx0bDogZmFsc2UsXG4gXHRcdFx0ZXhwb3J0czoge31cbiBcdFx0fTtcblxuIFx0XHQvLyBFeGVjdXRlIHRoZSBtb2R1bGUgZnVuY3Rpb25cbiBcdFx0bW9kdWxlc1ttb2R1bGVJZF0uY2FsbChtb2R1bGUuZXhwb3J0cywgbW9kdWxlLCBtb2R1bGUuZXhwb3J0cywgX193ZWJwYWNrX3JlcXVpcmVfXyk7XG5cbiBcdFx0Ly8gRmxhZyB0aGUgbW9kdWxlIGFzIGxvYWRlZFxuIFx0XHRtb2R1bGUubCA9IHRydWU7XG5cbiBcdFx0Ly8gUmV0dXJuIHRoZSBleHBvcnRzIG9mIHRoZSBtb2R1bGVcbiBcdFx0cmV0dXJuIG1vZHVsZS5leHBvcnRzO1xuIFx0fVxuXG5cbiBcdC8vIGV4cG9zZSB0aGUgbW9kdWxlcyBvYmplY3QgKF9fd2VicGFja19tb2R1bGVzX18pXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLm0gPSBtb2R1bGVzO1xuXG4gXHQvLyBleHBvc2UgdGhlIG1vZHVsZSBjYWNoZVxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5jID0gaW5zdGFsbGVkTW9kdWxlcztcblxuIFx0Ly8gZGVmaW5lIGdldHRlciBmdW5jdGlvbiBmb3IgaGFybW9ueSBleHBvcnRzXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLmQgPSBmdW5jdGlvbihleHBvcnRzLCBuYW1lLCBnZXR0ZXIpIHtcbiBcdFx0aWYoIV9fd2VicGFja19yZXF1aXJlX18ubyhleHBvcnRzLCBuYW1lKSkge1xuIFx0XHRcdE9iamVjdC5kZWZpbmVQcm9wZXJ0eShleHBvcnRzLCBuYW1lLCB7XG4gXHRcdFx0XHRjb25maWd1cmFibGU6IGZhbHNlLFxuIFx0XHRcdFx0ZW51bWVyYWJsZTogdHJ1ZSxcbiBcdFx0XHRcdGdldDogZ2V0dGVyXG4gXHRcdFx0fSk7XG4gXHRcdH1cbiBcdH07XG5cbiBcdC8vIGdldERlZmF1bHRFeHBvcnQgZnVuY3Rpb24gZm9yIGNvbXBhdGliaWxpdHkgd2l0aCBub24taGFybW9ueSBtb2R1bGVzXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLm4gPSBmdW5jdGlvbihtb2R1bGUpIHtcbiBcdFx0dmFyIGdldHRlciA9IG1vZHVsZSAmJiBtb2R1bGUuX19lc01vZHVsZSA/XG4gXHRcdFx0ZnVuY3Rpb24gZ2V0RGVmYXVsdCgpIHsgcmV0dXJuIG1vZHVsZVsnZGVmYXVsdCddOyB9IDpcbiBcdFx0XHRmdW5jdGlvbiBnZXRNb2R1bGVFeHBvcnRzKCkgeyByZXR1cm4gbW9kdWxlOyB9O1xuIFx0XHRfX3dlYnBhY2tfcmVxdWlyZV9fLmQoZ2V0dGVyLCAnYScsIGdldHRlcik7XG4gXHRcdHJldHVybiBnZXR0ZXI7XG4gXHR9O1xuXG4gXHQvLyBPYmplY3QucHJvdG90eXBlLmhhc093blByb3BlcnR5LmNhbGxcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubyA9IGZ1bmN0aW9uKG9iamVjdCwgcHJvcGVydHkpIHsgcmV0dXJuIE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbChvYmplY3QsIHByb3BlcnR5KTsgfTtcblxuIFx0Ly8gX193ZWJwYWNrX3B1YmxpY19wYXRoX19cbiBcdF9fd2VicGFja19yZXF1aXJlX18ucCA9IFwiXCI7XG5cbiBcdC8vIExvYWQgZW50cnkgbW9kdWxlIGFuZCByZXR1cm4gZXhwb3J0c1xuIFx0cmV0dXJuIF9fd2VicGFja19yZXF1aXJlX18oX193ZWJwYWNrX3JlcXVpcmVfXy5zID0gMik7XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gd2VicGFjay9ib290c3RyYXAgNzc3ZTU3M2E0YTZlZmRhYTVkYjIiLCJtb2R1bGUuZXhwb3J0cyA9IGpzaWkkX2F3c19jZGtfY29yZSQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX2NvcmUkXCJcbi8vIG1vZHVsZSBpZCA9IDBcbi8vIG1vZHVsZSBjaHVua3MgPSAwIiwiaW1wb3J0IHsgY29kZWJ1aWxkIH0gZnJvbSAnQGF3cy1jZGsvcmVzb3VyY2VzJztcbmltcG9ydCB7IEJ1Y2tldFJlZiB9IGZyb20gJ0Bhd3MtY2RrL3MzJztcbmltcG9ydCB7IEJ1aWxkUHJvamVjdCB9IGZyb20gJy4vcHJvamVjdCc7XG5cbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBCdWlsZEFydGlmYWN0cyB7XG4gICAgcHVibGljIGFic3RyYWN0IHRvQXJ0aWZhY3RzSlNPTigpOiBjb2RlYnVpbGQuUHJvamVjdFJlc291cmNlLkFydGlmYWN0c1Byb3BlcnR5O1xuICAgIHB1YmxpYyBiaW5kKF9wcm9qZWN0OiBCdWlsZFByb2plY3QpIHtcbiAgICAgICAgcmV0dXJuO1xuICAgIH1cbn1cblxuZXhwb3J0IGNsYXNzIE5vQnVpbGRBcnRpZmFjdHMgIGV4dGVuZHMgQnVpbGRBcnRpZmFjdHMge1xuICAgIHB1YmxpYyB0b0FydGlmYWN0c0pTT04oKTogY29kZWJ1aWxkLlByb2plY3RSZXNvdXJjZS5BcnRpZmFjdHNQcm9wZXJ0eSB7XG4gICAgICAgIHJldHVybiB7IHR5cGU6ICdOT19BUlRJRkFDVFMnIH07XG4gICAgfVxufVxuXG5leHBvcnQgY2xhc3MgQ29kZVBpcGVsaW5lQnVpbGRBcnRpZmFjdHMgZXh0ZW5kcyBCdWlsZEFydGlmYWN0cyB7XG4gICAgcHVibGljIHRvQXJ0aWZhY3RzSlNPTigpOiBjb2RlYnVpbGQuUHJvamVjdFJlc291cmNlLkFydGlmYWN0c1Byb3BlcnR5IHtcbiAgICAgICAgcmV0dXJuIHsgdHlwZTogJ0NPREVQSVBFTElORScgfTtcbiAgICB9XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgUzNCdWNrZXRCdWlsZEFydGlmYWN0c1Byb3BzIHtcbiAgICAvKipcbiAgICAgKiBUaGUgbmFtZSBvZiB0aGUgb3V0cHV0IGJ1Y2tldC5cbiAgICAgKi9cbiAgICBidWNrZXQ6IEJ1Y2tldFJlZjtcblxuICAgIC8qKlxuICAgICAqIFRoZSBwYXRoIGluc2lkZSBvZiB0aGUgYnVja2V0IGZvciB0aGUgYnVpbGQgb3V0cHV0IC56aXAgZmlsZSBvciBmb2xkZXIuXG4gICAgICogSWYgYSB2YWx1ZSBpcyBub3Qgc3BlY2lmaWVkLCB0aGVuIGJ1aWxkIG91dHB1dCB3aWxsIGJlIHN0b3JlZCBhdCB0aGUgcm9vdCBvZiB0aGVcbiAgICAgKiBidWNrZXQgKG9yIHVuZGVyIHRoZSA8YnVpbGQtaWQ+IGRpcmVjdG9yeSBpZiBgaW5jbHVkZUJ1aWxkSWRgIGlzIHNldCB0byB0cnVlKS5cbiAgICAgKi9cbiAgICBwYXRoPzogc3RyaW5nO1xuXG4gICAgLyoqXG4gICAgICogVGhlIG5hbWUgb2YgdGhlIGJ1aWxkIG91dHB1dCBaSVAgZmlsZSBvciBmb2xkZXIgaW5zaWRlIHRoZSBidWNrZXQuXG4gICAgICpcbiAgICAgKiBUaGUgZnVsbCBTMyBvYmplY3Qga2V5IHdpbGwgYmUgXCI8cGF0aD4vYnVpbGQtSUQvPG5hbWU+XCIgb3JcbiAgICAgKiBcIjxwYXRoPi88YXJ0aWZhY3RzTmFtZT5cIiBkZXBlbmRpbmcgb24gd2hldGhlciBgaW5jbHVkZUJ1aWxkSWRgIGlzIHNldCB0byB0cnVlLlxuICAgICAqL1xuICAgIG5hbWU6IHN0cmluZztcblxuICAgIC8qKlxuICAgICAqIEluZGljYXRlcyBpZiB0aGUgYnVpbGQgSUQgc2hvdWxkIGJlIGluY2x1ZGVkIGluIHRoZSBwYXRoLiBJZiB0aGlzIGlzIHNldCB0byB0cnVlLFxuICAgICAqIHRoZW4gdGhlIGJ1aWxkIGFydGlmYWN0IHdpbGwgYmUgc3RvcmVkIGluIFwiPHBhdGg+LzxidWlsZC1pZD4vPG5hbWU+XCIuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCB0cnVlXG4gICAgICovXG4gICAgaW5jbHVkZUJ1aWxkSUQ/OiBib29sZWFuO1xuXG4gICAgLyoqXG4gICAgICogSWYgdGhpcyBpcyB0cnVlLCBhbGwgYnVpbGQgb3V0cHV0IHdpbGwgYmUgcGFja2FnZWQgaW50byBhIHNpbmdsZSAuemlwIGZpbGUuXG4gICAgICogT3RoZXJ3aXNlLCBhbGwgZmlsZXMgd2lsbCBiZSB1cGxvYWRlZCB0byA8cGF0aD4vPG5hbWU+XG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCB0cnVlIC0gZmlsZXMgd2lsbCBiZSBhcmNoaXZlZFxuICAgICAqL1xuICAgIHBhY2thZ2VaaXA/OiBib29sZWFuO1xufVxuXG5leHBvcnQgY2xhc3MgUzNCdWNrZXRCdWlsZEFydGlmYWN0cyBleHRlbmRzIEJ1aWxkQXJ0aWZhY3RzIHtcbiAgICBjb25zdHJ1Y3Rvcihwcml2YXRlIHJlYWRvbmx5IHByb3BzOiBTM0J1Y2tldEJ1aWxkQXJ0aWZhY3RzUHJvcHMpIHtcbiAgICAgICAgc3VwZXIoKTtcbiAgICB9XG5cbiAgICBwdWJsaWMgYmluZChwcm9qZWN0OiBCdWlsZFByb2plY3QpIHtcbiAgICAgICAgdGhpcy5wcm9wcy5idWNrZXQuZ3JhbnRSZWFkV3JpdGUocHJvamVjdC5yb2xlKTtcbiAgICB9XG5cbiAgICBwdWJsaWMgdG9BcnRpZmFjdHNKU09OKCk6IGNvZGVidWlsZC5Qcm9qZWN0UmVzb3VyY2UuQXJ0aWZhY3RzUHJvcGVydHkge1xuICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgdHlwZTogJ1MzJyxcbiAgICAgICAgICAgIGxvY2F0aW9uOiB0aGlzLnByb3BzLmJ1Y2tldC5idWNrZXROYW1lLFxuICAgICAgICAgICAgcGF0aDogdGhpcy5wcm9wcy5idWNrZXQucGF0aCxcbiAgICAgICAgICAgIG5hbWVzcGFjZVR5cGU6IHRoaXMucGFyc2VOYW1lc3BhY2VUeXBlKHRoaXMucHJvcHMuaW5jbHVkZUJ1aWxkSUQpLFxuICAgICAgICAgICAgbmFtZTogdGhpcy5wcm9wcy5uYW1lLFxuICAgICAgICAgICAgcGFja2FnaW5nOiB0aGlzLnBhcnNlUGFja2FnaW5nKHRoaXMucHJvcHMucGFja2FnZVppcCksXG4gICAgICAgIH07XG4gICAgfVxuXG4gICAgcHJpdmF0ZSBwYXJzZU5hbWVzcGFjZVR5cGUoaW5jbHVkZUJ1aWxkSUQ/OiBib29sZWFuKSB7XG4gICAgICAgIGlmIChpbmNsdWRlQnVpbGRJRCAhPSBudWxsKSB7XG4gICAgICAgICAgICByZXR1cm4gaW5jbHVkZUJ1aWxkSUQgPyAnQlVJTERfSUQnIDogJ05PTkUnO1xuICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgcmV0dXJuICdCVUlMRF9JRCc7XG4gICAgICAgIH1cbiAgICB9XG5cbiAgICBwcml2YXRlIHBhcnNlUGFja2FnaW5nKHBhY2thZ2VaaXA/OiBib29sZWFuKSB7XG4gICAgICAgIGlmIChwYWNrYWdlWmlwICE9IG51bGwpIHtcbiAgICAgICAgICAgIHJldHVybiBwYWNrYWdlWmlwID8gJ1pJUCcgOiAnTk9ORSc7XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICByZXR1cm4gJ1pJUCc7XG4gICAgICAgIH1cbiAgICB9XG59XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9jb2RlYnVpbGQvbGliL2FydGlmYWN0cy50cyIsImV4cG9ydCAqIGZyb20gJy4vcHJvamVjdCc7XG5leHBvcnQgKiBmcm9tICcuL3NvdXJjZSc7XG5leHBvcnQgKiBmcm9tICcuL2FydGlmYWN0cyc7XG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvY29kZWJ1aWxkL2xpYi9pbmRleC50cyIsImltcG9ydCB7IEFybiwgQ29uc3RydWN0LCBGbkNvbmNhdCwgT3V0cHV0LCBQb2xpY3lTdGF0ZW1lbnQsIFNlcnZpY2VQcmluY2lwYWwsIFRva2VuIH0gZnJvbSAnQGF3cy1jZGsvY29yZSc7XG5pbXBvcnQgeyBFdmVudFJ1bGUsIEV2ZW50UnVsZVByb3BzLCBFdmVudFJ1bGVUYXJnZXQgfSBmcm9tICdAYXdzLWNkay9ldmVudHMnO1xuaW1wb3J0IHsgSUV2ZW50UnVsZVRhcmdldCB9IGZyb20gJ0Bhd3MtY2RrL2V2ZW50cyc7XG5pbXBvcnQgeyBSb2xlIH0gZnJvbSAnQGF3cy1jZGsvaWFtJztcbmltcG9ydCB7IEVuY3J5cHRpb25LZXlSZWYgfSBmcm9tICdAYXdzLWNkay9rbXMnO1xuaW1wb3J0IHsgY29kZWJ1aWxkIH0gZnJvbSAnQGF3cy1jZGsvcmVzb3VyY2VzJztcbmltcG9ydCB7IEJ1Y2tldFJlZiB9IGZyb20gJ0Bhd3MtY2RrL3MzJztcbmltcG9ydCB7IEJ1aWxkQXJ0aWZhY3RzLCBDb2RlUGlwZWxpbmVCdWlsZEFydGlmYWN0cywgTm9CdWlsZEFydGlmYWN0cyB9IGZyb20gJy4vYXJ0aWZhY3RzJztcbmltcG9ydCB7IEJ1aWxkU291cmNlIH0gZnJvbSAnLi9zb3VyY2UnO1xuXG5jb25zdCBDT0RFUElQRUxJTkVfVFlQRSA9ICdDT0RFUElQRUxJTkUnO1xuXG4vKipcbiAqIFByb3BlcnRpZXMgb2YgYSByZWZlcmVuY2UgdG8gYSBDb2RlQnVpbGQgUHJvamVjdC5cbiAqXG4gKiBAc2VlIEJ1aWxkUHJvamVjdFJlZi5pbXBvcnRcbiAqIEBzZWUgQnVpbGRQcm9qZWN0UmVmLmV4cG9ydFxuICovXG5leHBvcnQgaW50ZXJmYWNlIEJ1aWxkUHJvamVjdFJlZlByb3BzIHtcbiAgICAvKipcbiAgICAgKiBUaGUgaHVtYW4tcmVhZGFibGUgbmFtZSBvZiB0aGUgQ29kZUJ1aWxkIFByb2plY3Qgd2UncmUgcmVmZXJlbmNpbmcuXG4gICAgICogVGhlIFByb2plY3QgbXVzdCBiZSBpbiB0aGUgc2FtZSBhY2NvdW50IGFuZCByZWdpb24gYXMgdGhlIHJvb3QgU3RhY2suXG4gICAgICovXG4gICAgcHJvamVjdE5hbWU6IFByb2plY3ROYW1lO1xufVxuXG4vKipcbiAqIFJlcHJlc2VudHMgYSByZWZlcmVuY2UgdG8gYSBDb2RlQnVpbGQgUHJvamVjdC5cbiAqXG4gKiBJZiB5b3UncmUgbWFuYWdpbmcgdGhlIFByb2plY3QgYWxvbmdzaWRlIHRoZSByZXN0IG9mIHlvdXIgQ0RLIHJlc291cmNlcyxcbiAqIHVzZSB0aGUge0BsaW5rIEJ1aWxkUHJvamVjdH0gY2xhc3MuXG4gKlxuICogSWYgeW91IHdhbnQgdG8gcmVmZXJlbmNlIGFuIGFscmVhZHkgZXhpc3RpbmcgUHJvamVjdFxuICogKG9yIG9uZSBkZWZpbmVkIGluIGEgZGlmZmVyZW50IENESyBTdGFjayksXG4gKiB1c2UgdGhlIHtAbGluayBpbXBvcnR9IG1ldGhvZC5cbiAqL1xuZXhwb3J0IGFic3RyYWN0IGNsYXNzIEJ1aWxkUHJvamVjdFJlZiBleHRlbmRzIENvbnN0cnVjdCBpbXBsZW1lbnRzIElFdmVudFJ1bGVUYXJnZXQge1xuICAgIC8qKlxuICAgICAqIEltcG9ydCBhIFByb2plY3QgZGVmaW5lZCBlaXRoZXIgb3V0c2lkZSB0aGUgQ0RLLFxuICAgICAqIG9yIGluIGEgZGlmZmVyZW50IENESyBTdGFja1xuICAgICAqIChhbmQgZXhwb3J0ZWQgdXNpbmcgdGhlIHtAbGluayBleHBvcnR9IG1ldGhvZCkuXG4gICAgICpcbiAgICAgKiBAbm90ZSBpZiB5b3UncmUgaW1wb3J0aW5nIGEgQ29kZUJ1aWxkIFByb2plY3QgZm9yIHVzZVxuICAgICAqICAgaW4gYSBDb2RlUGlwZWxpbmUsIG1ha2Ugc3VyZSB0aGUgZXhpc3RpbmcgUHJvamVjdFxuICAgICAqICAgaGFzIHBlcm1pc3Npb25zIHRvIGFjY2VzcyB0aGUgUzMgQnVja2V0IG9mIHRoYXQgUGlwZWxpbmUgLVxuICAgICAqICAgb3RoZXJ3aXNlLCBidWlsZHMgaW4gdGhhdCBQaXBlbGluZSB3aWxsIGFsd2F5cyBmYWlsLlxuICAgICAqXG4gICAgICogQHBhcmFtIHBhcmVudCB0aGUgcGFyZW50IENvbnN0cnVjdCBmb3IgdGhpcyBDb25zdHJ1Y3RcbiAgICAgKiBAcGFyYW0gbmFtZSB0aGUgbG9naWNhbCBuYW1lIG9mIHRoaXMgQ29uc3RydWN0XG4gICAgICogQHBhcmFtIHByb3BzIHRoZSBwcm9wZXJ0aWVzIG9mIHRoZSByZWZlcmVuY2VkIFByb2plY3RcbiAgICAgKiBAcmV0dXJucyBhIHJlZmVyZW5jZSB0byB0aGUgZXhpc3RpbmcgUHJvamVjdFxuICAgICAqL1xuICAgIHB1YmxpYyBzdGF0aWMgaW1wb3J0KHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBCdWlsZFByb2plY3RSZWZQcm9wcyk6IEJ1aWxkUHJvamVjdFJlZiB7XG4gICAgICAgIHJldHVybiBuZXcgSW1wb3J0ZWRCdWlsZFByb2plY3RSZWYocGFyZW50LCBuYW1lLCBwcm9wcyk7XG4gICAgfVxuXG4gICAgLyoqIFRoZSBBUk4gb2YgdGhpcyBQcm9qZWN0LiAqL1xuICAgIHB1YmxpYyBhYnN0cmFjdCByZWFkb25seSBwcm9qZWN0QXJuOiBjb2RlYnVpbGQuUHJvamVjdEFybjtcblxuICAgIC8qKiBUaGUgaHVtYW4tdmlzaWJsZSBuYW1lIG9mIHRoaXMgUHJvamVjdC4gKi9cbiAgICBwdWJsaWMgYWJzdHJhY3QgcmVhZG9ubHkgcHJvamVjdE5hbWU6IFByb2plY3ROYW1lO1xuXG4gICAgLyoqIFRoZSBJQU0gc2VydmljZSBSb2xlIG9mIHRoaXMgUHJvamVjdC4gVW5kZWZpbmVkIGZvciBpbXBvcnRlZCBQcm9qZWN0cy4gKi9cbiAgICBwdWJsaWMgYWJzdHJhY3QgcmVhZG9ubHkgcm9sZT86IFJvbGU7XG5cbiAgICAvKiogQSByb2xlIHVzZWQgYnkgQ2xvdWRXYXRjaCBldmVudHMgdG8gdHJpZ2dlciBhIGJ1aWxkICovXG4gICAgcHJpdmF0ZSBldmVudHNSb2xlPzogUm9sZTtcblxuICAgIC8qKlxuICAgICAqIEV4cG9ydCB0aGlzIFByb2plY3QuIEFsbG93cyByZWZlcmVuY2luZyB0aGlzIFByb2plY3QgaW4gYSBkaWZmZXJlbnQgQ0RLIFN0YWNrLlxuICAgICAqL1xuICAgIHB1YmxpYyBleHBvcnQoKTogQnVpbGRQcm9qZWN0UmVmUHJvcHMge1xuICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgcHJvamVjdE5hbWU6IG5ldyBPdXRwdXQodGhpcywgJ1Byb2plY3ROYW1lJywgeyB2YWx1ZTogdGhpcy5wcm9qZWN0TmFtZSB9KS5tYWtlSW1wb3J0VmFsdWUoKSxcbiAgICAgICAgfTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBEZWZpbmVzIGEgQ2xvdWRXYXRjaCBldmVudCBydWxlIHRyaWdnZXJlZCB3aGVuIHRoZSBidWlsZCBwcm9qZWN0IHN0YXRlXG4gICAgICogY2hhbmdlcy4gWW91IGNhbiBmaWx0ZXIgc3BlY2lmaWMgYnVpbGQgc3RhdHVzIGV2ZW50cyB1c2luZyBhbiBldmVudFxuICAgICAqIHBhdHRlcm4gZmlsdGVyIG9uIHRoZSBgYnVpbGQtc3RhdHVzYCBkZXRhaWwgZmllbGQ6XG4gICAgICpcbiAgICAgKiAgICAgIGNvbnN0IHJ1bGUgPSBwcm9qZWN0Lm9uU3RhdGVDaGFuZ2UoJ09uQnVpbGRTdGFydGVkJywgdGFyZ2V0KTtcbiAgICAgKiAgICAgIHJ1bGUuYWRkRXZlbnRQYXR0ZXJuKHtcbiAgICAgKiAgICAgICAgICBkZXRhaWw6IHtcbiAgICAgKiAgICAgICAgICAgICAgJ2J1aWxkLXN0YXR1cyc6IFtcbiAgICAgKiAgICAgICAgICAgICAgICAgIFwiSU5fUFJPR1JFU1NcIixcbiAgICAgKiAgICAgICAgICAgICAgICAgIFwiU1VDQ0VFREVEXCIsXG4gICAgICogICAgICAgICAgICAgICAgICBcIkZBSUxFRFwiLFxuICAgICAqICAgICAgICAgICAgICAgICAgXCJTVE9QUEVEXCJcbiAgICAgKiAgICAgICAgICAgICAgXVxuICAgICAqICAgICAgICAgIH1cbiAgICAgKiAgICAgIH0pO1xuICAgICAqXG4gICAgICogWW91IGNhbiBhbHNvIHVzZSB0aGUgbWV0aG9kcyBgb25CdWlsZEZhaWxlZGAgYW5kIGBvbkJ1aWxkU3VjY2VlZGVkYCB0byBkZWZpbmUgcnVsZXMgZm9yXG4gICAgICogdGhlc2Ugc3BlY2lmaWMgc3RhdGUgY2hhbmdlcy5cbiAgICAgKlxuICAgICAqIEBzZWUgaHR0cHM6Ly9kb2NzLmF3cy5hbWF6b24uY29tL2NvZGVidWlsZC9sYXRlc3QvdXNlcmd1aWRlL3NhbXBsZS1idWlsZC1ub3RpZmljYXRpb25zLmh0bWxcbiAgICAgKi9cbiAgICBwdWJsaWMgb25TdGF0ZUNoYW5nZShuYW1lOiBzdHJpbmcsIHRhcmdldD86IElFdmVudFJ1bGVUYXJnZXQsIG9wdGlvbnM/OiBFdmVudFJ1bGVQcm9wcykge1xuICAgICAgICBjb25zdCBydWxlID0gbmV3IEV2ZW50UnVsZSh0aGlzLCBuYW1lLCBvcHRpb25zKTtcbiAgICAgICAgcnVsZS5hZGRUYXJnZXQodGFyZ2V0KTtcbiAgICAgICAgcnVsZS5hZGRFdmVudFBhdHRlcm4oe1xuICAgICAgICAgICAgc291cmNlOiBbICdhd3MuY29kZWJ1aWxkJyBdLFxuICAgICAgICAgICAgZGV0YWlsVHlwZTogWyAnQ29kZUJ1aWxkIEJ1aWxkIFN0YXRlIENoYW5nZScgXSxcbiAgICAgICAgICAgIGRldGFpbDoge1xuICAgICAgICAgICAgICAgICdwcm9qZWN0LW5hbWUnOiBbXG4gICAgICAgICAgICAgICAgICAgIHRoaXMucHJvamVjdE5hbWVcbiAgICAgICAgICAgICAgICBdXG4gICAgICAgICAgICB9XG4gICAgICAgIH0pO1xuICAgICAgICByZXR1cm4gcnVsZTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBEZWZpbmVzIGEgQ2xvdWRXYXRjaCBldmVudCBydWxlIHRoYXQgdHJpZ2dlcnMgdXBvbiBwaGFzZSBjaGFuZ2Ugb2YgdGhpc1xuICAgICAqIGJ1aWxkIHByb2plY3QuXG4gICAgICpcbiAgICAgKiBAc2VlIGh0dHBzOi8vZG9jcy5hd3MuYW1hem9uLmNvbS9jb2RlYnVpbGQvbGF0ZXN0L3VzZXJndWlkZS9zYW1wbGUtYnVpbGQtbm90aWZpY2F0aW9ucy5odG1sXG4gICAgICovXG4gICAgcHVibGljIG9uUGhhc2VDaGFuZ2UobmFtZTogc3RyaW5nLCB0YXJnZXQ/OiBJRXZlbnRSdWxlVGFyZ2V0LCBvcHRpb25zPzogRXZlbnRSdWxlUHJvcHMpIHtcbiAgICAgICAgY29uc3QgcnVsZSA9IG5ldyBFdmVudFJ1bGUodGhpcywgbmFtZSwgb3B0aW9ucyk7XG4gICAgICAgIHJ1bGUuYWRkVGFyZ2V0KHRhcmdldCk7XG4gICAgICAgIHJ1bGUuYWRkRXZlbnRQYXR0ZXJuKHtcbiAgICAgICAgICAgIHNvdXJjZTogWyAnYXdzLmNvZGVidWlsZCcgXSxcbiAgICAgICAgICAgIGRldGFpbFR5cGU6IFsgJ0NvZGVCdWlsZCBCdWlsZCBQaGFzZSBDaGFuZ2UnIF0sXG4gICAgICAgICAgICBkZXRhaWw6IHtcbiAgICAgICAgICAgICAgICAncHJvamVjdC1uYW1lJzogW1xuICAgICAgICAgICAgICAgICAgICB0aGlzLnByb2plY3ROYW1lXG4gICAgICAgICAgICAgICAgXVxuICAgICAgICAgICAgfVxuICAgICAgICB9KTtcbiAgICAgICAgcmV0dXJuIHJ1bGU7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogRGVmaW5lcyBhbiBldmVudCBydWxlIHdoaWNoIHRyaWdnZXJzIHdoZW4gYSBidWlsZCBzdGFydHMuXG4gICAgICovXG4gICAgcHVibGljIG9uQnVpbGRTdGFydGVkKG5hbWU6IHN0cmluZywgdGFyZ2V0PzogSUV2ZW50UnVsZVRhcmdldCwgb3B0aW9ucz86IEV2ZW50UnVsZVByb3BzKSB7XG4gICAgICAgIGNvbnN0IHJ1bGUgPSB0aGlzLm9uU3RhdGVDaGFuZ2UobmFtZSwgdGFyZ2V0LCBvcHRpb25zKTtcbiAgICAgICAgcnVsZS5hZGRFdmVudFBhdHRlcm4oe1xuICAgICAgICAgICAgZGV0YWlsOiB7XG4gICAgICAgICAgICAgICAgJ2J1aWxkLXN0YXR1cyc6IFsgJ0lOX1BST0dSRVNTJyBdXG4gICAgICAgICAgICB9XG4gICAgICAgIH0pO1xuICAgICAgICByZXR1cm4gcnVsZTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBEZWZpbmVzIGFuIGV2ZW50IHJ1bGUgd2hpY2ggdHJpZ2dlcnMgd2hlbiBhIGJ1aWxkIGZhaWxzLlxuICAgICAqL1xuICAgIHB1YmxpYyBvbkJ1aWxkRmFpbGVkKG5hbWU6IHN0cmluZywgdGFyZ2V0PzogSUV2ZW50UnVsZVRhcmdldCwgb3B0aW9ucz86IEV2ZW50UnVsZVByb3BzKSB7XG4gICAgICAgIGNvbnN0IHJ1bGUgPSB0aGlzLm9uU3RhdGVDaGFuZ2UobmFtZSwgdGFyZ2V0LCBvcHRpb25zKTtcbiAgICAgICAgcnVsZS5hZGRFdmVudFBhdHRlcm4oe1xuICAgICAgICAgICAgZGV0YWlsOiB7XG4gICAgICAgICAgICAgICAgJ2J1aWxkLXN0YXR1cyc6IFsgJ0ZBSUxFRCcgXVxuICAgICAgICAgICAgfVxuICAgICAgICB9KTtcbiAgICAgICAgcmV0dXJuIHJ1bGU7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogRGVmaW5lcyBhbiBldmVudCBydWxlIHdoaWNoIHRyaWdnZXJzIHdoZW4gYSBidWlsZCBjb21wbGV0ZXMgc3VjY2Vzc2Z1bGx5LlxuICAgICAqL1xuICAgIHB1YmxpYyBvbkJ1aWxkU3VjY2VlZGVkKG5hbWU6IHN0cmluZywgdGFyZ2V0PzogSUV2ZW50UnVsZVRhcmdldCwgb3B0aW9ucz86IEV2ZW50UnVsZVByb3BzKSB7XG4gICAgICAgIGNvbnN0IHJ1bGUgPSB0aGlzLm9uU3RhdGVDaGFuZ2UobmFtZSwgdGFyZ2V0LCBvcHRpb25zKTtcbiAgICAgICAgcnVsZS5hZGRFdmVudFBhdHRlcm4oe1xuICAgICAgICAgICAgZGV0YWlsOiB7XG4gICAgICAgICAgICAgICAgJ2J1aWxkLXN0YXR1cyc6IFsgJ1NVQ0NFRURFRCcgXVxuICAgICAgICAgICAgfVxuICAgICAgICB9KTtcbiAgICAgICAgcmV0dXJuIHJ1bGU7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogQWxsb3dzIHVzaW5nIGJ1aWxkIHByb2plY3RzIGFzIGV2ZW50IHJ1bGUgdGFyZ2V0cy5cbiAgICAgKi9cbiAgICBwdWJsaWMgZ2V0IGV2ZW50UnVsZVRhcmdldCgpOiBFdmVudFJ1bGVUYXJnZXQge1xuICAgICAgICBpZiAoIXRoaXMuZXZlbnRzUm9sZSkge1xuICAgICAgICAgICAgdGhpcy5ldmVudHNSb2xlID0gbmV3IFJvbGUodGhpcywgJ0V2ZW50c1JvbGUnLCB7XG4gICAgICAgICAgICAgICAgYXNzdW1lZEJ5OiBuZXcgU2VydmljZVByaW5jaXBhbCgnZXZlbnRzLmFtYXpvbmF3cy5jb20nKVxuICAgICAgICAgICAgfSk7XG5cbiAgICAgICAgICAgIHRoaXMuZXZlbnRzUm9sZS5hZGRUb1BvbGljeShuZXcgUG9saWN5U3RhdGVtZW50KClcbiAgICAgICAgICAgICAgICAuYWRkQWN0aW9uKCdjb2RlYnVpbGQ6U3RhcnRCdWlsZCcpXG4gICAgICAgICAgICAgICAgLmFkZFJlc291cmNlKHRoaXMucHJvamVjdEFybikpO1xuICAgICAgICB9XG5cbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIGlkOiB0aGlzLm5hbWUsXG4gICAgICAgICAgICBhcm46IHRoaXMucHJvamVjdEFybixcbiAgICAgICAgICAgIHJvbGVBcm46IHRoaXMuZXZlbnRzUm9sZS5yb2xlQXJuLFxuICAgICAgICB9O1xuICAgIH1cbn1cblxuY2xhc3MgSW1wb3J0ZWRCdWlsZFByb2plY3RSZWYgZXh0ZW5kcyBCdWlsZFByb2plY3RSZWYge1xuICAgIHB1YmxpYyByZWFkb25seSBwcm9qZWN0QXJuOiBjb2RlYnVpbGQuUHJvamVjdEFybjtcbiAgICBwdWJsaWMgcmVhZG9ubHkgcHJvamVjdE5hbWU6IFByb2plY3ROYW1lO1xuICAgIHB1YmxpYyByZWFkb25seSByb2xlPzogUm9sZSA9IHVuZGVmaW5lZDtcblxuICAgIGNvbnN0cnVjdG9yKHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBCdWlsZFByb2plY3RSZWZQcm9wcykge1xuICAgICAgICBzdXBlcihwYXJlbnQsIG5hbWUpO1xuXG4gICAgICAgIHRoaXMucHJvamVjdEFybiA9IEFybi5mcm9tQ29tcG9uZW50cyh7XG4gICAgICAgICAgICBzZXJ2aWNlOiAnY29kZWJ1aWxkJyxcbiAgICAgICAgICAgIHJlc291cmNlOiAncHJvamVjdCcsXG4gICAgICAgICAgICByZXNvdXJjZU5hbWU6IHByb3BzLnByb2plY3ROYW1lLFxuICAgICAgICB9KTtcbiAgICAgICAgdGhpcy5wcm9qZWN0TmFtZSA9IHByb3BzLnByb2plY3ROYW1lO1xuICAgIH1cbn1cblxuZXhwb3J0IGludGVyZmFjZSBCdWlsZFByb2plY3RQcm9wcyB7XG5cbiAgICAvKipcbiAgICAgKiBUaGUgc291cmNlIG9mIHRoZSBidWlsZC5cbiAgICAgKi9cbiAgICBzb3VyY2U6IEJ1aWxkU291cmNlO1xuXG4gICAgLyoqXG4gICAgICogQSBkZXNjcmlwdGlvbiBvZiB0aGUgcHJvamVjdC4gVXNlIHRoZSBkZXNjcmlwdGlvbiB0byBpZGVudGlmeSB0aGUgcHVycG9zZVxuICAgICAqIG9mIHRoZSBwcm9qZWN0LlxuICAgICAqL1xuICAgIGRlc2NyaXB0aW9uPzogc3RyaW5nO1xuXG4gICAgLyoqXG4gICAgICogRmlsZW5hbWUgb3IgY29udGVudHMgb2YgYnVpbGRzcGVjIGluIEpTT04gZm9ybWF0LlxuICAgICAqIEBzZWUgaHR0cHM6Ly9kb2NzLmF3cy5hbWF6b24uY29tL2NvZGVidWlsZC9sYXRlc3QvdXNlcmd1aWRlL2J1aWxkLXNwZWMtcmVmLmh0bWwjYnVpbGQtc3BlYy1yZWYtZXhhbXBsZVxuICAgICAqL1xuICAgIGJ1aWxkU3BlYz86IG9iamVjdDtcblxuICAgIC8qKlxuICAgICAqIFNlcnZpY2UgUm9sZSB0byBhc3N1bWUgd2hpbGUgcnVubmluZyB0aGUgYnVpbGQuXG4gICAgICogSWYgbm90IHNwZWNpZmllZCwgYSByb2xlIHdpbGwgYmUgY3JlYXRlZC5cbiAgICAgKi9cbiAgICByb2xlPzogUm9sZTtcblxuICAgIC8qKlxuICAgICAqIEVuY3J5cHRpb24ga2V5IHRvIHVzZSB0byByZWFkIGFuZCB3cml0ZSBhcnRpZmFjdHNcbiAgICAgKiBJZiBub3Qgc3BlY2lmaWVkLCBhIHJvbGUgd2lsbCBiZSBjcmVhdGVkLlxuICAgICAqL1xuICAgIGVuY3J5cHRpb25LZXk/OiBFbmNyeXB0aW9uS2V5UmVmO1xuXG4gICAgLyoqXG4gICAgICogQnVja2V0IHRvIHN0b3JlIGNhY2hlZCBzb3VyY2UgYXJ0aWZhY3RzXG4gICAgICogSWYgbm90IHNwZWNpZmllZCwgc291cmNlIGFydGlmYWN0cyB3aWxsIG5vdCBiZSBjYWNoZWQuXG4gICAgICovXG4gICAgY2FjaGVCdWNrZXQ/OiBCdWNrZXRSZWY7XG5cbiAgICAvKipcbiAgICAgKiBTdWJkaXJlY3RvcnkgdG8gc3RvcmUgY2FjaGVkIGFydGlmYWN0c1xuICAgICAqL1xuICAgIGNhY2hlRGlyPzogc3RyaW5nO1xuXG4gICAgLyoqXG4gICAgICogQnVpbGQgZW52aXJvbm1lbnQgdG8gdXNlIGZvciB0aGUgYnVpbGQuXG4gICAgICovXG4gICAgZW52aXJvbm1lbnQ/OiBCdWlsZEVudmlyb25tZW50O1xuXG4gICAgLyoqXG4gICAgICogSW5kaWNhdGVzIHdoZXRoZXIgQVdTIENvZGVCdWlsZCBnZW5lcmF0ZXMgYSBwdWJsaWNseSBhY2Nlc3NpYmxlIFVSTCBmb3JcbiAgICAgKiB5b3VyIHByb2plY3QncyBidWlsZCBiYWRnZS4gRm9yIG1vcmUgaW5mb3JtYXRpb24sIHNlZSBCdWlsZCBCYWRnZXMgU2FtcGxlXG4gICAgICogaW4gdGhlIEFXUyBDb2RlQnVpbGQgVXNlciBHdWlkZS5cbiAgICAgKi9cbiAgICBiYWRnZT86IGJvb2xlYW47XG5cbiAgICAvKipcbiAgICAgKiBUaGUgbnVtYmVyIG9mIG1pbnV0ZXMgYWZ0ZXIgd2hpY2ggQVdTIENvZGVCdWlsZCBzdG9wcyB0aGUgYnVpbGQgaWYgaXQnc1xuICAgICAqIG5vdCBjb21wbGV0ZS4gRm9yIHZhbGlkIHZhbHVlcywgc2VlIHRoZSB0aW1lb3V0SW5NaW51dGVzIGZpZWxkIGluIHRoZSBBV1NcbiAgICAgKiBDb2RlQnVpbGQgVXNlciBHdWlkZS5cbiAgICAgKi9cbiAgICB0aW1lb3V0PzogbnVtYmVyO1xuXG4gICAgLyoqXG4gICAgICogRGVmaW5lcyB3aGVyZSBidWlsZCBhcnRpZmFjdHMgd2lsbCBiZSBzdG9yZWQuXG4gICAgICogQ291bGQgYmU6IFBpcGVsaW5lQnVpbGRBcnRpZmFjdHMsIE5vQnVpbGRBcnRpZmFjdHMgYW5kIFMzQnVja2V0QnVpbGRBcnRpZmFjdHMuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBOb0J1aWxkQXJ0aWZhY3RzXG4gICAgICovXG4gICAgYXJ0aWZhY3RzPzogQnVpbGRBcnRpZmFjdHM7XG5cbiAgICAvKipcbiAgICAgKiBBZGRpdGlvbmFsIGVudmlyb25tZW50IHZhcmlhYmxlcyB0byBhZGQgdG8gdGhlIGJ1aWxkIGVudmlyb25tZW50LlxuICAgICAqL1xuICAgIGVudmlyb25tZW50VmFyaWFibGVzPzogeyBbbmFtZTogc3RyaW5nXTogQnVpbGRFbnZpcm9ubWVudFZhcmlhYmxlIH07XG59XG5cbi8qKlxuICogQSBDb2RlQnVpbGQgcHJvamVjdCB0aGF0IGlzIGNvbXBsZXRlbHkgZHJpdmVuXG4gKiBmcm9tIENvZGVQaXBlbGluZSAoZG9lcyBub3QgaG90IGhhdmUgaXRzIG93biBpbnB1dCBvciBvdXRwdXQpXG4gKi9cbmV4cG9ydCBjbGFzcyBCdWlsZFByb2plY3QgZXh0ZW5kcyBCdWlsZFByb2plY3RSZWYge1xuICAgIC8qKlxuICAgICAqIFRoZSBJQU0gcm9sZSBmb3IgdGhpcyBwcm9qZWN0LlxuICAgICAqL1xuICAgIHB1YmxpYyByZWFkb25seSByb2xlOiBSb2xlO1xuXG4gICAgLyoqXG4gICAgICogVGhlIEFSTiBvZiB0aGUgcHJvamVjdC5cbiAgICAgKi9cbiAgICBwdWJsaWMgcmVhZG9ubHkgcHJvamVjdEFybjogY29kZWJ1aWxkLlByb2plY3RBcm47XG5cbiAgICAvKipcbiAgICAgKiBUaGUgbmFtZSBvZiB0aGUgcHJvamVjdC5cbiAgICAgKi9cbiAgICBwdWJsaWMgcmVhZG9ubHkgcHJvamVjdE5hbWU6IFByb2plY3ROYW1lO1xuXG4gICAgY29uc3RydWN0b3IocGFyZW50OiBDb25zdHJ1Y3QsIG5hbWU6IHN0cmluZywgcHJvcHM6IEJ1aWxkUHJvamVjdFByb3BzKSB7XG4gICAgICAgIHN1cGVyKHBhcmVudCwgbmFtZSk7XG5cbiAgICAgICAgdGhpcy5yb2xlID0gcHJvcHMucm9sZSB8fCBuZXcgUm9sZSh0aGlzLCAnUm9sZScsIHtcbiAgICAgICAgICAgIGFzc3VtZWRCeTogbmV3IFNlcnZpY2VQcmluY2lwYWwoJ2NvZGVidWlsZC5hbWF6b25hd3MuY29tJylcbiAgICAgICAgfSk7XG5cbiAgICAgICAgY29uc3QgZW52aXJvbm1lbnQgPSB0aGlzLnJlbmRlckVudmlyb25tZW50KHByb3BzLmVudmlyb25tZW50LCBwcm9wcy5lbnZpcm9ubWVudFZhcmlhYmxlcyk7XG5cbiAgICAgICAgbGV0IGNhY2hlOiBjb2RlYnVpbGQuUHJvamVjdFJlc291cmNlLlByb2plY3RDYWNoZVByb3BlcnR5IHwgdW5kZWZpbmVkO1xuICAgICAgICBpZiAocHJvcHMuY2FjaGVCdWNrZXQpIHtcbiAgICAgICAgICAgIGNvbnN0IGNhY2hlRGlyID0gcHJvcHMuY2FjaGVEaXIgIT0gbnVsbCA/IHByb3BzLmNhY2hlRGlyIDogJyc7XG4gICAgICAgICAgICBjYWNoZSA9IHtcbiAgICAgICAgICAgICAgICB0eXBlOiAnUzMnLFxuICAgICAgICAgICAgICAgIGxvY2F0aW9uOiBwcm9wcy5jYWNoZUJ1Y2tldC5hcm5Gb3JPYmplY3RzKGNhY2hlRGlyKVxuICAgICAgICAgICAgfTtcblxuICAgICAgICAgICAgcHJvcHMuY2FjaGVCdWNrZXQuZ3JhbnRSZWFkV3JpdGUodGhpcy5yb2xlKTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIGxldCBzb3VyY2UgXCJiaW5kXCIgdG8gdGhlIHByb2plY3QuIHRoaXMgdXN1YWxseSBpbnZvbHZlcyBncmFudGluZyBwZXJtaXNzaW9uc1xuICAgICAgICAvLyBmb3IgdGhlIGNvZGUgYnVpbGQgcm9sZSB0byBpbnRlcmFjdCB3aXRoIHRoZSBzb3VyY2UuXG4gICAgICAgIGNvbnN0IHNvdXJjZSA9IHByb3BzLnNvdXJjZTtcbiAgICAgICAgc291cmNlLmJpbmQodGhpcyk7XG5cbiAgICAgICAgY29uc3QgYXJ0aWZhY3RzID0gdGhpcy5wYXJzZUFydGlmYWN0cyhwcm9wcyk7XG4gICAgICAgIGFydGlmYWN0cy5iaW5kKHRoaXMpO1xuXG4gICAgICAgIGNvbnN0IHNvdXJjZUpzb24gPSBzb3VyY2UudG9Tb3VyY2VKU09OKCk7XG4gICAgICAgIGlmIChwcm9wcy5idWlsZFNwZWMpIHtcbiAgICAgICAgICAgIHNvdXJjZUpzb24uYnVpbGRTcGVjID0gSlNPTi5zdHJpbmdpZnkocHJvcHMuYnVpbGRTcGVjKTtcbiAgICAgICAgfVxuXG4gICAgICAgIHRoaXMudmFsaWRhdGVDb2RlUGlwZWxpbmVTZXR0aW5ncyhzb3VyY2UsIGFydGlmYWN0cyk7XG5cbiAgICAgICAgY29uc3QgcmVzb3VyY2UgPSBuZXcgY29kZWJ1aWxkLlByb2plY3RSZXNvdXJjZSh0aGlzLCAnUmVzb3VyY2UnLCB7XG4gICAgICAgICAgICBkZXNjcmlwdGlvbjogcHJvcHMuZGVzY3JpcHRpb24sXG4gICAgICAgICAgICBzb3VyY2U6IHNvdXJjZUpzb24sXG4gICAgICAgICAgICBhcnRpZmFjdHM6IGFydGlmYWN0cy50b0FydGlmYWN0c0pTT04oKSxcbiAgICAgICAgICAgIHNlcnZpY2VSb2xlOiB0aGlzLnJvbGUucm9sZUFybixcbiAgICAgICAgICAgIGVudmlyb25tZW50LFxuICAgICAgICAgICAgZW5jcnlwdGlvbktleTogcHJvcHMuZW5jcnlwdGlvbktleSAmJiBwcm9wcy5lbmNyeXB0aW9uS2V5LmtleUFybixcbiAgICAgICAgICAgIGJhZGdlRW5hYmxlZDogcHJvcHMuYmFkZ2UsXG4gICAgICAgICAgICBjYWNoZSxcbiAgICAgICAgfSk7XG5cbiAgICAgICAgdGhpcy5wcm9qZWN0QXJuID0gcmVzb3VyY2UucHJvamVjdEFybjtcbiAgICAgICAgdGhpcy5wcm9qZWN0TmFtZSA9IHJlc291cmNlLnJlZjtcblxuICAgICAgICB0aGlzLmFkZFRvUm9sZVBvbGljeSh0aGlzLmNyZWF0ZUxvZ2dpbmdQZXJtaXNzaW9uKCkpO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIEFkZCBhIHBlcm1pc3Npb24gb25seSBpZiB0aGVyZSdzIGEgcG9saWN5IGF0dGFjaGVkLlxuICAgICAqIEBwYXJhbSBzdGF0ZW1lbnQgVGhlIHBlcm1pc3Npb25zIHN0YXRlbWVudCB0byBhZGRcbiAgICAgKi9cbiAgICBwdWJsaWMgYWRkVG9Sb2xlUG9saWN5KHN0YXRlbWVudDogUG9saWN5U3RhdGVtZW50KSB7XG4gICAgICAgIHJldHVybiB0aGlzLnJvbGUuYWRkVG9Qb2xpY3koc3RhdGVtZW50KTtcbiAgICB9XG5cbiAgICBwcml2YXRlIGNyZWF0ZUxvZ2dpbmdQZXJtaXNzaW9uKCkge1xuICAgICAgICBjb25zdCBsb2dHcm91cEFybiA9IEFybi5mcm9tQ29tcG9uZW50cyh7XG4gICAgICAgICAgICBzZXJ2aWNlOiAnbG9ncycsXG4gICAgICAgICAgICByZXNvdXJjZTogJ2xvZy1ncm91cCcsXG4gICAgICAgICAgICBzZXA6ICc6JyxcbiAgICAgICAgICAgIHJlc291cmNlTmFtZTogbmV3IEZuQ29uY2F0KCcvYXdzL2NvZGVidWlsZC8nLCB0aGlzLnByb2plY3ROYW1lKSxcbiAgICAgICAgfSk7XG5cbiAgICAgICAgY29uc3QgbG9nR3JvdXBTdGFyQXJuID0gbmV3IEZuQ29uY2F0KGxvZ0dyb3VwQXJuLCAnOionKTtcblxuICAgICAgICBjb25zdCBwID0gbmV3IFBvbGljeVN0YXRlbWVudCgpO1xuICAgICAgICBwLmFsbG93KCk7XG4gICAgICAgIHAuYWRkUmVzb3VyY2UobG9nR3JvdXBBcm4pO1xuICAgICAgICBwLmFkZFJlc291cmNlKGxvZ0dyb3VwU3RhckFybik7XG4gICAgICAgIHAuYWRkQWN0aW9uKCdsb2dzOkNyZWF0ZUxvZ0dyb3VwJyk7XG4gICAgICAgIHAuYWRkQWN0aW9uKCdsb2dzOkNyZWF0ZUxvZ1N0cmVhbScpO1xuICAgICAgICBwLmFkZEFjdGlvbignbG9nczpQdXRMb2dFdmVudHMnKTtcblxuICAgICAgICByZXR1cm4gcDtcbiAgICB9XG5cbiAgICBwcml2YXRlIHJlbmRlckVudmlyb25tZW50KGVudjogQnVpbGRFbnZpcm9ubWVudCA9IHt9LCBwcm9qZWN0VmFyczogeyBbbmFtZTogc3RyaW5nXTogQnVpbGRFbnZpcm9ubWVudFZhcmlhYmxlIH0gPSB7fSk6XG4gICAgICAgIGNvZGVidWlsZC5Qcm9qZWN0UmVzb3VyY2UuRW52aXJvbm1lbnRQcm9wZXJ0eSB7XG5cbiAgICAgICAgY29uc3QgdmFyczogeyBbbmFtZTogc3RyaW5nXTogQnVpbGRFbnZpcm9ubWVudFZhcmlhYmxlIH0gPSB7fTtcbiAgICAgICAgY29uc3QgY29udGFpbmVyVmFycyA9IGVudi5lbnZpcm9ubWVudFZhcmlhYmxlcyB8fCB7fTtcblxuICAgICAgICAvLyBmaXJzdCBhcHBseSBlbnZpcm9ubWVudCB2YXJpYWJsZXMgZnJvbSB0aGUgY29udGFpbmVyIGRlZmluaXRpb25cbiAgICAgICAgZm9yIChjb25zdCBuYW1lIG9mIE9iamVjdC5rZXlzKGNvbnRhaW5lclZhcnMpKSB7XG4gICAgICAgICAgICB2YXJzW25hbWVdID0gY29udGFpbmVyVmFyc1tuYW1lXTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIG5vdyBhcHBseSBwcm9qZWN0LWxldmVsIHZhcnNcbiAgICAgICAgZm9yIChjb25zdCBuYW1lIG9mIE9iamVjdC5rZXlzKHByb2plY3RWYXJzKSkge1xuICAgICAgICAgICAgdmFyc1tuYW1lXSA9IHByb2plY3RWYXJzW25hbWVdO1xuICAgICAgICB9XG5cbiAgICAgICAgY29uc3QgaGFzRW52aXJvbm1lbnRWYXJzID0gT2JqZWN0LmtleXModmFycykubGVuZ3RoID4gMDtcblxuICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgdHlwZTogZW52LnR5cGUgfHwgJ0xJTlVYX0NPTlRBSU5FUicsXG4gICAgICAgICAgICBpbWFnZTogZW52LmltYWdlIHx8ICdhd3MvY29kZWJ1aWxkL3VidW50dS1iYXNlOjE0LjA0JyxcbiAgICAgICAgICAgIHByaXZpbGVnZWRNb2RlOiBlbnYucHJpdmlsZWRnZWQgfHwgZmFsc2UsXG4gICAgICAgICAgICBjb21wdXRlVHlwZTogZW52LmNvbXB1dGVUeXBlIHx8IENvbXB1dGVUeXBlLlNtYWxsLFxuICAgICAgICAgICAgZW52aXJvbm1lbnRWYXJpYWJsZXM6ICFoYXNFbnZpcm9ubWVudFZhcnMgPyB1bmRlZmluZWQgOiBPYmplY3Qua2V5cyh2YXJzKS5tYXAobmFtZSA9PiAoe1xuICAgICAgICAgICAgICAgIG5hbWUsXG4gICAgICAgICAgICAgICAgdHlwZTogdmFyc1tuYW1lXS50eXBlIHx8IEJ1aWxkRW52aXJvbm1lbnRWYXJpYWJsZVR5cGUuUGxhaW5UZXh0LFxuICAgICAgICAgICAgICAgIHZhbHVlOiB2YXJzW25hbWVdLnZhbHVlXG4gICAgICAgICAgICB9KSlcbiAgICAgICAgfTtcbiAgICB9XG5cbiAgICBwcml2YXRlIHBhcnNlQXJ0aWZhY3RzKHByb3BzOiBCdWlsZFByb2plY3RQcm9wcykge1xuICAgICAgICBpZiAocHJvcHMuYXJ0aWZhY3RzKSB7XG4gICAgICAgICAgICByZXR1cm4gcHJvcHMuYXJ0aWZhY3RzO1xuICAgICAgICB9XG4gICAgICAgIGlmIChwcm9wcy5zb3VyY2UudG9Tb3VyY2VKU09OKCkudHlwZSA9PT0gQ09ERVBJUEVMSU5FX1RZUEUpIHtcbiAgICAgICAgICAgIHJldHVybiBuZXcgQ29kZVBpcGVsaW5lQnVpbGRBcnRpZmFjdHMoKTtcbiAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICAgIHJldHVybiBuZXcgTm9CdWlsZEFydGlmYWN0cygpO1xuICAgICAgICB9XG4gICAgfVxuXG4gICAgcHJpdmF0ZSB2YWxpZGF0ZUNvZGVQaXBlbGluZVNldHRpbmdzKHNvdXJjZTogQnVpbGRTb3VyY2UsIGFydGlmYWN0czogQnVpbGRBcnRpZmFjdHMpIHtcbiAgICAgICAgY29uc3Qgc291cmNlVHlwZSA9IHNvdXJjZS50b1NvdXJjZUpTT04oKS50eXBlO1xuICAgICAgICBjb25zdCBhcnRpZmFjdHNUeXBlID0gYXJ0aWZhY3RzLnRvQXJ0aWZhY3RzSlNPTigpLnR5cGU7XG5cbiAgICAgICAgaWYgKChzb3VyY2VUeXBlID09PSBDT0RFUElQRUxJTkVfVFlQRSB8fCBhcnRpZmFjdHNUeXBlID09PSBDT0RFUElQRUxJTkVfVFlQRSkgJiZcbiAgICAgICAgICAgIChzb3VyY2VUeXBlICE9PSBhcnRpZmFjdHNUeXBlKSkge1xuICAgICAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcignQm90aCBzb3VyY2UgYW5kIGFydGlmYWN0cyBtdXN0IGJlIHNldCB0byBDb2RlUGlwZWxpbmUnKTtcbiAgICAgICAgfVxuICAgIH1cbn1cblxuZXhwb3J0IGludGVyZmFjZSBCdWlsZEVudmlyb25tZW50IHtcbiAgICAvKipcbiAgICAgKiBUaGUgdHlwZSBvZiBidWlsZCBlbnZpcm9ubWVudC4gVGhlIG9ubHkgYWxsb3dlZCB2YWx1ZSBpcyBMSU5VWF9DT05UQUlORVIuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBMSU5VWF9DT05UQUlORVJcbiAgICAgKi9cbiAgICB0eXBlPzogc3RyaW5nO1xuXG4gICAgLyoqXG4gICAgICogVGhlIERvY2tlciBpbWFnZSBpZGVudGlmaWVyIHRoYXQgdGhlIGJ1aWxkIGVudmlyb25tZW50IHVzZXMuXG4gICAgICpcbiAgICAgKiBAc2VlIGh0dHBzOi8vZG9jcy5hd3MuYW1hem9uLmNvbS9jb2RlYnVpbGQvbGF0ZXN0L3VzZXJndWlkZS9idWlsZC1lbnYtcmVmLWF2YWlsYWJsZS5odG1sXG4gICAgICogQGRlZmF1bHQgYXdzL2NvZGVidWlsZC91YnVudHUtYmFzZToxNC4wNFxuICAgICAqL1xuICAgIGltYWdlPzogc3RyaW5nO1xuXG4gICAgLyoqXG4gICAgICogVGhlIHR5cGUgb2YgY29tcHV0ZSB0byB1c2UgZm9yIHRoaXMgYnVpbGQuIFNlZSB0aGVcbiAgICAgKiBDb21wdXRlVHlwZSBlbnVtIGZvciBvcHRpb25zLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgQ29tcHV0ZVR5cGUuU21hbGxcbiAgICAgKi9cbiAgICBjb21wdXRlVHlwZT86IENvbXB1dGVUeXBlO1xuXG4gICAgLyoqXG4gICAgICogSW5kaWNhdGVzIGhvdyB0aGUgcHJvamVjdCBidWlsZHMgRG9ja2VyIGltYWdlcy4gU3BlY2lmeSB0cnVlIHRvIGVuYWJsZVxuICAgICAqIHJ1bm5pbmcgdGhlIERvY2tlciBkYWVtb24gaW5zaWRlIGEgRG9ja2VyIGNvbnRhaW5lci4gVGhpcyB2YWx1ZSBtdXN0IGJlXG4gICAgICogc2V0IHRvIHRydWUgb25seSBpZiB0aGlzIGJ1aWxkIHByb2plY3Qgd2lsbCBiZSB1c2VkIHRvIGJ1aWxkIERvY2tlclxuICAgICAqIGltYWdlcywgYW5kIHRoZSBzcGVjaWZpZWQgYnVpbGQgZW52aXJvbm1lbnQgaW1hZ2UgaXMgbm90IG9uZSBwcm92aWRlZCBieVxuICAgICAqIEFXUyBDb2RlQnVpbGQgd2l0aCBEb2NrZXIgc3VwcG9ydC4gT3RoZXJ3aXNlLCBhbGwgYXNzb2NpYXRlZCBidWlsZHMgdGhhdFxuICAgICAqIGF0dGVtcHQgdG8gaW50ZXJhY3Qgd2l0aCB0aGUgRG9ja2VyIGRhZW1vbiB3aWxsIGZhaWwuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBmYWxzZVxuICAgICAqL1xuICAgIHByaXZpbGVkZ2VkPzogYm9vbGVhbjtcblxuICAgIC8qKlxuICAgICAqIFRoZSBlbnZpcm9ubWVudCB2YXJpYWJsZXMgdGhhdCB5b3VyIGJ1aWxkcyBjYW4gdXNlLlxuICAgICAqL1xuICAgIGVudmlyb25tZW50VmFyaWFibGVzPzogeyBbbmFtZTogc3RyaW5nXTogQnVpbGRFbnZpcm9ubWVudFZhcmlhYmxlIH07XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgQnVpbGRFbnZpcm9ubWVudFZhcmlhYmxlIHtcbiAgICAvKipcbiAgICAgKiBUaGUgdHlwZSBvZiBlbnZpcm9ubWVudCB2YXJpYWJsZS5cbiAgICAgKiBAZGVmYXVsdCBQbGFpblRleHRcbiAgICAgKi9cbiAgICB0eXBlPzogQnVpbGRFbnZpcm9ubWVudFZhcmlhYmxlVHlwZTtcblxuICAgIC8qKlxuICAgICAqIFRoZSB2YWx1ZSBvZiB0aGUgZW52aXJvbm1lbnQgdmFyaWFibGUgKG9yIHRoZSBuYW1lIG9mIHRoZSBwYXJhbWV0ZXIgaW5cbiAgICAgKiB0aGUgU1NNIHBhcmFtZXRlciBzdG9yZS4pXG4gICAgICovXG4gICAgdmFsdWU6IGFueTtcbn1cblxuZXhwb3J0IGVudW0gQnVpbGRFbnZpcm9ubWVudFZhcmlhYmxlVHlwZSB7XG4gICAgLyoqXG4gICAgICogQW4gZW52aXJvbm1lbnQgdmFyaWFibGUgaW4gcGxhaW50ZXh0IGZvcm1hdC5cbiAgICAgKi9cbiAgICBQbGFpblRleHQgPSAnUExBSU5URVhUJyxcblxuICAgIC8qKlxuICAgICAqIEFuIGVudmlyb25tZW50IHZhcmlhYmxlIHN0b3JlZCBpbiBTeXN0ZW1zIE1hbmFnZXIgUGFyYW1ldGVyIFN0b3JlLlxuICAgICAqL1xuICAgIFBhcmFtZXRlclN0b3JlID0gJ1BBUkFNRVRFUl9TVE9SRSdcbn1cblxuLyoqXG4gKiBCdWlsZCBtYWNoaW5lIGNvbXB1dGUgdHlwZS5cbiAqL1xuZXhwb3J0IGVudW0gQ29tcHV0ZVR5cGUge1xuICAgIFNtYWxsICA9ICdCVUlMRF9HRU5FUkFMMV9TTUFMTCcsXG4gICAgTWVkaXVtID0gJ0JVSUxEX0dFTkVSQUwxX01FRElVTScsXG4gICAgTGFyZ2UgID0gJ0JVSUxEX0dFTkVSQUwxX0xBUkdFJ1xufVxuXG5leHBvcnQgY2xhc3MgUHJvamVjdE5hbWUgZXh0ZW5kcyBUb2tlbiB7IH1cblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAvcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2NvZGVidWlsZC9saWIvcHJvamVjdC50cyIsIm1vZHVsZS5leHBvcnRzID0ganNpaSRfYXdzX2Nka19ldmVudHMkO1xuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIGV4dGVybmFsIFwianNpaSRfYXdzX2Nka19ldmVudHMkXCJcbi8vIG1vZHVsZSBpZCA9IDRcbi8vIG1vZHVsZSBjaHVua3MgPSAwIiwibW9kdWxlLmV4cG9ydHMgPSBqc2lpJF9hd3NfY2RrX2lhbSQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX2lhbSRcIlxuLy8gbW9kdWxlIGlkID0gNVxuLy8gbW9kdWxlIGNodW5rcyA9IDAiLCJtb2R1bGUuZXhwb3J0cyA9IGpzaWkkX2F3c19jZGtfcmVzb3VyY2VzJDtcblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyBleHRlcm5hbCBcImpzaWkkX2F3c19jZGtfcmVzb3VyY2VzJFwiXG4vLyBtb2R1bGUgaWQgPSA2XG4vLyBtb2R1bGUgY2h1bmtzID0gMCIsImltcG9ydCB7IFJlcG9zaXRvcnkgfSBmcm9tICdAYXdzLWNkay9jb2RlY29tbWl0JztcbmltcG9ydCB7IEZuQ29uY2F0LCBQb2xpY3lTdGF0ZW1lbnQgfSBmcm9tICdAYXdzLWNkay9jb3JlJztcbmltcG9ydCB7IGNvZGVidWlsZCB9IGZyb20gJ0Bhd3MtY2RrL3Jlc291cmNlcyc7XG5pbXBvcnQgeyBCdWNrZXRSZWYgfSBmcm9tICdAYXdzLWNkay9zMyc7XG5pbXBvcnQgeyBCdWlsZFByb2plY3QgfSBmcm9tICcuL3Byb2plY3QnO1xuXG4vKipcbiAqIFNvdXJjZSBQcm92aWRlciBkZWZpbml0aW9uIGZvciBhIENvZGVCdWlsZCBwcm9qZWN0XG4gKiBUT0RPOiBBYnN0cmFjdCBjbGFzcyBzaG91bGQgYmUgYW4gaW50ZXJmYWNlXG4gKi9cbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBCdWlsZFNvdXJjZSB7XG4gICAgLyoqXG4gICAgICogQ2FsbGVkIGJ5IHRoZSBwcm9qZWN0IHdoZW4gdGhlIHNvdXJjZSBpcyBhZGRlZCBzbyB0aGF0IHRoZSBzb3VyY2UgY2FuIHBlcmZvcm1cbiAgICAgKiBiaW5kaW5nIG9wZXJhdGlvbnMgb24gdGhlIHNvdXJjZS4gRm9yIGV4YW1wbGUsIGl0IGNhbiBncmFudCBwZXJtaXNzaW9ucyB0byB0aGVcbiAgICAgKiBjb2RlIGJ1aWxkIHByb2plY3QgdG8gcmVhZCBmcm9tIHRoZSBTMyBidWNrZXQuXG4gICAgICovXG4gICAgcHVibGljIGJpbmQoX3Byb2plY3Q6IEJ1aWxkUHJvamVjdCkge1xuICAgICAgICByZXR1cm47XG4gICAgfVxuXG4gICAgcHVibGljIGFic3RyYWN0IHRvU291cmNlSlNPTigpOiBjb2RlYnVpbGQuUHJvamVjdFJlc291cmNlLlNvdXJjZVByb3BlcnR5O1xufVxuXG4vKipcbiAqIENvZGVDb21taXQgU291cmNlIGRlZmluaXRpb24gZm9yIGEgQ29kZUJ1aWxkIHByb2plY3RcbiAqL1xuZXhwb3J0IGNsYXNzIENvZGVDb21taXRTb3VyY2UgZXh0ZW5kcyBCdWlsZFNvdXJjZSB7XG4gICAgY29uc3RydWN0b3IocHJpdmF0ZSByZWFkb25seSByZXBvOiBSZXBvc2l0b3J5KSB7XG4gICAgICAgIHN1cGVyKCk7XG4gICAgfVxuXG4gICAgcHVibGljIGJpbmQocHJvamVjdDogQnVpbGRQcm9qZWN0KSB7XG4gICAgICAgIC8vIGh0dHBzOi8vZG9jcy5hd3MuYW1hem9uLmNvbS9jb2RlYnVpbGQvbGF0ZXN0L3VzZXJndWlkZS9zZXR0aW5nLXVwLmh0bWxcbiAgICAgICAgcHJvamVjdC5hZGRUb1JvbGVQb2xpY3kobmV3IFBvbGljeVN0YXRlbWVudCgpXG4gICAgICAgICAgICAuYWRkQWN0aW9uKCdjb2RlY29tbWl0OkdpdFB1bGwnKVxuICAgICAgICAgICAgLmFkZFJlc291cmNlKHRoaXMucmVwby5yZXBvc2l0b3J5QXJuKSk7XG4gICAgfVxuXG4gICAgcHVibGljIHRvU291cmNlSlNPTigpOiBjb2RlYnVpbGQuUHJvamVjdFJlc291cmNlLlNvdXJjZVByb3BlcnR5IHtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIHR5cGU6IFNvdXJjZVR5cGUuQ29kZUNvbW1pdCxcbiAgICAgICAgICAgIGxvY2F0aW9uOiB0aGlzLnJlcG8ucmVwb3NpdG9yeUNsb25lVXJsSHR0cFxuICAgICAgICB9O1xuICAgIH1cbn1cblxuLyoqXG4gKiBDb2RlUGlwZWxpbmUgU291cmNlIGRlZmluaXRpb24gZm9yIGEgQ29kZUJ1aWxkIHByb2plY3RcbiAqL1xuZXhwb3J0IGNsYXNzIENvZGVQaXBlbGluZVNvdXJjZSBleHRlbmRzIEJ1aWxkU291cmNlIHtcbiAgICBwdWJsaWMgdG9Tb3VyY2VKU09OKCk6IGNvZGVidWlsZC5Qcm9qZWN0UmVzb3VyY2UuU291cmNlUHJvcGVydHkge1xuICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgdHlwZTogU291cmNlVHlwZS5Db2RlUGlwZWxpbmVcbiAgICAgICAgfTtcbiAgICB9XG5cbiAgICBwdWJsaWMgYmluZChfcHJvamVjdDogQnVpbGRQcm9qZWN0KSB7XG4gICAgICAgIC8vIFRPRE86IHBlcm1pc3Npb25zIG9uIHRoZSBwaXBlbGluZSBidWNrZXQ/XG4gICAgfVxufVxuXG4vKipcbiAqIEdpdEh1YiBTb3VyY2UgZGVmaW5pdGlvbiBmb3IgYSBDb2RlQnVpbGQgcHJvamVjdFxuICovXG5leHBvcnQgY2xhc3MgR2l0SHViU291cmNlIGV4dGVuZHMgQnVpbGRTb3VyY2Uge1xuICAgIGNvbnN0cnVjdG9yKHByaXZhdGUgcmVhZG9ubHkgaHR0cHNjbG9uZVVybDogc3RyaW5nLCBwcml2YXRlIHJlYWRvbmx5IG9hdXRoVG9rZW46IGFueSkge1xuICAgICAgICBzdXBlcigpO1xuICAgICAgICB0aGlzLmh0dHBzY2xvbmVVcmwgPSBodHRwc2Nsb25lVXJsO1xuICAgICAgICB0aGlzLm9hdXRoVG9rZW4gPSBvYXV0aFRva2VuO1xuICAgIH1cblxuICAgIHB1YmxpYyB0b1NvdXJjZUpTT04oKTogY29kZWJ1aWxkLlByb2plY3RSZXNvdXJjZS5Tb3VyY2VQcm9wZXJ0eSB7XG4gICAgICAgIHJldHVybiB7XG4gICAgICAgICAgICB0eXBlOiBTb3VyY2VUeXBlLkdpdEh1YixcbiAgICAgICAgICAgIGF1dGg6IHRoaXMub2F1dGhUb2tlbiAhPSBudWxsID8geyB0eXBlOiAnT0FVVEgnLCByZXNvdXJjZTogdGhpcy5vYXV0aFRva2VuIH0gOiB1bmRlZmluZWQsXG4gICAgICAgICAgICBsb2NhdGlvbjogdGhpcy5odHRwc2Nsb25lVXJsXG4gICAgICAgIH07XG4gICAgfVxufVxuXG4vKipcbiAqIEdpdEh1YiBFbnRlcnByaWNlIFNvdXJjZSBkZWZpbml0aW9uIGZvciBhIENvZGVCdWlsZCBwcm9qZWN0XG4gKi9cbmV4cG9ydCBjbGFzcyBHaXRIdWJFbnRlcnByaXNlU291cmNlIGV4dGVuZHMgQnVpbGRTb3VyY2Uge1xuICAgIGNvbnN0cnVjdG9yKHByaXZhdGUgcmVhZG9ubHkgY2xvbmVVcmw6IHN0cmluZykge1xuICAgICAgICBzdXBlcigpO1xuICAgICAgICB0aGlzLmNsb25lVXJsID0gY2xvbmVVcmw7XG4gICAgfVxuXG4gICAgcHVibGljIHRvU291cmNlSlNPTigpOiBjb2RlYnVpbGQuUHJvamVjdFJlc291cmNlLlNvdXJjZVByb3BlcnR5IHtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIHR5cGU6IFNvdXJjZVR5cGUuR2l0SHViRW50ZXJQcmlzZSxcbiAgICAgICAgICAgIGxvY2F0aW9uOiB0aGlzLmNsb25lVXJsLFxuICAgICAgICB9O1xuICAgIH1cbn1cblxuLyoqXG4gKiBCaXRCdWNrZXQgU291cmNlIGRlZmluaXRpb24gZm9yIGEgQ29kZUJ1aWxkIHByb2plY3RcbiAqL1xuZXhwb3J0IGNsYXNzIEJpdEJ1Y2tldFNvdXJjZSBleHRlbmRzIEJ1aWxkU291cmNlIHtcbiAgICBjb25zdHJ1Y3Rvcihwcml2YXRlIHJlYWRvbmx5IGh0dHBzQ2xvbmVVcmw6IHN0cmluZykge1xuICAgICAgICBzdXBlcigpO1xuICAgICAgICB0aGlzLmh0dHBzQ2xvbmVVcmwgPSBodHRwc0Nsb25lVXJsO1xuICAgIH1cbiAgICBwdWJsaWMgdG9Tb3VyY2VKU09OKCk6IGNvZGVidWlsZC5Qcm9qZWN0UmVzb3VyY2UuU291cmNlUHJvcGVydHkge1xuICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgdHlwZTogU291cmNlVHlwZS5CaXRCdWNrZXQsXG4gICAgICAgICAgICBsb2NhdGlvbjogdGhpcy5odHRwc0Nsb25lVXJsXG4gICAgICAgIH07XG4gICAgfVxufVxuXG4vKipcbiAqIFMzIGJ1Y2tldCBkZWZpbml0aW9uIGZvciBhIENvZGVCdWlsZCBwcm9qZWN0LlxuICovXG5leHBvcnQgY2xhc3MgUzNCdWNrZXRTb3VyY2UgZXh0ZW5kcyBCdWlsZFNvdXJjZSB7XG4gICAgY29uc3RydWN0b3IocHJpdmF0ZSByZWFkb25seSBidWNrZXQ6IEJ1Y2tldFJlZiwgcHJpdmF0ZSByZWFkb25seSBwYXRoOiBzdHJpbmcpIHtcbiAgICAgICAgc3VwZXIoKTtcbiAgICB9XG5cbiAgICBwdWJsaWMgdG9Tb3VyY2VKU09OKCk6IGNvZGVidWlsZC5Qcm9qZWN0UmVzb3VyY2UuU291cmNlUHJvcGVydHkge1xuICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgdHlwZTogU291cmNlVHlwZS5TMyxcbiAgICAgICAgICAgIGxvY2F0aW9uOiBuZXcgRm5Db25jYXQodGhpcy5idWNrZXQuYnVja2V0TmFtZSwgJy8nLCB0aGlzLnBhdGgpXG4gICAgICAgIH07XG4gICAgfVxuXG4gICAgcHVibGljIGJpbmQocHJvamVjdDogQnVpbGRQcm9qZWN0KSB7XG4gICAgICAgIHRoaXMuYnVja2V0LmdyYW50UmVhZChwcm9qZWN0LnJvbGUpO1xuICAgIH1cbn1cblxuLyoqXG4gKiBTb3VyY2UgdHlwZXMgZm9yIENvZGVCdWlsZCBQcm9qZWN0XG4gKi9cbmV4cG9ydCBlbnVtIFNvdXJjZVR5cGUge1xuICAgIENvZGVDb21taXQgPSAnQ09ERUNPTU1JVCcsXG4gICAgQ29kZVBpcGVsaW5lID0gJ0NPREVQSVBFTElORScsXG4gICAgR2l0SHViID0gJ0dJVEhVQicsXG4gICAgR2l0SHViRW50ZXJQcmlzZSA9ICdHSVRIVUJfRU5URVJQUklTRScsXG4gICAgQml0QnVja2V0ID0gJ0JJVEJVQ0tFVCcsXG4gICAgUzMgPSAnUzMnXG59XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9jb2RlYnVpbGQvbGliL3NvdXJjZS50cyJdLCJzb3VyY2VSb290IjoiIn0="
+}

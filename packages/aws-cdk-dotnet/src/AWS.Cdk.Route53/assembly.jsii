@@ -1,0 +1,1365 @@
+{
+  "schema": "jsii/1.0",
+  "types": {
+    "jsii$_aws_cdk_route53$.PublicHostedZoneProps": {
+      "docs": {
+        "comment": "Properties of a new hosted zone"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The fully qualified domain name for the hosted zone"
+          },
+          "name": "zoneName",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "default": "no comment",
+            "comment": "Any comments that you want to include about the hosted zone."
+          },
+          "name": "comment",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "no DNS query logging",
+            "comment": "The Amazon Resource Name (ARN) for the log group that you want Amazon Route 53 to send query logs to."
+          },
+          "name": "queryLogsLogGroupArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.logs.LogGroupArn",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_route53$.PublicHostedZoneProps",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "PublicHostedZoneProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_route53$.PublicHostedZone": {
+      "docs": {
+        "comment": "Create a Route53 public hosted zone."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Identifier of this hosted zone"
+          },
+          "name": "hostedZoneId",
+          "type": {
+            "fqn": "jsii$_aws_cdk_route53$.HostedZoneId"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Fully qualified domain name for the hosted zone"
+          },
+          "name": "zoneName",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Nameservers for this public hosted zone"
+          },
+          "name": "nameServers",
+          "type": {
+            "fqn": "jsii$_aws_cdk_route53$.HostedZoneNameServers"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_route53$.PublicHostedZone",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "PublicHostedZone",
+      "base": {
+        "fqn": "jsii$_aws_cdk_route53$.HostedZoneRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_route53$.PublicHostedZoneProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_route53$.PrivateHostedZoneProps": {
+      "docs": {
+        "comment": "Properties for a private hosted zone."
+      },
+      "kind": "interface",
+      "interfaces": [
+        {
+          "fqn": "jsii$_aws_cdk_route53$.PublicHostedZoneProps"
+        }
+      ],
+      "properties": [
+        {
+          "docs": {
+            "comment": "One VPC that you want to associate with this hosted zone."
+          },
+          "name": "vpc",
+          "type": {
+            "fqn": "jsii$_aws_cdk_ec2$.VpcNetworkRef"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_route53$.PrivateHostedZoneProps",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "PrivateHostedZoneProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_route53$.PrivateHostedZone": {
+      "docs": {
+        "comment": "Create a Route53 private hosted zone for use in one or more VPCs.\n\nNote that `enableDnsHostnames` and `enableDnsSupport` must have been enabled\nfor the VPC you're configuring for private hosted zones."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Identifier of this hosted zone"
+          },
+          "name": "hostedZoneId",
+          "type": {
+            "fqn": "jsii$_aws_cdk_route53$.HostedZoneId"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Fully qualified domain name for the hosted zone"
+          },
+          "name": "zoneName",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "vpc the other VPC to add.",
+                "comment": "the other VPC to add."
+              },
+              "name": "vpc",
+              "type": {
+                "fqn": "jsii$_aws_cdk_ec2$.VpcNetworkRef"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Add another VPC to this private hosted zone."
+          },
+          "name": "addVpc"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_route53$.PrivateHostedZone",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "PrivateHostedZone",
+      "base": {
+        "fqn": "jsii$_aws_cdk_route53$.HostedZoneRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_route53$.PrivateHostedZoneProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_route53$.HostedZoneNameServers": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_route53$.HostedZoneNameServers",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "HostedZoneNameServers",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_route53$.HostedZoneRef": {
+      "docs": {
+        "comment": "Imported or created hosted zone"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "ID of this hosted zone"
+          },
+          "name": "hostedZoneId",
+          "type": {
+            "fqn": "jsii$_aws_cdk_route53$.HostedZoneId"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "FQDN of this hosted zone"
+          },
+          "name": "zoneName",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true,
+          "abstract": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_route53$.HostedZoneRefProps"
+              }
+            }
+          ],
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_route53$.HostedZoneRef"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Export the hosted zone"
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_route53$.HostedZoneRefProps"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_route53$.HostedZoneRef",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "HostedZoneRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_route53$.HostedZoneId": {
+      "docs": {
+        "comment": "Hosted zone identifier"
+      },
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_route53$.HostedZoneId",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "HostedZoneId",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_route53$.HostedZoneRefProps": {
+      "docs": {
+        "comment": "Reference to a hosted zone"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Identifier of the hosted zone"
+          },
+          "name": "hostedZoneId",
+          "type": {
+            "fqn": "jsii$_aws_cdk_route53$.HostedZoneId"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Name of the hosted zone"
+          },
+          "name": "zoneName",
+          "type": {
+            "primitive": "string"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_route53$.HostedZoneRefProps",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "HostedZoneRefProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_route53$.ImportedHostedZone": {
+      "docs": {
+        "comment": "Imported hosted zone"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "ID of this hosted zone"
+          },
+          "name": "hostedZoneId",
+          "type": {
+            "fqn": "jsii$_aws_cdk_route53$.HostedZoneId"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "FQDN of this hosted zone"
+          },
+          "name": "zoneName",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_route53$.ImportedHostedZone",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "ImportedHostedZone",
+      "base": {
+        "fqn": "jsii$_aws_cdk_route53$.HostedZoneRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_route53$.HostedZoneRefProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_route53$.TXTRecordProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "name": "recordName",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "name": "recordValue",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "default": "1800 seconds "
+          },
+          "name": "ttl",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_route53$.TXTRecordProps",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "TXTRecordProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_route53$.TXTRecord": {
+      "docs": {
+        "comment": "A DNS TXT record"
+      },
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_route53$.TXTRecord",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "TXTRecord",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_route53$.HostedZoneRef"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_route53$.TXTRecordProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_route53$.ZoneDelegationRecordProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The name of the zone that delegation is made to."
+          },
+          "name": "delegatedZoneName",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The name servers to report in the delegation records."
+          },
+          "name": "nameServers",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "default": "172800 seconds.",
+            "comment": "The TTL of the zone delegation records."
+          },
+          "name": "ttl",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "no comment.",
+            "comment": "Any comments that you want to include about the zone delegation records."
+          },
+          "name": "comment",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_route53$.ZoneDelegationRecordProps",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "ZoneDelegationRecordProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_route53$.ZoneDelegationRecord": {
+      "docs": {
+        "comment": "A record to delegate further lookups to a different set of name servers"
+      },
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_route53$.ZoneDelegationRecord",
+      "module": "jsii$_aws_cdk_route53$",
+      "namespace": "jsii$_aws_cdk_route53$",
+      "name": "ZoneDelegationRecord",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_route53$.HostedZoneRef"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_route53$.ZoneDelegationRecordProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    }
+  },
+  "nametree": {
+    "jsii$_aws_cdk_route53$": {
+      "PublicHostedZoneProps": {
+        "_": "jsii$_aws_cdk_route53$.PublicHostedZoneProps"
+      },
+      "PublicHostedZone": {
+        "_": "jsii$_aws_cdk_route53$.PublicHostedZone"
+      },
+      "PrivateHostedZoneProps": {
+        "_": "jsii$_aws_cdk_route53$.PrivateHostedZoneProps"
+      },
+      "PrivateHostedZone": {
+        "_": "jsii$_aws_cdk_route53$.PrivateHostedZone"
+      },
+      "HostedZoneNameServers": {
+        "_": "jsii$_aws_cdk_route53$.HostedZoneNameServers"
+      },
+      "HostedZoneRef": {
+        "_": "jsii$_aws_cdk_route53$.HostedZoneRef"
+      },
+      "HostedZoneId": {
+        "_": "jsii$_aws_cdk_route53$.HostedZoneId"
+      },
+      "HostedZoneRefProps": {
+        "_": "jsii$_aws_cdk_route53$.HostedZoneRefProps"
+      },
+      "ImportedHostedZone": {
+        "_": "jsii$_aws_cdk_route53$.ImportedHostedZone"
+      },
+      "TXTRecordProps": {
+        "_": "jsii$_aws_cdk_route53$.TXTRecordProps"
+      },
+      "TXTRecord": {
+        "_": "jsii$_aws_cdk_route53$.TXTRecord"
+      },
+      "ZoneDelegationRecordProps": {
+        "_": "jsii$_aws_cdk_route53$.ZoneDelegationRecordProps"
+      },
+      "ZoneDelegationRecord": {
+        "_": "jsii$_aws_cdk_route53$.ZoneDelegationRecord"
+      }
+    }
+  },
+  "typecount": 13,
+  "externalTypes": {
+    "jsii$_aws_cdk_resources$.logs.LogGroupArn": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.logs.LogGroupArn",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.logs",
+      "name": "LogGroupArn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Arn"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.Construct": {
+      "docs": {
+        "comment": "Represents the building block of the construct graph.\nWhen a construct is created, it is always added as a child"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the parent of this node or undefined if this is a root node."
+          },
+          "name": "parent",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of this construct"
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "All direct children of this construct."
+          },
+          "name": "children",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "returns": "/-separated path of this Construct.",
+            "comment": "Returns the path of all constructs from root to this construct, in string form."
+          },
+          "name": "path",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "An array of metadata objects associated with this construct.\nThis can be used, for example, to implement support for deprecation notices, source mapping, etc."
+          },
+          "name": "metadata",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.MetadataEntry"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "docs": {
+            "comment": "Returns a string representation of this construct."
+          },
+          "name": "toString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "depth",
+              "type": {
+                "primitive": "number",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Returns a string with a tree representation of this construct and it's children."
+          },
+          "name": "toTreeString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "a child by path or undefined if not found.",
+            "comment": "Return a descendant by path, or undefined"
+          },
+          "name": "tryFindChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "Child with the given path.",
+            "comment": "Return a descendant by path\n\nThrows an exception if the descendant is not found."
+          },
+          "name": "findChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "value The context value",
+                "comment": "The context value"
+              },
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "This can be used to set contextual values.\nContext must be set before any children are added, since children may consult context info during construction.\nIf the key already exists, it will be overridden."
+          },
+          "name": "setContext"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The context value or undefined",
+            "comment": "Retrieves a value from tree context.\n\nContext is usually initialized at the root, but can be overridden at any point in the tree."
+          },
+          "name": "getContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Retrieve a value from tree-global context\n\nIt is an error if the context object is not available."
+          },
+          "name": "requireContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "type a string denoting the type of metadata",
+                "comment": "a string denoting the type of metadata"
+              },
+              "name": "type",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "data the value of the metadata (can be a Token). If null/undefined, metadata will not be added.",
+                "comment": "the value of the metadata (can be a Token). If null/undefined, metadata will not be added."
+              },
+              "name": "data",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "from a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)",
+                "comment": "a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)"
+              },
+              "name": "from",
+              "type": {
+                "primitive": "any",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a metadata entry to this construct.\nEntries are arbitrary values and will also include a stack trace to allow tracing back to\nthe code location for when the entry was added. It can be used, for example, to include source\nmapping in CloudFormation templates to improve diagnostics."
+          },
+          "name": "addMetadata",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "message The warning message.",
+                "comment": "The warning message."
+              },
+              "name": "message",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a { warning: <message> } metadata entry to this construct."
+          },
+          "name": "addWarning",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "docs": {
+            "returns": "An array of validation error messages, or an empty array if there the construct is valid.",
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "returns": "A list of validation errors. If the list is empty, all constructs are valid.",
+            "comment": "Invokes 'validate' on all child constructs and then on this construct (depth-first)."
+          },
+          "name": "validateTree",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.ValidationError"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "upTo",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Return the ancestors (including self) of this Construct up until and excluding the indicated component"
+          },
+          "name": "ancestors",
+          "protected": true,
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "props The props bag.",
+                "comment": "The props bag."
+              },
+              "name": "props",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the required property.",
+                "comment": "The name of the required property."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Throws if the `props` bag doesn't include the property `name`.\nIn the future we can add some type-checking here, maybe even auto-generate during compilation."
+          },
+          "name": "required",
+          "protected": true,
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "child The child construct",
+                "comment": "The child construct"
+              },
+              "name": "child",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "childName",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The resolved path part name of the child",
+            "comment": "Adds a child construct to this node."
+          },
+          "name": "addChild",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Locks this construct from allowing more children to be added. After this\ncall, no more children can be added to this construct or to any children."
+          },
+          "name": "lock",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Unlocks this costruct and allows mutations (adding children)."
+          },
+          "name": "unlock",
+          "protected": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Construct",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Construct",
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_ec2$.VpcNetworkRef": {
+      "docs": {
+        "comment": "A new or imported VPC"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Identifier for this VPC"
+          },
+          "name": "vpcId",
+          "type": {
+            "fqn": "jsii$_aws_cdk_ec2$.VpcNetworkId"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "List of public subnets in this VPC"
+          },
+          "name": "publicSubnets",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_ec2$.VpcSubnetRef"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "List of private subnets in this VPC"
+          },
+          "name": "privateSubnets",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_ec2$.VpcSubnetRef"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Parts of the VPC that constitute full construction"
+          },
+          "name": "dependencyElements",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.IDependable"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_ec2$.VpcNetworkRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Import an exported VPC"
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_ec2$.VpcNetworkRef"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "placement",
+              "type": {
+                "fqn": "jsii$_aws_cdk_ec2$.VpcPlacementStrategy",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Return the subnets appropriate for the placement strategy"
+          },
+          "name": "subnets",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_ec2$.VpcSubnetRef"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "comment": "Export this VPC from the stack"
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_ec2$.VpcNetworkRefProps"
+          }
+        }
+      ],
+      "interfaces": [
+        {
+          "fqn": "jsii$_aws_cdk_core$.IDependable"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_ec2$.VpcNetworkRef",
+      "module": "jsii$_aws_cdk_ec2$",
+      "namespace": "jsii$_aws_cdk_ec2$",
+      "name": "VpcNetworkRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.Token": {
+      "docs": {
+        "comment": "Represents a lazy-evaluated value. Can be used to delay evaluation of a certain value\nin case, for example, that it requires some context or late-bound data."
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "docs": {
+            "returns": "The resolved value for this token."
+          },
+          "name": "resolve",
+          "returns": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Token",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Token",
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    }
+  },
+  "name": "jsii$_aws_cdk_route53$",
+  "package": "@aws-cdk/route53",
+  "version": "0.7.2-beta",
+  "dependencies": {
+    "jsii$_aws_cdk_core$": {
+      "package": "@aws-cdk/core",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_ec2$": {
+      "package": "@aws-cdk/ec2",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "package": "@aws-cdk/resources",
+      "version": "0.7.2-beta"
+    }
+  },
+  "names": {
+    "java": "com.amazonaws.cdk.route53",
+    "dotnet": "AWS.Cdk.Route53",
+    "js": "@aws-cdk/route53"
+  },
+  "nativenames": {
+    "jsii$_aws_cdk_core$": {
+      "java": "com.amazonaws.cdk",
+      "dotnet": "AWS.Cdk",
+      "js": "@aws-cdk/core"
+    },
+    "jsii$_aws_cdk_ec2$": {
+      "java": "com.amazonaws.cdk.ec2",
+      "dotnet": "AWS.Cdk.Ec2",
+      "js": "@aws-cdk/ec2"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "java": "com.amazonaws.cdk.resources",
+      "dotnet": "AWS.Cdk.Resources",
+      "js": "@aws-cdk/resources"
+    },
+    "jsii$_aws_cdk_route53$": {
+      "java": "com.amazonaws.cdk.route53",
+      "dotnet": "AWS.Cdk.Route53",
+      "js": "@aws-cdk/route53"
+    }
+  },
+  "readme": {
+    "markdown": "## AWS Route53 Constuct Library\n\nTo add a public hosted zone:\n\n```ts\nimport { PublicHostedZone } from '@aws-cdk/route53';\n\nnew PublicHostedZone(this, 'HostedZone', {\n    zoneName: 'fully.qualified.domain.com'\n});\n```\n\nTo add a private hosted zone, use `PrivateHostedZone`. Note that\n`enableDnsHostnames` and `enableDnsSupport` must have been enabled for the\nVPC you're configuring for private hosted zones.\n\n```ts\nimport { PrivateHostedZone } from '@aws-cdk/route53';\n\nconst vpc = new VpcNetwork(this, 'VPC');\n\nconst zone = new PrivateHostedZone(this, 'HostedZone', {\n    zoneName: 'fully.qualified.domain.com',\n    vpc    // At least one VPC has to be added to a Private Hosted Zone.\n});\n```\n\nAdditional VPCs can be added with `zone.addVPC()`.\n\n### Adding Records\n\nTo add a TXT record to your zone:\n```ts\nimport { TXTRecord } from '@aws-cdk/route53';\n\nnew TXTRecord(zone, 'TXTRecord', {\n    recordName: '_foo',  // If the name ends with a \".\", it will be used as-is;\n                         // if it ends with a \".\" followed by the zone name, a trailing \".\" will be added automatically;\n                         // otherwise, a \".\", the zone name, and a trailing \".\" will be added automatically.\n    recordValue: 'Bar!', // Will be quoted for you, and \" will be escaped automatically.\n    ttl: 90,             // Optional - default is 1800\n});\n```\n"
+  },
+  "code": "var jsii$_aws_cdk_route53$ =\n/******/ (function(modules) { // webpackBootstrap\n/******/ \t// The module cache\n/******/ \tvar installedModules = {};\n/******/\n/******/ \t// The require function\n/******/ \tfunction __webpack_require__(moduleId) {\n/******/\n/******/ \t\t// Check if module is in cache\n/******/ \t\tif(installedModules[moduleId]) {\n/******/ \t\t\treturn installedModules[moduleId].exports;\n/******/ \t\t}\n/******/ \t\t// Create a new module (and put it into the cache)\n/******/ \t\tvar module = installedModules[moduleId] = {\n/******/ \t\t\ti: moduleId,\n/******/ \t\t\tl: false,\n/******/ \t\t\texports: {}\n/******/ \t\t};\n/******/\n/******/ \t\t// Execute the module function\n/******/ \t\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\n/******/\n/******/ \t\t// Flag the module as loaded\n/******/ \t\tmodule.l = true;\n/******/\n/******/ \t\t// Return the exports of the module\n/******/ \t\treturn module.exports;\n/******/ \t}\n/******/\n/******/\n/******/ \t// expose the modules object (__webpack_modules__)\n/******/ \t__webpack_require__.m = modules;\n/******/\n/******/ \t// expose the module cache\n/******/ \t__webpack_require__.c = installedModules;\n/******/\n/******/ \t// define getter function for harmony exports\n/******/ \t__webpack_require__.d = function(exports, name, getter) {\n/******/ \t\tif(!__webpack_require__.o(exports, name)) {\n/******/ \t\t\tObject.defineProperty(exports, name, {\n/******/ \t\t\t\tconfigurable: false,\n/******/ \t\t\t\tenumerable: true,\n/******/ \t\t\t\tget: getter\n/******/ \t\t\t});\n/******/ \t\t}\n/******/ \t};\n/******/\n/******/ \t// getDefaultExport function for compatibility with non-harmony modules\n/******/ \t__webpack_require__.n = function(module) {\n/******/ \t\tvar getter = module && module.__esModule ?\n/******/ \t\t\tfunction getDefault() { return module['default']; } :\n/******/ \t\t\tfunction getModuleExports() { return module; };\n/******/ \t\t__webpack_require__.d(getter, 'a', getter);\n/******/ \t\treturn getter;\n/******/ \t};\n/******/\n/******/ \t// Object.prototype.hasOwnProperty.call\n/******/ \t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\n/******/\n/******/ \t// __webpack_public_path__\n/******/ \t__webpack_require__.p = \"\";\n/******/\n/******/ \t// Load entry module and return exports\n/******/ \treturn __webpack_require__(__webpack_require__.s = 4);\n/******/ })\n/************************************************************************/\n/******/ ([\n/* 0 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_core$;\n\n/***/ }),\n/* 1 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_resources$;\n\n/***/ }),\n/* 2 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(0);\n/**\n * Imported or created hosted zone\n */\nclass HostedZoneRef extends core_1.Construct {\n    static import(parent, name, props) {\n        return new ImportedHostedZone(parent, name, props);\n    }\n    /**\n     * Export the hosted zone\n     */\n    export() {\n        return {\n            hostedZoneId: new core_1.Output(this, 'HostedZoneId', { value: this.hostedZoneId }).makeImportValue(),\n            zoneName: this.zoneName,\n        };\n    }\n}\nexports.HostedZoneRef = HostedZoneRef;\n/**\n * Hosted zone identifier\n */\nclass HostedZoneId extends core_1.Token {\n}\nexports.HostedZoneId = HostedZoneId;\n/**\n * Imported hosted zone\n */\nclass ImportedHostedZone extends HostedZoneRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        this.hostedZoneId = props.hostedZoneId;\n        this.zoneName = props.zoneName;\n    }\n}\nexports.ImportedHostedZone = ImportedHostedZone;\n\n\n/***/ }),\n/* 3 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\n/**\n * Route53 requires the record names are specified as fully qualified names, but this\n * forces lots of redundant work on the user (repeating the zone name over and over).\n * This function allows the user to be lazier and offers a nicer experience, by\n * qualifying relative names appropriately:\n *\n * @param providedName the user-specified name of the record.\n * @param zoneName     the fully-qualified name of the zone the record will be created in.\n *\n * @returns <ul>\n *              <li>If +providedName+ ends with a +.+, use it as-is</li>\n *              <li>If +providedName+ ends with +zoneName+, append a trailing +.+</li>\n *              <li>Otherwise, append +.+, +zoneName+ and a trailing +.+</li>\n *          </ul>\n */\nfunction determineFullyQualifiedDomainName(providedName, hostedZone) {\n    if (providedName.endsWith('.')) {\n        return providedName;\n    }\n    const suffix = `.${hostedZone.zoneName}`;\n    if (providedName.endsWith(suffix)) {\n        return `${providedName}.`;\n    }\n    return `${providedName}${suffix}.`;\n}\nexports.determineFullyQualifiedDomainName = determineFullyQualifiedDomainName;\n\n\n/***/ }),\n/* 4 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(5));\n__export(__webpack_require__(2));\n__export(__webpack_require__(7));\n\n\n/***/ }),\n/* 5 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(0);\nconst resources_1 = __webpack_require__(1);\nconst hosted_zone_ref_1 = __webpack_require__(2);\nconst util_1 = __webpack_require__(6);\n/**\n * Create a Route53 public hosted zone.\n */\nclass PublicHostedZone extends hosted_zone_ref_1.HostedZoneRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        util_1.validateZoneName(props.zoneName);\n        const hostedZone = new resources_1.route53.HostedZoneResource(this, 'Resource', Object.assign({}, determineHostedZoneProps(props)));\n        this.hostedZoneId = hostedZone.ref;\n        this.nameServers = hostedZone.hostedZoneNameServers;\n        this.zoneName = props.zoneName;\n    }\n}\nexports.PublicHostedZone = PublicHostedZone;\n/**\n * Create a Route53 private hosted zone for use in one or more VPCs.\n *\n * Note that `enableDnsHostnames` and `enableDnsSupport` must have been enabled\n * for the VPC you're configuring for private hosted zones.\n */\nclass PrivateHostedZone extends hosted_zone_ref_1.HostedZoneRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        /**\n         * VPCs to which this hosted zone will be added\n         */\n        this.vpcs = [];\n        util_1.validateZoneName(props.zoneName);\n        const hostedZone = new resources_1.route53.HostedZoneResource(this, 'Resource', Object.assign({ vpcs: new core_1.Token(() => this.vpcs ? this.vpcs : undefined) }, determineHostedZoneProps(props)));\n        this.hostedZoneId = hostedZone.ref;\n        this.zoneName = props.zoneName;\n        this.addVpc(props.vpc);\n    }\n    /**\n     * Add another VPC to this private hosted zone.\n     *\n     * @param vpc the other VPC to add.\n     */\n    addVpc(vpc) {\n        this.vpcs.push(toVpcProperty(vpc));\n    }\n}\nexports.PrivateHostedZone = PrivateHostedZone;\nfunction toVpcProperty(vpc) {\n    return { vpcId: vpc.vpcId, vpcRegion: new core_1.AwsRegion() };\n}\nclass HostedZoneNameServers extends core_1.Token {\n}\nexports.HostedZoneNameServers = HostedZoneNameServers;\nfunction determineHostedZoneProps(props) {\n    const hostedZoneName = props.zoneName + '.';\n    const hostedZoneConfig = props.comment ? { comment: props.comment } : undefined;\n    const queryLoggingConfig = props.queryLogsLogGroupArn ? { cloudWatchLogsLogGroupArn: props.queryLogsLogGroupArn } : undefined;\n    return { hostedZoneName, hostedZoneConfig, queryLoggingConfig };\n}\n\n\n/***/ }),\n/* 6 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\n/**\n * Validates a zone name is valid by Route53 specifc naming rules,\n * and that there is no trailing dot in the name.\n *\n * @param zoneName the zone name to be validated.\n * @returns +zoneName+\n * @throws ValidationError if the name is not valid.\n */\nfunction validateZoneName(zoneName) {\n    if (zoneName.endsWith('.')) {\n        throw new ValidationError('zone name must not end with a trailing dot');\n    }\n    if (zoneName.length > 255) {\n        throw new ValidationError('zone name cannot be more than 255 bytes long');\n    }\n    if (zoneName.split('.').find(label => label.length > 63)) {\n        throw new ValidationError('zone name labels cannot be more than 63 bytes long');\n    }\n    if (!zoneName.match(/^[a-z0-9!\"#$%&'()*+,/:;<=>?@[\\\\\\]^_`{|}~.-]+$/i)) {\n        throw new ValidationError('zone names can only contain a-z, 0-9, -, ! \" # $ % & \\' ( ) * + , - / : ; < = > ? @ [ \\ ] ^ _ ` { | } ~ .');\n    }\n}\nexports.validateZoneName = validateZoneName;\nclass ValidationError extends Error {\n    constructor(message) {\n        super(message);\n    }\n}\n\n\n/***/ }),\n/* 7 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(8));\n__export(__webpack_require__(9));\n\n\n/***/ }),\n/* 8 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(0);\nconst resources_1 = __webpack_require__(1);\nconst _util_1 = __webpack_require__(3);\n/**\n * A DNS TXT record\n */\nclass TXTRecord extends core_1.Construct {\n    constructor(parent, name, props) {\n        super(parent, name);\n        // JSON.stringify conveniently wraps strings in \" and escapes \".\n        const recordValue = JSON.stringify(props.recordValue);\n        const ttl = props.ttl === undefined ? 1800 : props.ttl;\n        new resources_1.route53.RecordSetResource(this, 'Resource', {\n            hostedZoneId: parent.hostedZoneId,\n            recordSetName: _util_1.determineFullyQualifiedDomainName(props.recordName, parent),\n            type: 'TXT',\n            resourceRecords: [recordValue],\n            ttl: ttl.toString()\n        });\n    }\n}\nexports.TXTRecord = TXTRecord;\n\n\n/***/ }),\n/* 9 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(0);\nconst resources_1 = __webpack_require__(1);\nconst _util_1 = __webpack_require__(3);\n/**\n * A record to delegate further lookups to a different set of name servers\n */\nclass ZoneDelegationRecord extends core_1.Construct {\n    constructor(parent, name, props) {\n        super(parent, name);\n        const ttl = props.ttl === undefined ? 172800 : props.ttl;\n        new resources_1.route53.RecordSetResource(this, 'Resource', {\n            hostedZoneId: parent.hostedZoneId,\n            recordSetName: _util_1.determineFullyQualifiedDomainName(props.delegatedZoneName, parent),\n            type: 'NS',\n            ttl: ttl.toString(),\n            comment: props.comment,\n            resourceRecords: props.nameServers.map(ns => ns.endsWith('.') ? ns : `${ns}.`)\n        });\n    }\n}\nexports.ZoneDelegationRecord = ZoneDelegationRecord;\n\n\n/***/ })\n/******/ ]);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vd2VicGFjay9ib290c3RyYXAgNzIxMGY3OTA0MGQ1MTVlMjBhZDIiLCJ3ZWJwYWNrOi8vL2V4dGVybmFsIFwianNpaSRfYXdzX2Nka19jb3JlJFwiIiwid2VicGFjazovLy9leHRlcm5hbCBcImpzaWkkX2F3c19jZGtfcmVzb3VyY2VzJFwiIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL3JvdXRlNTMvbGliL2hvc3RlZC16b25lLXJlZi50cyIsIndlYnBhY2s6Ly8vL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9yb3V0ZTUzL2xpYi9yZWNvcmRzL191dGlsLnRzIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL3JvdXRlNTMvbGliL2luZGV4LnRzIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL3JvdXRlNTMvbGliL2hvc3RlZC16b25lLnRzIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL3JvdXRlNTMvbGliL3V0aWwudHMiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvcm91dGU1My9saWIvcmVjb3Jkcy9pbmRleC50cyIsIndlYnBhY2s6Ly8vL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9yb3V0ZTUzL2xpYi9yZWNvcmRzL3R4dC50cyIsIndlYnBhY2s6Ly8vL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9yb3V0ZTUzL2xpYi9yZWNvcmRzL3pvbmUtZGVsZWdhdGlvbi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBOzs7QUFHQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxhQUFLO0FBQ0w7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQSxtQ0FBMkIsMEJBQTBCLEVBQUU7QUFDdkQseUNBQWlDLGVBQWU7QUFDaEQ7QUFDQTtBQUNBOztBQUVBO0FBQ0EsOERBQXNELCtEQUErRDs7QUFFckg7QUFDQTs7QUFFQTtBQUNBOzs7Ozs7O0FDN0RBLHFDOzs7Ozs7QUNBQSwwQzs7Ozs7Ozs7O0FDQUEsc0NBQXlEO0FBRXpEOztHQUVHO0FBQ0gsbUJBQW9DLFNBQVEsZ0JBQVM7SUFDMUMsTUFBTSxDQUFDLE1BQU0sQ0FBQyxNQUFpQixFQUFFLElBQVksRUFBRSxLQUF5QjtRQUMzRSxPQUFPLElBQUksa0JBQWtCLENBQUMsTUFBTSxFQUFFLElBQUksRUFBRSxLQUFLLENBQUMsQ0FBQztJQUN2RCxDQUFDO0lBWUQ7O09BRUc7SUFDSSxNQUFNO1FBQ1QsT0FBTztZQUNILFlBQVksRUFBRSxJQUFJLGFBQU0sQ0FBQyxJQUFJLEVBQUUsY0FBYyxFQUFFLEVBQUUsS0FBSyxFQUFFLElBQUksQ0FBQyxZQUFZLEVBQUUsQ0FBQyxDQUFDLGVBQWUsRUFBRTtZQUM5RixRQUFRLEVBQUUsSUFBSSxDQUFDLFFBQVE7U0FDMUIsQ0FBQztJQUNOLENBQUM7Q0FDSjtBQXhCRCxzQ0F3QkM7QUFFRDs7R0FFRztBQUNILGtCQUEwQixTQUFRLFlBQUs7Q0FDdEM7QUFERCxvQ0FDQztBQWlCRDs7R0FFRztBQUNILHdCQUFnQyxTQUFRLGFBQWE7SUFLakQsWUFBWSxNQUFpQixFQUFFLElBQVksRUFBRSxLQUF5QjtRQUNsRSxLQUFLLENBQUMsTUFBTSxFQUFFLElBQUksQ0FBQyxDQUFDO1FBRXBCLElBQUksQ0FBQyxZQUFZLEdBQUcsS0FBSyxDQUFDLFlBQVksQ0FBQztRQUN2QyxJQUFJLENBQUMsUUFBUSxHQUFHLEtBQUssQ0FBQyxRQUFRLENBQUM7SUFDbkMsQ0FBQztDQUNKO0FBWEQsZ0RBV0M7Ozs7Ozs7Ozs7QUNoRUQ7Ozs7Ozs7Ozs7Ozs7O0dBY0c7QUFDSCwyQ0FBa0QsWUFBb0IsRUFBRSxVQUF5QjtJQUM3RixJQUFJLFlBQVksQ0FBQyxRQUFRLENBQUMsR0FBRyxDQUFDLEVBQUU7UUFDNUIsT0FBTyxZQUFZLENBQUM7S0FDdkI7SUFFRCxNQUFNLE1BQU0sR0FBRyxJQUFJLFVBQVUsQ0FBQyxRQUFRLEVBQUUsQ0FBQztJQUN6QyxJQUFJLFlBQVksQ0FBQyxRQUFRLENBQUMsTUFBTSxDQUFDLEVBQUU7UUFDL0IsT0FBTyxHQUFHLFlBQVksR0FBRyxDQUFDO0tBQzdCO0lBRUQsT0FBTyxHQUFHLFlBQVksR0FBRyxNQUFNLEdBQUcsQ0FBQztBQUN2QyxDQUFDO0FBWEQsOEVBV0M7Ozs7Ozs7Ozs7Ozs7QUM1QkQsaUNBQThCO0FBQzlCLGlDQUFrQztBQUNsQyxpQ0FBMEI7Ozs7Ozs7Ozs7QUNGMUIsc0NBQTREO0FBRTVELDJDQUFtRDtBQUNuRCxpREFBZ0U7QUFDaEUsc0NBQTBDO0FBMEIxQzs7R0FFRztBQUNILHNCQUE4QixTQUFRLCtCQUFhO0lBZ0IvQyxZQUFZLE1BQWlCLEVBQUUsSUFBWSxFQUFFLEtBQTRCO1FBQ3JFLEtBQUssQ0FBQyxNQUFNLEVBQUUsSUFBSSxDQUFDLENBQUM7UUFFcEIsdUJBQWdCLENBQUMsS0FBSyxDQUFDLFFBQVEsQ0FBQyxDQUFDO1FBRWpDLE1BQU0sVUFBVSxHQUFHLElBQUksbUJBQU8sQ0FBQyxrQkFBa0IsQ0FBQyxJQUFJLEVBQUUsVUFBVSxvQkFDM0Qsd0JBQXdCLENBQUMsS0FBSyxDQUFDLEVBQ3BDLENBQUM7UUFFSCxJQUFJLENBQUMsWUFBWSxHQUFHLFVBQVUsQ0FBQyxHQUFHLENBQUM7UUFDbkMsSUFBSSxDQUFDLFdBQVcsR0FBRyxVQUFVLENBQUMscUJBQXFCLENBQUM7UUFDcEQsSUFBSSxDQUFDLFFBQVEsR0FBRyxLQUFLLENBQUMsUUFBUSxDQUFDO0lBQ25DLENBQUM7Q0FDSjtBQTdCRCw0Q0E2QkM7QUFZRDs7Ozs7R0FLRztBQUNILHVCQUErQixTQUFRLCtCQUFhO0lBZ0JoRCxZQUFZLE1BQWlCLEVBQUUsSUFBWSxFQUFFLEtBQTZCO1FBQ3RFLEtBQUssQ0FBQyxNQUFNLEVBQUUsSUFBSSxDQUFDLENBQUM7UUFOeEI7O1dBRUc7UUFDYyxTQUFJLEdBQTZDLEVBQUUsQ0FBQztRQUtqRSx1QkFBZ0IsQ0FBQyxLQUFLLENBQUMsUUFBUSxDQUFDLENBQUM7UUFFakMsTUFBTSxVQUFVLEdBQUcsSUFBSSxtQkFBTyxDQUFDLGtCQUFrQixDQUFDLElBQUksRUFBRSxVQUFVLGtCQUM5RCxJQUFJLEVBQUUsSUFBSSxZQUFLLENBQUMsR0FBRyxFQUFFLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsU0FBUyxDQUFDLElBQ3JELHdCQUF3QixDQUFDLEtBQUssQ0FBQyxFQUNwQyxDQUFDO1FBRUgsSUFBSSxDQUFDLFlBQVksR0FBRyxVQUFVLENBQUMsR0FBRyxDQUFDO1FBQ25DLElBQUksQ0FBQyxRQUFRLEdBQUcsS0FBSyxDQUFDLFFBQVEsQ0FBQztRQUUvQixJQUFJLENBQUMsTUFBTSxDQUFDLEtBQUssQ0FBQyxHQUFHLENBQUMsQ0FBQztJQUMzQixDQUFDO0lBRUQ7Ozs7T0FJRztJQUNJLE1BQU0sQ0FBQyxHQUFrQjtRQUM1QixJQUFJLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxhQUFhLENBQUMsR0FBRyxDQUFDLENBQUMsQ0FBQztJQUN2QyxDQUFDO0NBQ0o7QUF4Q0QsOENBd0NDO0FBRUQsdUJBQXVCLEdBQWtCO0lBQ3JDLE9BQU8sRUFBRSxLQUFLLEVBQUUsR0FBRyxDQUFDLEtBQUssRUFBRSxTQUFTLEVBQUUsSUFBSSxnQkFBUyxFQUFFLEVBQUUsQ0FBQztBQUM1RCxDQUFDO0FBRUQsMkJBQW1DLFNBQVEsWUFBSztDQUMvQztBQURELHNEQUNDO0FBRUQsa0NBQWtDLEtBQTRCO0lBQzFELE1BQU0sY0FBYyxHQUFHLEtBQUssQ0FBQyxRQUFRLEdBQUcsR0FBRyxDQUFDO0lBQzVDLE1BQU0sZ0JBQWdCLEdBQUcsS0FBSyxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUMsRUFBRSxPQUFPLEVBQUUsS0FBSyxDQUFDLE9BQU8sRUFBRSxDQUFDLENBQUMsQ0FBQyxTQUFTLENBQUM7SUFDaEYsTUFBTSxrQkFBa0IsR0FBRyxLQUFLLENBQUMsb0JBQW9CLENBQUMsQ0FBQyxDQUFDLEVBQUUseUJBQXlCLEVBQUUsS0FBSyxDQUFDLG9CQUFvQixFQUFFLENBQUMsQ0FBQyxDQUFDLFNBQVMsQ0FBQztJQUU5SCxPQUFPLEVBQUUsY0FBYyxFQUFFLGdCQUFnQixFQUFFLGtCQUFrQixFQUFFLENBQUM7QUFDcEUsQ0FBQzs7Ozs7Ozs7OztBQ3ZJRDs7Ozs7OztHQU9HO0FBQ0gsMEJBQWlDLFFBQWdCO0lBQzdDLElBQUksUUFBUSxDQUFDLFFBQVEsQ0FBQyxHQUFHLENBQUMsRUFBRTtRQUN4QixNQUFNLElBQUksZUFBZSxDQUFDLDRDQUE0QyxDQUFDLENBQUM7S0FDM0U7SUFDRCxJQUFJLFFBQVEsQ0FBQyxNQUFNLEdBQUcsR0FBRyxFQUFFO1FBQ3ZCLE1BQU0sSUFBSSxlQUFlLENBQUMsOENBQThDLENBQUMsQ0FBQztLQUM3RTtJQUNELElBQUksUUFBUSxDQUFDLEtBQUssQ0FBQyxHQUFHLENBQUMsQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLEVBQUUsQ0FBQyxLQUFLLENBQUMsTUFBTSxHQUFHLEVBQUUsQ0FBQyxFQUFFO1FBQ3RELE1BQU0sSUFBSSxlQUFlLENBQUMsb0RBQW9ELENBQUMsQ0FBQztLQUNuRjtJQUNELElBQUksQ0FBQyxRQUFRLENBQUMsS0FBSyxDQUFDLGdEQUFnRCxDQUFDLEVBQUU7UUFDbkUsTUFBTSxJQUFJLGVBQWUsQ0FBQywyR0FBMkcsQ0FBQyxDQUFDO0tBQzFJO0FBQ0wsQ0FBQztBQWJELDRDQWFDO0FBRUQscUJBQXNCLFNBQVEsS0FBSztJQUMvQixZQUFZLE9BQWU7UUFDdkIsS0FBSyxDQUFDLE9BQU8sQ0FBQyxDQUFDO0lBQ25CLENBQUM7Q0FDSjs7Ozs7Ozs7Ozs7OztBQzNCRCxpQ0FBc0I7QUFDdEIsaUNBQWtDOzs7Ozs7Ozs7O0FDRGxDLHNDQUEwQztBQUMxQywyQ0FBNkM7QUFFN0MsdUNBQTREO0FBUzVEOztHQUVHO0FBQ0gsZUFBdUIsU0FBUSxnQkFBUztJQUNwQyxZQUFZLE1BQXFCLEVBQUUsSUFBWSxFQUFFLEtBQXFCO1FBQ2xFLEtBQUssQ0FBQyxNQUFNLEVBQUUsSUFBSSxDQUFDLENBQUM7UUFFcEIsZ0VBQWdFO1FBQ2hFLE1BQU0sV0FBVyxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLFdBQVcsQ0FBQyxDQUFDO1FBQ3RELE1BQU0sR0FBRyxHQUFHLEtBQUssQ0FBQyxHQUFHLEtBQUssU0FBUyxDQUFDLENBQUMsQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLEtBQUssQ0FBQyxHQUFHLENBQUM7UUFFdkQsSUFBSSxtQkFBTyxDQUFDLGlCQUFpQixDQUFDLElBQUksRUFBRSxVQUFVLEVBQUU7WUFDNUMsWUFBWSxFQUFFLE1BQU0sQ0FBQyxZQUFZO1lBQ2pDLGFBQWEsRUFBRSx5Q0FBaUMsQ0FBQyxLQUFLLENBQUMsVUFBVSxFQUFFLE1BQU0sQ0FBQztZQUMxRSxJQUFJLEVBQUUsS0FBSztZQUNYLGVBQWUsRUFBRSxDQUFDLFdBQVcsQ0FBQztZQUM5QixHQUFHLEVBQUUsR0FBRyxDQUFDLFFBQVEsRUFBRTtTQUN0QixDQUFDLENBQUM7SUFDUCxDQUFDO0NBQ0o7QUFoQkQsOEJBZ0JDOzs7Ozs7Ozs7O0FDL0JELHNDQUEwQztBQUMxQywyQ0FBNkM7QUFFN0MsdUNBQTREO0FBNEI1RDs7R0FFRztBQUNILDBCQUFrQyxTQUFRLGdCQUFTO0lBQy9DLFlBQVksTUFBcUIsRUFBRSxJQUFZLEVBQUUsS0FBZ0M7UUFDN0UsS0FBSyxDQUFDLE1BQU0sRUFBRSxJQUFJLENBQUMsQ0FBQztRQUVwQixNQUFNLEdBQUcsR0FBRyxLQUFLLENBQUMsR0FBRyxLQUFLLFNBQVMsQ0FBQyxDQUFDLENBQUMsTUFBTyxDQUFDLENBQUMsQ0FBQyxLQUFLLENBQUMsR0FBRyxDQUFDO1FBRTFELElBQUksbUJBQU8sQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLEVBQUUsVUFBVSxFQUFFO1lBQzVDLFlBQVksRUFBRSxNQUFNLENBQUMsWUFBWTtZQUNqQyxhQUFhLEVBQUUseUNBQWlDLENBQUMsS0FBSyxDQUFDLGlCQUFpQixFQUFFLE1BQU0sQ0FBQztZQUNqRixJQUFJLEVBQUUsSUFBSTtZQUNWLEdBQUcsRUFBRSxHQUFHLENBQUMsUUFBUSxFQUFFO1lBQ25CLE9BQU8sRUFBRSxLQUFLLENBQUMsT0FBTztZQUN0QixlQUFlLEVBQUUsS0FBSyxDQUFDLFdBQVcsQ0FBQyxHQUFHLENBQUMsRUFBRSxDQUFDLEVBQUUsQ0FBQyxFQUFFLENBQUMsUUFBUSxDQUFDLEdBQUcsQ0FBQyxDQUFDLENBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQyxDQUFDLEdBQUcsRUFBRSxHQUFHLENBQUM7U0FDakYsQ0FBQyxDQUFDO0lBQ1AsQ0FBQztDQUNKO0FBZkQsb0RBZUMiLCJmaWxlIjoiYnVuZGxlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiIFx0Ly8gVGhlIG1vZHVsZSBjYWNoZVxuIFx0dmFyIGluc3RhbGxlZE1vZHVsZXMgPSB7fTtcblxuIFx0Ly8gVGhlIHJlcXVpcmUgZnVuY3Rpb25cbiBcdGZ1bmN0aW9uIF9fd2VicGFja19yZXF1aXJlX18obW9kdWxlSWQpIHtcblxuIFx0XHQvLyBDaGVjayBpZiBtb2R1bGUgaXMgaW4gY2FjaGVcbiBcdFx0aWYoaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0pIHtcbiBcdFx0XHRyZXR1cm4gaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0uZXhwb3J0cztcbiBcdFx0fVxuIFx0XHQvLyBDcmVhdGUgYSBuZXcgbW9kdWxlIChhbmQgcHV0IGl0IGludG8gdGhlIGNhY2hlKVxuIFx0XHR2YXIgbW9kdWxlID0gaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0gPSB7XG4gXHRcdFx0aTogbW9kdWxlSWQsXG4gXHRcdFx0bDogZmFsc2UsXG4gXHRcdFx0ZXhwb3J0czoge31cbiBcdFx0fTtcblxuIFx0XHQvLyBFeGVjdXRlIHRoZSBtb2R1bGUgZnVuY3Rpb25cbiBcdFx0bW9kdWxlc1ttb2R1bGVJZF0uY2FsbChtb2R1bGUuZXhwb3J0cywgbW9kdWxlLCBtb2R1bGUuZXhwb3J0cywgX193ZWJwYWNrX3JlcXVpcmVfXyk7XG5cbiBcdFx0Ly8gRmxhZyB0aGUgbW9kdWxlIGFzIGxvYWRlZFxuIFx0XHRtb2R1bGUubCA9IHRydWU7XG5cbiBcdFx0Ly8gUmV0dXJuIHRoZSBleHBvcnRzIG9mIHRoZSBtb2R1bGVcbiBcdFx0cmV0dXJuIG1vZHVsZS5leHBvcnRzO1xuIFx0fVxuXG5cbiBcdC8vIGV4cG9zZSB0aGUgbW9kdWxlcyBvYmplY3QgKF9fd2VicGFja19tb2R1bGVzX18pXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLm0gPSBtb2R1bGVzO1xuXG4gXHQvLyBleHBvc2UgdGhlIG1vZHVsZSBjYWNoZVxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5jID0gaW5zdGFsbGVkTW9kdWxlcztcblxuIFx0Ly8gZGVmaW5lIGdldHRlciBmdW5jdGlvbiBmb3IgaGFybW9ueSBleHBvcnRzXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLmQgPSBmdW5jdGlvbihleHBvcnRzLCBuYW1lLCBnZXR0ZXIpIHtcbiBcdFx0aWYoIV9fd2VicGFja19yZXF1aXJlX18ubyhleHBvcnRzLCBuYW1lKSkge1xuIFx0XHRcdE9iamVjdC5kZWZpbmVQcm9wZXJ0eShleHBvcnRzLCBuYW1lLCB7XG4gXHRcdFx0XHRjb25maWd1cmFibGU6IGZhbHNlLFxuIFx0XHRcdFx0ZW51bWVyYWJsZTogdHJ1ZSxcbiBcdFx0XHRcdGdldDogZ2V0dGVyXG4gXHRcdFx0fSk7XG4gXHRcdH1cbiBcdH07XG5cbiBcdC8vIGdldERlZmF1bHRFeHBvcnQgZnVuY3Rpb24gZm9yIGNvbXBhdGliaWxpdHkgd2l0aCBub24taGFybW9ueSBtb2R1bGVzXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLm4gPSBmdW5jdGlvbihtb2R1bGUpIHtcbiBcdFx0dmFyIGdldHRlciA9IG1vZHVsZSAmJiBtb2R1bGUuX19lc01vZHVsZSA/XG4gXHRcdFx0ZnVuY3Rpb24gZ2V0RGVmYXVsdCgpIHsgcmV0dXJuIG1vZHVsZVsnZGVmYXVsdCddOyB9IDpcbiBcdFx0XHRmdW5jdGlvbiBnZXRNb2R1bGVFeHBvcnRzKCkgeyByZXR1cm4gbW9kdWxlOyB9O1xuIFx0XHRfX3dlYnBhY2tfcmVxdWlyZV9fLmQoZ2V0dGVyLCAnYScsIGdldHRlcik7XG4gXHRcdHJldHVybiBnZXR0ZXI7XG4gXHR9O1xuXG4gXHQvLyBPYmplY3QucHJvdG90eXBlLmhhc093blByb3BlcnR5LmNhbGxcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubyA9IGZ1bmN0aW9uKG9iamVjdCwgcHJvcGVydHkpIHsgcmV0dXJuIE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbChvYmplY3QsIHByb3BlcnR5KTsgfTtcblxuIFx0Ly8gX193ZWJwYWNrX3B1YmxpY19wYXRoX19cbiBcdF9fd2VicGFja19yZXF1aXJlX18ucCA9IFwiXCI7XG5cbiBcdC8vIExvYWQgZW50cnkgbW9kdWxlIGFuZCByZXR1cm4gZXhwb3J0c1xuIFx0cmV0dXJuIF9fd2VicGFja19yZXF1aXJlX18oX193ZWJwYWNrX3JlcXVpcmVfXy5zID0gNCk7XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gd2VicGFjay9ib290c3RyYXAgNzIxMGY3OTA0MGQ1MTVlMjBhZDIiLCJtb2R1bGUuZXhwb3J0cyA9IGpzaWkkX2F3c19jZGtfY29yZSQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX2NvcmUkXCJcbi8vIG1vZHVsZSBpZCA9IDBcbi8vIG1vZHVsZSBjaHVua3MgPSAwIiwibW9kdWxlLmV4cG9ydHMgPSBqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyRcIlxuLy8gbW9kdWxlIGlkID0gMVxuLy8gbW9kdWxlIGNodW5rcyA9IDAiLCJpbXBvcnQgeyBDb25zdHJ1Y3QsIE91dHB1dCwgVG9rZW4gfSBmcm9tIFwiQGF3cy1jZGsvY29yZVwiO1xuXG4vKipcbiAqIEltcG9ydGVkIG9yIGNyZWF0ZWQgaG9zdGVkIHpvbmVcbiAqL1xuZXhwb3J0IGFic3RyYWN0IGNsYXNzIEhvc3RlZFpvbmVSZWYgZXh0ZW5kcyBDb25zdHJ1Y3Qge1xuICAgIHB1YmxpYyBzdGF0aWMgaW1wb3J0KHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBIb3N0ZWRab25lUmVmUHJvcHMpOiBIb3N0ZWRab25lUmVmIHtcbiAgICAgICAgcmV0dXJuIG5ldyBJbXBvcnRlZEhvc3RlZFpvbmUocGFyZW50LCBuYW1lLCBwcm9wcyk7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogSUQgb2YgdGhpcyBob3N0ZWQgem9uZVxuICAgICAqL1xuICAgIHB1YmxpYyBhYnN0cmFjdCByZWFkb25seSBob3N0ZWRab25lSWQ6IEhvc3RlZFpvbmVJZDtcblxuICAgIC8qKlxuICAgICAqIEZRRE4gb2YgdGhpcyBob3N0ZWQgem9uZVxuICAgICAqL1xuICAgIHB1YmxpYyBhYnN0cmFjdCByZWFkb25seSB6b25lTmFtZTogc3RyaW5nO1xuXG4gICAgLyoqXG4gICAgICogRXhwb3J0IHRoZSBob3N0ZWQgem9uZVxuICAgICAqL1xuICAgIHB1YmxpYyBleHBvcnQoKTogSG9zdGVkWm9uZVJlZlByb3BzIHtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIGhvc3RlZFpvbmVJZDogbmV3IE91dHB1dCh0aGlzLCAnSG9zdGVkWm9uZUlkJywgeyB2YWx1ZTogdGhpcy5ob3N0ZWRab25lSWQgfSkubWFrZUltcG9ydFZhbHVlKCksXG4gICAgICAgICAgICB6b25lTmFtZTogdGhpcy56b25lTmFtZSxcbiAgICAgICAgfTtcbiAgICB9XG59XG5cbi8qKlxuICogSG9zdGVkIHpvbmUgaWRlbnRpZmllclxuICovXG5leHBvcnQgY2xhc3MgSG9zdGVkWm9uZUlkIGV4dGVuZHMgVG9rZW4ge1xufVxuXG4vKipcbiAqIFJlZmVyZW5jZSB0byBhIGhvc3RlZCB6b25lXG4gKi9cbmV4cG9ydCBpbnRlcmZhY2UgSG9zdGVkWm9uZVJlZlByb3BzIHtcbiAgICAvKipcbiAgICAgKiBJZGVudGlmaWVyIG9mIHRoZSBob3N0ZWQgem9uZVxuICAgICAqL1xuICAgIGhvc3RlZFpvbmVJZDogSG9zdGVkWm9uZUlkO1xuXG4gICAgLyoqXG4gICAgICogTmFtZSBvZiB0aGUgaG9zdGVkIHpvbmVcbiAgICAgKi9cbiAgICB6b25lTmFtZTogc3RyaW5nO1xufVxuXG4vKipcbiAqIEltcG9ydGVkIGhvc3RlZCB6b25lXG4gKi9cbmV4cG9ydCBjbGFzcyBJbXBvcnRlZEhvc3RlZFpvbmUgZXh0ZW5kcyBIb3N0ZWRab25lUmVmIHtcbiAgICBwdWJsaWMgcmVhZG9ubHkgaG9zdGVkWm9uZUlkOiBIb3N0ZWRab25lSWQ7XG5cbiAgICBwdWJsaWMgcmVhZG9ubHkgem9uZU5hbWU6IHN0cmluZztcblxuICAgIGNvbnN0cnVjdG9yKHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBIb3N0ZWRab25lUmVmUHJvcHMpIHtcbiAgICAgICAgc3VwZXIocGFyZW50LCBuYW1lKTtcblxuICAgICAgICB0aGlzLmhvc3RlZFpvbmVJZCA9IHByb3BzLmhvc3RlZFpvbmVJZDtcbiAgICAgICAgdGhpcy56b25lTmFtZSA9IHByb3BzLnpvbmVOYW1lO1xuICAgIH1cbn1cblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAvcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL3JvdXRlNTMvbGliL2hvc3RlZC16b25lLXJlZi50cyIsImltcG9ydCB7IEhvc3RlZFpvbmVSZWYgfSBmcm9tICcuLi9ob3N0ZWQtem9uZS1yZWYnO1xuXG4vKipcbiAqIFJvdXRlNTMgcmVxdWlyZXMgdGhlIHJlY29yZCBuYW1lcyBhcmUgc3BlY2lmaWVkIGFzIGZ1bGx5IHF1YWxpZmllZCBuYW1lcywgYnV0IHRoaXNcbiAqIGZvcmNlcyBsb3RzIG9mIHJlZHVuZGFudCB3b3JrIG9uIHRoZSB1c2VyIChyZXBlYXRpbmcgdGhlIHpvbmUgbmFtZSBvdmVyIGFuZCBvdmVyKS5cbiAqIFRoaXMgZnVuY3Rpb24gYWxsb3dzIHRoZSB1c2VyIHRvIGJlIGxhemllciBhbmQgb2ZmZXJzIGEgbmljZXIgZXhwZXJpZW5jZSwgYnlcbiAqIHF1YWxpZnlpbmcgcmVsYXRpdmUgbmFtZXMgYXBwcm9wcmlhdGVseTpcbiAqXG4gKiBAcGFyYW0gcHJvdmlkZWROYW1lIHRoZSB1c2VyLXNwZWNpZmllZCBuYW1lIG9mIHRoZSByZWNvcmQuXG4gKiBAcGFyYW0gem9uZU5hbWUgICAgIHRoZSBmdWxseS1xdWFsaWZpZWQgbmFtZSBvZiB0aGUgem9uZSB0aGUgcmVjb3JkIHdpbGwgYmUgY3JlYXRlZCBpbi5cbiAqXG4gKiBAcmV0dXJucyA8dWw+XG4gKiAgICAgICAgICAgICAgPGxpPklmICtwcm92aWRlZE5hbWUrIGVuZHMgd2l0aCBhICsuKywgdXNlIGl0IGFzLWlzPC9saT5cbiAqICAgICAgICAgICAgICA8bGk+SWYgK3Byb3ZpZGVkTmFtZSsgZW5kcyB3aXRoICt6b25lTmFtZSssIGFwcGVuZCBhIHRyYWlsaW5nICsuKzwvbGk+XG4gKiAgICAgICAgICAgICAgPGxpPk90aGVyd2lzZSwgYXBwZW5kICsuKywgK3pvbmVOYW1lKyBhbmQgYSB0cmFpbGluZyArLis8L2xpPlxuICogICAgICAgICAgPC91bD5cbiAqL1xuZXhwb3J0IGZ1bmN0aW9uIGRldGVybWluZUZ1bGx5UXVhbGlmaWVkRG9tYWluTmFtZShwcm92aWRlZE5hbWU6IHN0cmluZywgaG9zdGVkWm9uZTogSG9zdGVkWm9uZVJlZik6IHN0cmluZyB7XG4gICAgaWYgKHByb3ZpZGVkTmFtZS5lbmRzV2l0aCgnLicpKSB7XG4gICAgICAgIHJldHVybiBwcm92aWRlZE5hbWU7XG4gICAgfVxuXG4gICAgY29uc3Qgc3VmZml4ID0gYC4ke2hvc3RlZFpvbmUuem9uZU5hbWV9YDtcbiAgICBpZiAocHJvdmlkZWROYW1lLmVuZHNXaXRoKHN1ZmZpeCkpIHtcbiAgICAgICAgcmV0dXJuIGAke3Byb3ZpZGVkTmFtZX0uYDtcbiAgICB9XG5cbiAgICByZXR1cm4gYCR7cHJvdmlkZWROYW1lfSR7c3VmZml4fS5gO1xufVxuXG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvcm91dGU1My9saWIvcmVjb3Jkcy9fdXRpbC50cyIsImV4cG9ydCAqIGZyb20gJy4vaG9zdGVkLXpvbmUnO1xuZXhwb3J0ICogZnJvbSAnLi9ob3N0ZWQtem9uZS1yZWYnO1xuZXhwb3J0ICogZnJvbSAnLi9yZWNvcmRzJztcblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9yb3V0ZTUzL2xpYi9pbmRleC50cyIsImltcG9ydCB7IEF3c1JlZ2lvbiwgQ29uc3RydWN0LCBUb2tlbiB9IGZyb20gJ0Bhd3MtY2RrL2NvcmUnO1xuaW1wb3J0IHsgVnBjTmV0d29ya1JlZiB9IGZyb20gJ0Bhd3MtY2RrL2VjMic7XG5pbXBvcnQgeyBsb2dzLCByb3V0ZTUzIH0gZnJvbSAnQGF3cy1jZGsvcmVzb3VyY2VzJztcbmltcG9ydCB7IEhvc3RlZFpvbmVJZCwgSG9zdGVkWm9uZVJlZiB9IGZyb20gJy4vaG9zdGVkLXpvbmUtcmVmJztcbmltcG9ydCB7IHZhbGlkYXRlWm9uZU5hbWUgfSBmcm9tICcuL3V0aWwnO1xuXG4vKipcbiAqIFByb3BlcnRpZXMgb2YgYSBuZXcgaG9zdGVkIHpvbmVcbiAqL1xuZXhwb3J0IGludGVyZmFjZSBQdWJsaWNIb3N0ZWRab25lUHJvcHMge1xuICAgIC8qKlxuICAgICAqIFRoZSBmdWxseSBxdWFsaWZpZWQgZG9tYWluIG5hbWUgZm9yIHRoZSBob3N0ZWQgem9uZVxuICAgICAqL1xuICAgIHpvbmVOYW1lOiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBBbnkgY29tbWVudHMgdGhhdCB5b3Ugd2FudCB0byBpbmNsdWRlIGFib3V0IHRoZSBob3N0ZWQgem9uZS5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IG5vIGNvbW1lbnRcbiAgICAgKi9cbiAgICBjb21tZW50Pzogc3RyaW5nO1xuXG4gICAgLyoqXG4gICAgICogVGhlIEFtYXpvbiBSZXNvdXJjZSBOYW1lIChBUk4pIGZvciB0aGUgbG9nIGdyb3VwIHRoYXQgeW91IHdhbnQgQW1hem9uIFJvdXRlIDUzIHRvIHNlbmQgcXVlcnkgbG9ncyB0by5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IG5vIEROUyBxdWVyeSBsb2dnaW5nXG4gICAgICovXG4gICAgcXVlcnlMb2dzTG9nR3JvdXBBcm4/OiBsb2dzLkxvZ0dyb3VwQXJuO1xufVxuXG4vKipcbiAqIENyZWF0ZSBhIFJvdXRlNTMgcHVibGljIGhvc3RlZCB6b25lLlxuICovXG5leHBvcnQgY2xhc3MgUHVibGljSG9zdGVkWm9uZSBleHRlbmRzIEhvc3RlZFpvbmVSZWYge1xuICAgIC8qKlxuICAgICAqIElkZW50aWZpZXIgb2YgdGhpcyBob3N0ZWQgem9uZVxuICAgICAqL1xuICAgIHB1YmxpYyByZWFkb25seSBob3N0ZWRab25lSWQ6IEhvc3RlZFpvbmVJZDtcblxuICAgIC8qKlxuICAgICAqIEZ1bGx5IHF1YWxpZmllZCBkb21haW4gbmFtZSBmb3IgdGhlIGhvc3RlZCB6b25lXG4gICAgICovXG4gICAgcHVibGljIHJlYWRvbmx5IHpvbmVOYW1lOiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBOYW1lc2VydmVycyBmb3IgdGhpcyBwdWJsaWMgaG9zdGVkIHpvbmVcbiAgICAgKi9cbiAgICBwdWJsaWMgcmVhZG9ubHkgbmFtZVNlcnZlcnM6IEhvc3RlZFpvbmVOYW1lU2VydmVycztcblxuICAgIGNvbnN0cnVjdG9yKHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBQdWJsaWNIb3N0ZWRab25lUHJvcHMpIHtcbiAgICAgICAgc3VwZXIocGFyZW50LCBuYW1lKTtcblxuICAgICAgICB2YWxpZGF0ZVpvbmVOYW1lKHByb3BzLnpvbmVOYW1lKTtcblxuICAgICAgICBjb25zdCBob3N0ZWRab25lID0gbmV3IHJvdXRlNTMuSG9zdGVkWm9uZVJlc291cmNlKHRoaXMsICdSZXNvdXJjZScsIHtcbiAgICAgICAgICAgIC4uLmRldGVybWluZUhvc3RlZFpvbmVQcm9wcyhwcm9wcylcbiAgICAgICAgfSk7XG5cbiAgICAgICAgdGhpcy5ob3N0ZWRab25lSWQgPSBob3N0ZWRab25lLnJlZjtcbiAgICAgICAgdGhpcy5uYW1lU2VydmVycyA9IGhvc3RlZFpvbmUuaG9zdGVkWm9uZU5hbWVTZXJ2ZXJzO1xuICAgICAgICB0aGlzLnpvbmVOYW1lID0gcHJvcHMuem9uZU5hbWU7XG4gICAgfVxufVxuXG4vKipcbiAqIFByb3BlcnRpZXMgZm9yIGEgcHJpdmF0ZSBob3N0ZWQgem9uZS5cbiAqL1xuZXhwb3J0IGludGVyZmFjZSBQcml2YXRlSG9zdGVkWm9uZVByb3BzIGV4dGVuZHMgUHVibGljSG9zdGVkWm9uZVByb3BzIHtcbiAgICAvKipcbiAgICAgKiBPbmUgVlBDIHRoYXQgeW91IHdhbnQgdG8gYXNzb2NpYXRlIHdpdGggdGhpcyBob3N0ZWQgem9uZS5cbiAgICAgKi9cbiAgICB2cGM6IFZwY05ldHdvcmtSZWY7XG59XG5cbi8qKlxuICogQ3JlYXRlIGEgUm91dGU1MyBwcml2YXRlIGhvc3RlZCB6b25lIGZvciB1c2UgaW4gb25lIG9yIG1vcmUgVlBDcy5cbiAqXG4gKiBOb3RlIHRoYXQgYGVuYWJsZURuc0hvc3RuYW1lc2AgYW5kIGBlbmFibGVEbnNTdXBwb3J0YCBtdXN0IGhhdmUgYmVlbiBlbmFibGVkXG4gKiBmb3IgdGhlIFZQQyB5b3UncmUgY29uZmlndXJpbmcgZm9yIHByaXZhdGUgaG9zdGVkIHpvbmVzLlxuICovXG5leHBvcnQgY2xhc3MgUHJpdmF0ZUhvc3RlZFpvbmUgZXh0ZW5kcyBIb3N0ZWRab25lUmVmIHtcbiAgICAvKipcbiAgICAgKiBJZGVudGlmaWVyIG9mIHRoaXMgaG9zdGVkIHpvbmVcbiAgICAgKi9cbiAgICBwdWJsaWMgcmVhZG9ubHkgaG9zdGVkWm9uZUlkOiBIb3N0ZWRab25lSWQ7XG5cbiAgICAvKipcbiAgICAgKiBGdWxseSBxdWFsaWZpZWQgZG9tYWluIG5hbWUgZm9yIHRoZSBob3N0ZWQgem9uZVxuICAgICAqL1xuICAgIHB1YmxpYyByZWFkb25seSB6b25lTmFtZTogc3RyaW5nO1xuXG4gICAgLyoqXG4gICAgICogVlBDcyB0byB3aGljaCB0aGlzIGhvc3RlZCB6b25lIHdpbGwgYmUgYWRkZWRcbiAgICAgKi9cbiAgICBwcml2YXRlIHJlYWRvbmx5IHZwY3M6IHJvdXRlNTMuSG9zdGVkWm9uZVJlc291cmNlLlZQQ1Byb3BlcnR5W10gPSBbXTtcblxuICAgIGNvbnN0cnVjdG9yKHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBQcml2YXRlSG9zdGVkWm9uZVByb3BzKSB7XG4gICAgICAgIHN1cGVyKHBhcmVudCwgbmFtZSk7XG5cbiAgICAgICAgdmFsaWRhdGVab25lTmFtZShwcm9wcy56b25lTmFtZSk7XG5cbiAgICAgICAgY29uc3QgaG9zdGVkWm9uZSA9IG5ldyByb3V0ZTUzLkhvc3RlZFpvbmVSZXNvdXJjZSh0aGlzLCAnUmVzb3VyY2UnLCB7XG4gICAgICAgICAgICB2cGNzOiBuZXcgVG9rZW4oKCkgPT4gdGhpcy52cGNzID8gdGhpcy52cGNzIDogdW5kZWZpbmVkKSxcbiAgICAgICAgICAgIC4uLmRldGVybWluZUhvc3RlZFpvbmVQcm9wcyhwcm9wcylcbiAgICAgICAgfSk7XG5cbiAgICAgICAgdGhpcy5ob3N0ZWRab25lSWQgPSBob3N0ZWRab25lLnJlZjtcbiAgICAgICAgdGhpcy56b25lTmFtZSA9IHByb3BzLnpvbmVOYW1lO1xuXG4gICAgICAgIHRoaXMuYWRkVnBjKHByb3BzLnZwYyk7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogQWRkIGFub3RoZXIgVlBDIHRvIHRoaXMgcHJpdmF0ZSBob3N0ZWQgem9uZS5cbiAgICAgKlxuICAgICAqIEBwYXJhbSB2cGMgdGhlIG90aGVyIFZQQyB0byBhZGQuXG4gICAgICovXG4gICAgcHVibGljIGFkZFZwYyh2cGM6IFZwY05ldHdvcmtSZWYpIHtcbiAgICAgICAgdGhpcy52cGNzLnB1c2godG9WcGNQcm9wZXJ0eSh2cGMpKTtcbiAgICB9XG59XG5cbmZ1bmN0aW9uIHRvVnBjUHJvcGVydHkodnBjOiBWcGNOZXR3b3JrUmVmKTogcm91dGU1My5Ib3N0ZWRab25lUmVzb3VyY2UuVlBDUHJvcGVydHkge1xuICAgIHJldHVybiB7IHZwY0lkOiB2cGMudnBjSWQsIHZwY1JlZ2lvbjogbmV3IEF3c1JlZ2lvbigpIH07XG59XG5cbmV4cG9ydCBjbGFzcyBIb3N0ZWRab25lTmFtZVNlcnZlcnMgZXh0ZW5kcyBUb2tlbiB7XG59XG5cbmZ1bmN0aW9uIGRldGVybWluZUhvc3RlZFpvbmVQcm9wcyhwcm9wczogUHVibGljSG9zdGVkWm9uZVByb3BzKSB7XG4gICAgY29uc3QgaG9zdGVkWm9uZU5hbWUgPSBwcm9wcy56b25lTmFtZSArICcuJztcbiAgICBjb25zdCBob3N0ZWRab25lQ29uZmlnID0gcHJvcHMuY29tbWVudCA/IHsgY29tbWVudDogcHJvcHMuY29tbWVudCB9IDogdW5kZWZpbmVkO1xuICAgIGNvbnN0IHF1ZXJ5TG9nZ2luZ0NvbmZpZyA9IHByb3BzLnF1ZXJ5TG9nc0xvZ0dyb3VwQXJuID8geyBjbG91ZFdhdGNoTG9nc0xvZ0dyb3VwQXJuOiBwcm9wcy5xdWVyeUxvZ3NMb2dHcm91cEFybiB9IDogdW5kZWZpbmVkO1xuXG4gICAgcmV0dXJuIHsgaG9zdGVkWm9uZU5hbWUsIGhvc3RlZFpvbmVDb25maWcsIHF1ZXJ5TG9nZ2luZ0NvbmZpZyB9O1xufVxuXG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvcm91dGU1My9saWIvaG9zdGVkLXpvbmUudHMiLCIvKipcbiAqIFZhbGlkYXRlcyBhIHpvbmUgbmFtZSBpcyB2YWxpZCBieSBSb3V0ZTUzIHNwZWNpZmMgbmFtaW5nIHJ1bGVzLFxuICogYW5kIHRoYXQgdGhlcmUgaXMgbm8gdHJhaWxpbmcgZG90IGluIHRoZSBuYW1lLlxuICpcbiAqIEBwYXJhbSB6b25lTmFtZSB0aGUgem9uZSBuYW1lIHRvIGJlIHZhbGlkYXRlZC5cbiAqIEByZXR1cm5zICt6b25lTmFtZStcbiAqIEB0aHJvd3MgVmFsaWRhdGlvbkVycm9yIGlmIHRoZSBuYW1lIGlzIG5vdCB2YWxpZC5cbiAqL1xuZXhwb3J0IGZ1bmN0aW9uIHZhbGlkYXRlWm9uZU5hbWUoem9uZU5hbWU6IHN0cmluZykge1xuICAgIGlmICh6b25lTmFtZS5lbmRzV2l0aCgnLicpKSB7XG4gICAgICAgIHRocm93IG5ldyBWYWxpZGF0aW9uRXJyb3IoJ3pvbmUgbmFtZSBtdXN0IG5vdCBlbmQgd2l0aCBhIHRyYWlsaW5nIGRvdCcpO1xuICAgIH1cbiAgICBpZiAoem9uZU5hbWUubGVuZ3RoID4gMjU1KSB7XG4gICAgICAgIHRocm93IG5ldyBWYWxpZGF0aW9uRXJyb3IoJ3pvbmUgbmFtZSBjYW5ub3QgYmUgbW9yZSB0aGFuIDI1NSBieXRlcyBsb25nJyk7XG4gICAgfVxuICAgIGlmICh6b25lTmFtZS5zcGxpdCgnLicpLmZpbmQobGFiZWwgPT4gbGFiZWwubGVuZ3RoID4gNjMpKSB7XG4gICAgICAgIHRocm93IG5ldyBWYWxpZGF0aW9uRXJyb3IoJ3pvbmUgbmFtZSBsYWJlbHMgY2Fubm90IGJlIG1vcmUgdGhhbiA2MyBieXRlcyBsb25nJyk7XG4gICAgfVxuICAgIGlmICghem9uZU5hbWUubWF0Y2goL15bYS16MC05IVwiIyQlJicoKSorLC86Ozw9Pj9AW1xcXFxcXF1eX2B7fH1+Li1dKyQvaSkpIHtcbiAgICAgICAgdGhyb3cgbmV3IFZhbGlkYXRpb25FcnJvcignem9uZSBuYW1lcyBjYW4gb25seSBjb250YWluIGEteiwgMC05LCAtLCAhIFwiICMgJCAlICYgXFwnICggKSAqICsgLCAtIC8gOiA7IDwgPSA+ID8gQCBbIFxcIF0gXiBfIGAgeyB8IH0gfiAuJyk7XG4gICAgfVxufVxuXG5jbGFzcyBWYWxpZGF0aW9uRXJyb3IgZXh0ZW5kcyBFcnJvciB7XG4gICAgY29uc3RydWN0b3IobWVzc2FnZTogc3RyaW5nKSB7XG4gICAgICAgIHN1cGVyKG1lc3NhZ2UpO1xuICAgIH1cbn1cblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAvcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL3JvdXRlNTMvbGliL3V0aWwudHMiLCJleHBvcnQgKiBmcm9tICcuL3R4dCc7XG5leHBvcnQgKiBmcm9tICcuL3pvbmUtZGVsZWdhdGlvbic7XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9yb3V0ZTUzL2xpYi9yZWNvcmRzL2luZGV4LnRzIiwiaW1wb3J0IHsgQ29uc3RydWN0IH0gZnJvbSAnQGF3cy1jZGsvY29yZSc7XG5pbXBvcnQgeyByb3V0ZTUzIH0gZnJvbSAnQGF3cy1jZGsvcmVzb3VyY2VzJztcbmltcG9ydCB7IEhvc3RlZFpvbmVSZWYgfSBmcm9tICcuLi9ob3N0ZWQtem9uZS1yZWYnO1xuaW1wb3J0IHsgZGV0ZXJtaW5lRnVsbHlRdWFsaWZpZWREb21haW5OYW1lIH0gZnJvbSAnLi9fdXRpbCc7XG5cbmV4cG9ydCBpbnRlcmZhY2UgVFhUUmVjb3JkUHJvcHMge1xuICAgIHJlY29yZE5hbWU6IHN0cmluZztcbiAgICByZWNvcmRWYWx1ZTogc3RyaW5nO1xuICAgIC8qKiBAZGVmYXVsdCAxODAwIHNlY29uZHMgKi9cbiAgICB0dGw/OiBudW1iZXI7XG59XG5cbi8qKlxuICogQSBETlMgVFhUIHJlY29yZFxuICovXG5leHBvcnQgY2xhc3MgVFhUUmVjb3JkIGV4dGVuZHMgQ29uc3RydWN0IHtcbiAgICBjb25zdHJ1Y3RvcihwYXJlbnQ6IEhvc3RlZFpvbmVSZWYsIG5hbWU6IHN0cmluZywgcHJvcHM6IFRYVFJlY29yZFByb3BzKSB7XG4gICAgICAgIHN1cGVyKHBhcmVudCwgbmFtZSk7XG5cbiAgICAgICAgLy8gSlNPTi5zdHJpbmdpZnkgY29udmVuaWVudGx5IHdyYXBzIHN0cmluZ3MgaW4gXCIgYW5kIGVzY2FwZXMgXCIuXG4gICAgICAgIGNvbnN0IHJlY29yZFZhbHVlID0gSlNPTi5zdHJpbmdpZnkocHJvcHMucmVjb3JkVmFsdWUpO1xuICAgICAgICBjb25zdCB0dGwgPSBwcm9wcy50dGwgPT09IHVuZGVmaW5lZCA/IDE4MDAgOiBwcm9wcy50dGw7XG5cbiAgICAgICAgbmV3IHJvdXRlNTMuUmVjb3JkU2V0UmVzb3VyY2UodGhpcywgJ1Jlc291cmNlJywge1xuICAgICAgICAgICAgaG9zdGVkWm9uZUlkOiBwYXJlbnQuaG9zdGVkWm9uZUlkLFxuICAgICAgICAgICAgcmVjb3JkU2V0TmFtZTogZGV0ZXJtaW5lRnVsbHlRdWFsaWZpZWREb21haW5OYW1lKHByb3BzLnJlY29yZE5hbWUsIHBhcmVudCksXG4gICAgICAgICAgICB0eXBlOiAnVFhUJyxcbiAgICAgICAgICAgIHJlc291cmNlUmVjb3JkczogW3JlY29yZFZhbHVlXSxcbiAgICAgICAgICAgIHR0bDogdHRsLnRvU3RyaW5nKClcbiAgICAgICAgfSk7XG4gICAgfVxufVxuXG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvcm91dGU1My9saWIvcmVjb3Jkcy90eHQudHMiLCJpbXBvcnQgeyBDb25zdHJ1Y3QgfSBmcm9tICdAYXdzLWNkay9jb3JlJztcbmltcG9ydCB7IHJvdXRlNTMgfSBmcm9tICdAYXdzLWNkay9yZXNvdXJjZXMnO1xuaW1wb3J0IHsgSG9zdGVkWm9uZVJlZiB9IGZyb20gJy4uL2hvc3RlZC16b25lLXJlZic7XG5pbXBvcnQgeyBkZXRlcm1pbmVGdWxseVF1YWxpZmllZERvbWFpbk5hbWUgfSBmcm9tICcuL191dGlsJztcblxuZXhwb3J0IGludGVyZmFjZSBab25lRGVsZWdhdGlvblJlY29yZFByb3BzIHtcbiAgICAvKipcbiAgICAgKiBUaGUgbmFtZSBvZiB0aGUgem9uZSB0aGF0IGRlbGVnYXRpb24gaXMgbWFkZSB0by5cbiAgICAgKi9cbiAgICBkZWxlZ2F0ZWRab25lTmFtZTogc3RyaW5nO1xuXG4gICAgLyoqXG4gICAgICogVGhlIG5hbWUgc2VydmVycyB0byByZXBvcnQgaW4gdGhlIGRlbGVnYXRpb24gcmVjb3Jkcy5cbiAgICAgKi9cbiAgICBuYW1lU2VydmVyczogc3RyaW5nW107XG5cbiAgICAvKipcbiAgICAgKiBUaGUgVFRMIG9mIHRoZSB6b25lIGRlbGVnYXRpb24gcmVjb3Jkcy5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IDE3MjgwMCBzZWNvbmRzLlxuICAgICAqL1xuICAgIHR0bD86IG51bWJlcjtcblxuICAgIC8qKlxuICAgICAqIEFueSBjb21tZW50cyB0aGF0IHlvdSB3YW50IHRvIGluY2x1ZGUgYWJvdXQgdGhlIHpvbmUgZGVsZWdhdGlvbiByZWNvcmRzLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgbm8gY29tbWVudC5cbiAgICAgKi9cbiAgICBjb21tZW50Pzogc3RyaW5nO1xufVxuXG4vKipcbiAqIEEgcmVjb3JkIHRvIGRlbGVnYXRlIGZ1cnRoZXIgbG9va3VwcyB0byBhIGRpZmZlcmVudCBzZXQgb2YgbmFtZSBzZXJ2ZXJzXG4gKi9cbmV4cG9ydCBjbGFzcyBab25lRGVsZWdhdGlvblJlY29yZCBleHRlbmRzIENvbnN0cnVjdCB7XG4gICAgY29uc3RydWN0b3IocGFyZW50OiBIb3N0ZWRab25lUmVmLCBuYW1lOiBzdHJpbmcsIHByb3BzOiBab25lRGVsZWdhdGlvblJlY29yZFByb3BzKSB7XG4gICAgICAgIHN1cGVyKHBhcmVudCwgbmFtZSk7XG5cbiAgICAgICAgY29uc3QgdHRsID0gcHJvcHMudHRsID09PSB1bmRlZmluZWQgPyAxNzJfODAwIDogcHJvcHMudHRsO1xuXG4gICAgICAgIG5ldyByb3V0ZTUzLlJlY29yZFNldFJlc291cmNlKHRoaXMsICdSZXNvdXJjZScsIHtcbiAgICAgICAgICAgIGhvc3RlZFpvbmVJZDogcGFyZW50Lmhvc3RlZFpvbmVJZCxcbiAgICAgICAgICAgIHJlY29yZFNldE5hbWU6IGRldGVybWluZUZ1bGx5UXVhbGlmaWVkRG9tYWluTmFtZShwcm9wcy5kZWxlZ2F0ZWRab25lTmFtZSwgcGFyZW50KSxcbiAgICAgICAgICAgIHR5cGU6ICdOUycsXG4gICAgICAgICAgICB0dGw6IHR0bC50b1N0cmluZygpLFxuICAgICAgICAgICAgY29tbWVudDogcHJvcHMuY29tbWVudCxcbiAgICAgICAgICAgIHJlc291cmNlUmVjb3JkczogcHJvcHMubmFtZVNlcnZlcnMubWFwKG5zID0+IG5zLmVuZHNXaXRoKCcuJykgPyBucyA6IGAke25zfS5gKVxuICAgICAgICB9KTtcbiAgICB9XG59XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9yb3V0ZTUzL2xpYi9yZWNvcmRzL3pvbmUtZGVsZWdhdGlvbi50cyJdLCJzb3VyY2VSb290IjoiIn0="
+}

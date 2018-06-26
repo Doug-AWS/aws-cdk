@@ -1,0 +1,2890 @@
+{
+  "schema": "jsii/1.0",
+  "types": {
+    "jsii$_aws_cdk_lambda$.AliasProps": {
+      "docs": {
+        "comment": "Properties for a new Lambda alias"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "default": "No description",
+            "comment": "Description for the alias"
+          },
+          "name": "description",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Function version this alias refers to\n\nUse lambda.addVersion() to obtain a new lambda version to refer to."
+          },
+          "name": "version",
+          "type": {
+            "fqn": "jsii$_aws_cdk_lambda$.Version"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Name of this alias"
+          },
+          "name": "aliasName",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "default": "No additional versions",
+            "comment": "Additional versions with individual weights this alias points to\n\nIndividual additional version weights specified here should add up to\n(less than) one. All remaining weight is routed to the default\nversion.\n\nFor example, the config is\n\n      version: \"1\"\n      additionalVersions: [{ version: \"2\", weight: 0.05 }]\n\nThen 5% of traffic will be routed to function version 2, while\nthe remaining 95% of traffic will be routed to function version 1."
+          },
+          "name": "additionalVersions",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_lambda$.VersionWeight"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.AliasProps",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "AliasProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_lambda$.Alias": {
+      "docs": {
+        "comment": "A new alias to a particular version of a Lambda function."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "ARN of this alias\n\nUsed to be able to use Alias in place of a regular Lambda. Lambda accepts\nARNs everywhere it accepts function names."
+          },
+          "name": "functionName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_lambda$.FunctionName"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "ARN of this alias\n\nUsed to be able to use Alias in place of a regular Lambda. Lambda accepts\nARNs everywhere it accepts function names."
+          },
+          "name": "functionArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.lambda.FunctionArn"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Role associated with this alias"
+          },
+          "name": "role",
+          "type": {
+            "fqn": "jsii$_aws_cdk_iam$.Role",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Whether the addPermission() call adds any permissions\n\nTrue for new Lambdas, false for imported Lambdas (they might live in different accounts)."
+          },
+          "name": "canCreatePermissions",
+          "type": {
+            "primitive": "boolean"
+          },
+          "protected": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "permission",
+              "type": {
+                "fqn": "jsii$_aws_cdk_lambda$.LambdaPermission"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a permission to the Lambda resource policy."
+          },
+          "name": "addPermission"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.Alias",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "Alias",
+      "base": {
+        "fqn": "jsii$_aws_cdk_lambda$.LambdaRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_lambda$.AliasProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_lambda$.VersionWeight": {
+      "docs": {
+        "comment": "A version/weight pair for routing traffic to Lambda functions"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The version to route traffic to"
+          },
+          "name": "version",
+          "type": {
+            "fqn": "jsii$_aws_cdk_lambda$.Version"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "How much weight to assign to this version (0..1)"
+          },
+          "name": "weight",
+          "type": {
+            "primitive": "number"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.VersionWeight",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "VersionWeight",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_lambda$.LambdaRefProps": {
+      "docs": {
+        "comment": "Represents a Lambda function defined outside of this stack."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the Lambda function.\nFormat: arn:<partition>:lambda:<region>:<account-id>:function:<function-name>"
+          },
+          "name": "functionArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.lambda.FunctionArn"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The IAM execution role associated with this function.\nIf the role is not specified, any role-related operations will no-op."
+          },
+          "name": "role",
+          "type": {
+            "fqn": "jsii$_aws_cdk_iam$.Role",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.LambdaRefProps",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "LambdaRefProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_lambda$.LambdaRef": {
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The name of the function."
+          },
+          "name": "functionName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_lambda$.FunctionName"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The ARN fo the function."
+          },
+          "name": "functionArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.lambda.FunctionArn"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The IAM role associated with this function."
+          },
+          "name": "role",
+          "type": {
+            "fqn": "jsii$_aws_cdk_iam$.Role",
+            "optional": true
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Whether the addPermission() call adds any permissions\n\nTrue for new Lambdas, false for imported Lambdas (they might live in different accounts)."
+          },
+          "name": "canCreatePermissions",
+          "type": {
+            "primitive": "boolean"
+          },
+          "immutable": true,
+          "protected": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Returns a RuleTarget that can be used to trigger this Lambda as a\nresult from a CloudWatch event."
+          },
+          "name": "eventRuleTarget",
+          "type": {
+            "fqn": "jsii$_aws_cdk_events$.EventRuleTarget"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "parent The parent construct",
+                "comment": "The parent construct"
+              },
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the lambda construct",
+                "comment": "The name of the lambda construct"
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "ref A reference to a Lambda function. Can be created manually (see\nexample above) or obtained through a call to `lambda.export()`.",
+                "comment": "A reference to a Lambda function. Can be created manually (see\nexample above) or obtained through a call to `lambda.export()`."
+              },
+              "name": "ref",
+              "type": {
+                "fqn": "jsii$_aws_cdk_lambda$.LambdaRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Creates a Lambda function object which represents a function not defined\nwithin this stack.\n\n      Lambda.import(this, 'MyImportedFunction', { lambdaArn: new LambdaArn('arn:aws:...') });"
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_lambda$.LambdaRef"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "name A name for the permission construct",
+                "comment": "A name for the permission construct"
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "permission",
+              "type": {
+                "fqn": "jsii$_aws_cdk_lambda$.LambdaPermission"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a permission to the Lambda resource policy."
+          },
+          "name": "addPermission"
+        },
+        {
+          "parameters": [
+            {
+              "name": "statement",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "name": "addToRolePolicy"
+        }
+      ],
+      "interfaces": [
+        {
+          "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.LambdaRef",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "LambdaRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_lambda$.FunctionName": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_lambda$.FunctionName",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "FunctionName",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_lambda$.LambdaProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The source code of your Lambda function. You can point to a file in an\nAmazon Simple Storage Service (Amazon S3) bucket or specify your source\ncode as inline text."
+          },
+          "name": "code",
+          "type": {
+            "fqn": "jsii$_aws_cdk_lambda$.LambdaCode"
+          }
+        },
+        {
+          "docs": {
+            "comment": "A description of the function."
+          },
+          "name": "description",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The name of the function (within your source code) that Lambda calls to\nstart running your code. For more information, see the Handler property\nin the AWS Lambda Developer Guide.\n\nNOTE: If you specify your source code as inline text by specifying the\nZipFile property within the Code property, specify index.function_name as\nthe handler."
+          },
+          "name": "handler",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "default": "3 seconds.",
+            "comment": "The function execution time (in seconds) after which Lambda terminates\nthe function. Because the execution time affects cost, set this value\nbased on the function's expected execution time."
+          },
+          "name": "timeout",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Key-value pairs that Lambda caches and makes available for your Lambda\nfunctions. Use environment variables to apply configuration changes, such\nas test and production environment configurations, without changing your\nLambda function source code."
+          },
+          "name": "environment",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "any"
+              },
+              "kind": "map"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The runtime environment for the Lambda function that you are uploading.\nFor valid values, see the Runtime property in the AWS Lambda Developer\nGuide."
+          },
+          "name": "runtime",
+          "type": {
+            "fqn": "jsii$_aws_cdk_lambda$.LambdaRuntime"
+          }
+        },
+        {
+          "docs": {
+            "comment": "A name for the function. If you don't specify a name, AWS CloudFormation\ngenerates a unique physical ID and uses that ID for the function's name.\nFor more information, see Name Type."
+          },
+          "name": "functionName",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "The default value is 128 MB",
+            "comment": "The amount of memory, in MB, that is allocated to your Lambda function.\nLambda uses this value to proportionally allocate the amount of CPU\npower. For more information, see Resource Model in the AWS Lambda\nDeveloper Guide."
+          },
+          "name": "memorySize",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Initial policy statements to add to the created Lambda Role.\n\nYou can call `addToRolePolicy` to the created lambda to add statements post creation."
+          },
+          "name": "initialPolicy",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              },
+              "kind": "array"
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.LambdaProps",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "LambdaProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_lambda$.Lambda": {
+      "docs": {
+        "comment": "Deploys a file from from inside the construct library as a function.\n\nThe supplied file is subject to the 4096 bytes limit of being embedded in a\nCloudFormation template.\n\nThe construct includes an associated role with the lambda.\n\nThis construct does not yet reproduce all features from the underlying resource\nlibrary."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Name of this function"
+          },
+          "name": "functionName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_lambda$.FunctionName"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "ARN of this function"
+          },
+          "name": "functionArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.lambda.FunctionArn"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Execution role associated with this function"
+          },
+          "name": "role",
+          "type": {
+            "fqn": "jsii$_aws_cdk_iam$.Role",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Whether the addPermission() call adds any permissions\n\nTrue for new Lambdas, false for imported Lambdas (they might live in different accounts)."
+          },
+          "name": "canCreatePermissions",
+          "type": {
+            "primitive": "boolean"
+          },
+          "immutable": true,
+          "protected": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The environment variable key.",
+                "comment": "The environment variable key."
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "value The environment variable's value.",
+                "comment": "The environment variable's value."
+              },
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds an environment variable to this Lambda function.\nIf this is a ref to a Lambda function, this operation results in a no-op."
+          },
+          "name": "addEnvironment"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "name A unique name for this version",
+                "comment": "A unique name for this version"
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "codeSha256 The SHA-256 hash of the most recently deployed Lambda source code, or\nomit to skip validation.",
+                "comment": "The SHA-256 hash of the most recently deployed Lambda source code, or\nomit to skip validation."
+              },
+              "name": "codeSha256",
+              "type": {
+                "primitive": "string",
+                "optional": true
+              }
+            },
+            {
+              "docs": {
+                "param": "description A description for this version.",
+                "comment": "A description for this version."
+              },
+              "name": "description",
+              "type": {
+                "primitive": "string",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "returns": "A new Version object.",
+            "comment": "Add a new version for this Lambda\n\nIf you want to deploy through CloudFormation and use aliases, you need to\nadd a new version (with a new name) to your Lambda every time you want\nto deploy an update. An alias can then refer to the newly created Version.\n\nAll versions should have distinct names, and you should not delete versions\nas long as your Alias needs to refer to them."
+          },
+          "name": "addVersion",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_lambda$.Version"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.Lambda",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "Lambda",
+      "base": {
+        "fqn": "jsii$_aws_cdk_lambda$.LambdaRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_lambda$.LambdaProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_lambda$.LambdaPermission": {
+      "docs": {
+        "comment": "Represents a permission statement that can be added to a Lambda's resource policy\nvia the `addToResourcePolicy` method."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "default": "'lambda:InvokeFunction'",
+            "comment": "The Lambda actions that you want to allow in this statement. For example,\nyou can specify lambda:CreateFunction to specify a certain action, or use\na wildcard (``lambda:*``) to grant permission to all Lambda actions. For a\nlist of actions, see Actions and Condition Context Keys for AWS Lambda in\nthe IAM User Guide."
+          },
+          "name": "action",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "The caller would not need to present a token.",
+            "comment": "A unique token that must be supplied by the principal invoking the\nfunction."
+          },
+          "name": "eventSourceToken",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The entity for which you are granting permission to invoke the Lambda\nfunction. This entity can be any valid AWS service principal, such as\ns3.amazonaws.com or sns.amazonaws.com, or, if you are granting\ncross-account permission, an AWS account ID. For example, you might want\nto allow a custom application in another AWS account to push events to\nLambda by invoking your function.\n\nThe principal can be either an AccountPrincipal or a ServicePrincipal."
+          },
+          "name": "principal",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyPrincipal"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The AWS account ID (without hyphens) of the source owner. For example, if\nyou specify an S3 bucket in the SourceArn property, this value is the\nbucket owner's account ID. You can use this property to ensure that all\nsource principals are owned by a specific account."
+          },
+          "name": "sourceAccount",
+          "type": {
+            "primitive": "any",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The ARN of a resource that is invoking your function. When granting\nAmazon Simple Storage Service (Amazon S3) permission to invoke your\nfunction, specify this property with the bucket ARN as its value. This\nensures that events generated only from the specified bucket, not just\nany bucket from any AWS account that creates a mapping to your function,\ncan invoke the function."
+          },
+          "name": "sourceArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Arn",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.LambdaPermission",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "LambdaPermission",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_lambda$.LambdaRuntime": {
+      "docs": {
+        "comment": "Lambda function runtime environment."
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "NodeJS"
+        },
+        {
+          "name": "NodeJS43"
+        },
+        {
+          "name": "NodeJS43Edge"
+        },
+        {
+          "name": "NodeJS610"
+        },
+        {
+          "name": "Java8"
+        },
+        {
+          "name": "Python27"
+        },
+        {
+          "name": "Python36"
+        },
+        {
+          "name": "DotNetCore1"
+        },
+        {
+          "name": "DotNetCore2"
+        },
+        {
+          "name": "Go1x"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.LambdaRuntime",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "LambdaRuntime"
+    },
+    "jsii$_aws_cdk_lambda$.LambdaCode": {
+      "kind": "class",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "runtime",
+              "type": {
+                "fqn": "jsii$_aws_cdk_lambda$.LambdaRuntime"
+              }
+            }
+          ],
+          "name": "toJSON",
+          "abstract": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.lambda.FunctionResource.CodeProperty"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.LambdaCode",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "LambdaCode",
+      "abstract": true,
+      "initializer": {
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_lambda$.LambdaS3Code": {
+      "kind": "class",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "_runtime",
+              "type": {
+                "fqn": "jsii$_aws_cdk_lambda$.LambdaRuntime"
+              }
+            }
+          ],
+          "name": "toJSON",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.lambda.FunctionResource.CodeProperty"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.LambdaS3Code",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "LambdaS3Code",
+      "base": {
+        "fqn": "jsii$_aws_cdk_lambda$.LambdaCode"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "bucket",
+            "type": {
+              "fqn": "jsii$_aws_cdk_s3$.BucketRef"
+            }
+          },
+          {
+            "name": "key",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "objectVersion",
+            "type": {
+              "primitive": "string",
+              "optional": true
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_lambda$.LambdaInlineCode": {
+      "kind": "class",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "runtime",
+              "type": {
+                "fqn": "jsii$_aws_cdk_lambda$.LambdaRuntime"
+              }
+            }
+          ],
+          "name": "toJSON",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_resources$.lambda.FunctionResource.CodeProperty"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.LambdaInlineCode",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "LambdaInlineCode",
+      "base": {
+        "fqn": "jsii$_aws_cdk_lambda$.LambdaCode"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "code",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_lambda$.IJavaScriptLambdaHandler": {
+      "docs": {
+        "comment": "Defines the handler code for an inline JavaScript lambda function.\n\nAWS Lambda invokes your Lambda function via a handler object. A handler\nrepresents the name of your Lambda function (and serves as the entry point\nthat AWS Lambda uses to execute your function code. For example:"
+      },
+      "kind": "interface",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "event Event sources can range from a supported AWS service or\ncustom applications that invoke your Lambda function. For examples, see\n[Sample Events Published by Event\nSources](https://docs.aws.amazon.com/lambda/latest/dg/eventsources.html).",
+                "comment": "Event sources can range from a supported AWS service or\ncustom applications that invoke your Lambda function. For examples, see\n[Sample Events Published by Event\nSources](https://docs.aws.amazon.com/lambda/latest/dg/eventsources.html)."
+              },
+              "name": "event",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "context AWS Lambda uses this parameter to provide details of your\nLambda function's execution. For more information, see [The Context\nObject](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html).",
+                "comment": "AWS Lambda uses this parameter to provide details of your\nLambda function's execution. For more information, see [The Context\nObject](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html)."
+              },
+              "name": "context",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "callback The Node.js runtimes v6.10 and v8.10 support the optional\ncallback parameter. You can use it to explicitly return information back\nto the caller. Signature is `callback(err, response)`.",
+                "comment": "The Node.js runtimes v6.10 and v8.10 support the optional\ncallback parameter. You can use it to explicitly return information back\nto the caller. Signature is `callback(err, response)`."
+              },
+              "name": "callback",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "The main Lambda entrypoint."
+          },
+          "name": "fn"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.IJavaScriptLambdaHandler",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "IJavaScriptLambdaHandler"
+    },
+    "jsii$_aws_cdk_lambda$.InlineJavaScriptLambdaRuntime": {
+      "docs": {
+        "comment": "The set of runtime that support inline javascript code."
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "NodeJS"
+        },
+        {
+          "name": "NodeJS43"
+        },
+        {
+          "name": "NodeJS610"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.InlineJavaScriptLambdaRuntime",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "InlineJavaScriptLambdaRuntime"
+    },
+    "jsii$_aws_cdk_lambda$.InlineJavaScriptLambdaProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The lambda handler as a javascript function.\n\nThis must be a javascript function object. The reason it is `any` is due\nto limitations of the jsii compiler."
+          },
+          "name": "handler",
+          "type": {
+            "fqn": "jsii$_aws_cdk_lambda$.IJavaScriptLambdaHandler"
+          }
+        },
+        {
+          "docs": {
+            "comment": "A description of the function."
+          },
+          "name": "description",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "30 seconds.",
+            "comment": "The function execution time (in seconds) after which Lambda terminates\nthe function. Because the execution time affects cost, set this value\nbased on the function's expected execution time."
+          },
+          "name": "timeout",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Key-value pairs that Lambda caches and makes available for your Lambda\nfunctions. Use environment variables to apply configuration changes, such\nas test and production environment configurations, without changing your\nLambda function source code."
+          },
+          "name": "environment",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "primitive": "any"
+              },
+              "kind": "map"
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "NodeJS610",
+            "comment": "The runtime environment for the Lambda function that you are uploading.\nFor valid values, see the Runtime property in the AWS Lambda Developer\nGuide."
+          },
+          "name": "runtime",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "A name for the function. If you don't specify a name, AWS CloudFormation\ngenerates a unique physical ID and uses that ID for the function's name.\nFor more information, see Name Type."
+          },
+          "name": "functionName",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "The default value is 128 MB",
+            "comment": "The amount of memory, in MB, that is allocated to your Lambda function.\nLambda uses this value to proportionally allocate the amount of CPU\npower. For more information, see Resource Model in the AWS Lambda\nDeveloper Guide."
+          },
+          "name": "memorySize",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.InlineJavaScriptLambdaProps",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "InlineJavaScriptLambdaProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_lambda$.InlineJavaScriptLambda": {
+      "docs": {
+        "comment": "A lambda function with inline node.js code.\n\nUsage:\n\n    new InlineJavaScriptLambda(this, 'MyFunc', {\n      handler: {\n        fn: (event, context, callback) => {\n          console.log('hello, world');\n          callback();\n        }\n      }\n    });\n\nThis will define a node.js 6.10 function with the provided function has\nthe handler code."
+      },
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_lambda$.InlineJavaScriptLambda",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "InlineJavaScriptLambda",
+      "base": {
+        "fqn": "jsii$_aws_cdk_lambda$.Lambda"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_lambda$.InlineJavaScriptLambdaProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_lambda$.VersionProps": {
+      "docs": {
+        "comment": "Properties for a new Lambda version"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "default": "No validation is performed",
+            "comment": "SHA256 of the version of the Lambda source code\n\nSpecify to validate that you're deploying the right version."
+          },
+          "name": "codeSha256",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "Description of the Lambda",
+            "comment": "Description of the version"
+          },
+          "name": "description",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Function to get the value of"
+          },
+          "name": "lambda",
+          "type": {
+            "fqn": "jsii$_aws_cdk_lambda$.LambdaRef"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.VersionProps",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "VersionProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_lambda$.Version": {
+      "docs": {
+        "comment": "A single newly-deployed version of a Lambda function.\n\nThis object exists to--at deploy time--query the \"then-current\" version of\nthe Lambda function that it refers to. This Version object can then be\nused in `Alias` to refer to a particular deployment of a Lambda.\n\nThis means that for every new update you deploy to your Lambda (using the\nCDK and Aliases), you must always create a new Version object. In\nparticular, it must have a different name, so that a new resource is\ncreated.\n\nIf you want to ensure that you're associating the right version with\nthe right deployment, specify the `codeSha256` property while\ncreating the `Version.\n *"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The most recently deployed version of this function."
+          },
+          "name": "functionVersion",
+          "type": {
+            "fqn": "jsii$_aws_cdk_lambda$.FunctionVersion"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Lambda object this version is associated with"
+          },
+          "name": "lambda",
+          "type": {
+            "fqn": "jsii$_aws_cdk_lambda$.LambdaRef"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_lambda$.Version",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "Version",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_lambda$.VersionProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_lambda$.FunctionVersion": {
+      "docs": {
+        "comment": "A single version of a Lambda function"
+      },
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_lambda$.FunctionVersion",
+      "module": "jsii$_aws_cdk_lambda$",
+      "namespace": "jsii$_aws_cdk_lambda$",
+      "name": "FunctionVersion",
+      "base": {
+        "fqn": "jsii$_aws_cdk_resources$.lambda.Version"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    }
+  },
+  "nametree": {
+    "jsii$_aws_cdk_lambda$": {
+      "AliasProps": {
+        "_": "jsii$_aws_cdk_lambda$.AliasProps"
+      },
+      "Alias": {
+        "_": "jsii$_aws_cdk_lambda$.Alias"
+      },
+      "VersionWeight": {
+        "_": "jsii$_aws_cdk_lambda$.VersionWeight"
+      },
+      "LambdaRefProps": {
+        "_": "jsii$_aws_cdk_lambda$.LambdaRefProps"
+      },
+      "LambdaRef": {
+        "_": "jsii$_aws_cdk_lambda$.LambdaRef"
+      },
+      "FunctionName": {
+        "_": "jsii$_aws_cdk_lambda$.FunctionName"
+      },
+      "LambdaProps": {
+        "_": "jsii$_aws_cdk_lambda$.LambdaProps"
+      },
+      "Lambda": {
+        "_": "jsii$_aws_cdk_lambda$.Lambda"
+      },
+      "LambdaPermission": {
+        "_": "jsii$_aws_cdk_lambda$.LambdaPermission"
+      },
+      "LambdaRuntime": {
+        "_": "jsii$_aws_cdk_lambda$.LambdaRuntime"
+      },
+      "LambdaCode": {
+        "_": "jsii$_aws_cdk_lambda$.LambdaCode"
+      },
+      "LambdaS3Code": {
+        "_": "jsii$_aws_cdk_lambda$.LambdaS3Code"
+      },
+      "LambdaInlineCode": {
+        "_": "jsii$_aws_cdk_lambda$.LambdaInlineCode"
+      },
+      "IJavaScriptLambdaHandler": {
+        "_": "jsii$_aws_cdk_lambda$.IJavaScriptLambdaHandler"
+      },
+      "InlineJavaScriptLambdaRuntime": {
+        "_": "jsii$_aws_cdk_lambda$.InlineJavaScriptLambdaRuntime"
+      },
+      "InlineJavaScriptLambdaProps": {
+        "_": "jsii$_aws_cdk_lambda$.InlineJavaScriptLambdaProps"
+      },
+      "InlineJavaScriptLambda": {
+        "_": "jsii$_aws_cdk_lambda$.InlineJavaScriptLambda"
+      },
+      "VersionProps": {
+        "_": "jsii$_aws_cdk_lambda$.VersionProps"
+      },
+      "Version": {
+        "_": "jsii$_aws_cdk_lambda$.Version"
+      },
+      "FunctionVersion": {
+        "_": "jsii$_aws_cdk_lambda$.FunctionVersion"
+      }
+    }
+  },
+  "typecount": 20,
+  "externalTypes": {
+    "jsii$_aws_cdk_core$.Construct": {
+      "docs": {
+        "comment": "Represents the building block of the construct graph.\nWhen a construct is created, it is always added as a child"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the parent of this node or undefined if this is a root node."
+          },
+          "name": "parent",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of this construct"
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "All direct children of this construct."
+          },
+          "name": "children",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "returns": "/-separated path of this Construct.",
+            "comment": "Returns the path of all constructs from root to this construct, in string form."
+          },
+          "name": "path",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "An array of metadata objects associated with this construct.\nThis can be used, for example, to implement support for deprecation notices, source mapping, etc."
+          },
+          "name": "metadata",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.MetadataEntry"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "docs": {
+            "comment": "Returns a string representation of this construct."
+          },
+          "name": "toString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "depth",
+              "type": {
+                "primitive": "number",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Returns a string with a tree representation of this construct and it's children."
+          },
+          "name": "toTreeString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "a child by path or undefined if not found.",
+            "comment": "Return a descendant by path, or undefined"
+          },
+          "name": "tryFindChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "Child with the given path.",
+            "comment": "Return a descendant by path\n\nThrows an exception if the descendant is not found."
+          },
+          "name": "findChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "value The context value",
+                "comment": "The context value"
+              },
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "This can be used to set contextual values.\nContext must be set before any children are added, since children may consult context info during construction.\nIf the key already exists, it will be overridden."
+          },
+          "name": "setContext"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The context value or undefined",
+            "comment": "Retrieves a value from tree context.\n\nContext is usually initialized at the root, but can be overridden at any point in the tree."
+          },
+          "name": "getContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Retrieve a value from tree-global context\n\nIt is an error if the context object is not available."
+          },
+          "name": "requireContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "type a string denoting the type of metadata",
+                "comment": "a string denoting the type of metadata"
+              },
+              "name": "type",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "data the value of the metadata (can be a Token). If null/undefined, metadata will not be added.",
+                "comment": "the value of the metadata (can be a Token). If null/undefined, metadata will not be added."
+              },
+              "name": "data",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "from a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)",
+                "comment": "a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)"
+              },
+              "name": "from",
+              "type": {
+                "primitive": "any",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a metadata entry to this construct.\nEntries are arbitrary values and will also include a stack trace to allow tracing back to\nthe code location for when the entry was added. It can be used, for example, to include source\nmapping in CloudFormation templates to improve diagnostics."
+          },
+          "name": "addMetadata",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "message The warning message.",
+                "comment": "The warning message."
+              },
+              "name": "message",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a { warning: <message> } metadata entry to this construct."
+          },
+          "name": "addWarning",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "docs": {
+            "returns": "An array of validation error messages, or an empty array if there the construct is valid.",
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "returns": "A list of validation errors. If the list is empty, all constructs are valid.",
+            "comment": "Invokes 'validate' on all child constructs and then on this construct (depth-first)."
+          },
+          "name": "validateTree",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.ValidationError"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "upTo",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Return the ancestors (including self) of this Construct up until and excluding the indicated component"
+          },
+          "name": "ancestors",
+          "protected": true,
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "props The props bag.",
+                "comment": "The props bag."
+              },
+              "name": "props",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the required property.",
+                "comment": "The name of the required property."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Throws if the `props` bag doesn't include the property `name`.\nIn the future we can add some type-checking here, maybe even auto-generate during compilation."
+          },
+          "name": "required",
+          "protected": true,
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "child The child construct",
+                "comment": "The child construct"
+              },
+              "name": "child",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "childName",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The resolved path part name of the child",
+            "comment": "Adds a child construct to this node."
+          },
+          "name": "addChild",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Locks this construct from allowing more children to be added. After this\ncall, no more children can be added to this construct or to any children."
+          },
+          "name": "lock",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Unlocks this costruct and allows mutations (adding children)."
+          },
+          "name": "unlock",
+          "protected": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Construct",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Construct",
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.lambda.FunctionArn": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.lambda.FunctionArn",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.lambda",
+      "name": "FunctionArn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Arn"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_iam$.Role": {
+      "docs": {
+        "comment": "IAM Role\n\nDefines an IAM role. The role is created with an assume policy document associated with\nthe specified AWS service principal defined in `serviceAssumeRole`."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The assume role policy document associated with this role."
+          },
+          "name": "assumeRolePolicy",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyDocument",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Returns the ARN of this role."
+          },
+          "name": "roleArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.iam.RoleArn"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Returns the name of the role."
+          },
+          "name": "roleName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_iam$.RoleName"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Returns the ARN of this role."
+          },
+          "name": "principal",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyPrincipal"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Returns the role."
+          },
+          "name": "dependencyElements",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.IDependable"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "statement",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a permission to the role's default policy document.\nIf there is no default policy attached to this role, it will be created."
+          },
+          "name": "addToPolicy"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "arn The ARN of the managed policy to attach.",
+                "comment": "The ARN of the managed policy to attach."
+              },
+              "name": "arn",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Attaches a managed policy to this role."
+          },
+          "name": "attachManagedPolicy"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "policy The policy to attach",
+                "comment": "The policy to attach"
+              },
+              "name": "policy",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.Policy"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Attaches a policy to this role."
+          },
+          "name": "attachInlinePolicy"
+        }
+      ],
+      "interfaces": [
+        {
+          "fqn": "jsii$_aws_cdk_iam$.IIdentityResource"
+        },
+        {
+          "fqn": "jsii$_aws_cdk_core$.IDependable"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_iam$.Role",
+      "module": "jsii$_aws_cdk_iam$",
+      "namespace": "jsii$_aws_cdk_iam$",
+      "name": "Role",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_iam$.RoleProps"
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_events$.IEventRuleTarget": {
+      "docs": {
+        "comment": "An abstract target for EventRules."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the rule target specification.\nNOTE: Do not use the various `inputXxx` options. They can be set in a call to `addTarget`."
+          },
+          "name": "eventRuleTarget",
+          "type": {
+            "fqn": "jsii$_aws_cdk_events$.EventRuleTarget"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.IEventRuleTarget",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "IEventRuleTarget",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_core$.PolicyStatement": {
+      "docs": {
+        "comment": "Represents a statement in an IAM policy document."
+      },
+      "subtypes": [
+        "jsii$_aws_cdk_core$.PolicyStatement.Effect"
+      ],
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Indicates if this permission has a \"Principal\" section."
+          },
+          "name": "hasPrincipal",
+          "type": {
+            "primitive": "boolean"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Indicates if this permission as at least one resource associated with it."
+          },
+          "name": "hasResource",
+          "type": {
+            "primitive": "boolean"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Indicates if this permission has only a ``\"*\"`` resource associated with it."
+          },
+          "name": "isOnlyStarResource",
+          "type": {
+            "primitive": "boolean"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "action",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "name": "addAction",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "actions",
+              "type": {
+                "primitive": "string"
+              },
+              "variadic": true
+            }
+          ],
+          "name": "addActions",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          },
+          "variadic": true
+        },
+        {
+          "parameters": [
+            {
+              "name": "principal",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyPrincipal"
+              }
+            }
+          ],
+          "name": "addPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "arn",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "addAwsPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "accountId",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "addAwsAccountPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "service",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "addServicePrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "federated",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "name": "conditions",
+              "type": {
+                "collection": {
+                  "elementtype": {
+                    "primitive": "any"
+                  },
+                  "kind": "map"
+                }
+              }
+            }
+          ],
+          "name": "addFederatedPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "name": "addAccountRootPrincipal",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "resource",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "addResource",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Adds a ``\"*\"`` resource to this statement."
+          },
+          "name": "addAllResources",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "resources",
+              "type": {
+                "primitive": "any"
+              },
+              "variadic": true
+            }
+          ],
+          "name": "addResources",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          },
+          "variadic": true
+        },
+        {
+          "parameters": [
+            {
+              "name": "sid",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "describe",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Sets the permission effect to deny access to resources."
+          },
+          "name": "allow",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Sets the permission effect to allow access to resources."
+          },
+          "name": "deny",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Add a condition to the Policy"
+          },
+          "name": "addCondition",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "conditions",
+              "type": {
+                "collection": {
+                  "elementtype": {
+                    "primitive": "any"
+                  },
+                  "kind": "map"
+                }
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Add multiple conditions to the Policy"
+          },
+          "name": "addConditions",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "deprecated": "For backwards compatibility. Use addCondition() instead.",
+            "comment": "Add a condition to the Policy."
+          },
+          "name": "setCondition",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "accountId",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "name": "limitToAccount",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+          }
+        },
+        {
+          "name": "resolve",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "name": "toJson",
+          "returns": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.PolicyStatement",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "PolicyStatement",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "effect",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.PolicyStatement.Effect",
+              "optional": true
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_events$.EventRuleTarget": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "A unique, user-defined identifier for the target. Acceptable values\ninclude alphanumeric characters, periods (.), hyphens (-), and\nunderscores (_)."
+          },
+          "name": "id",
+          "type": {
+            "primitive": "string"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The Amazon Resource Name (ARN) of the target."
+          },
+          "name": "arn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Arn"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The Amazon Resource Name (ARN) of the AWS Identity and Access Management\n(IAM) role to use for this target when the rule is triggered. If one rule\ntriggers multiple targets, you can use a different IAM role for each\ntarget."
+          },
+          "name": "roleArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.iam.RoleArn",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "The Amazon ECS task definition and task count to use, if the event target\nis an Amazon ECS task."
+          },
+          "name": "ecsParameters",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.EcsParametersProperty",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Settings that control shard assignment, when the target is a Kinesis\nstream. If you don't include this parameter, eventId is used as the\npartition key."
+          },
+          "name": "kinesisParameters",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.KinesisParametersProperty",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "comment": "Parameters used when the rule invokes Amazon EC2 Systems Manager Run\nCommand."
+          },
+          "name": "runCommandParameters",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.events.RuleResource.RunCommandParametersProperty",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_events$.EventRuleTarget",
+      "module": "jsii$_aws_cdk_events$",
+      "namespace": "jsii$_aws_cdk_events$",
+      "name": "EventRuleTarget",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_core$.Token": {
+      "docs": {
+        "comment": "Represents a lazy-evaluated value. Can be used to delay evaluation of a certain value\nin case, for example, that it requires some context or late-bound data."
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "docs": {
+            "returns": "The resolved value for this token."
+          },
+          "name": "resolve",
+          "returns": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Token",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Token",
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.PolicyPrincipal": {
+      "docs": {
+        "comment": "Represents an IAM principal."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "When this Principal is used in an AssumeRole policy, the action to use."
+          },
+          "name": "assumeRoleAction",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "docs": {
+            "comment": "Return the policy fragment that identifies this principal in a Policy."
+          },
+          "name": "policyFragment",
+          "abstract": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.PrincipalPolicyFragment"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.PolicyPrincipal",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "PolicyPrincipal",
+      "abstract": true,
+      "initializer": {
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_core$.Arn": {
+      "docs": {
+        "comment": "An Amazon Resource Name (ARN).\nhttp://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html"
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "components",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.ArnComponents"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Creates an ARN from components.\nIf any component is the empty string,\nan empty string will be inserted into the generated ARN\nat the location that component corresponds to."
+          },
+          "name": "fromComponents",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Arn"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "arn",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "an ArnComponents object which allows access to the various\ncomponents of the ARN.",
+            "comment": "Given an ARN, parses it and returns components.\n\nThe ARN it will be parsed and validated. The separator (`sep`) will be\nset to '/' if the 6th component includes a '/', in which case, `resource`\nwill be set to the value before the '/' and `resourceName` will be the\nrest. In case there is no '/', `resource` will be set to the 6th\ncomponents and `resourceName` will be set to the rest of the string."
+          },
+          "name": "parse",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.ArnComponents"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Arn",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Arn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.lambda.FunctionResource.CodeProperty": {
+      "docs": {
+        "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-code.html"
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-code.html#cfn-lambda-function-code-s3bucket",
+            "comment": "FunctionResource.CodeProperty.S3Bucket"
+          },
+          "name": "s3Bucket",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-code.html#cfn-lambda-function-code-s3key",
+            "comment": "FunctionResource.CodeProperty.S3Key"
+          },
+          "name": "s3Key",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-code.html#cfn-lambda-function-code-s3objectversion",
+            "comment": "FunctionResource.CodeProperty.S3ObjectVersion"
+          },
+          "name": "s3ObjectVersion",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "link": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-code.html#cfn-lambda-function-code-zipfile",
+            "comment": "FunctionResource.CodeProperty.ZipFile"
+          },
+          "name": "zipFile",
+          "type": {
+            "union": {
+              "types": [
+                {
+                  "primitive": "string"
+                },
+                {
+                  "fqn": "jsii$_aws_cdk_core$.Token"
+                }
+              ]
+            },
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_resources$.lambda.FunctionResource.CodeProperty",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.lambda.FunctionResource",
+      "name": "CodeProperty",
+      "datatype": true,
+      "parenttype": "jsii$_aws_cdk_resources$.lambda.FunctionResource"
+    },
+    "jsii$_aws_cdk_s3$.BucketRef": {
+      "docs": {
+        "comment": "Represents an S3 Bucket.\n\nBuckets can be either defined within this stack:\n\n     new Bucket(this, 'MyBucket', { props });\n\nOr imported from an existing bucket:\n\n     BucketRef.import(this, 'MyImportedBucket', { bucketArn: ... });\n\nYou can also export a bucket and import it into another stack:\n\n     const ref = myBucket.export();\n     BucketRef.import(this, 'MyImportedBucket', ref);"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the bucket."
+          },
+          "name": "bucketArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.s3.BucketArn"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The name of the bucket."
+          },
+          "name": "bucketName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketName"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Optional KMS encryption key associated with this bucket."
+          },
+          "name": "encryptionKey",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+            "optional": true
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "The resource policy assoicated with this bucket.\n\nIf `autoCreatePolicy` is true, a `BucketPolicy` will be created upon the\nfirst call to addToResourcePolicy(s)."
+          },
+          "name": "policy",
+          "type": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketPolicy",
+            "optional": true
+          },
+          "protected": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Indicates if a bucket resource policy should automatically created upon\nthe first call to `addToResourcePolicy`."
+          },
+          "name": "autoCreatePolicy",
+          "type": {
+            "primitive": "boolean"
+          },
+          "protected": true,
+          "abstract": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "parent The parent creating construct (usually `this`).",
+                "comment": "The parent creating construct (usually `this`)."
+              },
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The construct's name.",
+                "comment": "The construct's name."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_s3$.BucketRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Creates a Bucket construct that represents an external bucket."
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRef"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Exports this bucket from the stack."
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_s3$.BucketRefProps"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "permission",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a statement to the resource policy for a principal (i.e.\naccount/role/service) to perform actions on this bucket and/or it's\ncontents. Use `bucketArn` and `arnForObjects(keys)` to obtain ARNs for\nthis bucket or objects."
+          },
+          "name": "addToResourcePolicy"
+        },
+        {
+          "parameters": [
+            {
+              "name": "keyPattern",
+              "type": {
+                "primitive": "any"
+              },
+              "variadic": true
+            }
+          ],
+          "docs": {
+            "comment": "Returns an ARN that represents all objects within the bucket that match\nthe key pattern specified. To represent all keys, specify ``\"*\"``.\n\nIf you specify multiple components for keyPattern, they will be concatenated::\n\n     arnForObjects('home/', team, '/', user, '/*')"
+          },
+          "name": "arnForObjects",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Arn"
+          },
+          "variadic": true
+        },
+        {
+          "parameters": [
+            {
+              "name": "identity",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+                "optional": true
+              }
+            },
+            {
+              "name": "objectsKeyPattern",
+              "type": {
+                "primitive": "string",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Temporary API for granting read permissions for this bucket and it's\ncontents to an IAM principal (Role/Group/User).\n\nIf an encryption key is used, permission to ues the key to decrypt the\ncontents of the bucket will also be granted."
+          },
+          "name": "grantRead"
+        },
+        {
+          "parameters": [
+            {
+              "name": "identity",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+                "optional": true
+              }
+            },
+            {
+              "name": "objectsKeyPattern",
+              "type": {
+                "primitive": "string",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Grants read/write permissions for this bucket and it's contents to an IAM\nprincipal (Role/Group/User).\n\nIf an encryption key is used, permission to use the key for\nencrypt/decrypt will also be granted."
+          },
+          "name": "grantReadWrite"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_s3$.BucketRef",
+      "module": "jsii$_aws_cdk_s3$",
+      "namespace": "jsii$_aws_cdk_s3$",
+      "name": "BucketRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_resources$.lambda.Version": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.lambda.Version",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.lambda",
+      "name": "Version",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    }
+  },
+  "name": "jsii$_aws_cdk_lambda$",
+  "package": "@aws-cdk/lambda",
+  "version": "0.7.2-beta",
+  "dependencies": {
+    "jsii$_aws_cdk_core$": {
+      "package": "@aws-cdk/core",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_events$": {
+      "package": "@aws-cdk/events",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "package": "@aws-cdk/iam",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "package": "@aws-cdk/resources",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_s3$": {
+      "package": "@aws-cdk/s3",
+      "version": "0.7.2-beta"
+    }
+  },
+  "names": {
+    "java": "com.amazonaws.cdk.lambda",
+    "dotnet": "AWS.Cdk.Lambda",
+    "js": "@aws-cdk/lambda"
+  },
+  "nativenames": {
+    "jsii$_aws_cdk_core$": {
+      "java": "com.amazonaws.cdk",
+      "dotnet": "AWS.Cdk",
+      "js": "@aws-cdk/core"
+    },
+    "jsii$_aws_cdk_events$": {
+      "java": "com.amazonaws.cdk.events",
+      "dotnet": "AWS.Cdk.Events",
+      "js": "@aws-cdk/events"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "java": "com.amazonaws.cdk.iam",
+      "dotnet": "AWS.Cdk.Iam",
+      "js": "@aws-cdk/iam"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "java": "com.amazonaws.cdk.resources",
+      "dotnet": "AWS.Cdk.Resources",
+      "js": "@aws-cdk/resources"
+    },
+    "jsii$_aws_cdk_s3$": {
+      "java": "com.amazonaws.cdk.s3",
+      "dotnet": "AWS.Cdk.S3",
+      "js": "@aws-cdk/s3"
+    },
+    "jsii$_aws_cdk_lambda$": {
+      "java": "com.amazonaws.cdk.lambda",
+      "dotnet": "AWS.Cdk.Lambda",
+      "js": "@aws-cdk/lambda"
+    }
+  },
+  "readme": {
+    "markdown": "## AWS Lambda Construct Library\n\n```ts\nconst fn = new Lambda(this, 'MyFunction', {\n    runtime: LambdaRuntime.DOTNETCORE_2,\n    code: new LambdaS3Code(bucket, 'myKey'),\n    handler: 'index.handler'\n});\n\nfn.role.addToPolicy(new PolicyStatement()....);\n```\n\n### Inline node.js Lambda Functions\n\nThe subclass called `LambdaInlineNodeJS` allows embedding the function's handler\nas a JavaScript function within the construct code.\n\nThe following example defines a node.js Lambda and an S3 bucket. When invoked,\na file named \"myfile.txt\" will be uploaded to the bucket with the string \"hello, world\".\n\nA few things to note:\n\n - The function's execution role is granted read/write permissions on the\n   bucket.\n - The require statement for `aws-sdk` is invoked within the function's body. Due to\n   node.js' module caching, this is equivalent in performance to requiring\n   outside.\n - The bucket name is passed to the function via the environment variable\n   `BUCKET_NAME`.\n\n```ts\nconst bucket = new Bucket(this, 'MyBucket');\n\nconst lambda = new InlineJavaScriptLambda(this, 'MyLambda', {\n    environment: {\n        BUCKET_NAME: bucket.bucketName\n    },\n    handler: {\n        fn: (_event: any, _context: any, callback: any) => {\n            const S3 = require('aws-sdk').S3;\n            const s3 = new S3();\n            const bucketName = process.env.BUCKET_NAME;\n            s3.upload({ Bucket: bucketName, Key: 'myfile.txt', Body: 'Hello, world' }, (err, data) => {\n                if (err) {\n                    return callback(err);\n                }\n                console.log(data);\n                return callback();\n            });\n        }\n    }\n});\n\nbucket.grantReadWrite(lambda.role);\n```\n"
+  },
+  "code": "var jsii$_aws_cdk_lambda$ =\n/******/ (function(modules) { // webpackBootstrap\n/******/ \t// The module cache\n/******/ \tvar installedModules = {};\n/******/\n/******/ \t// The require function\n/******/ \tfunction __webpack_require__(moduleId) {\n/******/\n/******/ \t\t// Check if module is in cache\n/******/ \t\tif(installedModules[moduleId]) {\n/******/ \t\t\treturn installedModules[moduleId].exports;\n/******/ \t\t}\n/******/ \t\t// Create a new module (and put it into the cache)\n/******/ \t\tvar module = installedModules[moduleId] = {\n/******/ \t\t\ti: moduleId,\n/******/ \t\t\tl: false,\n/******/ \t\t\texports: {}\n/******/ \t\t};\n/******/\n/******/ \t\t// Execute the module function\n/******/ \t\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\n/******/\n/******/ \t\t// Flag the module as loaded\n/******/ \t\tmodule.l = true;\n/******/\n/******/ \t\t// Return the exports of the module\n/******/ \t\treturn module.exports;\n/******/ \t}\n/******/\n/******/\n/******/ \t// expose the modules object (__webpack_modules__)\n/******/ \t__webpack_require__.m = modules;\n/******/\n/******/ \t// expose the module cache\n/******/ \t__webpack_require__.c = installedModules;\n/******/\n/******/ \t// define getter function for harmony exports\n/******/ \t__webpack_require__.d = function(exports, name, getter) {\n/******/ \t\tif(!__webpack_require__.o(exports, name)) {\n/******/ \t\t\tObject.defineProperty(exports, name, {\n/******/ \t\t\t\tconfigurable: false,\n/******/ \t\t\t\tenumerable: true,\n/******/ \t\t\t\tget: getter\n/******/ \t\t\t});\n/******/ \t\t}\n/******/ \t};\n/******/\n/******/ \t// getDefaultExport function for compatibility with non-harmony modules\n/******/ \t__webpack_require__.n = function(module) {\n/******/ \t\tvar getter = module && module.__esModule ?\n/******/ \t\t\tfunction getDefault() { return module['default']; } :\n/******/ \t\t\tfunction getModuleExports() { return module; };\n/******/ \t\t__webpack_require__.d(getter, 'a', getter);\n/******/ \t\treturn getter;\n/******/ \t};\n/******/\n/******/ \t// Object.prototype.hasOwnProperty.call\n/******/ \t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\n/******/\n/******/ \t// __webpack_public_path__\n/******/ \t__webpack_require__.p = \"\";\n/******/\n/******/ \t// Load entry module and return exports\n/******/ \treturn __webpack_require__(__webpack_require__.s = 7);\n/******/ })\n/************************************************************************/\n/******/ ([\n/* 0 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_resources$;\n\n/***/ }),\n/* 1 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(2);\nconst resources_1 = __webpack_require__(0);\nclass LambdaRef extends core_1.Construct {\n    constructor() {\n        super(...arguments);\n        /**\n         * Indicates if the resource policy that allows CloudWatch events to publish\n         * notifications to this topic have been added.\n         */\n        this.eventRuleTargetPolicyAdded = false;\n    }\n    /**\n     * Creates a Lambda function object which represents a function not defined\n     * within this stack.\n     *\n     *      Lambda.import(this, 'MyImportedFunction', { lambdaArn: new LambdaArn('arn:aws:...') });\n     *\n     * @param parent The parent construct\n     * @param name The name of the lambda construct\n     * @param ref A reference to a Lambda function. Can be created manually (see\n     * example above) or obtained through a call to `lambda.export()`.\n     */\n    static import(parent, name, ref) {\n        return new LambdaRefImport(parent, name, ref);\n    }\n    /**\n     * Adds a permission to the Lambda resource policy.\n     * @param name A name for the permission construct\n     */\n    addPermission(name, permission) {\n        if (!this.canCreatePermissions) {\n            // FIXME: Report metadata\n            return;\n        }\n        const principal = this.parsePermissionPrincipal(permission.principal);\n        const action = permission.action || 'lambda:InvokeFunction';\n        new resources_1.lambda.PermissionResource(this, name, {\n            action,\n            principal,\n            functionName: this.functionName,\n            eventSourceToken: permission.eventSourceToken,\n            sourceAccount: permission.sourceAccount,\n            sourceArn: permission.sourceArn,\n        });\n    }\n    addToRolePolicy(statement) {\n        if (!this.role) {\n            return;\n        }\n        this.role.addToPolicy(statement);\n    }\n    parsePermissionPrincipal(principal) {\n        if (!principal) {\n            return undefined;\n        }\n        // use duck-typing, not instance of\n        if ('accountId' in principal) {\n            return principal.accountId;\n        }\n        if (`service` in principal) {\n            return principal.service;\n        }\n        throw new Error(`Invalid principal type for Lambda permission statement: ${JSON.stringify(core_1.resolve(principal))}. ` +\n            'Supported: AccountPrincipal, ServicePrincipal');\n    }\n    /**\n     * Returns a RuleTarget that can be used to trigger this Lambda as a\n     * result from a CloudWatch event.\n     */\n    get eventRuleTarget() {\n        if (!this.eventRuleTargetPolicyAdded) {\n            this.addPermission('InvokedByCloudWatch', {\n                action: 'lambda:InvokeFunction',\n                principal: new core_1.ServicePrincipal('events.amazonaws.com')\n            });\n            this.eventRuleTargetPolicyAdded = true;\n        }\n        return {\n            id: this.name,\n            arn: this.functionArn,\n        };\n    }\n}\nexports.LambdaRef = LambdaRef;\nclass LambdaRefImport extends LambdaRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        this.canCreatePermissions = false;\n        this.functionArn = props.functionArn;\n        this.functionName = this.extractNameFromArn(props.functionArn);\n        this.role = props.role;\n    }\n    /**\n     * Given an opaque (token) ARN, returns a CloudFormation expression that extracts the function\n     * name from the ARN.\n     *\n     * Function ARNs look like this:\n     *\n     *     arn:aws:lambda:region:account-id:function:function-name\n     *\n     * ..which means that in order to extract the `function-name` component from the ARN, we can\n     * split the ARN using \":\" and select the component in index 6.\n     *\n     * @returns `FnSelect(6, FnSplit(':', arn))`\n     */\n    extractNameFromArn(arn) {\n        return new core_1.FnSelect(6, new core_1.FnSplit(':', arn));\n    }\n}\nclass FunctionName extends core_1.Token {\n}\nexports.FunctionName = FunctionName;\n\n\n/***/ }),\n/* 2 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_core$;\n\n/***/ }),\n/* 3 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(2);\nconst iam_1 = __webpack_require__(9);\nconst resources_1 = __webpack_require__(0);\nconst lambda_ref_1 = __webpack_require__(1);\nconst version_1 = __webpack_require__(4);\n/**\n * Deploys a file from from inside the construct library as a function.\n *\n * The supplied file is subject to the 4096 bytes limit of being embedded in a\n * CloudFormation template.\n *\n * The construct includes an associated role with the lambda.\n *\n * This construct does not yet reproduce all features from the underlying resource\n * library.\n */\nclass Lambda extends lambda_ref_1.LambdaRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        this.canCreatePermissions = true;\n        this.environment = props.environment || {};\n        this.role = new iam_1.Role(this, 'ServiceRole', {\n            assumedBy: new core_1.ServicePrincipal('lambda.amazonaws.com'),\n            // the arn is in the form of - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole\n            managedPolicyArns: [core_1.Arn.fromComponents({\n                    service: \"iam\",\n                    region: \"\",\n                    account: \"aws\",\n                    resource: \"policy\",\n                    resourceName: \"service-role/AWSLambdaBasicExecutionRole\",\n                })],\n        });\n        for (const statement of (props.initialPolicy || [])) {\n            this.role.addToPolicy(statement);\n        }\n        const resource = new resources_1.lambda.FunctionResource(this, 'Resource', {\n            functionName: props.functionName,\n            description: props.description,\n            code: props.code.toJSON(props.runtime),\n            handler: props.handler,\n            timeout: props.timeout,\n            runtime: props.runtime,\n            role: this.role.roleArn,\n            environment: new core_1.Token(() => this.renderEnvironment()),\n            memorySize: props.memorySize,\n        });\n        resource.addDependency(this.role);\n        this.functionName = resource.ref;\n        this.functionArn = resource.functionArn;\n    }\n    /**\n     * Adds an environment variable to this Lambda function.\n     * If this is a ref to a Lambda function, this operation results in a no-op.\n     * @param key The environment variable key.\n     * @param value The environment variable's value.\n     */\n    addEnvironment(key, value) {\n        if (!this.environment) {\n            // TODO: add metadata\n            return;\n        }\n        this.environment[key] = value;\n    }\n    /**\n     * Add a new version for this Lambda\n     *\n     * If you want to deploy through CloudFormation and use aliases, you need to\n     * add a new version (with a new name) to your Lambda every time you want\n     * to deploy an update. An alias can then refer to the newly created Version.\n     *\n     * All versions should have distinct names, and you should not delete versions\n     * as long as your Alias needs to refer to them.\n     *\n     * @param name A unique name for this version\n     * @param codeSha256 The SHA-256 hash of the most recently deployed Lambda source code, or\n     *    omit to skip validation.\n     * @param description A description for this version.\n     * @returns A new Version object.\n     */\n    addVersion(name, codeSha256, description) {\n        return new version_1.Version(this, 'Version' + name, {\n            lambda: this,\n            codeSha256,\n            description,\n        });\n    }\n    renderEnvironment() {\n        if (!this.environment || Object.keys(this.environment).length === 0) {\n            return undefined;\n        }\n        return {\n            variables: this.environment\n        };\n    }\n}\nexports.Lambda = Lambda;\n\n\n/***/ }),\n/* 4 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(2);\nconst resources_1 = __webpack_require__(0);\n/**\n * A single newly-deployed version of a Lambda function.\n *\n * This object exists to--at deploy time--query the \"then-current\" version of\n * the Lambda function that it refers to. This Version object can then be\n * used in `Alias` to refer to a particular deployment of a Lambda.\n *\n * This means that for every new update you deploy to your Lambda (using the\n * CDK and Aliases), you must always create a new Version object. In\n * particular, it must have a different name, so that a new resource is\n * created.\n *\n * If you want to ensure that you're associating the right version with\n * the right deployment, specify the `codeSha256` property while\n * creating the `Version.\n */\nclass Version extends core_1.Construct {\n    constructor(parent, name, props) {\n        super(parent, name);\n        const version = new resources_1.lambda.VersionResource(this, 'Resource', {\n            codeSha256: props.codeSha256,\n            description: props.description,\n            functionName: props.lambda.functionName\n        });\n        this.functionVersion = version.version;\n        this.lambda = props.lambda;\n    }\n}\nexports.Version = Version;\n/**\n * A single version of a Lambda function\n */\nclass FunctionVersion extends resources_1.lambda.Version {\n}\nexports.FunctionVersion = FunctionVersion;\n\n\n/***/ }),\n/* 5 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\n/**\n * Lambda function runtime environment.\n */\nvar LambdaRuntime;\n(function (LambdaRuntime) {\n    LambdaRuntime[\"NodeJS\"] = \"nodejs\";\n    LambdaRuntime[\"NodeJS43\"] = \"nodejs4.3\";\n    LambdaRuntime[\"NodeJS43Edge\"] = \"nodejs4.3-edge\";\n    LambdaRuntime[\"NodeJS610\"] = \"nodejs6.10\";\n    LambdaRuntime[\"Java8\"] = \"java8\";\n    LambdaRuntime[\"Python27\"] = \"python2.7\";\n    LambdaRuntime[\"Python36\"] = \"python3.6\";\n    LambdaRuntime[\"DotNetCore1\"] = \"dotnetcore1.0\";\n    LambdaRuntime[\"DotNetCore2\"] = \"dotnetcore2.0\";\n    LambdaRuntime[\"Go1x\"] = \"go1.x\";\n})(LambdaRuntime = exports.LambdaRuntime || (exports.LambdaRuntime = {}));\n\n\n/***/ }),\n/* 6 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst runtime_1 = __webpack_require__(5);\nclass LambdaCode {\n}\nexports.LambdaCode = LambdaCode;\nclass LambdaS3Code extends LambdaCode {\n    constructor(bucket, key, objectVersion) {\n        super();\n        this.key = key;\n        this.objectVersion = objectVersion;\n        if (!bucket.bucketName) {\n            throw new Error('bucketName is undefined for the provided bucket');\n        }\n        this.bucketName = bucket.bucketName;\n    }\n    toJSON(_runtime) {\n        return {\n            s3Bucket: this.bucketName,\n            s3Key: this.key,\n            s3ObjectVersion: this.objectVersion\n        };\n    }\n}\nexports.LambdaS3Code = LambdaS3Code;\nclass LambdaInlineCode extends LambdaCode {\n    constructor(code) {\n        super();\n        this.code = code;\n        if (code.length > 4096) {\n            throw new Error(\"Lambda source is too large, must be <= 4096 but is \" + code.length);\n        }\n    }\n    toJSON(runtime) {\n        const allowed = [\n            runtime_1.LambdaRuntime.NodeJS,\n            runtime_1.LambdaRuntime.NodeJS43,\n            runtime_1.LambdaRuntime.NodeJS610,\n            runtime_1.LambdaRuntime.Python27,\n            runtime_1.LambdaRuntime.Python36\n        ];\n        if (!allowed.find(a => a === runtime)) {\n            throw new Error(`Inline source only allowed for: ${allowed.join(', ')}`);\n        }\n        return {\n            zipFile: this.code\n        };\n    }\n}\nexports.LambdaInlineCode = LambdaInlineCode;\n\n\n/***/ }),\n/* 7 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(8));\n__export(__webpack_require__(1));\n__export(__webpack_require__(3));\n__export(__webpack_require__(5));\n__export(__webpack_require__(6));\n__export(__webpack_require__(10));\n__export(__webpack_require__(4));\n\n\n/***/ }),\n/* 8 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst resources_1 = __webpack_require__(0);\nconst lambda_ref_1 = __webpack_require__(1);\n/**\n * A new alias to a particular version of a Lambda function.\n */\nclass Alias extends lambda_ref_1.LambdaRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        this.canCreatePermissions = true; // Not used anyway\n        this.underlyingLambda = props.version.lambda;\n        const alias = new resources_1.lambda.AliasResource(this, 'Resource', {\n            aliasName: props.aliasName,\n            description: props.description,\n            functionName: this.underlyingLambda.functionName,\n            functionVersion: props.version.functionVersion,\n            routingConfig: this.determineRoutingConfig(props)\n        });\n        this.functionName = alias.ref;\n        this.functionArn = alias.ref;\n    }\n    addPermission(name, permission) {\n        // Forward addPermission() to the underlying Lambda object\n        this.underlyingLambda.addPermission(name, permission);\n    }\n    /**\n     * Calculate the routingConfig parameter from the input props\n     */\n    determineRoutingConfig(props) {\n        if (!props.additionalVersions || props.additionalVersions.length === 0) {\n            return undefined;\n        }\n        this.validateAdditionalWeights(props.additionalVersions);\n        return {\n            additionalVersionWeights: props.additionalVersions.map(vw => {\n                return {\n                    functionVersion: vw.version.functionVersion,\n                    functionWeight: vw.weight\n                };\n            })\n        };\n    }\n    /**\n     * Validate that the additional version weights make sense\n     *\n     * We validate that they are positive and add up to something <= 1.\n     */\n    validateAdditionalWeights(weights) {\n        const total = weights.map(w => {\n            if (w.weight < 0 || w.weight > 1) {\n                throw new Error(`Additional version weight must be between 0 and 1, got: ${w.weight}`);\n            }\n            return w.weight;\n        }).reduce((a, x) => a + x);\n        if (total > 1) {\n            throw new Error(`Sum of additional version weights must not exceed 1, got: ${total}`);\n        }\n    }\n}\nexports.Alias = Alias;\n\n\n/***/ }),\n/* 9 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_iam$;\n\n/***/ }),\n/* 10 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst code_1 = __webpack_require__(6);\nconst lambda_1 = __webpack_require__(3);\n/**\n * The set of runtime that support inline javascript code.\n */\nvar InlineJavaScriptLambdaRuntime;\n(function (InlineJavaScriptLambdaRuntime) {\n    InlineJavaScriptLambdaRuntime[\"NodeJS\"] = \"nodejs\";\n    InlineJavaScriptLambdaRuntime[\"NodeJS43\"] = \"nodejs4.3\";\n    InlineJavaScriptLambdaRuntime[\"NodeJS610\"] = \"nodejs6.10\";\n})(InlineJavaScriptLambdaRuntime = exports.InlineJavaScriptLambdaRuntime || (exports.InlineJavaScriptLambdaRuntime = {}));\n/**\n * A lambda function with inline node.js code.\n *\n * Usage:\n *\n *    new InlineJavaScriptLambda(this, 'MyFunc', {\n *      handler: {\n *        fn: (event, context, callback) => {\n *          console.log('hello, world');\n *          callback();\n *        }\n *      }\n *    });\n *\n * This will define a node.js 6.10 function with the provided function has\n * the handler code.\n */\nclass InlineJavaScriptLambda extends lambda_1.Lambda {\n    constructor(parent, name, props) {\n        const code = new code_1.LambdaInlineCode(renderCode(props.handler));\n        const runtime = (props.runtime || InlineJavaScriptLambdaRuntime.NodeJS610);\n        const handler = 'index.handler';\n        const timeout = props.timeout || 30;\n        super(parent, name, {\n            code,\n            runtime,\n            handler,\n            timeout,\n            description: props.description,\n            memorySize: props.memorySize,\n            functionName: props.functionName,\n            environment: props.environment,\n        });\n    }\n}\nexports.InlineJavaScriptLambda = InlineJavaScriptLambda;\nfunction renderCode(handler) {\n    return `exports.handler = ${handler.fn.toString()}`;\n}\n\n\n/***/ })\n/******/ ]);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vd2VicGFjay9ib290c3RyYXAgMTYwMGQ2MDdhYTZkZWQyNzIxZTYiLCJ3ZWJwYWNrOi8vL2V4dGVybmFsIFwianNpaSRfYXdzX2Nka19yZXNvdXJjZXMkXCIiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvbGFtYmRhL2xpYi9sYW1iZGEtcmVmLnRzIiwid2VicGFjazovLy9leHRlcm5hbCBcImpzaWkkX2F3c19jZGtfY29yZSRcIiIsIndlYnBhY2s6Ly8vL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9sYW1iZGEvbGliL2xhbWJkYS50cyIsIndlYnBhY2s6Ly8vL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9sYW1iZGEvbGliL3ZlcnNpb24udHMiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvbGFtYmRhL2xpYi9ydW50aW1lLnRzIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2xhbWJkYS9saWIvY29kZS50cyIsIndlYnBhY2s6Ly8vL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9sYW1iZGEvbGliL2luZGV4LnRzIiwid2VicGFjazovLy8vcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2xhbWJkYS9saWIvYWxpYXMudHMiLCJ3ZWJwYWNrOi8vL2V4dGVybmFsIFwianNpaSRfYXdzX2Nka19pYW0kXCIiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvbGFtYmRhL2xpYi9pbmxpbmUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7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QUcsQ0FBQyxLQUFLLENBQUMsT0FBTyxJQUFJLDZCQUE2QixDQUFDLFNBQVMsQ0FBUSxDQUFDO1FBQ2xGLE1BQU0sT0FBTyxHQUFHLGVBQWUsQ0FBQztRQUNoQyxNQUFNLE9BQU8sR0FBRyxLQUFLLENBQUMsT0FBTyxJQUFJLEVBQUUsQ0FBQztRQUNwQyxLQUFLLENBQUMsTUFBTSxFQUFFLElBQUksRUFBRTtZQUNoQixJQUFJO1lBQ0osT0FBTztZQUNQLE9BQU87WUFDUCxPQUFPO1lBQ1AsV0FBVyxFQUFFLEtBQUssQ0FBQyxXQUFXO1lBQzlCLFVBQVUsRUFBRSxLQUFLLENBQUMsVUFBVTtZQUM1QixZQUFZLEVBQUUsS0FBSyxDQUFDLFlBQVk7WUFDaEMsV0FBVyxFQUFFLEtBQUssQ0FBQyxXQUFXO1NBQ2pDLENBQUMsQ0FBQztJQUNQLENBQUM7Q0FDSjtBQWpCRCx3REFpQkM7QUFFRCxvQkFBb0IsT0FBaUM7SUFDakQsT0FBTyxxQkFBcUIsT0FBTyxDQUFDLEVBQUUsQ0FBQyxRQUFRLEVBQUUsRUFBRSxDQUFDO0FBQ3hELENBQUMiLCJmaWxlIjoiYnVuZGxlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiIFx0Ly8gVGhlIG1vZHVsZSBjYWNoZVxuIFx0dmFyIGluc3RhbGxlZE1vZHVsZXMgPSB7fTtcblxuIFx0Ly8gVGhlIHJlcXVpcmUgZnVuY3Rpb25cbiBcdGZ1bmN0aW9uIF9fd2VicGFja19yZXF1aXJlX18obW9kdWxlSWQpIHtcblxuIFx0XHQvLyBDaGVjayBpZiBtb2R1bGUgaXMgaW4gY2FjaGVcbiBcdFx0aWYoaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0pIHtcbiBcdFx0XHRyZXR1cm4gaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0uZXhwb3J0cztcbiBcdFx0fVxuIFx0XHQvLyBDcmVhdGUgYSBuZXcgbW9kdWxlIChhbmQgcHV0IGl0IGludG8gdGhlIGNhY2hlKVxuIFx0XHR2YXIgbW9kdWxlID0gaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0gPSB7XG4gXHRcdFx0aTogbW9kdWxlSWQsXG4gXHRcdFx0bDogZmFsc2UsXG4gXHRcdFx0ZXhwb3J0czoge31cbiBcdFx0fTtcblxuIFx0XHQvLyBFeGVjdXRlIHRoZSBtb2R1bGUgZnVuY3Rpb25cbiBcdFx0bW9kdWxlc1ttb2R1bGVJZF0uY2FsbChtb2R1bGUuZXhwb3J0cywgbW9kdWxlLCBtb2R1bGUuZXhwb3J0cywgX193ZWJwYWNrX3JlcXVpcmVfXyk7XG5cbiBcdFx0Ly8gRmxhZyB0aGUgbW9kdWxlIGFzIGxvYWRlZFxuIFx0XHRtb2R1bGUubCA9IHRydWU7XG5cbiBcdFx0Ly8gUmV0dXJuIHRoZSBleHBvcnRzIG9mIHRoZSBtb2R1bGVcbiBcdFx0cmV0dXJuIG1vZHVsZS5leHBvcnRzO1xuIFx0fVxuXG5cbiBcdC8vIGV4cG9zZSB0aGUgbW9kdWxlcyBvYmplY3QgKF9fd2VicGFja19tb2R1bGVzX18pXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLm0gPSBtb2R1bGVzO1xuXG4gXHQvLyBleHBvc2UgdGhlIG1vZHVsZSBjYWNoZVxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5jID0gaW5zdGFsbGVkTW9kdWxlcztcblxuIFx0Ly8gZGVmaW5lIGdldHRlciBmdW5jdGlvbiBmb3IgaGFybW9ueSBleHBvcnRzXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLmQgPSBmdW5jdGlvbihleHBvcnRzLCBuYW1lLCBnZXR0ZXIpIHtcbiBcdFx0aWYoIV9fd2VicGFja19yZXF1aXJlX18ubyhleHBvcnRzLCBuYW1lKSkge1xuIFx0XHRcdE9iamVjdC5kZWZpbmVQcm9wZXJ0eShleHBvcnRzLCBuYW1lLCB7XG4gXHRcdFx0XHRjb25maWd1cmFibGU6IGZhbHNlLFxuIFx0XHRcdFx0ZW51bWVyYWJsZTogdHJ1ZSxcbiBcdFx0XHRcdGdldDogZ2V0dGVyXG4gXHRcdFx0fSk7XG4gXHRcdH1cbiBcdH07XG5cbiBcdC8vIGdldERlZmF1bHRFeHBvcnQgZnVuY3Rpb24gZm9yIGNvbXBhdGliaWxpdHkgd2l0aCBub24taGFybW9ueSBtb2R1bGVzXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLm4gPSBmdW5jdGlvbihtb2R1bGUpIHtcbiBcdFx0dmFyIGdldHRlciA9IG1vZHVsZSAmJiBtb2R1bGUuX19lc01vZHVsZSA/XG4gXHRcdFx0ZnVuY3Rpb24gZ2V0RGVmYXVsdCgpIHsgcmV0dXJuIG1vZHVsZVsnZGVmYXVsdCddOyB9IDpcbiBcdFx0XHRmdW5jdGlvbiBnZXRNb2R1bGVFeHBvcnRzKCkgeyByZXR1cm4gbW9kdWxlOyB9O1xuIFx0XHRfX3dlYnBhY2tfcmVxdWlyZV9fLmQoZ2V0dGVyLCAnYScsIGdldHRlcik7XG4gXHRcdHJldHVybiBnZXR0ZXI7XG4gXHR9O1xuXG4gXHQvLyBPYmplY3QucHJvdG90eXBlLmhhc093blByb3BlcnR5LmNhbGxcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubyA9IGZ1bmN0aW9uKG9iamVjdCwgcHJvcGVydHkpIHsgcmV0dXJuIE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbChvYmplY3QsIHByb3BlcnR5KTsgfTtcblxuIFx0Ly8gX193ZWJwYWNrX3B1YmxpY19wYXRoX19cbiBcdF9fd2VicGFja19yZXF1aXJlX18ucCA9IFwiXCI7XG5cbiBcdC8vIExvYWQgZW50cnkgbW9kdWxlIGFuZCByZXR1cm4gZXhwb3J0c1xuIFx0cmV0dXJuIF9fd2VicGFja19yZXF1aXJlX18oX193ZWJwYWNrX3JlcXVpcmVfXy5zID0gNyk7XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gd2VicGFjay9ib290c3RyYXAgMTYwMGQ2MDdhYTZkZWQyNzIxZTYiLCJtb2R1bGUuZXhwb3J0cyA9IGpzaWkkX2F3c19jZGtfcmVzb3VyY2VzJDtcblxuXG4vLy8vLy8vLy8vLy8vLy8vLy9cbi8vIFdFQlBBQ0sgRk9PVEVSXG4vLyBleHRlcm5hbCBcImpzaWkkX2F3c19jZGtfcmVzb3VyY2VzJFwiXG4vLyBtb2R1bGUgaWQgPSAwXG4vLyBtb2R1bGUgY2h1bmtzID0gMCIsImltcG9ydCB7IEFjY291bnRQcmluY2lwYWwsIEFybiwgQ29uc3RydWN0LCBGblNlbGVjdCwgRm5TcGxpdCwgUG9saWN5UHJpbmNpcGFsLFxuICAgICAgICAgUG9saWN5U3RhdGVtZW50LCByZXNvbHZlLCBTZXJ2aWNlUHJpbmNpcGFsLCBUb2tlbiB9IGZyb20gJ0Bhd3MtY2RrL2NvcmUnO1xuaW1wb3J0IHsgRXZlbnRSdWxlVGFyZ2V0LCBJRXZlbnRSdWxlVGFyZ2V0IH0gZnJvbSAnQGF3cy1jZGsvZXZlbnRzJztcbmltcG9ydCB7IFJvbGUgfSBmcm9tICdAYXdzLWNkay9pYW0nO1xuaW1wb3J0IHsgbGFtYmRhIH0gZnJvbSAnQGF3cy1jZGsvcmVzb3VyY2VzJztcbmltcG9ydCB7IExhbWJkYVBlcm1pc3Npb24gfSBmcm9tICcuL3Blcm1pc3Npb24nO1xuXG4vKipcbiAqIFJlcHJlc2VudHMgYSBMYW1iZGEgZnVuY3Rpb24gZGVmaW5lZCBvdXRzaWRlIG9mIHRoaXMgc3RhY2suXG4gKi9cbmV4cG9ydCBpbnRlcmZhY2UgTGFtYmRhUmVmUHJvcHMge1xuICAgIC8qKlxuICAgICAqIFRoZSBBUk4gb2YgdGhlIExhbWJkYSBmdW5jdGlvbi5cbiAgICAgKiBGb3JtYXQ6IGFybjo8cGFydGl0aW9uPjpsYW1iZGE6PHJlZ2lvbj46PGFjY291bnQtaWQ+OmZ1bmN0aW9uOjxmdW5jdGlvbi1uYW1lPlxuICAgICAqL1xuICAgIGZ1bmN0aW9uQXJuOiBsYW1iZGEuRnVuY3Rpb25Bcm47XG5cbiAgICAvKipcbiAgICAgKiBUaGUgSUFNIGV4ZWN1dGlvbiByb2xlIGFzc29jaWF0ZWQgd2l0aCB0aGlzIGZ1bmN0aW9uLlxuICAgICAqIElmIHRoZSByb2xlIGlzIG5vdCBzcGVjaWZpZWQsIGFueSByb2xlLXJlbGF0ZWQgb3BlcmF0aW9ucyB3aWxsIG5vLW9wLlxuICAgICAqL1xuICAgIHJvbGU/OiBSb2xlO1xufVxuXG5leHBvcnQgYWJzdHJhY3QgY2xhc3MgTGFtYmRhUmVmIGV4dGVuZHMgQ29uc3RydWN0IGltcGxlbWVudHMgSUV2ZW50UnVsZVRhcmdldCB7XG4gICAgLyoqXG4gICAgICogQ3JlYXRlcyBhIExhbWJkYSBmdW5jdGlvbiBvYmplY3Qgd2hpY2ggcmVwcmVzZW50cyBhIGZ1bmN0aW9uIG5vdCBkZWZpbmVkXG4gICAgICogd2l0aGluIHRoaXMgc3RhY2suXG4gICAgICpcbiAgICAgKiAgICAgIExhbWJkYS5pbXBvcnQodGhpcywgJ015SW1wb3J0ZWRGdW5jdGlvbicsIHsgbGFtYmRhQXJuOiBuZXcgTGFtYmRhQXJuKCdhcm46YXdzOi4uLicpIH0pO1xuICAgICAqXG4gICAgICogQHBhcmFtIHBhcmVudCBUaGUgcGFyZW50IGNvbnN0cnVjdFxuICAgICAqIEBwYXJhbSBuYW1lIFRoZSBuYW1lIG9mIHRoZSBsYW1iZGEgY29uc3RydWN0XG4gICAgICogQHBhcmFtIHJlZiBBIHJlZmVyZW5jZSB0byBhIExhbWJkYSBmdW5jdGlvbi4gQ2FuIGJlIGNyZWF0ZWQgbWFudWFsbHkgKHNlZVxuICAgICAqIGV4YW1wbGUgYWJvdmUpIG9yIG9idGFpbmVkIHRocm91Z2ggYSBjYWxsIHRvIGBsYW1iZGEuZXhwb3J0KClgLlxuICAgICAqL1xuICAgIHB1YmxpYyBzdGF0aWMgaW1wb3J0KHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHJlZjogTGFtYmRhUmVmUHJvcHMpOiBMYW1iZGFSZWYge1xuICAgICAgICByZXR1cm4gbmV3IExhbWJkYVJlZkltcG9ydChwYXJlbnQsIG5hbWUsIHJlZik7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogVGhlIG5hbWUgb2YgdGhlIGZ1bmN0aW9uLlxuICAgICAqL1xuICAgIHB1YmxpYyBhYnN0cmFjdCByZWFkb25seSBmdW5jdGlvbk5hbWU6IEZ1bmN0aW9uTmFtZTtcblxuICAgIC8qKlxuICAgICAqIFRoZSBBUk4gZm8gdGhlIGZ1bmN0aW9uLlxuICAgICAqL1xuICAgIHB1YmxpYyBhYnN0cmFjdCByZWFkb25seSBmdW5jdGlvbkFybjogbGFtYmRhLkZ1bmN0aW9uQXJuO1xuXG4gICAgLyoqXG4gICAgICogVGhlIElBTSByb2xlIGFzc29jaWF0ZWQgd2l0aCB0aGlzIGZ1bmN0aW9uLlxuICAgICAqL1xuICAgIHB1YmxpYyBhYnN0cmFjdCByZWFkb25seSByb2xlPzogUm9sZTtcblxuICAgIC8qKlxuICAgICAqIFdoZXRoZXIgdGhlIGFkZFBlcm1pc3Npb24oKSBjYWxsIGFkZHMgYW55IHBlcm1pc3Npb25zXG4gICAgICpcbiAgICAgKiBUcnVlIGZvciBuZXcgTGFtYmRhcywgZmFsc2UgZm9yIGltcG9ydGVkIExhbWJkYXMgKHRoZXkgbWlnaHQgbGl2ZSBpbiBkaWZmZXJlbnQgYWNjb3VudHMpLlxuICAgICAqL1xuICAgIHByb3RlY3RlZCBhYnN0cmFjdCByZWFkb25seSBjYW5DcmVhdGVQZXJtaXNzaW9uczogYm9vbGVhbjtcblxuICAgIC8qKlxuICAgICAqIEluZGljYXRlcyBpZiB0aGUgcmVzb3VyY2UgcG9saWN5IHRoYXQgYWxsb3dzIENsb3VkV2F0Y2ggZXZlbnRzIHRvIHB1Ymxpc2hcbiAgICAgKiBub3RpZmljYXRpb25zIHRvIHRoaXMgdG9waWMgaGF2ZSBiZWVuIGFkZGVkLlxuICAgICAqL1xuICAgIHByaXZhdGUgZXZlbnRSdWxlVGFyZ2V0UG9saWN5QWRkZWQgPSBmYWxzZTtcblxuICAgIC8qKlxuICAgICAqIEFkZHMgYSBwZXJtaXNzaW9uIHRvIHRoZSBMYW1iZGEgcmVzb3VyY2UgcG9saWN5LlxuICAgICAqIEBwYXJhbSBuYW1lIEEgbmFtZSBmb3IgdGhlIHBlcm1pc3Npb24gY29uc3RydWN0XG4gICAgICovXG4gICAgcHVibGljIGFkZFBlcm1pc3Npb24obmFtZTogc3RyaW5nLCBwZXJtaXNzaW9uOiBMYW1iZGFQZXJtaXNzaW9uKSB7XG4gICAgICAgIGlmICghdGhpcy5jYW5DcmVhdGVQZXJtaXNzaW9ucykge1xuICAgICAgICAgICAgLy8gRklYTUU6IFJlcG9ydCBtZXRhZGF0YVxuICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICB9XG5cbiAgICAgICAgY29uc3QgcHJpbmNpcGFsID0gdGhpcy5wYXJzZVBlcm1pc3Npb25QcmluY2lwYWwocGVybWlzc2lvbi5wcmluY2lwYWwpO1xuICAgICAgICBjb25zdCBhY3Rpb24gPSBwZXJtaXNzaW9uLmFjdGlvbiB8fCAnbGFtYmRhOkludm9rZUZ1bmN0aW9uJztcblxuICAgICAgICBuZXcgbGFtYmRhLlBlcm1pc3Npb25SZXNvdXJjZSh0aGlzLCBuYW1lLCB7XG4gICAgICAgICAgICBhY3Rpb24sXG4gICAgICAgICAgICBwcmluY2lwYWwsXG4gICAgICAgICAgICBmdW5jdGlvbk5hbWU6IHRoaXMuZnVuY3Rpb25OYW1lLFxuICAgICAgICAgICAgZXZlbnRTb3VyY2VUb2tlbjogcGVybWlzc2lvbi5ldmVudFNvdXJjZVRva2VuLFxuICAgICAgICAgICAgc291cmNlQWNjb3VudDogcGVybWlzc2lvbi5zb3VyY2VBY2NvdW50LFxuICAgICAgICAgICAgc291cmNlQXJuOiBwZXJtaXNzaW9uLnNvdXJjZUFybixcbiAgICAgICAgfSk7XG4gICAgfVxuXG4gICAgcHVibGljIGFkZFRvUm9sZVBvbGljeShzdGF0ZW1lbnQ6IFBvbGljeVN0YXRlbWVudCkge1xuICAgICAgICBpZiAoIXRoaXMucm9sZSkge1xuICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICB9XG5cbiAgICAgICAgdGhpcy5yb2xlLmFkZFRvUG9saWN5KHN0YXRlbWVudCk7XG4gICAgfVxuXG4gICAgcHJpdmF0ZSBwYXJzZVBlcm1pc3Npb25QcmluY2lwYWwocHJpbmNpcGFsPzogUG9saWN5UHJpbmNpcGFsKSB7XG4gICAgICAgIGlmICghcHJpbmNpcGFsKSB7XG4gICAgICAgICAgICByZXR1cm4gdW5kZWZpbmVkO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gdXNlIGR1Y2stdHlwaW5nLCBub3QgaW5zdGFuY2Ugb2ZcblxuICAgICAgICBpZiAoJ2FjY291bnRJZCcgaW4gcHJpbmNpcGFsKSB7XG4gICAgICAgICAgICByZXR1cm4gKHByaW5jaXBhbCBhcyBBY2NvdW50UHJpbmNpcGFsKS5hY2NvdW50SWQ7XG4gICAgICAgIH1cblxuICAgICAgICBpZiAoYHNlcnZpY2VgIGluIHByaW5jaXBhbCkge1xuICAgICAgICAgICAgcmV0dXJuIChwcmluY2lwYWwgYXMgU2VydmljZVByaW5jaXBhbCkuc2VydmljZTtcbiAgICAgICAgfVxuXG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgSW52YWxpZCBwcmluY2lwYWwgdHlwZSBmb3IgTGFtYmRhIHBlcm1pc3Npb24gc3RhdGVtZW50OiAke0pTT04uc3RyaW5naWZ5KHJlc29sdmUocHJpbmNpcGFsKSl9LiBgICtcbiAgICAgICAgICAgICdTdXBwb3J0ZWQ6IEFjY291bnRQcmluY2lwYWwsIFNlcnZpY2VQcmluY2lwYWwnKTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBSZXR1cm5zIGEgUnVsZVRhcmdldCB0aGF0IGNhbiBiZSB1c2VkIHRvIHRyaWdnZXIgdGhpcyBMYW1iZGEgYXMgYVxuICAgICAqIHJlc3VsdCBmcm9tIGEgQ2xvdWRXYXRjaCBldmVudC5cbiAgICAgKi9cbiAgICBwdWJsaWMgZ2V0IGV2ZW50UnVsZVRhcmdldCgpOiBFdmVudFJ1bGVUYXJnZXQge1xuICAgICAgICBpZiAoIXRoaXMuZXZlbnRSdWxlVGFyZ2V0UG9saWN5QWRkZWQpIHtcbiAgICAgICAgICAgIHRoaXMuYWRkUGVybWlzc2lvbignSW52b2tlZEJ5Q2xvdWRXYXRjaCcsIHtcbiAgICAgICAgICAgICAgICBhY3Rpb246ICdsYW1iZGE6SW52b2tlRnVuY3Rpb24nLFxuICAgICAgICAgICAgICAgIHByaW5jaXBhbDogbmV3IFNlcnZpY2VQcmluY2lwYWwoJ2V2ZW50cy5hbWF6b25hd3MuY29tJylcbiAgICAgICAgICAgIH0pO1xuXG4gICAgICAgICAgICB0aGlzLmV2ZW50UnVsZVRhcmdldFBvbGljeUFkZGVkID0gdHJ1ZTtcbiAgICAgICAgfVxuXG4gICAgICAgIHJldHVybiB7XG4gICAgICAgICAgICBpZDogdGhpcy5uYW1lLFxuICAgICAgICAgICAgYXJuOiB0aGlzLmZ1bmN0aW9uQXJuLFxuICAgICAgICB9O1xuICAgIH1cbn1cblxuY2xhc3MgTGFtYmRhUmVmSW1wb3J0IGV4dGVuZHMgTGFtYmRhUmVmIHtcbiAgICBwdWJsaWMgcmVhZG9ubHkgZnVuY3Rpb25OYW1lOiBGdW5jdGlvbk5hbWU7XG4gICAgcHVibGljIHJlYWRvbmx5IGZ1bmN0aW9uQXJuOiBsYW1iZGEuRnVuY3Rpb25Bcm47XG4gICAgcHVibGljIHJlYWRvbmx5IHJvbGU/OiBSb2xlO1xuXG4gICAgcHJvdGVjdGVkIHJlYWRvbmx5IGNhbkNyZWF0ZVBlcm1pc3Npb25zID0gZmFsc2U7XG5cbiAgICBjb25zdHJ1Y3RvcihwYXJlbnQ6IENvbnN0cnVjdCwgbmFtZTogc3RyaW5nLCBwcm9wczogTGFtYmRhUmVmUHJvcHMpIHtcbiAgICAgICAgc3VwZXIocGFyZW50LCBuYW1lKTtcblxuICAgICAgICB0aGlzLmZ1bmN0aW9uQXJuID0gcHJvcHMuZnVuY3Rpb25Bcm47XG4gICAgICAgIHRoaXMuZnVuY3Rpb25OYW1lID0gdGhpcy5leHRyYWN0TmFtZUZyb21Bcm4ocHJvcHMuZnVuY3Rpb25Bcm4pO1xuICAgICAgICB0aGlzLnJvbGUgPSBwcm9wcy5yb2xlO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIEdpdmVuIGFuIG9wYXF1ZSAodG9rZW4pIEFSTiwgcmV0dXJucyBhIENsb3VkRm9ybWF0aW9uIGV4cHJlc3Npb24gdGhhdCBleHRyYWN0cyB0aGUgZnVuY3Rpb25cbiAgICAgKiBuYW1lIGZyb20gdGhlIEFSTi5cbiAgICAgKlxuICAgICAqIEZ1bmN0aW9uIEFSTnMgbG9vayBsaWtlIHRoaXM6XG4gICAgICpcbiAgICAgKiAgICAgYXJuOmF3czpsYW1iZGE6cmVnaW9uOmFjY291bnQtaWQ6ZnVuY3Rpb246ZnVuY3Rpb24tbmFtZVxuICAgICAqXG4gICAgICogLi53aGljaCBtZWFucyB0aGF0IGluIG9yZGVyIHRvIGV4dHJhY3QgdGhlIGBmdW5jdGlvbi1uYW1lYCBjb21wb25lbnQgZnJvbSB0aGUgQVJOLCB3ZSBjYW5cbiAgICAgKiBzcGxpdCB0aGUgQVJOIHVzaW5nIFwiOlwiIGFuZCBzZWxlY3QgdGhlIGNvbXBvbmVudCBpbiBpbmRleCA2LlxuICAgICAqXG4gICAgICogQHJldHVybnMgYEZuU2VsZWN0KDYsIEZuU3BsaXQoJzonLCBhcm4pKWBcbiAgICAgKi9cbiAgICBwcml2YXRlIGV4dHJhY3ROYW1lRnJvbUFybihhcm46IEFybikge1xuICAgICAgICByZXR1cm4gbmV3IEZuU2VsZWN0KDYsIG5ldyBGblNwbGl0KCc6JywgYXJuKSk7XG5cbiAgICB9XG59XG5leHBvcnQgY2xhc3MgRnVuY3Rpb25OYW1lIGV4dGVuZHMgVG9rZW4geyB9XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9sYW1iZGEvbGliL2xhbWJkYS1yZWYudHMiLCJtb2R1bGUuZXhwb3J0cyA9IGpzaWkkX2F3c19jZGtfY29yZSQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX2NvcmUkXCJcbi8vIG1vZHVsZSBpZCA9IDJcbi8vIG1vZHVsZSBjaHVua3MgPSAwIiwiaW1wb3J0IHsgQXJuLCBDb25zdHJ1Y3QsIFBvbGljeVN0YXRlbWVudCwgU2VydmljZVByaW5jaXBhbCwgVG9rZW4gfSBmcm9tICdAYXdzLWNkay9jb3JlJztcbmltcG9ydCB7IFJvbGUgfSBmcm9tICdAYXdzLWNkay9pYW0nO1xuaW1wb3J0IHsgbGFtYmRhIH0gZnJvbSAnQGF3cy1jZGsvcmVzb3VyY2VzJztcbmltcG9ydCB7IExhbWJkYUNvZGUgfSBmcm9tICcuL2NvZGUnO1xuaW1wb3J0IHsgRnVuY3Rpb25OYW1lLCBMYW1iZGFSZWYgfSBmcm9tICcuL2xhbWJkYS1yZWYnO1xuaW1wb3J0IHsgTGFtYmRhUnVudGltZSB9IGZyb20gJy4vcnVudGltZSc7XG5pbXBvcnQgeyBWZXJzaW9uIH0gZnJvbSAnLi92ZXJzaW9uJztcblxuZXhwb3J0IGludGVyZmFjZSBMYW1iZGFQcm9wcyB7XG4gICAgLyoqXG4gICAgICogVGhlIHNvdXJjZSBjb2RlIG9mIHlvdXIgTGFtYmRhIGZ1bmN0aW9uLiBZb3UgY2FuIHBvaW50IHRvIGEgZmlsZSBpbiBhblxuICAgICAqIEFtYXpvbiBTaW1wbGUgU3RvcmFnZSBTZXJ2aWNlIChBbWF6b24gUzMpIGJ1Y2tldCBvciBzcGVjaWZ5IHlvdXIgc291cmNlXG4gICAgICogY29kZSBhcyBpbmxpbmUgdGV4dC5cbiAgICAgKi9cbiAgICBjb2RlOiBMYW1iZGFDb2RlO1xuXG4gICAgLyoqXG4gICAgICogQSBkZXNjcmlwdGlvbiBvZiB0aGUgZnVuY3Rpb24uXG4gICAgICovXG4gICAgZGVzY3JpcHRpb24/OiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBUaGUgbmFtZSBvZiB0aGUgZnVuY3Rpb24gKHdpdGhpbiB5b3VyIHNvdXJjZSBjb2RlKSB0aGF0IExhbWJkYSBjYWxscyB0b1xuICAgICAqIHN0YXJ0IHJ1bm5pbmcgeW91ciBjb2RlLiBGb3IgbW9yZSBpbmZvcm1hdGlvbiwgc2VlIHRoZSBIYW5kbGVyIHByb3BlcnR5XG4gICAgICogaW4gdGhlIEFXUyBMYW1iZGEgRGV2ZWxvcGVyIEd1aWRlLlxuICAgICAqXG4gICAgICogTk9URTogSWYgeW91IHNwZWNpZnkgeW91ciBzb3VyY2UgY29kZSBhcyBpbmxpbmUgdGV4dCBieSBzcGVjaWZ5aW5nIHRoZVxuICAgICAqIFppcEZpbGUgcHJvcGVydHkgd2l0aGluIHRoZSBDb2RlIHByb3BlcnR5LCBzcGVjaWZ5IGluZGV4LmZ1bmN0aW9uX25hbWUgYXNcbiAgICAgKiB0aGUgaGFuZGxlci5cbiAgICAgKi9cbiAgICBoYW5kbGVyOiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBUaGUgZnVuY3Rpb24gZXhlY3V0aW9uIHRpbWUgKGluIHNlY29uZHMpIGFmdGVyIHdoaWNoIExhbWJkYSB0ZXJtaW5hdGVzXG4gICAgICogdGhlIGZ1bmN0aW9uLiBCZWNhdXNlIHRoZSBleGVjdXRpb24gdGltZSBhZmZlY3RzIGNvc3QsIHNldCB0aGlzIHZhbHVlXG4gICAgICogYmFzZWQgb24gdGhlIGZ1bmN0aW9uJ3MgZXhwZWN0ZWQgZXhlY3V0aW9uIHRpbWUuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCAzIHNlY29uZHMuXG4gICAgICovXG4gICAgdGltZW91dD86IG51bWJlcjtcblxuICAgIC8qKlxuICAgICAqIEtleS12YWx1ZSBwYWlycyB0aGF0IExhbWJkYSBjYWNoZXMgYW5kIG1ha2VzIGF2YWlsYWJsZSBmb3IgeW91ciBMYW1iZGFcbiAgICAgKiBmdW5jdGlvbnMuIFVzZSBlbnZpcm9ubWVudCB2YXJpYWJsZXMgdG8gYXBwbHkgY29uZmlndXJhdGlvbiBjaGFuZ2VzLCBzdWNoXG4gICAgICogYXMgdGVzdCBhbmQgcHJvZHVjdGlvbiBlbnZpcm9ubWVudCBjb25maWd1cmF0aW9ucywgd2l0aG91dCBjaGFuZ2luZyB5b3VyXG4gICAgICogTGFtYmRhIGZ1bmN0aW9uIHNvdXJjZSBjb2RlLlxuICAgICAqL1xuICAgIGVudmlyb25tZW50PzogeyBba2V5OiBzdHJpbmddOiBhbnkgfTtcblxuICAgIC8qKlxuICAgICAqIFRoZSBydW50aW1lIGVudmlyb25tZW50IGZvciB0aGUgTGFtYmRhIGZ1bmN0aW9uIHRoYXQgeW91IGFyZSB1cGxvYWRpbmcuXG4gICAgICogRm9yIHZhbGlkIHZhbHVlcywgc2VlIHRoZSBSdW50aW1lIHByb3BlcnR5IGluIHRoZSBBV1MgTGFtYmRhIERldmVsb3BlclxuICAgICAqIEd1aWRlLlxuICAgICAqL1xuICAgIHJ1bnRpbWU6IExhbWJkYVJ1bnRpbWU7XG5cbiAgICAvKipcbiAgICAgKiBBIG5hbWUgZm9yIHRoZSBmdW5jdGlvbi4gSWYgeW91IGRvbid0IHNwZWNpZnkgYSBuYW1lLCBBV1MgQ2xvdWRGb3JtYXRpb25cbiAgICAgKiBnZW5lcmF0ZXMgYSB1bmlxdWUgcGh5c2ljYWwgSUQgYW5kIHVzZXMgdGhhdCBJRCBmb3IgdGhlIGZ1bmN0aW9uJ3MgbmFtZS5cbiAgICAgKiBGb3IgbW9yZSBpbmZvcm1hdGlvbiwgc2VlIE5hbWUgVHlwZS5cbiAgICAgKi9cbiAgICBmdW5jdGlvbk5hbWU/OiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBUaGUgYW1vdW50IG9mIG1lbW9yeSwgaW4gTUIsIHRoYXQgaXMgYWxsb2NhdGVkIHRvIHlvdXIgTGFtYmRhIGZ1bmN0aW9uLlxuICAgICAqIExhbWJkYSB1c2VzIHRoaXMgdmFsdWUgdG8gcHJvcG9ydGlvbmFsbHkgYWxsb2NhdGUgdGhlIGFtb3VudCBvZiBDUFVcbiAgICAgKiBwb3dlci4gRm9yIG1vcmUgaW5mb3JtYXRpb24sIHNlZSBSZXNvdXJjZSBNb2RlbCBpbiB0aGUgQVdTIExhbWJkYVxuICAgICAqIERldmVsb3BlciBHdWlkZS5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IFRoZSBkZWZhdWx0IHZhbHVlIGlzIDEyOCBNQlxuICAgICAqL1xuICAgIG1lbW9yeVNpemU/OiBudW1iZXI7XG5cbiAgICAvKipcbiAgICAgKiBJbml0aWFsIHBvbGljeSBzdGF0ZW1lbnRzIHRvIGFkZCB0byB0aGUgY3JlYXRlZCBMYW1iZGEgUm9sZS5cbiAgICAgKlxuICAgICAqIFlvdSBjYW4gY2FsbCBgYWRkVG9Sb2xlUG9saWN5YCB0byB0aGUgY3JlYXRlZCBsYW1iZGEgdG8gYWRkIHN0YXRlbWVudHMgcG9zdCBjcmVhdGlvbi5cbiAgICAgKi9cbiAgICBpbml0aWFsUG9saWN5PzogUG9saWN5U3RhdGVtZW50W107XG59XG5cbi8qKlxuICogRGVwbG95cyBhIGZpbGUgZnJvbSBmcm9tIGluc2lkZSB0aGUgY29uc3RydWN0IGxpYnJhcnkgYXMgYSBmdW5jdGlvbi5cbiAqXG4gKiBUaGUgc3VwcGxpZWQgZmlsZSBpcyBzdWJqZWN0IHRvIHRoZSA0MDk2IGJ5dGVzIGxpbWl0IG9mIGJlaW5nIGVtYmVkZGVkIGluIGFcbiAqIENsb3VkRm9ybWF0aW9uIHRlbXBsYXRlLlxuICpcbiAqIFRoZSBjb25zdHJ1Y3QgaW5jbHVkZXMgYW4gYXNzb2NpYXRlZCByb2xlIHdpdGggdGhlIGxhbWJkYS5cbiAqXG4gKiBUaGlzIGNvbnN0cnVjdCBkb2VzIG5vdCB5ZXQgcmVwcm9kdWNlIGFsbCBmZWF0dXJlcyBmcm9tIHRoZSB1bmRlcmx5aW5nIHJlc291cmNlXG4gKiBsaWJyYXJ5LlxuICovXG5leHBvcnQgY2xhc3MgTGFtYmRhIGV4dGVuZHMgTGFtYmRhUmVmIHtcbiAgICAvKipcbiAgICAgKiBOYW1lIG9mIHRoaXMgZnVuY3Rpb25cbiAgICAgKi9cbiAgICBwdWJsaWMgcmVhZG9ubHkgZnVuY3Rpb25OYW1lOiBGdW5jdGlvbk5hbWU7XG5cbiAgICAvKipcbiAgICAgKiBBUk4gb2YgdGhpcyBmdW5jdGlvblxuICAgICAqL1xuICAgIHB1YmxpYyByZWFkb25seSBmdW5jdGlvbkFybjogbGFtYmRhLkZ1bmN0aW9uQXJuO1xuXG4gICAgLyoqXG4gICAgICogRXhlY3V0aW9uIHJvbGUgYXNzb2NpYXRlZCB3aXRoIHRoaXMgZnVuY3Rpb25cbiAgICAgKi9cbiAgICBwdWJsaWMgcmVhZG9ubHkgcm9sZT86IFJvbGU7XG5cbiAgICBwcm90ZWN0ZWQgcmVhZG9ubHkgY2FuQ3JlYXRlUGVybWlzc2lvbnMgPSB0cnVlO1xuXG4gICAgLyoqXG4gICAgICogRW52aXJvbm1lbnQgdmFyaWFibGVzIGZvciB0aGlzIGZ1bmN0aW9uXG4gICAgICovXG4gICAgcHJpdmF0ZSByZWFkb25seSBlbnZpcm9ubWVudD86IHsgW2tleTogc3RyaW5nXTogYW55IH07XG5cbiAgICBjb25zdHJ1Y3RvcihwYXJlbnQ6IENvbnN0cnVjdCwgbmFtZTogc3RyaW5nLCBwcm9wczogTGFtYmRhUHJvcHMpIHtcbiAgICAgICAgc3VwZXIocGFyZW50LCBuYW1lKTtcblxuICAgICAgICB0aGlzLmVudmlyb25tZW50ID0gcHJvcHMuZW52aXJvbm1lbnQgfHwgeyB9O1xuXG4gICAgICAgIHRoaXMucm9sZSA9IG5ldyBSb2xlKHRoaXMsICdTZXJ2aWNlUm9sZScsIHtcbiAgICAgICAgICAgIGFzc3VtZWRCeTogbmV3IFNlcnZpY2VQcmluY2lwYWwoJ2xhbWJkYS5hbWF6b25hd3MuY29tJyksXG4gICAgICAgICAgICAvLyB0aGUgYXJuIGlzIGluIHRoZSBmb3JtIG9mIC0gYXJuOmF3czppYW06OmF3czpwb2xpY3kvc2VydmljZS1yb2xlL0FXU0xhbWJkYUJhc2ljRXhlY3V0aW9uUm9sZVxuICAgICAgICAgICAgbWFuYWdlZFBvbGljeUFybnM6IFsgIEFybi5mcm9tQ29tcG9uZW50cyh7XG4gICAgICAgICAgICAgICAgc2VydmljZTogXCJpYW1cIixcbiAgICAgICAgICAgICAgICByZWdpb246IFwiXCIsIC8vIG5vIHJlZ2lvbiBmb3IgbWFuYWdlZCBwb2xpY3lcbiAgICAgICAgICAgICAgICBhY2NvdW50OiBcImF3c1wiLCAvLyB0aGUgYWNjb3VudCBmb3IgYSBtYW5hZ2VkIHBvbGljeSBpcyAnYXdzJ1xuICAgICAgICAgICAgICAgIHJlc291cmNlOiBcInBvbGljeVwiLFxuICAgICAgICAgICAgICAgIHJlc291cmNlTmFtZTogXCJzZXJ2aWNlLXJvbGUvQVdTTGFtYmRhQmFzaWNFeGVjdXRpb25Sb2xlXCIsXG4gICAgICAgICAgICB9KV0sXG4gICAgICAgIH0pO1xuXG4gICAgICAgIGZvciAoY29uc3Qgc3RhdGVtZW50IG9mIChwcm9wcy5pbml0aWFsUG9saWN5IHx8IFtdKSkge1xuICAgICAgICAgICAgdGhpcy5yb2xlLmFkZFRvUG9saWN5KHN0YXRlbWVudCk7XG4gICAgICAgIH1cblxuICAgICAgICBjb25zdCByZXNvdXJjZSA9IG5ldyBsYW1iZGEuRnVuY3Rpb25SZXNvdXJjZSh0aGlzLCAnUmVzb3VyY2UnLCB7XG4gICAgICAgICAgICBmdW5jdGlvbk5hbWU6IHByb3BzLmZ1bmN0aW9uTmFtZSxcbiAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBwcm9wcy5kZXNjcmlwdGlvbixcbiAgICAgICAgICAgIGNvZGU6IHByb3BzLmNvZGUudG9KU09OKHByb3BzLnJ1bnRpbWUpLFxuICAgICAgICAgICAgaGFuZGxlcjogcHJvcHMuaGFuZGxlcixcbiAgICAgICAgICAgIHRpbWVvdXQ6IHByb3BzLnRpbWVvdXQsXG4gICAgICAgICAgICBydW50aW1lOiBwcm9wcy5ydW50aW1lLFxuICAgICAgICAgICAgcm9sZTogdGhpcy5yb2xlLnJvbGVBcm4sXG4gICAgICAgICAgICBlbnZpcm9ubWVudDogbmV3IFRva2VuKCgpID0+IHRoaXMucmVuZGVyRW52aXJvbm1lbnQoKSksXG4gICAgICAgICAgICBtZW1vcnlTaXplOiBwcm9wcy5tZW1vcnlTaXplLFxuICAgICAgICB9KTtcblxuICAgICAgICByZXNvdXJjZS5hZGREZXBlbmRlbmN5KHRoaXMucm9sZSk7XG5cbiAgICAgICAgdGhpcy5mdW5jdGlvbk5hbWUgPSByZXNvdXJjZS5yZWY7XG4gICAgICAgIHRoaXMuZnVuY3Rpb25Bcm4gPSByZXNvdXJjZS5mdW5jdGlvbkFybjtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBBZGRzIGFuIGVudmlyb25tZW50IHZhcmlhYmxlIHRvIHRoaXMgTGFtYmRhIGZ1bmN0aW9uLlxuICAgICAqIElmIHRoaXMgaXMgYSByZWYgdG8gYSBMYW1iZGEgZnVuY3Rpb24sIHRoaXMgb3BlcmF0aW9uIHJlc3VsdHMgaW4gYSBuby1vcC5cbiAgICAgKiBAcGFyYW0ga2V5IFRoZSBlbnZpcm9ubWVudCB2YXJpYWJsZSBrZXkuXG4gICAgICogQHBhcmFtIHZhbHVlIFRoZSBlbnZpcm9ubWVudCB2YXJpYWJsZSdzIHZhbHVlLlxuICAgICAqL1xuICAgIHB1YmxpYyBhZGRFbnZpcm9ubWVudChrZXk6IHN0cmluZywgdmFsdWU6IGFueSkge1xuICAgICAgICBpZiAoIXRoaXMuZW52aXJvbm1lbnQpIHtcbiAgICAgICAgICAgIC8vIFRPRE86IGFkZCBtZXRhZGF0YVxuICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICB9XG4gICAgICAgIHRoaXMuZW52aXJvbm1lbnRba2V5XSA9IHZhbHVlO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIEFkZCBhIG5ldyB2ZXJzaW9uIGZvciB0aGlzIExhbWJkYVxuICAgICAqXG4gICAgICogSWYgeW91IHdhbnQgdG8gZGVwbG95IHRocm91Z2ggQ2xvdWRGb3JtYXRpb24gYW5kIHVzZSBhbGlhc2VzLCB5b3UgbmVlZCB0b1xuICAgICAqIGFkZCBhIG5ldyB2ZXJzaW9uICh3aXRoIGEgbmV3IG5hbWUpIHRvIHlvdXIgTGFtYmRhIGV2ZXJ5IHRpbWUgeW91IHdhbnRcbiAgICAgKiB0byBkZXBsb3kgYW4gdXBkYXRlLiBBbiBhbGlhcyBjYW4gdGhlbiByZWZlciB0byB0aGUgbmV3bHkgY3JlYXRlZCBWZXJzaW9uLlxuICAgICAqXG4gICAgICogQWxsIHZlcnNpb25zIHNob3VsZCBoYXZlIGRpc3RpbmN0IG5hbWVzLCBhbmQgeW91IHNob3VsZCBub3QgZGVsZXRlIHZlcnNpb25zXG4gICAgICogYXMgbG9uZyBhcyB5b3VyIEFsaWFzIG5lZWRzIHRvIHJlZmVyIHRvIHRoZW0uXG4gICAgICpcbiAgICAgKiBAcGFyYW0gbmFtZSBBIHVuaXF1ZSBuYW1lIGZvciB0aGlzIHZlcnNpb25cbiAgICAgKiBAcGFyYW0gY29kZVNoYTI1NiBUaGUgU0hBLTI1NiBoYXNoIG9mIHRoZSBtb3N0IHJlY2VudGx5IGRlcGxveWVkIExhbWJkYSBzb3VyY2UgY29kZSwgb3JcbiAgICAgKiAgICBvbWl0IHRvIHNraXAgdmFsaWRhdGlvbi5cbiAgICAgKiBAcGFyYW0gZGVzY3JpcHRpb24gQSBkZXNjcmlwdGlvbiBmb3IgdGhpcyB2ZXJzaW9uLlxuICAgICAqIEByZXR1cm5zIEEgbmV3IFZlcnNpb24gb2JqZWN0LlxuICAgICAqL1xuICAgIHB1YmxpYyBhZGRWZXJzaW9uKG5hbWU6IHN0cmluZywgY29kZVNoYTI1Nj86IHN0cmluZywgZGVzY3JpcHRpb24/OiBzdHJpbmcpOiBWZXJzaW9uIHtcbiAgICAgICAgcmV0dXJuIG5ldyBWZXJzaW9uKHRoaXMsICdWZXJzaW9uJyArIG5hbWUsIHtcbiAgICAgICAgICAgIGxhbWJkYTogdGhpcyxcbiAgICAgICAgICAgIGNvZGVTaGEyNTYsXG4gICAgICAgICAgICBkZXNjcmlwdGlvbixcbiAgICAgICAgfSk7XG4gICAgfVxuXG4gICAgcHJpdmF0ZSByZW5kZXJFbnZpcm9ubWVudCgpIHtcbiAgICAgICAgaWYgKCF0aGlzLmVudmlyb25tZW50IHx8IE9iamVjdC5rZXlzKHRoaXMuZW52aXJvbm1lbnQpLmxlbmd0aCA9PT0gMCkge1xuICAgICAgICAgICAgcmV0dXJuIHVuZGVmaW5lZDtcbiAgICAgICAgfVxuXG4gICAgICAgIHJldHVybiB7XG4gICAgICAgICAgICB2YXJpYWJsZXM6IHRoaXMuZW52aXJvbm1lbnRcbiAgICAgICAgfTtcbiAgICB9XG59XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9sYW1iZGEvbGliL2xhbWJkYS50cyIsImltcG9ydCB7IENvbnN0cnVjdCB9IGZyb20gXCJAYXdzLWNkay9jb3JlXCI7XG5pbXBvcnQgeyBsYW1iZGEgfSBmcm9tIFwiQGF3cy1jZGsvcmVzb3VyY2VzXCI7XG5pbXBvcnQgeyBMYW1iZGFSZWYgfSBmcm9tIFwiLi9sYW1iZGEtcmVmXCI7XG5cbi8qKlxuICogUHJvcGVydGllcyBmb3IgYSBuZXcgTGFtYmRhIHZlcnNpb25cbiAqL1xuZXhwb3J0IGludGVyZmFjZSBWZXJzaW9uUHJvcHMge1xuICAgIC8qKlxuICAgICAqIFNIQTI1NiBvZiB0aGUgdmVyc2lvbiBvZiB0aGUgTGFtYmRhIHNvdXJjZSBjb2RlXG4gICAgICpcbiAgICAgKiBTcGVjaWZ5IHRvIHZhbGlkYXRlIHRoYXQgeW91J3JlIGRlcGxveWluZyB0aGUgcmlnaHQgdmVyc2lvbi5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IE5vIHZhbGlkYXRpb24gaXMgcGVyZm9ybWVkXG4gICAgICovXG4gICAgY29kZVNoYTI1Nj86IHN0cmluZztcblxuICAgIC8qKlxuICAgICAqIERlc2NyaXB0aW9uIG9mIHRoZSB2ZXJzaW9uXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBEZXNjcmlwdGlvbiBvZiB0aGUgTGFtYmRhXG4gICAgICovXG4gICAgZGVzY3JpcHRpb24/OiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBGdW5jdGlvbiB0byBnZXQgdGhlIHZhbHVlIG9mXG4gICAgICovXG4gICAgbGFtYmRhOiBMYW1iZGFSZWY7XG59XG5cbi8qKlxuICogQSBzaW5nbGUgbmV3bHktZGVwbG95ZWQgdmVyc2lvbiBvZiBhIExhbWJkYSBmdW5jdGlvbi5cbiAqXG4gKiBUaGlzIG9iamVjdCBleGlzdHMgdG8tLWF0IGRlcGxveSB0aW1lLS1xdWVyeSB0aGUgXCJ0aGVuLWN1cnJlbnRcIiB2ZXJzaW9uIG9mXG4gKiB0aGUgTGFtYmRhIGZ1bmN0aW9uIHRoYXQgaXQgcmVmZXJzIHRvLiBUaGlzIFZlcnNpb24gb2JqZWN0IGNhbiB0aGVuIGJlXG4gKiB1c2VkIGluIGBBbGlhc2AgdG8gcmVmZXIgdG8gYSBwYXJ0aWN1bGFyIGRlcGxveW1lbnQgb2YgYSBMYW1iZGEuXG4gKlxuICogVGhpcyBtZWFucyB0aGF0IGZvciBldmVyeSBuZXcgdXBkYXRlIHlvdSBkZXBsb3kgdG8geW91ciBMYW1iZGEgKHVzaW5nIHRoZVxuICogQ0RLIGFuZCBBbGlhc2VzKSwgeW91IG11c3QgYWx3YXlzIGNyZWF0ZSBhIG5ldyBWZXJzaW9uIG9iamVjdC4gSW5cbiAqIHBhcnRpY3VsYXIsIGl0IG11c3QgaGF2ZSBhIGRpZmZlcmVudCBuYW1lLCBzbyB0aGF0IGEgbmV3IHJlc291cmNlIGlzXG4gKiBjcmVhdGVkLlxuICpcbiAqIElmIHlvdSB3YW50IHRvIGVuc3VyZSB0aGF0IHlvdSdyZSBhc3NvY2lhdGluZyB0aGUgcmlnaHQgdmVyc2lvbiB3aXRoXG4gKiB0aGUgcmlnaHQgZGVwbG95bWVudCwgc3BlY2lmeSB0aGUgYGNvZGVTaGEyNTZgIHByb3BlcnR5IHdoaWxlXG4gKiBjcmVhdGluZyB0aGUgYFZlcnNpb24uXG4gKi9cbmV4cG9ydCBjbGFzcyBWZXJzaW9uIGV4dGVuZHMgQ29uc3RydWN0IHtcbiAgICAvKipcbiAgICAgKiBUaGUgbW9zdCByZWNlbnRseSBkZXBsb3llZCB2ZXJzaW9uIG9mIHRoaXMgZnVuY3Rpb24uXG4gICAgICovXG4gICAgcHVibGljIHJlYWRvbmx5IGZ1bmN0aW9uVmVyc2lvbjogRnVuY3Rpb25WZXJzaW9uO1xuXG4gICAgLyoqXG4gICAgICogTGFtYmRhIG9iamVjdCB0aGlzIHZlcnNpb24gaXMgYXNzb2NpYXRlZCB3aXRoXG4gICAgICovXG4gICAgcHVibGljIHJlYWRvbmx5IGxhbWJkYTogTGFtYmRhUmVmO1xuXG4gICAgY29uc3RydWN0b3IocGFyZW50OiBDb25zdHJ1Y3QsIG5hbWU6IHN0cmluZywgcHJvcHM6IFZlcnNpb25Qcm9wcykge1xuICAgICAgICBzdXBlcihwYXJlbnQsIG5hbWUpO1xuXG4gICAgICAgIGNvbnN0IHZlcnNpb24gPSBuZXcgbGFtYmRhLlZlcnNpb25SZXNvdXJjZSh0aGlzLCAnUmVzb3VyY2UnLCB7XG4gICAgICAgICAgICBjb2RlU2hhMjU2OiBwcm9wcy5jb2RlU2hhMjU2LFxuICAgICAgICAgICAgZGVzY3JpcHRpb246IHByb3BzLmRlc2NyaXB0aW9uLFxuICAgICAgICAgICAgZnVuY3Rpb25OYW1lOiBwcm9wcy5sYW1iZGEuZnVuY3Rpb25OYW1lXG4gICAgICAgIH0pO1xuXG4gICAgICAgIHRoaXMuZnVuY3Rpb25WZXJzaW9uID0gdmVyc2lvbi52ZXJzaW9uO1xuICAgICAgICB0aGlzLmxhbWJkYSA9IHByb3BzLmxhbWJkYTtcbiAgICB9XG59XG5cbi8qKlxuICogQSBzaW5nbGUgdmVyc2lvbiBvZiBhIExhbWJkYSBmdW5jdGlvblxuICovXG5leHBvcnQgY2xhc3MgRnVuY3Rpb25WZXJzaW9uIGV4dGVuZHMgbGFtYmRhLlZlcnNpb24ge1xufVxuXG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvbGFtYmRhL2xpYi92ZXJzaW9uLnRzIiwiLyoqXG4gKiBMYW1iZGEgZnVuY3Rpb24gcnVudGltZSBlbnZpcm9ubWVudC5cbiAqL1xuZXhwb3J0IGVudW0gTGFtYmRhUnVudGltZSB7XG4gICAgTm9kZUpTID0gJ25vZGVqcycsXG4gICAgTm9kZUpTNDMgPSAnbm9kZWpzNC4zJyxcbiAgICBOb2RlSlM0M0VkZ2UgPSAnbm9kZWpzNC4zLWVkZ2UnLFxuICAgIE5vZGVKUzYxMCA9ICdub2RlanM2LjEwJyxcbiAgICBKYXZhOCA9ICdqYXZhOCcsXG4gICAgUHl0aG9uMjcgPSAncHl0aG9uMi43JyxcbiAgICBQeXRob24zNiA9ICdweXRob24zLjYnLFxuICAgIERvdE5ldENvcmUxID0gJ2RvdG5ldGNvcmUxLjAnLFxuICAgIERvdE5ldENvcmUyID0gJ2RvdG5ldGNvcmUyLjAnLFxuICAgIEdvMXggPSAnZ28xLngnXG59XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9sYW1iZGEvbGliL3J1bnRpbWUudHMiLCJpbXBvcnQgeyBsYW1iZGEgfSBmcm9tICdAYXdzLWNkay9yZXNvdXJjZXMnO1xuaW1wb3J0IHsgQnVja2V0TmFtZSwgQnVja2V0UmVmIH0gZnJvbSAnQGF3cy1jZGsvczMnO1xuaW1wb3J0IHsgTGFtYmRhUnVudGltZSB9IGZyb20gJy4vcnVudGltZSc7XG5cbmV4cG9ydCBhYnN0cmFjdCBjbGFzcyBMYW1iZGFDb2RlIHtcbiAgICBwdWJsaWMgYWJzdHJhY3QgdG9KU09OKHJ1bnRpbWU6IExhbWJkYVJ1bnRpbWUpOiBsYW1iZGEuRnVuY3Rpb25SZXNvdXJjZS5Db2RlUHJvcGVydHk7XG59XG5cbmV4cG9ydCBjbGFzcyBMYW1iZGFTM0NvZGUgZXh0ZW5kcyBMYW1iZGFDb2RlIHtcbiAgICBwcml2YXRlIGJ1Y2tldE5hbWU6IEJ1Y2tldE5hbWU7XG5cbiAgICBjb25zdHJ1Y3RvcihidWNrZXQ6IEJ1Y2tldFJlZiwgcHJpdmF0ZSBrZXk6IHN0cmluZywgcHJpdmF0ZSBvYmplY3RWZXJzaW9uPzogc3RyaW5nKSB7XG4gICAgICAgIHN1cGVyKCk7XG5cbiAgICAgICAgaWYgKCFidWNrZXQuYnVja2V0TmFtZSkge1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKCdidWNrZXROYW1lIGlzIHVuZGVmaW5lZCBmb3IgdGhlIHByb3ZpZGVkIGJ1Y2tldCcpO1xuICAgICAgICB9XG5cbiAgICAgICAgdGhpcy5idWNrZXROYW1lID0gYnVja2V0LmJ1Y2tldE5hbWU7XG4gICAgfVxuXG4gICAgcHVibGljIHRvSlNPTihfcnVudGltZTogTGFtYmRhUnVudGltZSk6IGxhbWJkYS5GdW5jdGlvblJlc291cmNlLkNvZGVQcm9wZXJ0eSB7XG4gICAgICAgIHJldHVybiB7XG4gICAgICAgICAgICBzM0J1Y2tldDogdGhpcy5idWNrZXROYW1lLFxuICAgICAgICAgICAgczNLZXk6IHRoaXMua2V5LFxuICAgICAgICAgICAgczNPYmplY3RWZXJzaW9uOiB0aGlzLm9iamVjdFZlcnNpb25cbiAgICAgICAgfTtcbiAgICB9XG59XG5cbmV4cG9ydCBjbGFzcyBMYW1iZGFJbmxpbmVDb2RlIGV4dGVuZHMgTGFtYmRhQ29kZSB7XG4gICAgY29uc3RydWN0b3IocHJpdmF0ZSBjb2RlOiBzdHJpbmcpIHtcbiAgICAgICAgc3VwZXIoKTtcblxuICAgICAgICBpZiAoY29kZS5sZW5ndGggPiA0MDk2KSB7XG4gICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoXCJMYW1iZGEgc291cmNlIGlzIHRvbyBsYXJnZSwgbXVzdCBiZSA8PSA0MDk2IGJ1dCBpcyBcIiArIGNvZGUubGVuZ3RoKTtcbiAgICAgICAgfVxuICAgIH1cblxuICAgIHB1YmxpYyB0b0pTT04ocnVudGltZTogTGFtYmRhUnVudGltZSk6IGxhbWJkYS5GdW5jdGlvblJlc291cmNlLkNvZGVQcm9wZXJ0eSB7XG4gICAgICAgIGNvbnN0IGFsbG93ZWQgPSBbXG4gICAgICAgICAgICBMYW1iZGFSdW50aW1lLk5vZGVKUyxcbiAgICAgICAgICAgIExhbWJkYVJ1bnRpbWUuTm9kZUpTNDMsXG4gICAgICAgICAgICBMYW1iZGFSdW50aW1lLk5vZGVKUzYxMCxcbiAgICAgICAgICAgIExhbWJkYVJ1bnRpbWUuUHl0aG9uMjcsXG4gICAgICAgICAgICBMYW1iZGFSdW50aW1lLlB5dGhvbjM2XG4gICAgICAgIF07XG5cbiAgICAgICAgaWYgKCFhbGxvd2VkLmZpbmQoYSA9PiBhID09PSBydW50aW1lKSkge1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBJbmxpbmUgc291cmNlIG9ubHkgYWxsb3dlZCBmb3I6ICR7YWxsb3dlZC5qb2luKCcsICcpfWApO1xuICAgICAgICB9XG5cbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIHppcEZpbGU6IHRoaXMuY29kZVxuICAgICAgICB9O1xuICAgIH1cbn1cblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAvcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2xhbWJkYS9saWIvY29kZS50cyIsImV4cG9ydCAqIGZyb20gJy4vYWxpYXMnO1xuZXhwb3J0ICogZnJvbSAnLi9sYW1iZGEtcmVmJztcbmV4cG9ydCAqIGZyb20gJy4vbGFtYmRhJztcbmV4cG9ydCAqIGZyb20gJy4vcGVybWlzc2lvbic7XG5leHBvcnQgKiBmcm9tICcuL3J1bnRpbWUnO1xuZXhwb3J0ICogZnJvbSAnLi9jb2RlJztcbmV4cG9ydCAqIGZyb20gJy4vaW5saW5lJztcbmV4cG9ydCAqIGZyb20gJy4vdmVyc2lvbic7XG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvbGFtYmRhL2xpYi9pbmRleC50cyIsImltcG9ydCB7IENvbnN0cnVjdCB9IGZyb20gXCJAYXdzLWNkay9jb3JlXCI7XG5pbXBvcnQgeyBSb2xlIH0gZnJvbSBcIkBhd3MtY2RrL2lhbVwiO1xuaW1wb3J0IHsgbGFtYmRhIH0gZnJvbSBcIkBhd3MtY2RrL3Jlc291cmNlc1wiO1xuaW1wb3J0IHsgRnVuY3Rpb25OYW1lLCBMYW1iZGFSZWYgfSBmcm9tIFwiLi9sYW1iZGEtcmVmXCI7XG5pbXBvcnQgeyBMYW1iZGFQZXJtaXNzaW9uIH0gZnJvbSAnLi9wZXJtaXNzaW9uJztcbmltcG9ydCB7IFZlcnNpb24gfSBmcm9tIFwiLi92ZXJzaW9uXCI7XG5cbi8qKlxuICogUHJvcGVydGllcyBmb3IgYSBuZXcgTGFtYmRhIGFsaWFzXG4gKi9cbmV4cG9ydCBpbnRlcmZhY2UgQWxpYXNQcm9wcyB7XG4gICAgLyoqXG4gICAgICogRGVzY3JpcHRpb24gZm9yIHRoZSBhbGlhc1xuICAgICAqXG4gICAgICogQGRlZmF1bHQgTm8gZGVzY3JpcHRpb25cbiAgICAgKi9cbiAgICBkZXNjcmlwdGlvbj86IHN0cmluZztcblxuICAgIC8qKlxuICAgICAqIEZ1bmN0aW9uIHZlcnNpb24gdGhpcyBhbGlhcyByZWZlcnMgdG9cbiAgICAgKlxuICAgICAqIFVzZSBsYW1iZGEuYWRkVmVyc2lvbigpIHRvIG9idGFpbiBhIG5ldyBsYW1iZGEgdmVyc2lvbiB0byByZWZlciB0by5cbiAgICAgKi9cbiAgICB2ZXJzaW9uOiBWZXJzaW9uO1xuXG4gICAgLyoqXG4gICAgICogTmFtZSBvZiB0aGlzIGFsaWFzXG4gICAgICovXG4gICAgYWxpYXNOYW1lOiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBBZGRpdGlvbmFsIHZlcnNpb25zIHdpdGggaW5kaXZpZHVhbCB3ZWlnaHRzIHRoaXMgYWxpYXMgcG9pbnRzIHRvXG4gICAgICpcbiAgICAgKiBJbmRpdmlkdWFsIGFkZGl0aW9uYWwgdmVyc2lvbiB3ZWlnaHRzIHNwZWNpZmllZCBoZXJlIHNob3VsZCBhZGQgdXAgdG9cbiAgICAgKiAobGVzcyB0aGFuKSBvbmUuIEFsbCByZW1haW5pbmcgd2VpZ2h0IGlzIHJvdXRlZCB0byB0aGUgZGVmYXVsdFxuICAgICAqIHZlcnNpb24uXG4gICAgICpcbiAgICAgKiBGb3IgZXhhbXBsZSwgdGhlIGNvbmZpZyBpc1xuICAgICAqXG4gICAgICogICAgICB2ZXJzaW9uOiBcIjFcIlxuICAgICAqICAgICAgYWRkaXRpb25hbFZlcnNpb25zOiBbeyB2ZXJzaW9uOiBcIjJcIiwgd2VpZ2h0OiAwLjA1IH1dXG4gICAgICpcbiAgICAgKiBUaGVuIDUlIG9mIHRyYWZmaWMgd2lsbCBiZSByb3V0ZWQgdG8gZnVuY3Rpb24gdmVyc2lvbiAyLCB3aGlsZVxuICAgICAqIHRoZSByZW1haW5pbmcgOTUlIG9mIHRyYWZmaWMgd2lsbCBiZSByb3V0ZWQgdG8gZnVuY3Rpb24gdmVyc2lvbiAxLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgTm8gYWRkaXRpb25hbCB2ZXJzaW9uc1xuICAgICAqL1xuICAgIGFkZGl0aW9uYWxWZXJzaW9ucz86IFZlcnNpb25XZWlnaHRbXTtcbn1cblxuLyoqXG4gKiBBIG5ldyBhbGlhcyB0byBhIHBhcnRpY3VsYXIgdmVyc2lvbiBvZiBhIExhbWJkYSBmdW5jdGlvbi5cbiAqL1xuZXhwb3J0IGNsYXNzIEFsaWFzIGV4dGVuZHMgTGFtYmRhUmVmIHtcbiAgICAvKipcbiAgICAgKiBBUk4gb2YgdGhpcyBhbGlhc1xuICAgICAqXG4gICAgICogVXNlZCB0byBiZSBhYmxlIHRvIHVzZSBBbGlhcyBpbiBwbGFjZSBvZiBhIHJlZ3VsYXIgTGFtYmRhLiBMYW1iZGEgYWNjZXB0c1xuICAgICAqIEFSTnMgZXZlcnl3aGVyZSBpdCBhY2NlcHRzIGZ1bmN0aW9uIG5hbWVzLlxuICAgICAqL1xuICAgIHB1YmxpYyByZWFkb25seSBmdW5jdGlvbk5hbWU6IEZ1bmN0aW9uTmFtZTtcblxuICAgIC8qKlxuICAgICAqIEFSTiBvZiB0aGlzIGFsaWFzXG4gICAgICpcbiAgICAgKiBVc2VkIHRvIGJlIGFibGUgdG8gdXNlIEFsaWFzIGluIHBsYWNlIG9mIGEgcmVndWxhciBMYW1iZGEuIExhbWJkYSBhY2NlcHRzXG4gICAgICogQVJOcyBldmVyeXdoZXJlIGl0IGFjY2VwdHMgZnVuY3Rpb24gbmFtZXMuXG4gICAgICovXG4gICAgcHVibGljIHJlYWRvbmx5IGZ1bmN0aW9uQXJuOiBsYW1iZGEuRnVuY3Rpb25Bcm47XG5cbiAgICAvKipcbiAgICAgKiBSb2xlIGFzc29jaWF0ZWQgd2l0aCB0aGlzIGFsaWFzXG4gICAgICovXG4gICAgcHVibGljIHJlYWRvbmx5IHJvbGU/OiBSb2xlIHwgdW5kZWZpbmVkO1xuXG4gICAgcHJvdGVjdGVkIGNhbkNyZWF0ZVBlcm1pc3Npb25zOiBib29sZWFuID0gdHJ1ZTsgLy8gTm90IHVzZWQgYW55d2F5XG5cbiAgICAvKipcbiAgICAgKiBUaGUgYWN0dWFsIExhbWJkYSBmdW5jdGlvbiBvYmplY3QgdGhhdCB0aGlzIEFsaWFzIGlzIHBvaW50aW5nIHRvXG4gICAgICovXG4gICAgcHJpdmF0ZSByZWFkb25seSB1bmRlcmx5aW5nTGFtYmRhOiBMYW1iZGFSZWY7XG5cbiAgICBjb25zdHJ1Y3RvcihwYXJlbnQ6IENvbnN0cnVjdCwgbmFtZTogc3RyaW5nLCBwcm9wczogQWxpYXNQcm9wcykge1xuICAgICAgICBzdXBlcihwYXJlbnQsIG5hbWUpO1xuXG4gICAgICAgIHRoaXMudW5kZXJseWluZ0xhbWJkYSA9IHByb3BzLnZlcnNpb24ubGFtYmRhO1xuXG4gICAgICAgIGNvbnN0IGFsaWFzID0gbmV3IGxhbWJkYS5BbGlhc1Jlc291cmNlKHRoaXMsICdSZXNvdXJjZScsIHtcbiAgICAgICAgICAgIGFsaWFzTmFtZTogcHJvcHMuYWxpYXNOYW1lLFxuICAgICAgICAgICAgZGVzY3JpcHRpb246IHByb3BzLmRlc2NyaXB0aW9uLFxuICAgICAgICAgICAgZnVuY3Rpb25OYW1lOiB0aGlzLnVuZGVybHlpbmdMYW1iZGEuZnVuY3Rpb25OYW1lLFxuICAgICAgICAgICAgZnVuY3Rpb25WZXJzaW9uOiBwcm9wcy52ZXJzaW9uLmZ1bmN0aW9uVmVyc2lvbixcbiAgICAgICAgICAgIHJvdXRpbmdDb25maWc6IHRoaXMuZGV0ZXJtaW5lUm91dGluZ0NvbmZpZyhwcm9wcylcbiAgICAgICAgfSk7XG5cbiAgICAgICAgdGhpcy5mdW5jdGlvbk5hbWUgPSBhbGlhcy5yZWY7XG4gICAgICAgIHRoaXMuZnVuY3Rpb25Bcm4gPSBhbGlhcy5yZWY7XG4gICAgfVxuXG4gICAgcHVibGljIGFkZFBlcm1pc3Npb24obmFtZTogc3RyaW5nLCBwZXJtaXNzaW9uOiBMYW1iZGFQZXJtaXNzaW9uKSB7XG4gICAgICAgIC8vIEZvcndhcmQgYWRkUGVybWlzc2lvbigpIHRvIHRoZSB1bmRlcmx5aW5nIExhbWJkYSBvYmplY3RcbiAgICAgICAgdGhpcy51bmRlcmx5aW5nTGFtYmRhLmFkZFBlcm1pc3Npb24obmFtZSwgcGVybWlzc2lvbik7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogQ2FsY3VsYXRlIHRoZSByb3V0aW5nQ29uZmlnIHBhcmFtZXRlciBmcm9tIHRoZSBpbnB1dCBwcm9wc1xuICAgICAqL1xuICAgIHByaXZhdGUgZGV0ZXJtaW5lUm91dGluZ0NvbmZpZyhwcm9wczogQWxpYXNQcm9wcykge1xuICAgICAgICBpZiAoIXByb3BzLmFkZGl0aW9uYWxWZXJzaW9ucyB8fCBwcm9wcy5hZGRpdGlvbmFsVmVyc2lvbnMubGVuZ3RoID09PSAwKSB7XG4gICAgICAgICAgICByZXR1cm4gdW5kZWZpbmVkO1xuICAgICAgICB9XG5cbiAgICAgICAgdGhpcy52YWxpZGF0ZUFkZGl0aW9uYWxXZWlnaHRzKHByb3BzLmFkZGl0aW9uYWxWZXJzaW9ucyk7XG5cbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIGFkZGl0aW9uYWxWZXJzaW9uV2VpZ2h0czogcHJvcHMuYWRkaXRpb25hbFZlcnNpb25zLm1hcCh2dyA9PiB7XG4gICAgICAgICAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgICAgICAgICAgZnVuY3Rpb25WZXJzaW9uOiB2dy52ZXJzaW9uLmZ1bmN0aW9uVmVyc2lvbixcbiAgICAgICAgICAgICAgICAgICAgZnVuY3Rpb25XZWlnaHQ6IHZ3LndlaWdodFxuICAgICAgICAgICAgICAgIH07XG4gICAgICAgICAgICB9KVxuICAgICAgICB9O1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIFZhbGlkYXRlIHRoYXQgdGhlIGFkZGl0aW9uYWwgdmVyc2lvbiB3ZWlnaHRzIG1ha2Ugc2Vuc2VcbiAgICAgKlxuICAgICAqIFdlIHZhbGlkYXRlIHRoYXQgdGhleSBhcmUgcG9zaXRpdmUgYW5kIGFkZCB1cCB0byBzb21ldGhpbmcgPD0gMS5cbiAgICAgKi9cbiAgICBwcml2YXRlIHZhbGlkYXRlQWRkaXRpb25hbFdlaWdodHMod2VpZ2h0czogVmVyc2lvbldlaWdodFtdKSB7XG4gICAgICAgIGNvbnN0IHRvdGFsID0gd2VpZ2h0cy5tYXAodyA9PiB7XG4gICAgICAgICAgICBpZiAody53ZWlnaHQgPCAwIHx8IHcud2VpZ2h0ID4gMSkgeyB0aHJvdyBuZXcgRXJyb3IoYEFkZGl0aW9uYWwgdmVyc2lvbiB3ZWlnaHQgbXVzdCBiZSBiZXR3ZWVuIDAgYW5kIDEsIGdvdDogJHt3LndlaWdodH1gKTsgfVxuICAgICAgICAgICAgcmV0dXJuIHcud2VpZ2h0O1xuICAgICAgICB9KS5yZWR1Y2UoKGEsIHgpID0+IGEgKyB4KTtcblxuICAgICAgICBpZiAodG90YWwgPiAxKSB7XG4gICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYFN1bSBvZiBhZGRpdGlvbmFsIHZlcnNpb24gd2VpZ2h0cyBtdXN0IG5vdCBleGNlZWQgMSwgZ290OiAke3RvdGFsfWApO1xuICAgICAgICB9XG4gICAgfVxufVxuXG4vKipcbiAqIEEgdmVyc2lvbi93ZWlnaHQgcGFpciBmb3Igcm91dGluZyB0cmFmZmljIHRvIExhbWJkYSBmdW5jdGlvbnNcbiAqL1xuZXhwb3J0IGludGVyZmFjZSBWZXJzaW9uV2VpZ2h0IHtcbiAgICAvKipcbiAgICAgKiBUaGUgdmVyc2lvbiB0byByb3V0ZSB0cmFmZmljIHRvXG4gICAgICovXG4gICAgcmVhZG9ubHkgdmVyc2lvbjogVmVyc2lvbjtcblxuICAgIC8qKlxuICAgICAqIEhvdyBtdWNoIHdlaWdodCB0byBhc3NpZ24gdG8gdGhpcyB2ZXJzaW9uICgwLi4xKVxuICAgICAqL1xuICAgIHJlYWRvbmx5IHdlaWdodDogbnVtYmVyO1xufVxuXG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsvbGFtYmRhL2xpYi9hbGlhcy50cyIsIm1vZHVsZS5leHBvcnRzID0ganNpaSRfYXdzX2Nka19pYW0kO1xuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIGV4dGVybmFsIFwianNpaSRfYXdzX2Nka19pYW0kXCJcbi8vIG1vZHVsZSBpZCA9IDlcbi8vIG1vZHVsZSBjaHVua3MgPSAwIiwiaW1wb3J0IHsgQ29uc3RydWN0IH0gZnJvbSAnQGF3cy1jZGsvY29yZSc7XG5pbXBvcnQgeyBMYW1iZGFJbmxpbmVDb2RlIH0gZnJvbSAnLi9jb2RlJztcbmltcG9ydCB7IExhbWJkYSB9IGZyb20gJy4vbGFtYmRhJztcbmltcG9ydCB7IExhbWJkYVJ1bnRpbWUgfSBmcm9tICcuL3J1bnRpbWUnO1xuXG4vKipcbiAqIERlZmluZXMgdGhlIGhhbmRsZXIgY29kZSBmb3IgYW4gaW5saW5lIEphdmFTY3JpcHQgbGFtYmRhIGZ1bmN0aW9uLlxuICpcbiAqIEFXUyBMYW1iZGEgaW52b2tlcyB5b3VyIExhbWJkYSBmdW5jdGlvbiB2aWEgYSBoYW5kbGVyIG9iamVjdC4gQSBoYW5kbGVyXG4gKiByZXByZXNlbnRzIHRoZSBuYW1lIG9mIHlvdXIgTGFtYmRhIGZ1bmN0aW9uIChhbmQgc2VydmVzIGFzIHRoZSBlbnRyeSBwb2ludFxuICogdGhhdCBBV1MgTGFtYmRhIHVzZXMgdG8gZXhlY3V0ZSB5b3VyIGZ1bmN0aW9uIGNvZGUuIEZvciBleGFtcGxlOlxuICovXG5leHBvcnQgaW50ZXJmYWNlIElKYXZhU2NyaXB0TGFtYmRhSGFuZGxlciB7XG4gICAgLyoqXG4gICAgICogVGhlIG1haW4gTGFtYmRhIGVudHJ5cG9pbnQuXG4gICAgICpcbiAgICAgKiBAcGFyYW0gZXZlbnQgRXZlbnQgc291cmNlcyBjYW4gcmFuZ2UgZnJvbSBhIHN1cHBvcnRlZCBBV1Mgc2VydmljZSBvclxuICAgICAqIGN1c3RvbSBhcHBsaWNhdGlvbnMgdGhhdCBpbnZva2UgeW91ciBMYW1iZGEgZnVuY3Rpb24uIEZvciBleGFtcGxlcywgc2VlXG4gICAgICogW1NhbXBsZSBFdmVudHMgUHVibGlzaGVkIGJ5IEV2ZW50XG4gICAgICogU291cmNlc10oaHR0cHM6Ly9kb2NzLmF3cy5hbWF6b24uY29tL2xhbWJkYS9sYXRlc3QvZGcvZXZlbnRzb3VyY2VzLmh0bWwpLlxuICAgICAqXG4gICAgICogQHBhcmFtIGNvbnRleHQgQVdTIExhbWJkYSB1c2VzIHRoaXMgcGFyYW1ldGVyIHRvIHByb3ZpZGUgZGV0YWlscyBvZiB5b3VyXG4gICAgICogTGFtYmRhIGZ1bmN0aW9uJ3MgZXhlY3V0aW9uLiBGb3IgbW9yZSBpbmZvcm1hdGlvbiwgc2VlIFtUaGUgQ29udGV4dFxuICAgICAqIE9iamVjdF0oaHR0cHM6Ly9kb2NzLmF3cy5hbWF6b24uY29tL2xhbWJkYS9sYXRlc3QvZGcvbm9kZWpzLXByb2ctbW9kZWwtY29udGV4dC5odG1sKS5cbiAgICAgKlxuICAgICAqIEBwYXJhbSBjYWxsYmFjayBUaGUgTm9kZS5qcyBydW50aW1lcyB2Ni4xMCBhbmQgdjguMTAgc3VwcG9ydCB0aGUgb3B0aW9uYWxcbiAgICAgKiBjYWxsYmFjayBwYXJhbWV0ZXIuIFlvdSBjYW4gdXNlIGl0IHRvIGV4cGxpY2l0bHkgcmV0dXJuIGluZm9ybWF0aW9uIGJhY2tcbiAgICAgKiB0byB0aGUgY2FsbGVyLiBTaWduYXR1cmUgaXMgYGNhbGxiYWNrKGVyciwgcmVzcG9uc2UpYC5cbiAgICAgKi9cbiAgICBmbihldmVudDogYW55LCBjb250ZXh0OiBhbnksIGNhbGxiYWNrOiBhbnkpOiB2b2lkO1xufVxuXG4vKipcbiAqIFRoZSBzZXQgb2YgcnVudGltZSB0aGF0IHN1cHBvcnQgaW5saW5lIGphdmFzY3JpcHQgY29kZS5cbiAqL1xuZXhwb3J0IGVudW0gSW5saW5lSmF2YVNjcmlwdExhbWJkYVJ1bnRpbWUge1xuICAgIE5vZGVKUyA9IExhbWJkYVJ1bnRpbWUuTm9kZUpTLFxuICAgIE5vZGVKUzQzID0gTGFtYmRhUnVudGltZS5Ob2RlSlM0MyxcbiAgICBOb2RlSlM2MTAgPSBMYW1iZGFSdW50aW1lLk5vZGVKUzYxMCxcbn1cblxuZXhwb3J0IGludGVyZmFjZSBJbmxpbmVKYXZhU2NyaXB0TGFtYmRhUHJvcHMge1xuICAgIC8qKlxuICAgICAqIFRoZSBsYW1iZGEgaGFuZGxlciBhcyBhIGphdmFzY3JpcHQgZnVuY3Rpb24uXG4gICAgICpcbiAgICAgKiBUaGlzIG11c3QgYmUgYSBqYXZhc2NyaXB0IGZ1bmN0aW9uIG9iamVjdC4gVGhlIHJlYXNvbiBpdCBpcyBgYW55YCBpcyBkdWVcbiAgICAgKiB0byBsaW1pdGF0aW9ucyBvZiB0aGUganNpaSBjb21waWxlci5cbiAgICAgKi9cbiAgICBoYW5kbGVyOiBJSmF2YVNjcmlwdExhbWJkYUhhbmRsZXI7XG5cbiAgICAvKipcbiAgICAgKiBBIGRlc2NyaXB0aW9uIG9mIHRoZSBmdW5jdGlvbi5cbiAgICAgKi9cbiAgICBkZXNjcmlwdGlvbj86IHN0cmluZztcblxuICAgIC8qKlxuICAgICAqIFRoZSBmdW5jdGlvbiBleGVjdXRpb24gdGltZSAoaW4gc2Vjb25kcykgYWZ0ZXIgd2hpY2ggTGFtYmRhIHRlcm1pbmF0ZXNcbiAgICAgKiB0aGUgZnVuY3Rpb24uIEJlY2F1c2UgdGhlIGV4ZWN1dGlvbiB0aW1lIGFmZmVjdHMgY29zdCwgc2V0IHRoaXMgdmFsdWVcbiAgICAgKiBiYXNlZCBvbiB0aGUgZnVuY3Rpb24ncyBleHBlY3RlZCBleGVjdXRpb24gdGltZS5cbiAgICAgKlxuICAgICAqIEBkZWZhdWx0IDMwIHNlY29uZHMuXG4gICAgICovXG4gICAgdGltZW91dD86IG51bWJlcjtcblxuICAgIC8qKlxuICAgICAqIEtleS12YWx1ZSBwYWlycyB0aGF0IExhbWJkYSBjYWNoZXMgYW5kIG1ha2VzIGF2YWlsYWJsZSBmb3IgeW91ciBMYW1iZGFcbiAgICAgKiBmdW5jdGlvbnMuIFVzZSBlbnZpcm9ubWVudCB2YXJpYWJsZXMgdG8gYXBwbHkgY29uZmlndXJhdGlvbiBjaGFuZ2VzLCBzdWNoXG4gICAgICogYXMgdGVzdCBhbmQgcHJvZHVjdGlvbiBlbnZpcm9ubWVudCBjb25maWd1cmF0aW9ucywgd2l0aG91dCBjaGFuZ2luZyB5b3VyXG4gICAgICogTGFtYmRhIGZ1bmN0aW9uIHNvdXJjZSBjb2RlLlxuICAgICAqL1xuICAgIGVudmlyb25tZW50PzogeyBba2V5OiBzdHJpbmddOiBhbnkgfTtcblxuICAgIC8qKlxuICAgICAqIFRoZSBydW50aW1lIGVudmlyb25tZW50IGZvciB0aGUgTGFtYmRhIGZ1bmN0aW9uIHRoYXQgeW91IGFyZSB1cGxvYWRpbmcuXG4gICAgICogRm9yIHZhbGlkIHZhbHVlcywgc2VlIHRoZSBSdW50aW1lIHByb3BlcnR5IGluIHRoZSBBV1MgTGFtYmRhIERldmVsb3BlclxuICAgICAqIEd1aWRlLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgTm9kZUpTNjEwXG4gICAgICovXG4gICAgcnVudGltZT86IElubGluZUphdmFTY3JpcHRMYW1iZGFSdW50aW1lO1xuXG4gICAgLyoqXG4gICAgICogQSBuYW1lIGZvciB0aGUgZnVuY3Rpb24uIElmIHlvdSBkb24ndCBzcGVjaWZ5IGEgbmFtZSwgQVdTIENsb3VkRm9ybWF0aW9uXG4gICAgICogZ2VuZXJhdGVzIGEgdW5pcXVlIHBoeXNpY2FsIElEIGFuZCB1c2VzIHRoYXQgSUQgZm9yIHRoZSBmdW5jdGlvbidzIG5hbWUuXG4gICAgICogRm9yIG1vcmUgaW5mb3JtYXRpb24sIHNlZSBOYW1lIFR5cGUuXG4gICAgICovXG4gICAgZnVuY3Rpb25OYW1lPzogc3RyaW5nO1xuXG4gICAgLyoqXG4gICAgICogVGhlIGFtb3VudCBvZiBtZW1vcnksIGluIE1CLCB0aGF0IGlzIGFsbG9jYXRlZCB0byB5b3VyIExhbWJkYSBmdW5jdGlvbi5cbiAgICAgKiBMYW1iZGEgdXNlcyB0aGlzIHZhbHVlIHRvIHByb3BvcnRpb25hbGx5IGFsbG9jYXRlIHRoZSBhbW91bnQgb2YgQ1BVXG4gICAgICogcG93ZXIuIEZvciBtb3JlIGluZm9ybWF0aW9uLCBzZWUgUmVzb3VyY2UgTW9kZWwgaW4gdGhlIEFXUyBMYW1iZGFcbiAgICAgKiBEZXZlbG9wZXIgR3VpZGUuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBUaGUgZGVmYXVsdCB2YWx1ZSBpcyAxMjggTUJcbiAgICAgKi9cbiAgICBtZW1vcnlTaXplPzogbnVtYmVyO1xufVxuXG4vKipcbiAqIEEgbGFtYmRhIGZ1bmN0aW9uIHdpdGggaW5saW5lIG5vZGUuanMgY29kZS5cbiAqXG4gKiBVc2FnZTpcbiAqXG4gKiAgICBuZXcgSW5saW5lSmF2YVNjcmlwdExhbWJkYSh0aGlzLCAnTXlGdW5jJywge1xuICogICAgICBoYW5kbGVyOiB7XG4gKiAgICAgICAgZm46IChldmVudCwgY29udGV4dCwgY2FsbGJhY2spID0+IHtcbiAqICAgICAgICAgIGNvbnNvbGUubG9nKCdoZWxsbywgd29ybGQnKTtcbiAqICAgICAgICAgIGNhbGxiYWNrKCk7XG4gKiAgICAgICAgfVxuICogICAgICB9XG4gKiAgICB9KTtcbiAqXG4gKiBUaGlzIHdpbGwgZGVmaW5lIGEgbm9kZS5qcyA2LjEwIGZ1bmN0aW9uIHdpdGggdGhlIHByb3ZpZGVkIGZ1bmN0aW9uIGhhc1xuICogdGhlIGhhbmRsZXIgY29kZS5cbiAqL1xuZXhwb3J0IGNsYXNzIElubGluZUphdmFTY3JpcHRMYW1iZGEgZXh0ZW5kcyBMYW1iZGEge1xuICAgIGNvbnN0cnVjdG9yKHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBJbmxpbmVKYXZhU2NyaXB0TGFtYmRhUHJvcHMpIHtcbiAgICAgICAgY29uc3QgY29kZSA9IG5ldyBMYW1iZGFJbmxpbmVDb2RlKHJlbmRlckNvZGUocHJvcHMuaGFuZGxlcikpO1xuICAgICAgICBjb25zdCBydW50aW1lID0gKHByb3BzLnJ1bnRpbWUgfHwgSW5saW5lSmF2YVNjcmlwdExhbWJkYVJ1bnRpbWUuTm9kZUpTNjEwKSBhcyBhbnk7XG4gICAgICAgIGNvbnN0IGhhbmRsZXIgPSAnaW5kZXguaGFuZGxlcic7XG4gICAgICAgIGNvbnN0IHRpbWVvdXQgPSBwcm9wcy50aW1lb3V0IHx8IDMwO1xuICAgICAgICBzdXBlcihwYXJlbnQsIG5hbWUsIHtcbiAgICAgICAgICAgIGNvZGUsXG4gICAgICAgICAgICBydW50aW1lLFxuICAgICAgICAgICAgaGFuZGxlcixcbiAgICAgICAgICAgIHRpbWVvdXQsXG4gICAgICAgICAgICBkZXNjcmlwdGlvbjogcHJvcHMuZGVzY3JpcHRpb24sXG4gICAgICAgICAgICBtZW1vcnlTaXplOiBwcm9wcy5tZW1vcnlTaXplLFxuICAgICAgICAgICAgZnVuY3Rpb25OYW1lOiBwcm9wcy5mdW5jdGlvbk5hbWUsXG4gICAgICAgICAgICBlbnZpcm9ubWVudDogcHJvcHMuZW52aXJvbm1lbnQsXG4gICAgICAgIH0pO1xuICAgIH1cbn1cblxuZnVuY3Rpb24gcmVuZGVyQ29kZShoYW5kbGVyOiBJSmF2YVNjcmlwdExhbWJkYUhhbmRsZXIpIHtcbiAgICByZXR1cm4gYGV4cG9ydHMuaGFuZGxlciA9ICR7aGFuZGxlci5mbi50b1N0cmluZygpfWA7XG59XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gL3Jvb3QvcmVwb3MvYXdzLWNkay9wYWNrYWdlcy9AYXdzLWNkay9sYW1iZGEvbGliL2lubGluZS50cyJdLCJzb3VyY2VSb290IjoiIn0="
+}

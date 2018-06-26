@@ -1,0 +1,1171 @@
+{
+  "schema": "jsii/1.0",
+  "types": {
+    "jsii$_aws_cdk_kinesis$.StreamRefProps": {
+      "docs": {
+        "comment": "A reference to a stream. The easiest way to instantiate is to call\n`stream.export()`. Then, the consumer can use `Stream.import(this, ref)` and\nget a `Stream`."
+      },
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the stream."
+          },
+          "name": "streamArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.kinesis.StreamArn"
+          }
+        },
+        {
+          "docs": {
+            "comment": "The KMS key securing the contents of the stream if encryption is enabled."
+          },
+          "name": "encryptionKey",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRefProps",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_kinesis$.StreamRefProps",
+      "module": "jsii$_aws_cdk_kinesis$",
+      "namespace": "jsii$_aws_cdk_kinesis$",
+      "name": "StreamRefProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_kinesis$.StreamRef": {
+      "docs": {
+        "comment": "Represents a Kinesis Stream.\n\nStreams can be either defined within this stack:\n\n     new Stream(this, 'MyStream', { props });\n\nOr imported from an existing stream:\n\n     StreamRef.import(this, 'MyImportedStream', { streamArn: ... });\n\nYou can also export a stream and import it into another stack:\n\n     const ref = myStream.export();\n     StreamRef.import(this, 'MyImportedStream', ref);"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the stream."
+          },
+          "name": "streamArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.kinesis.StreamArn"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Optional KMS encryption key associated with this stream."
+          },
+          "name": "encryptionKey",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+            "optional": true
+          },
+          "immutable": true,
+          "abstract": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "parent The parent creating construct (usually `this`).",
+                "comment": "The parent creating construct (usually `this`)."
+              },
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The construct's name.",
+                "comment": "The construct's name."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_kinesis$.StreamRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Creates a Stream construct that represents an external stream."
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_kinesis$.StreamRef"
+          }
+        },
+        {
+          "docs": {
+            "comment": "Exports this stream from the stack."
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_kinesis$.StreamRefProps"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "identity",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Grant write permissions for this stream and its contents to an IAM\nprincipal (Role/Group/User).\n\nIf an encryption key is used, permission to ues the key to decrypt the\ncontents of the stream will also be granted."
+          },
+          "name": "grantRead"
+        },
+        {
+          "parameters": [
+            {
+              "name": "identity",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Grant read permissions for this stream and its contents to an IAM\nprincipal (Role/Group/User).\n\nIf an encryption key is used, permission to ues the key to decrypt the\ncontents of the stream will also be granted."
+          },
+          "name": "grantWrite"
+        },
+        {
+          "parameters": [
+            {
+              "name": "identity",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Grants read/write permissions for this stream and its contents to an IAM\nprincipal (Role/Group/User).\n\nIf an encryption key is used, permission to use the key for\nencrypt/decrypt will also be granted."
+          },
+          "name": "grantReadWrite"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_kinesis$.StreamRef",
+      "module": "jsii$_aws_cdk_kinesis$",
+      "namespace": "jsii$_aws_cdk_kinesis$",
+      "name": "StreamRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_kinesis$.StreamProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "default": "<generated>",
+            "comment": "Enforces a particular physical stream name."
+          },
+          "name": "streamName",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "24",
+            "comment": "The number of hours for the data records that are stored in shards to remain accessible."
+          },
+          "name": "retentionPeriodHours",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "1",
+            "comment": "The number of shards for the stream."
+          },
+          "name": "shardCount",
+          "type": {
+            "primitive": "number",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "Unencrypted",
+            "comment": "The kind of server-side encryption to apply to this stream.\n\nIf you choose KMS, you can specify a KMS key via `encryptionKey`. If\nencryption key is not specified, a key will automatically be created."
+          },
+          "name": "encryption",
+          "type": {
+            "primitive": "string",
+            "optional": true
+          }
+        },
+        {
+          "docs": {
+            "default": "If encryption is set to \"Kms\" and this property is undefined, a\nnew KMS key will be created and associated with this stream.",
+            "comment": "External KMS key to use for stream encryption.\n\nThe 'encryption' property must be set to \"Kms\"."
+          },
+          "name": "encryptionKey",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+            "optional": true
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_kinesis$.StreamProps",
+      "module": "jsii$_aws_cdk_kinesis$",
+      "namespace": "jsii$_aws_cdk_kinesis$",
+      "name": "StreamProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_kinesis$.Stream": {
+      "docs": {
+        "comment": "A Kinesis stream. Can be encrypted with a KMS key."
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the stream."
+          },
+          "name": "streamArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.kinesis.StreamArn"
+          },
+          "immutable": true
+        },
+        {
+          "name": "streamName",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kinesis$.StreamName"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "Optional KMS encryption key associated with this stream."
+          },
+          "name": "encryptionKey",
+          "type": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+            "optional": true
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_kinesis$.Stream",
+      "module": "jsii$_aws_cdk_kinesis$",
+      "namespace": "jsii$_aws_cdk_kinesis$",
+      "name": "Stream",
+      "base": {
+        "fqn": "jsii$_aws_cdk_kinesis$.StreamRef"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          },
+          {
+            "name": "props",
+            "type": {
+              "fqn": "jsii$_aws_cdk_kinesis$.StreamProps",
+              "optional": true
+            }
+          }
+        ],
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_kinesis$.StreamEncryption": {
+      "docs": {
+        "comment": "What kind of server-side encryption to apply to this stream"
+      },
+      "kind": "enum",
+      "members": [
+        {
+          "name": "Unencrypted"
+        },
+        {
+          "name": "Kms"
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_kinesis$.StreamEncryption",
+      "module": "jsii$_aws_cdk_kinesis$",
+      "namespace": "jsii$_aws_cdk_kinesis$",
+      "name": "StreamEncryption"
+    },
+    "jsii$_aws_cdk_kinesis$.StreamName": {
+      "docs": {
+        "comment": "The name of the stream."
+      },
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_kinesis$.StreamName",
+      "module": "jsii$_aws_cdk_kinesis$",
+      "namespace": "jsii$_aws_cdk_kinesis$",
+      "name": "StreamName",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Token"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    }
+  },
+  "nametree": {
+    "jsii$_aws_cdk_kinesis$": {
+      "StreamRefProps": {
+        "_": "jsii$_aws_cdk_kinesis$.StreamRefProps"
+      },
+      "StreamRef": {
+        "_": "jsii$_aws_cdk_kinesis$.StreamRef"
+      },
+      "StreamProps": {
+        "_": "jsii$_aws_cdk_kinesis$.StreamProps"
+      },
+      "Stream": {
+        "_": "jsii$_aws_cdk_kinesis$.Stream"
+      },
+      "StreamEncryption": {
+        "_": "jsii$_aws_cdk_kinesis$.StreamEncryption"
+      },
+      "StreamName": {
+        "_": "jsii$_aws_cdk_kinesis$.StreamName"
+      }
+    }
+  },
+  "typecount": 6,
+  "externalTypes": {
+    "jsii$_aws_cdk_resources$.kinesis.StreamArn": {
+      "kind": "class",
+      "fqn": "jsii$_aws_cdk_resources$.kinesis.StreamArn",
+      "module": "jsii$_aws_cdk_resources$",
+      "namespace": "jsii$_aws_cdk_resources$.kinesis",
+      "name": "StreamArn",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Arn"
+      },
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_kms$.EncryptionKeyRefProps": {
+      "kind": "interface",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the external KMS key."
+          },
+          "name": "keyArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.kms.KeyArn"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRefProps",
+      "module": "jsii$_aws_cdk_kms$",
+      "namespace": "jsii$_aws_cdk_kms$",
+      "name": "EncryptionKeyRefProps",
+      "datatype": true
+    },
+    "jsii$_aws_cdk_core$.Construct": {
+      "docs": {
+        "comment": "Represents the building block of the construct graph.\nWhen a construct is created, it is always added as a child"
+      },
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "Returns the parent of this node or undefined if this is a root node."
+          },
+          "name": "parent",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "The name of this construct"
+          },
+          "name": "name",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "All direct children of this construct."
+          },
+          "name": "children",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "returns": "/-separated path of this Construct.",
+            "comment": "Returns the path of all constructs from root to this construct, in string form."
+          },
+          "name": "path",
+          "type": {
+            "primitive": "string"
+          },
+          "immutable": true
+        },
+        {
+          "docs": {
+            "comment": "An array of metadata objects associated with this construct.\nThis can be used, for example, to implement support for deprecation notices, source mapping, etc."
+          },
+          "name": "metadata",
+          "type": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.MetadataEntry"
+              },
+              "kind": "array"
+            }
+          },
+          "immutable": true
+        }
+      ],
+      "methods": [
+        {
+          "docs": {
+            "comment": "Returns a string representation of this construct."
+          },
+          "name": "toString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "depth",
+              "type": {
+                "primitive": "number",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Returns a string with a tree representation of this construct and it's children."
+          },
+          "name": "toTreeString",
+          "returns": {
+            "primitive": "string"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "a child by path or undefined if not found.",
+            "comment": "Return a descendant by path, or undefined"
+          },
+          "name": "tryFindChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct",
+            "optional": true
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "path",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "Child with the given path.",
+            "comment": "Return a descendant by path\n\nThrows an exception if the descendant is not found."
+          },
+          "name": "findChild",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "value The context value",
+                "comment": "The context value"
+              },
+              "name": "value",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "This can be used to set contextual values.\nContext must be set before any children are added, since children may consult context info during construction.\nIf the key already exists, it will be overridden."
+          },
+          "name": "setContext"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "key The context key",
+                "comment": "The context key"
+              },
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The context value or undefined",
+            "comment": "Retrieves a value from tree context.\n\nContext is usually initialized at the root, but can be overridden at any point in the tree."
+          },
+          "name": "getContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "key",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Retrieve a value from tree-global context\n\nIt is an error if the context object is not available."
+          },
+          "name": "requireContext",
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "type a string denoting the type of metadata",
+                "comment": "a string denoting the type of metadata"
+              },
+              "name": "type",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "data the value of the metadata (can be a Token). If null/undefined, metadata will not be added.",
+                "comment": "the value of the metadata (can be a Token). If null/undefined, metadata will not be added."
+              },
+              "name": "data",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "from a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)",
+                "comment": "a function under which to restrict the metadata entry's stack trace (defaults to this.addMetadata)"
+              },
+              "name": "from",
+              "type": {
+                "primitive": "any",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a metadata entry to this construct.\nEntries are arbitrary values and will also include a stack trace to allow tracing back to\nthe code location for when the entry was added. It can be used, for example, to include source\nmapping in CloudFormation templates to improve diagnostics."
+          },
+          "name": "addMetadata",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "message The warning message.",
+                "comment": "The warning message."
+              },
+              "name": "message",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a { warning: <message> } metadata entry to this construct."
+          },
+          "name": "addWarning",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_core$.Construct"
+          }
+        },
+        {
+          "docs": {
+            "returns": "An array of validation error messages, or an empty array if there the construct is valid.",
+            "comment": "This method can be implemented by derived constructs in order to perform\nvalidation logic. It is called on all constructs before synthesis."
+          },
+          "name": "validate",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "primitive": "string"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "docs": {
+            "returns": "A list of validation errors. If the list is empty, all constructs are valid.",
+            "comment": "Invokes 'validate' on all child constructs and then on this construct (depth-first)."
+          },
+          "name": "validateTree",
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.ValidationError"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "upTo",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct",
+                "optional": true
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Return the ancestors (including self) of this Construct up until and excluding the indicated component"
+          },
+          "name": "ancestors",
+          "protected": true,
+          "returns": {
+            "collection": {
+              "elementtype": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              },
+              "kind": "array"
+            }
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "props The props bag.",
+                "comment": "The props bag."
+              },
+              "name": "props",
+              "type": {
+                "primitive": "any"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the required property.",
+                "comment": "The name of the required property."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Throws if the `props` bag doesn't include the property `name`.\nIn the future we can add some type-checking here, maybe even auto-generate during compilation."
+          },
+          "name": "required",
+          "protected": true,
+          "returns": {
+            "primitive": "any"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "child The child construct",
+                "comment": "The child construct"
+              },
+              "name": "child",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "name": "childName",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "returns": "The resolved path part name of the child",
+            "comment": "Adds a child construct to this node."
+          },
+          "name": "addChild",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Locks this construct from allowing more children to be added. After this\ncall, no more children can be added to this construct or to any children."
+          },
+          "name": "lock",
+          "protected": true
+        },
+        {
+          "docs": {
+            "comment": "Unlocks this costruct and allows mutations (adding children)."
+          },
+          "name": "unlock",
+          "protected": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Construct",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Construct",
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_kms$.EncryptionKeyRef": {
+      "kind": "class",
+      "properties": [
+        {
+          "docs": {
+            "comment": "The ARN of the key."
+          },
+          "name": "keyArn",
+          "type": {
+            "fqn": "jsii$_aws_cdk_resources$.kms.KeyArn"
+          },
+          "immutable": true,
+          "abstract": true
+        },
+        {
+          "docs": {
+            "comment": "Optional policy document that represents the resource policy of this key.\n\nIf specified, addToResourcePolicy can be used to edit this policy.\nOtherwise this method will no-op."
+          },
+          "name": "policy",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyDocument",
+            "optional": true
+          },
+          "immutable": true,
+          "protected": true,
+          "abstract": true
+        }
+      ],
+      "methods": [
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "parent The parent construct.",
+                "comment": "The parent construct."
+              },
+              "name": "parent",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.Construct"
+              }
+            },
+            {
+              "docs": {
+                "param": "name The name of the construct.",
+                "comment": "The name of the construct."
+              },
+              "name": "name",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "docs": {
+                "param": "props The key reference.",
+                "comment": "The key reference."
+              },
+              "name": "props",
+              "type": {
+                "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRefProps"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines an imported encryption key.\n\n`ref` can be obtained either via a call to `key.export()` or using\nliterals.\n\nFor example:\n\n     const keyRefProps = key.export();\n     const keyRef1 = EncryptionKeyRef.import(this, 'MyImportedKey1', keyRefProps);\n     const keyRef2 = EncryptionKeyRef.import(this, 'MyImportedKey2', {\n         keyArn: new KeyArn('arn:aws:kms:...')\n     });"
+          },
+          "name": "import",
+          "static": true,
+          "returns": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "alias",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Defines a new alias for the key."
+          },
+          "name": "addAlias",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyAlias"
+          }
+        },
+        {
+          "parameters": [
+            {
+              "name": "statement",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds a statement to the KMS key resource policy."
+          },
+          "name": "addToResourcePolicy"
+        },
+        {
+          "docs": {
+            "returns": "a key ref which can be used in a call to `EncryptionKey.import(ref)`.",
+            "comment": "Exports this key from the current stack."
+          },
+          "name": "export",
+          "returns": {
+            "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRefProps"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_kms$.EncryptionKeyRef",
+      "module": "jsii$_aws_cdk_kms$",
+      "namespace": "jsii$_aws_cdk_kms$",
+      "name": "EncryptionKeyRef",
+      "base": {
+        "fqn": "jsii$_aws_cdk_core$.Construct"
+      },
+      "abstract": true,
+      "initializer": {
+        "parameters": [
+          {
+            "docs": {
+              "param": "parent The parent construct",
+              "comment": "The parent construct"
+            },
+            "name": "parent",
+            "type": {
+              "fqn": "jsii$_aws_cdk_core$.Construct"
+            }
+          },
+          {
+            "name": "name",
+            "type": {
+              "primitive": "string"
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a new construct node."
+        },
+        "initializer": true
+      }
+    },
+    "jsii$_aws_cdk_iam$.IIdentityResource": {
+      "kind": "interface",
+      "methods": [
+        {
+          "parameters": [
+            {
+              "name": "statement",
+              "type": {
+                "fqn": "jsii$_aws_cdk_core$.PolicyStatement"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Adds an IAM statement to the default inline policy associated with this\nprincipal. If a policy doesn't exist, it is created."
+          },
+          "name": "addToPolicy"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "policy The policy resource to attach to this principal.",
+                "comment": "The policy resource to attach to this principal."
+              },
+              "name": "policy",
+              "type": {
+                "fqn": "jsii$_aws_cdk_iam$.Policy"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Attaches an inline policy to this principal.\nThis is the same as calling `policy.addToXxx(principal)`."
+          },
+          "name": "attachInlinePolicy"
+        },
+        {
+          "parameters": [
+            {
+              "docs": {
+                "param": "arn The ARN of the managed policy",
+                "comment": "The ARN of the managed policy"
+              },
+              "name": "arn",
+              "type": {
+                "primitive": "any"
+              }
+            }
+          ],
+          "docs": {
+            "comment": "Attaches a managed policy to this principal."
+          },
+          "name": "attachManagedPolicy"
+        }
+      ],
+      "properties": [
+        {
+          "docs": {
+            "comment": "The IAM principal of this identity (i.e. AWS principal, service principal, etc)."
+          },
+          "name": "principal",
+          "type": {
+            "fqn": "jsii$_aws_cdk_core$.PolicyPrincipal"
+          },
+          "immutable": true
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_iam$.IIdentityResource",
+      "module": "jsii$_aws_cdk_iam$",
+      "namespace": "jsii$_aws_cdk_iam$",
+      "name": "IIdentityResource"
+    },
+    "jsii$_aws_cdk_core$.Token": {
+      "docs": {
+        "comment": "Represents a lazy-evaluated value. Can be used to delay evaluation of a certain value\nin case, for example, that it requires some context or late-bound data."
+      },
+      "kind": "class",
+      "methods": [
+        {
+          "docs": {
+            "returns": "The resolved value for this token."
+          },
+          "name": "resolve",
+          "returns": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "fqn": "jsii$_aws_cdk_core$.Token",
+      "module": "jsii$_aws_cdk_core$",
+      "namespace": "jsii$_aws_cdk_core$",
+      "name": "Token",
+      "initializer": {
+        "parameters": [
+          {
+            "name": "valueOrFunction",
+            "type": {
+              "primitive": "any",
+              "optional": true
+            }
+          }
+        ],
+        "docs": {
+          "comment": "Creates a token that resolves to `value`. If value is a function,\nthe function is evaluated upon resolution and the value it returns will be\nuesd as the token's value."
+        },
+        "initializer": true
+      }
+    }
+  },
+  "name": "jsii$_aws_cdk_kinesis$",
+  "package": "@aws-cdk/kinesis",
+  "version": "0.7.2-beta",
+  "dependencies": {
+    "jsii$_aws_cdk_core$": {
+      "package": "@aws-cdk/core",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "package": "@aws-cdk/iam",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_kms$": {
+      "package": "@aws-cdk/kms",
+      "version": "0.7.2-beta"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "package": "@aws-cdk/resources",
+      "version": "0.7.2-beta"
+    }
+  },
+  "names": {
+    "java": "com.amazonaws.cdk.kinesis",
+    "dotnet": "AWS.Cdk.Kinesis",
+    "js": "@aws-cdk/kinesis"
+  },
+  "nativenames": {
+    "jsii$_aws_cdk_core$": {
+      "java": "com.amazonaws.cdk",
+      "dotnet": "AWS.Cdk",
+      "js": "@aws-cdk/core"
+    },
+    "jsii$_aws_cdk_iam$": {
+      "java": "com.amazonaws.cdk.iam",
+      "dotnet": "AWS.Cdk.Iam",
+      "js": "@aws-cdk/iam"
+    },
+    "jsii$_aws_cdk_kms$": {
+      "java": "com.amazonaws.cdk.kms",
+      "dotnet": "AWS.Cdk.Kms",
+      "js": "@aws-cdk/kms"
+    },
+    "jsii$_aws_cdk_resources$": {
+      "java": "com.amazonaws.cdk.resources",
+      "dotnet": "AWS.Cdk.Resources",
+      "js": "@aws-cdk/resources"
+    },
+    "jsii$_aws_cdk_kinesis$": {
+      "java": "com.amazonaws.cdk.kinesis",
+      "dotnet": "AWS.Cdk.Kinesis",
+      "js": "@aws-cdk/kinesis"
+    }
+  },
+  "readme": {
+    "markdown": "## AWS Kinesis Construct Library\n\nDefine an unencrypted Kinesis stream.\n\n```ts\nnew Stream(this, 'MyFirstStream');\n```\n\n### Encryption\n\nDefine a KMS-encrypted stream:\n\n```ts\nconst stream = newStream(this, 'MyEncryptedStream', {\n    encryption: StreamEncryption.Kms\n});\n\n// you can access the encryption key:\nassert(stream.encryptionKey instanceof kms.EncryptionKey);\n```\n\nYou can also supply your own key:\n\n```ts\nconst myKmsKey = new kms.EncryptionKey(this, 'MyKey');\n\nconst stream = new Stream(this, 'MyEncryptedStream', {\n    encryption: StreamEncryption.Kms,\n    encryptionKey: myKmsKey\n});\n\nassert(stream.encryptionKey === myKmsKey);\n```\n"
+  },
+  "code": "var jsii$_aws_cdk_kinesis$ =\n/******/ (function(modules) { // webpackBootstrap\n/******/ \t// The module cache\n/******/ \tvar installedModules = {};\n/******/\n/******/ \t// The require function\n/******/ \tfunction __webpack_require__(moduleId) {\n/******/\n/******/ \t\t// Check if module is in cache\n/******/ \t\tif(installedModules[moduleId]) {\n/******/ \t\t\treturn installedModules[moduleId].exports;\n/******/ \t\t}\n/******/ \t\t// Create a new module (and put it into the cache)\n/******/ \t\tvar module = installedModules[moduleId] = {\n/******/ \t\t\ti: moduleId,\n/******/ \t\t\tl: false,\n/******/ \t\t\texports: {}\n/******/ \t\t};\n/******/\n/******/ \t\t// Execute the module function\n/******/ \t\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\n/******/\n/******/ \t\t// Flag the module as loaded\n/******/ \t\tmodule.l = true;\n/******/\n/******/ \t\t// Return the exports of the module\n/******/ \t\treturn module.exports;\n/******/ \t}\n/******/\n/******/\n/******/ \t// expose the modules object (__webpack_modules__)\n/******/ \t__webpack_require__.m = modules;\n/******/\n/******/ \t// expose the module cache\n/******/ \t__webpack_require__.c = installedModules;\n/******/\n/******/ \t// define getter function for harmony exports\n/******/ \t__webpack_require__.d = function(exports, name, getter) {\n/******/ \t\tif(!__webpack_require__.o(exports, name)) {\n/******/ \t\t\tObject.defineProperty(exports, name, {\n/******/ \t\t\t\tconfigurable: false,\n/******/ \t\t\t\tenumerable: true,\n/******/ \t\t\t\tget: getter\n/******/ \t\t\t});\n/******/ \t\t}\n/******/ \t};\n/******/\n/******/ \t// getDefaultExport function for compatibility with non-harmony modules\n/******/ \t__webpack_require__.n = function(module) {\n/******/ \t\tvar getter = module && module.__esModule ?\n/******/ \t\t\tfunction getDefault() { return module['default']; } :\n/******/ \t\t\tfunction getModuleExports() { return module; };\n/******/ \t\t__webpack_require__.d(getter, 'a', getter);\n/******/ \t\treturn getter;\n/******/ \t};\n/******/\n/******/ \t// Object.prototype.hasOwnProperty.call\n/******/ \t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\n/******/\n/******/ \t// __webpack_public_path__\n/******/ \t__webpack_require__.p = \"\";\n/******/\n/******/ \t// Load entry module and return exports\n/******/ \treturn __webpack_require__(__webpack_require__.s = 0);\n/******/ })\n/************************************************************************/\n/******/ ([\n/* 0 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__export(__webpack_require__(1));\n\n\n/***/ }),\n/* 1 */\n/***/ (function(module, exports, __webpack_require__) {\n\n\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst core_1 = __webpack_require__(2);\nconst kms = __webpack_require__(3);\nconst resources_1 = __webpack_require__(4);\n/**\n * Represents a Kinesis Stream.\n *\n * Streams can be either defined within this stack:\n *\n *     new Stream(this, 'MyStream', { props });\n *\n * Or imported from an existing stream:\n *\n *     StreamRef.import(this, 'MyImportedStream', { streamArn: ... });\n *\n * You can also export a stream and import it into another stack:\n *\n *     const ref = myStream.export();\n *     StreamRef.import(this, 'MyImportedStream', ref);\n *\n */\nclass StreamRef extends core_1.Construct {\n    /**\n     * Creates a Stream construct that represents an external stream.\n     *\n     * @param parent The parent creating construct (usually `this`).\n     * @param name The construct's name.\n     * @param ref A StreamRefProps object. Can be obtained from a call to\n     * `stream.export()`.\n     */\n    static import(parent, name, props) {\n        return new ImportedStreamRef(parent, name, props);\n    }\n    /**\n     * Exports this stream from the stack.\n     */\n    export() {\n        const streamArn = new core_1.Output(this, 'StreamArn', { value: this.streamArn }).makeImportValue();\n        if (this.encryptionKey) {\n            return {\n                streamArn,\n                encryptionKey: this.encryptionKey.export()\n            };\n        }\n        else {\n            return { streamArn };\n        }\n    }\n    /**\n     * Grant write permissions for this stream and its contents to an IAM\n     * principal (Role/Group/User).\n     *\n     * If an encryption key is used, permission to ues the key to decrypt the\n     * contents of the stream will also be granted.\n     */\n    grantRead(identity) {\n        if (!identity) {\n            return;\n        }\n        this.grant(identity, {\n            streamActions: [\n                'kinesis:DescribeStream',\n                'kinesis:GetRecords',\n                'kinesis:GetShardIterator'\n            ],\n            keyActions: [\n                'kms:Decrypt'\n            ]\n        });\n    }\n    /**\n     * Grant read permissions for this stream and its contents to an IAM\n     * principal (Role/Group/User).\n     *\n     * If an encryption key is used, permission to ues the key to decrypt the\n     * contents of the stream will also be granted.\n     */\n    grantWrite(identity) {\n        if (!identity) {\n            return;\n        }\n        this.grant(identity, {\n            streamActions: [\n                'kinesis:DescribeStream',\n                'kinesis:PutRecord',\n                'kinesis:PutRecords'\n            ],\n            keyActions: [\n                'kms:GenerateDataKey',\n                'kms:Encrypt'\n            ]\n        });\n    }\n    /**\n     * Grants read/write permissions for this stream and its contents to an IAM\n     * principal (Role/Group/User).\n     *\n     * If an encryption key is used, permission to use the key for\n     * encrypt/decrypt will also be granted.\n     */\n    grantReadWrite(identity) {\n        if (!identity) {\n            return;\n        }\n        this.grant(identity, {\n            streamActions: [\n                'kinesis:DescribeStream',\n                'kinesis:GetRecords',\n                'kinesis:GetShardIterator',\n                'kinesis:PutRecord',\n                'kinesis:PutRecords'\n            ],\n            keyActions: [\n                'kms:Decrypt',\n                'kms:GenerateDataKey',\n                'kms:Encrypt'\n            ]\n        });\n    }\n    grant(identity, actions) {\n        identity.addToPolicy(new core_1.PolicyStatement()\n            .addResource(this.streamArn)\n            .addActions(...actions.streamActions));\n        // grant key permissions if there's an associated key.\n        if (this.encryptionKey) {\n            identity.addToPolicy(new core_1.PolicyStatement()\n                .addResource(this.encryptionKey.keyArn)\n                .addActions(...actions.keyActions));\n        }\n    }\n}\nexports.StreamRef = StreamRef;\n/**\n * A Kinesis stream. Can be encrypted with a KMS key.\n */\nclass Stream extends StreamRef {\n    constructor(parent, name, props = {}) {\n        super(parent, name);\n        const shardCount = props.shardCount || 1;\n        const retentionPeriodHours = props.retentionPeriodHours || 24;\n        if (retentionPeriodHours < 24 && retentionPeriodHours > 168) {\n            throw new Error(\"retentionPeriodHours must be between 24 and 168 hours\");\n        }\n        const { streamEncryption, encryptionKey } = this.parseEncryption(props);\n        this.stream = new resources_1.kinesis.StreamResource(this, \"Resource\", {\n            streamName: props.streamName,\n            retentionPeriodHours,\n            shardCount,\n            streamEncryption\n        });\n        this.streamArn = this.stream.streamArn;\n        this.streamName = this.stream.ref;\n        this.encryptionKey = encryptionKey;\n        if (props.streamName) {\n            this.addMetadata('aws:cdk:hasPhysicalName', props.streamName);\n        }\n    }\n    /**\n     * Set up key properties and return the Stream encryption property from the\n     * user's configuration.\n     */\n    parseEncryption(props) {\n        // default to unencrypted.\n        const encryptionType = props.encryption || StreamEncryption.Unencrypted;\n        // if encryption key is set, encryption must be set to KMS.\n        if (encryptionType !== StreamEncryption.Kms && props.encryptionKey) {\n            throw new Error(`encryptionKey is specified, so 'encryption' must be set to KMS (value: ${encryptionType})`);\n        }\n        if (encryptionType === StreamEncryption.Unencrypted) {\n            return { streamEncryption: undefined, encryptionKey: undefined };\n        }\n        if (encryptionType === StreamEncryption.Kms) {\n            const encryptionKey = props.encryptionKey || new kms.EncryptionKey(this, 'Key', {\n                description: `Created by ${this.path}`\n            });\n            const streamEncryption = {\n                encryptionType: 'KMS',\n                keyId: encryptionKey.keyArn\n            };\n            return { encryptionKey, streamEncryption };\n        }\n        throw new Error(`Unexpected 'encryptionType': ${encryptionType}`);\n    }\n}\nexports.Stream = Stream;\n/**\n * What kind of server-side encryption to apply to this stream\n */\nvar StreamEncryption;\n(function (StreamEncryption) {\n    /**\n     * Records in the stream are not encrypted.\n     */\n    StreamEncryption[\"Unencrypted\"] = \"NONE\";\n    /**\n     * Server-side encryption with a KMS key managed by the user.\n     * If `encryptionKey` is specified, this key will be used, otherwise, one will be defined.\n     */\n    StreamEncryption[\"Kms\"] = \"KMS\";\n})(StreamEncryption = exports.StreamEncryption || (exports.StreamEncryption = {}));\n/**\n * The name of the stream.\n */\nclass StreamName extends core_1.Token {\n}\nexports.StreamName = StreamName;\nclass ImportedStreamRef extends StreamRef {\n    constructor(parent, name, props) {\n        super(parent, name);\n        this.streamArn = props.streamArn;\n        if (props.encryptionKey) {\n            this.encryptionKey = kms.EncryptionKeyRef.import(parent, 'Key', props.encryptionKey);\n        }\n        else {\n            this.encryptionKey = undefined;\n        }\n    }\n}\n\n\n/***/ }),\n/* 2 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_core$;\n\n/***/ }),\n/* 3 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_kms$;\n\n/***/ }),\n/* 4 */\n/***/ (function(module, exports) {\n\nmodule.exports = jsii$_aws_cdk_resources$;\n\n/***/ })\n/******/ ]);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vd2VicGFjay9ib290c3RyYXAgMGVjYTEwZDc1YTJiY2FlMGNmMDkiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsva2luZXNpcy9saWIvaW5kZXgudHMiLCJ3ZWJwYWNrOi8vLy9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsva2luZXNpcy9saWIvc3RyZWFtLnRzIiwid2VicGFjazovLy9leHRlcm5hbCBcImpzaWkkX2F3c19jZGtfY29yZSRcIiIsIndlYnBhY2s6Ly8vZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX2ttcyRcIiIsIndlYnBhY2s6Ly8vZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyRcIiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBOzs7QUFHQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxhQUFLO0FBQ0w7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQSxtQ0FBMkIsMEJBQTBCLEVBQUU7QUFDdkQseUNBQWlDLGVBQWU7QUFDaEQ7QUFDQTtBQUNBOztBQUVBO0FBQ0EsOERBQXNELCtEQUErRDs7QUFFckg7QUFDQTs7QUFFQTtBQUNBOzs7Ozs7Ozs7Ozs7O0FDN0RBLGlDQUF5Qjs7Ozs7Ozs7OztBQ0F6QixzQ0FBMEU7QUFFMUUsbUNBQW9DO0FBQ3BDLDJDQUE2QztBQW1CN0M7Ozs7Ozs7Ozs7Ozs7Ozs7R0FnQkc7QUFDSCxlQUFnQyxTQUFRLGdCQUFTO0lBQzdDOzs7Ozs7O09BT0c7SUFDSSxNQUFNLENBQUMsTUFBTSxDQUFDLE1BQWlCLEVBQUUsSUFBWSxFQUFFLEtBQXFCO1FBQ3ZFLE9BQU8sSUFBSSxpQkFBaUIsQ0FBQyxNQUFNLEVBQUUsSUFBSSxFQUFFLEtBQUssQ0FBQyxDQUFDO0lBQ3RELENBQUM7SUFZRDs7T0FFRztJQUNJLE1BQU07UUFDVCxNQUFNLFNBQVMsR0FBRyxJQUFJLGFBQU0sQ0FBQyxJQUFJLEVBQUUsV0FBVyxFQUFFLEVBQUUsS0FBSyxFQUFFLElBQUksQ0FBQyxTQUFTLEVBQUUsQ0FBQyxDQUFDLGVBQWUsRUFBRSxDQUFDO1FBQzdGLElBQUksSUFBSSxDQUFDLGFBQWEsRUFBRTtZQUNwQixPQUFPO2dCQUNILFNBQVM7Z0JBQ1QsYUFBYSxFQUFFLElBQUksQ0FBQyxhQUFhLENBQUMsTUFBTSxFQUFFO2FBQzdDLENBQUM7U0FDTDthQUFNO1lBQ0gsT0FBTyxFQUFFLFNBQVMsRUFBRSxDQUFDO1NBQ3hCO0lBQ0wsQ0FBQztJQUVEOzs7Ozs7T0FNRztJQUNJLFNBQVMsQ0FBQyxRQUE0QjtRQUN6QyxJQUFJLENBQUMsUUFBUSxFQUFFO1lBQ1gsT0FBTztTQUNWO1FBQ0QsSUFBSSxDQUFDLEtBQUssQ0FDTixRQUFRLEVBQ1I7WUFDSSxhQUFhLEVBQUU7Z0JBQ1gsd0JBQXdCO2dCQUN4QixvQkFBb0I7Z0JBQ3BCLDBCQUEwQjthQUM3QjtZQUNELFVBQVUsRUFBRTtnQkFDUixhQUFhO2FBQ2hCO1NBQ0osQ0FDSixDQUFDO0lBQ04sQ0FBQztJQUVEOzs7Ozs7T0FNRztJQUNJLFVBQVUsQ0FBQyxRQUE0QjtRQUMxQyxJQUFJLENBQUMsUUFBUSxFQUFFO1lBQ1gsT0FBTztTQUNWO1FBRUQsSUFBSSxDQUFDLEtBQUssQ0FDTixRQUFRLEVBQ1I7WUFDSSxhQUFhLEVBQUU7Z0JBQ1gsd0JBQXdCO2dCQUN4QixtQkFBbUI7Z0JBQ25CLG9CQUFvQjthQUN2QjtZQUNELFVBQVUsRUFBRTtnQkFDUixxQkFBcUI7Z0JBQ3JCLGFBQWE7YUFDaEI7U0FDSixDQUNKLENBQUM7SUFDTixDQUFDO0lBRUQ7Ozs7OztPQU1HO0lBQ0ksY0FBYyxDQUFDLFFBQTRCO1FBQzlDLElBQUksQ0FBQyxRQUFRLEVBQUU7WUFDWCxPQUFPO1NBQ1Y7UUFDRCxJQUFJLENBQUMsS0FBSyxDQUNOLFFBQVEsRUFDUjtZQUNJLGFBQWEsRUFBRTtnQkFDWCx3QkFBd0I7Z0JBQ3hCLG9CQUFvQjtnQkFDcEIsMEJBQTBCO2dCQUMxQixtQkFBbUI7Z0JBQ25CLG9CQUFvQjthQUN2QjtZQUNELFVBQVUsRUFBRTtnQkFDUixhQUFhO2dCQUNiLHFCQUFxQjtnQkFDckIsYUFBYTthQUNoQjtTQUNKLENBQ0osQ0FBQztJQUNOLENBQUM7SUFFTyxLQUFLLENBQUMsUUFBMkIsRUFBRSxPQUEwRDtRQUNqRyxRQUFRLENBQUMsV0FBVyxDQUFDLElBQUksc0JBQWUsRUFBRTthQUNyQyxXQUFXLENBQUMsSUFBSSxDQUFDLFNBQVMsQ0FBQzthQUMzQixVQUFVLENBQUMsR0FBRyxPQUFPLENBQUMsYUFBYSxDQUFDLENBQUMsQ0FBQztRQUUzQyxzREFBc0Q7UUFDdEQsSUFBSSxJQUFJLENBQUMsYUFBYSxFQUFFO1lBQ3BCLFFBQVEsQ0FBQyxXQUFXLENBQUMsSUFBSSxzQkFBZSxFQUFFO2lCQUNyQyxXQUFXLENBQUMsSUFBSSxDQUFDLGFBQWEsQ0FBQyxNQUFNLENBQUM7aUJBQ3RDLFVBQVUsQ0FBQyxHQUFHLE9BQU8sQ0FBQyxVQUFVLENBQUMsQ0FBQyxDQUFDO1NBQzNDO0lBQ0wsQ0FBQztDQUNKO0FBdElELDhCQXNJQztBQTBDRDs7R0FFRztBQUNILFlBQW9CLFNBQVEsU0FBUztJQU9qQyxZQUFZLE1BQWlCLEVBQUUsSUFBWSxFQUFFLFFBQXFCLEVBQUU7UUFDaEUsS0FBSyxDQUFDLE1BQU0sRUFBRSxJQUFJLENBQUMsQ0FBQztRQUVwQixNQUFNLFVBQVUsR0FBRyxLQUFLLENBQUMsVUFBVSxJQUFJLENBQUMsQ0FBQztRQUN6QyxNQUFNLG9CQUFvQixHQUFHLEtBQUssQ0FBQyxvQkFBb0IsSUFBSSxFQUFFLENBQUM7UUFDOUQsSUFBSSxvQkFBb0IsR0FBRyxFQUFFLElBQUksb0JBQW9CLEdBQUcsR0FBRyxFQUFFO1lBQ3pELE1BQU0sSUFBSSxLQUFLLENBQUMsdURBQXVELENBQUMsQ0FBQztTQUM1RTtRQUVELE1BQU0sRUFBRSxnQkFBZ0IsRUFBRSxhQUFhLEVBQUUsR0FBRyxJQUFJLENBQUMsZUFBZSxDQUFDLEtBQUssQ0FBQyxDQUFDO1FBRXhFLElBQUksQ0FBQyxNQUFNLEdBQUcsSUFBSSxtQkFBTyxDQUFDLGNBQWMsQ0FBQyxJQUFJLEVBQUUsVUFBVSxFQUFFO1lBQ3ZELFVBQVUsRUFBRSxLQUFLLENBQUMsVUFBVTtZQUM1QixvQkFBb0I7WUFDcEIsVUFBVTtZQUNWLGdCQUFnQjtTQUNuQixDQUFDLENBQUM7UUFDSCxJQUFJLENBQUMsU0FBUyxHQUFHLElBQUksQ0FBQyxNQUFNLENBQUMsU0FBUyxDQUFDO1FBQ3ZDLElBQUksQ0FBQyxVQUFVLEdBQUcsSUFBSSxDQUFDLE1BQU0sQ0FBQyxHQUFHLENBQUM7UUFDbEMsSUFBSSxDQUFDLGFBQWEsR0FBRyxhQUFhLENBQUM7UUFFbkMsSUFBSSxLQUFLLENBQUMsVUFBVSxFQUFFO1lBQUUsSUFBSSxDQUFDLFdBQVcsQ0FBQyx5QkFBeUIsRUFBRSxLQUFLLENBQUMsVUFBVSxDQUFDLENBQUM7U0FBRTtJQUM1RixDQUFDO0lBRUQ7OztPQUdHO0lBQ0ssZUFBZSxDQUFDLEtBQWtCO1FBS3RDLDBCQUEwQjtRQUMxQixNQUFNLGNBQWMsR0FBRyxLQUFLLENBQUMsVUFBVSxJQUFJLGdCQUFnQixDQUFDLFdBQVcsQ0FBQztRQUV4RSwyREFBMkQ7UUFDM0QsSUFBSSxjQUFjLEtBQUssZ0JBQWdCLENBQUMsR0FBRyxJQUFJLEtBQUssQ0FBQyxhQUFhLEVBQUU7WUFDaEUsTUFBTSxJQUFJLEtBQUssQ0FBQywwRUFBMEUsY0FBYyxHQUFHLENBQUMsQ0FBQztTQUNoSDtRQUVELElBQUksY0FBYyxLQUFLLGdCQUFnQixDQUFDLFdBQVcsRUFBRTtZQUNqRCxPQUFPLEVBQUUsZ0JBQWdCLEVBQUUsU0FBUyxFQUFFLGFBQWEsRUFBRSxTQUFTLEVBQUUsQ0FBQztTQUNwRTtRQUVELElBQUksY0FBYyxLQUFLLGdCQUFnQixDQUFDLEdBQUcsRUFBRTtZQUN6QyxNQUFNLGFBQWEsR0FBRyxLQUFLLENBQUMsYUFBYSxJQUFJLElBQUksR0FBRyxDQUFDLGFBQWEsQ0FBQyxJQUFJLEVBQUUsS0FBSyxFQUFFO2dCQUM1RSxXQUFXLEVBQUUsY0FBYyxJQUFJLENBQUMsSUFBSSxFQUFFO2FBQ3pDLENBQUMsQ0FBQztZQUVILE1BQU0sZ0JBQWdCLEdBQW9EO2dCQUN0RSxjQUFjLEVBQUUsS0FBSztnQkFDckIsS0FBSyxFQUFFLGFBQWEsQ0FBQyxNQUFNO2FBQzlCLENBQUM7WUFDRixPQUFPLEVBQUUsYUFBYSxFQUFFLGdCQUFnQixFQUFFLENBQUM7U0FDOUM7UUFFRCxNQUFNLElBQUksS0FBSyxDQUFDLGdDQUFnQyxjQUFjLEVBQUUsQ0FBQyxDQUFDO0lBQ3RFLENBQUM7Q0FDSjtBQWxFRCx3QkFrRUM7QUFFRDs7R0FFRztBQUNILElBQVksZ0JBV1g7QUFYRCxXQUFZLGdCQUFnQjtJQUN4Qjs7T0FFRztJQUNILHdDQUFvQjtJQUVwQjs7O09BR0c7SUFDSCwrQkFBVztBQUNmLENBQUMsRUFYVyxnQkFBZ0IsR0FBaEIsd0JBQWdCLEtBQWhCLHdCQUFnQixRQVczQjtBQUVEOztHQUVHO0FBQ0gsZ0JBQXdCLFNBQVEsWUFBSztDQUFHO0FBQXhDLGdDQUF3QztBQUV4Qyx1QkFBd0IsU0FBUSxTQUFTO0lBSXJDLFlBQVksTUFBaUIsRUFBRSxJQUFZLEVBQUUsS0FBcUI7UUFDOUQsS0FBSyxDQUFDLE1BQU0sRUFBRSxJQUFJLENBQUMsQ0FBQztRQUVwQixJQUFJLENBQUMsU0FBUyxHQUFHLEtBQUssQ0FBQyxTQUFTLENBQUM7UUFDakMsSUFBSSxLQUFLLENBQUMsYUFBYSxFQUFFO1lBQ3JCLElBQUksQ0FBQyxhQUFhLEdBQUcsR0FBRyxDQUFDLGdCQUFnQixDQUFDLE1BQU0sQ0FBQyxNQUFNLEVBQUUsS0FBSyxFQUFFLEtBQUssQ0FBQyxhQUFhLENBQUMsQ0FBQztTQUN4RjthQUFNO1lBQ0gsSUFBSSxDQUFDLGFBQWEsR0FBRyxTQUFTLENBQUM7U0FDbEM7SUFDTCxDQUFDO0NBQ0o7Ozs7Ozs7QUNqVUQscUM7Ozs7OztBQ0FBLG9DOzs7Ozs7QUNBQSwwQyIsImZpbGUiOiJidW5kbGUuanMiLCJzb3VyY2VzQ29udGVudCI6WyIgXHQvLyBUaGUgbW9kdWxlIGNhY2hlXG4gXHR2YXIgaW5zdGFsbGVkTW9kdWxlcyA9IHt9O1xuXG4gXHQvLyBUaGUgcmVxdWlyZSBmdW5jdGlvblxuIFx0ZnVuY3Rpb24gX193ZWJwYWNrX3JlcXVpcmVfXyhtb2R1bGVJZCkge1xuXG4gXHRcdC8vIENoZWNrIGlmIG1vZHVsZSBpcyBpbiBjYWNoZVxuIFx0XHRpZihpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXSkge1xuIFx0XHRcdHJldHVybiBpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXS5leHBvcnRzO1xuIFx0XHR9XG4gXHRcdC8vIENyZWF0ZSBhIG5ldyBtb2R1bGUgKGFuZCBwdXQgaXQgaW50byB0aGUgY2FjaGUpXG4gXHRcdHZhciBtb2R1bGUgPSBpbnN0YWxsZWRNb2R1bGVzW21vZHVsZUlkXSA9IHtcbiBcdFx0XHRpOiBtb2R1bGVJZCxcbiBcdFx0XHRsOiBmYWxzZSxcbiBcdFx0XHRleHBvcnRzOiB7fVxuIFx0XHR9O1xuXG4gXHRcdC8vIEV4ZWN1dGUgdGhlIG1vZHVsZSBmdW5jdGlvblxuIFx0XHRtb2R1bGVzW21vZHVsZUlkXS5jYWxsKG1vZHVsZS5leHBvcnRzLCBtb2R1bGUsIG1vZHVsZS5leHBvcnRzLCBfX3dlYnBhY2tfcmVxdWlyZV9fKTtcblxuIFx0XHQvLyBGbGFnIHRoZSBtb2R1bGUgYXMgbG9hZGVkXG4gXHRcdG1vZHVsZS5sID0gdHJ1ZTtcblxuIFx0XHQvLyBSZXR1cm4gdGhlIGV4cG9ydHMgb2YgdGhlIG1vZHVsZVxuIFx0XHRyZXR1cm4gbW9kdWxlLmV4cG9ydHM7XG4gXHR9XG5cblxuIFx0Ly8gZXhwb3NlIHRoZSBtb2R1bGVzIG9iamVjdCAoX193ZWJwYWNrX21vZHVsZXNfXylcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubSA9IG1vZHVsZXM7XG5cbiBcdC8vIGV4cG9zZSB0aGUgbW9kdWxlIGNhY2hlXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLmMgPSBpbnN0YWxsZWRNb2R1bGVzO1xuXG4gXHQvLyBkZWZpbmUgZ2V0dGVyIGZ1bmN0aW9uIGZvciBoYXJtb255IGV4cG9ydHNcbiBcdF9fd2VicGFja19yZXF1aXJlX18uZCA9IGZ1bmN0aW9uKGV4cG9ydHMsIG5hbWUsIGdldHRlcikge1xuIFx0XHRpZighX193ZWJwYWNrX3JlcXVpcmVfXy5vKGV4cG9ydHMsIG5hbWUpKSB7XG4gXHRcdFx0T2JqZWN0LmRlZmluZVByb3BlcnR5KGV4cG9ydHMsIG5hbWUsIHtcbiBcdFx0XHRcdGNvbmZpZ3VyYWJsZTogZmFsc2UsXG4gXHRcdFx0XHRlbnVtZXJhYmxlOiB0cnVlLFxuIFx0XHRcdFx0Z2V0OiBnZXR0ZXJcbiBcdFx0XHR9KTtcbiBcdFx0fVxuIFx0fTtcblxuIFx0Ly8gZ2V0RGVmYXVsdEV4cG9ydCBmdW5jdGlvbiBmb3IgY29tcGF0aWJpbGl0eSB3aXRoIG5vbi1oYXJtb255IG1vZHVsZXNcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubiA9IGZ1bmN0aW9uKG1vZHVsZSkge1xuIFx0XHR2YXIgZ2V0dGVyID0gbW9kdWxlICYmIG1vZHVsZS5fX2VzTW9kdWxlID9cbiBcdFx0XHRmdW5jdGlvbiBnZXREZWZhdWx0KCkgeyByZXR1cm4gbW9kdWxlWydkZWZhdWx0J107IH0gOlxuIFx0XHRcdGZ1bmN0aW9uIGdldE1vZHVsZUV4cG9ydHMoKSB7IHJldHVybiBtb2R1bGU7IH07XG4gXHRcdF9fd2VicGFja19yZXF1aXJlX18uZChnZXR0ZXIsICdhJywgZ2V0dGVyKTtcbiBcdFx0cmV0dXJuIGdldHRlcjtcbiBcdH07XG5cbiBcdC8vIE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbFxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5vID0gZnVuY3Rpb24ob2JqZWN0LCBwcm9wZXJ0eSkgeyByZXR1cm4gT2JqZWN0LnByb3RvdHlwZS5oYXNPd25Qcm9wZXJ0eS5jYWxsKG9iamVjdCwgcHJvcGVydHkpOyB9O1xuXG4gXHQvLyBfX3dlYnBhY2tfcHVibGljX3BhdGhfX1xuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5wID0gXCJcIjtcblxuIFx0Ly8gTG9hZCBlbnRyeSBtb2R1bGUgYW5kIHJldHVybiBleHBvcnRzXG4gXHRyZXR1cm4gX193ZWJwYWNrX3JlcXVpcmVfXyhfX3dlYnBhY2tfcmVxdWlyZV9fLnMgPSAwKTtcblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyB3ZWJwYWNrL2Jvb3RzdHJhcCAwZWNhMTBkNzVhMmJjYWUwY2YwOSIsImV4cG9ydCAqIGZyb20gJy4vc3RyZWFtJztcblxuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyAvcm9vdC9yZXBvcy9hd3MtY2RrL3BhY2thZ2VzL0Bhd3MtY2RrL2tpbmVzaXMvbGliL2luZGV4LnRzIiwiaW1wb3J0IHsgQ29uc3RydWN0LCBPdXRwdXQsIFBvbGljeVN0YXRlbWVudCwgVG9rZW4gfSBmcm9tICdAYXdzLWNkay9jb3JlJztcbmltcG9ydCB7IElJZGVudGl0eVJlc291cmNlIH0gZnJvbSAnQGF3cy1jZGsvaWFtJztcbmltcG9ydCAqIGFzIGttcyBmcm9tICdAYXdzLWNkay9rbXMnO1xuaW1wb3J0IHsga2luZXNpcyB9IGZyb20gJ0Bhd3MtY2RrL3Jlc291cmNlcyc7XG5cbi8qKlxuICogQSByZWZlcmVuY2UgdG8gYSBzdHJlYW0uIFRoZSBlYXNpZXN0IHdheSB0byBpbnN0YW50aWF0ZSBpcyB0byBjYWxsXG4gKiBgc3RyZWFtLmV4cG9ydCgpYC4gVGhlbiwgdGhlIGNvbnN1bWVyIGNhbiB1c2UgYFN0cmVhbS5pbXBvcnQodGhpcywgcmVmKWAgYW5kXG4gKiBnZXQgYSBgU3RyZWFtYC5cbiAqL1xuZXhwb3J0IGludGVyZmFjZSBTdHJlYW1SZWZQcm9wcyB7XG4gICAgLyoqXG4gICAgICogVGhlIEFSTiBvZiB0aGUgc3RyZWFtLlxuICAgICAqL1xuICAgIHN0cmVhbUFybjoga2luZXNpcy5TdHJlYW1Bcm47XG5cbiAgICAvKipcbiAgICAgKiBUaGUgS01TIGtleSBzZWN1cmluZyB0aGUgY29udGVudHMgb2YgdGhlIHN0cmVhbSBpZiBlbmNyeXB0aW9uIGlzIGVuYWJsZWQuXG4gICAgICovXG4gICAgZW5jcnlwdGlvbktleT86IGttcy5FbmNyeXB0aW9uS2V5UmVmUHJvcHM7XG59XG5cbi8qKlxuICogUmVwcmVzZW50cyBhIEtpbmVzaXMgU3RyZWFtLlxuICpcbiAqIFN0cmVhbXMgY2FuIGJlIGVpdGhlciBkZWZpbmVkIHdpdGhpbiB0aGlzIHN0YWNrOlxuICpcbiAqICAgICBuZXcgU3RyZWFtKHRoaXMsICdNeVN0cmVhbScsIHsgcHJvcHMgfSk7XG4gKlxuICogT3IgaW1wb3J0ZWQgZnJvbSBhbiBleGlzdGluZyBzdHJlYW06XG4gKlxuICogICAgIFN0cmVhbVJlZi5pbXBvcnQodGhpcywgJ015SW1wb3J0ZWRTdHJlYW0nLCB7IHN0cmVhbUFybjogLi4uIH0pO1xuICpcbiAqIFlvdSBjYW4gYWxzbyBleHBvcnQgYSBzdHJlYW0gYW5kIGltcG9ydCBpdCBpbnRvIGFub3RoZXIgc3RhY2s6XG4gKlxuICogICAgIGNvbnN0IHJlZiA9IG15U3RyZWFtLmV4cG9ydCgpO1xuICogICAgIFN0cmVhbVJlZi5pbXBvcnQodGhpcywgJ015SW1wb3J0ZWRTdHJlYW0nLCByZWYpO1xuICpcbiAqL1xuZXhwb3J0IGFic3RyYWN0IGNsYXNzIFN0cmVhbVJlZiBleHRlbmRzIENvbnN0cnVjdCB7XG4gICAgLyoqXG4gICAgICogQ3JlYXRlcyBhIFN0cmVhbSBjb25zdHJ1Y3QgdGhhdCByZXByZXNlbnRzIGFuIGV4dGVybmFsIHN0cmVhbS5cbiAgICAgKlxuICAgICAqIEBwYXJhbSBwYXJlbnQgVGhlIHBhcmVudCBjcmVhdGluZyBjb25zdHJ1Y3QgKHVzdWFsbHkgYHRoaXNgKS5cbiAgICAgKiBAcGFyYW0gbmFtZSBUaGUgY29uc3RydWN0J3MgbmFtZS5cbiAgICAgKiBAcGFyYW0gcmVmIEEgU3RyZWFtUmVmUHJvcHMgb2JqZWN0LiBDYW4gYmUgb2J0YWluZWQgZnJvbSBhIGNhbGwgdG9cbiAgICAgKiBgc3RyZWFtLmV4cG9ydCgpYC5cbiAgICAgKi9cbiAgICBwdWJsaWMgc3RhdGljIGltcG9ydChwYXJlbnQ6IENvbnN0cnVjdCwgbmFtZTogc3RyaW5nLCBwcm9wczogU3RyZWFtUmVmUHJvcHMpOiBTdHJlYW1SZWYge1xuICAgICAgICByZXR1cm4gbmV3IEltcG9ydGVkU3RyZWFtUmVmKHBhcmVudCwgbmFtZSwgcHJvcHMpO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIFRoZSBBUk4gb2YgdGhlIHN0cmVhbS5cbiAgICAgKi9cbiAgICBwdWJsaWMgYWJzdHJhY3QgcmVhZG9ubHkgc3RyZWFtQXJuOiBraW5lc2lzLlN0cmVhbUFybjtcblxuICAgIC8qKlxuICAgICAqIE9wdGlvbmFsIEtNUyBlbmNyeXB0aW9uIGtleSBhc3NvY2lhdGVkIHdpdGggdGhpcyBzdHJlYW0uXG4gICAgICovXG4gICAgcHVibGljIGFic3RyYWN0IHJlYWRvbmx5IGVuY3J5cHRpb25LZXk/OiBrbXMuRW5jcnlwdGlvbktleVJlZjtcblxuICAgIC8qKlxuICAgICAqIEV4cG9ydHMgdGhpcyBzdHJlYW0gZnJvbSB0aGUgc3RhY2suXG4gICAgICovXG4gICAgcHVibGljIGV4cG9ydCgpOiBTdHJlYW1SZWZQcm9wcyB7XG4gICAgICAgIGNvbnN0IHN0cmVhbUFybiA9IG5ldyBPdXRwdXQodGhpcywgJ1N0cmVhbUFybicsIHsgdmFsdWU6IHRoaXMuc3RyZWFtQXJuIH0pLm1ha2VJbXBvcnRWYWx1ZSgpO1xuICAgICAgICBpZiAodGhpcy5lbmNyeXB0aW9uS2V5KSB7XG4gICAgICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgICAgIHN0cmVhbUFybixcbiAgICAgICAgICAgICAgICBlbmNyeXB0aW9uS2V5OiB0aGlzLmVuY3J5cHRpb25LZXkuZXhwb3J0KClcbiAgICAgICAgICAgIH07XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICByZXR1cm4geyBzdHJlYW1Bcm4gfTtcbiAgICAgICAgfVxuICAgIH1cblxuICAgIC8qKlxuICAgICAqIEdyYW50IHdyaXRlIHBlcm1pc3Npb25zIGZvciB0aGlzIHN0cmVhbSBhbmQgaXRzIGNvbnRlbnRzIHRvIGFuIElBTVxuICAgICAqIHByaW5jaXBhbCAoUm9sZS9Hcm91cC9Vc2VyKS5cbiAgICAgKlxuICAgICAqIElmIGFuIGVuY3J5cHRpb24ga2V5IGlzIHVzZWQsIHBlcm1pc3Npb24gdG8gdWVzIHRoZSBrZXkgdG8gZGVjcnlwdCB0aGVcbiAgICAgKiBjb250ZW50cyBvZiB0aGUgc3RyZWFtIHdpbGwgYWxzbyBiZSBncmFudGVkLlxuICAgICAqL1xuICAgIHB1YmxpYyBncmFudFJlYWQoaWRlbnRpdHk/OiBJSWRlbnRpdHlSZXNvdXJjZSkge1xuICAgICAgICBpZiAoIWlkZW50aXR5KSB7XG4gICAgICAgICAgICByZXR1cm47XG4gICAgICAgIH1cbiAgICAgICAgdGhpcy5ncmFudChcbiAgICAgICAgICAgIGlkZW50aXR5LFxuICAgICAgICAgICAge1xuICAgICAgICAgICAgICAgIHN0cmVhbUFjdGlvbnM6IFtcbiAgICAgICAgICAgICAgICAgICAgJ2tpbmVzaXM6RGVzY3JpYmVTdHJlYW0nLFxuICAgICAgICAgICAgICAgICAgICAna2luZXNpczpHZXRSZWNvcmRzJyxcbiAgICAgICAgICAgICAgICAgICAgJ2tpbmVzaXM6R2V0U2hhcmRJdGVyYXRvcidcbiAgICAgICAgICAgICAgICBdLFxuICAgICAgICAgICAgICAgIGtleUFjdGlvbnM6IFtcbiAgICAgICAgICAgICAgICAgICAgJ2ttczpEZWNyeXB0J1xuICAgICAgICAgICAgICAgIF1cbiAgICAgICAgICAgIH1cbiAgICAgICAgKTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBHcmFudCByZWFkIHBlcm1pc3Npb25zIGZvciB0aGlzIHN0cmVhbSBhbmQgaXRzIGNvbnRlbnRzIHRvIGFuIElBTVxuICAgICAqIHByaW5jaXBhbCAoUm9sZS9Hcm91cC9Vc2VyKS5cbiAgICAgKlxuICAgICAqIElmIGFuIGVuY3J5cHRpb24ga2V5IGlzIHVzZWQsIHBlcm1pc3Npb24gdG8gdWVzIHRoZSBrZXkgdG8gZGVjcnlwdCB0aGVcbiAgICAgKiBjb250ZW50cyBvZiB0aGUgc3RyZWFtIHdpbGwgYWxzbyBiZSBncmFudGVkLlxuICAgICAqL1xuICAgIHB1YmxpYyBncmFudFdyaXRlKGlkZW50aXR5PzogSUlkZW50aXR5UmVzb3VyY2UpIHtcbiAgICAgICAgaWYgKCFpZGVudGl0eSkge1xuICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICB9XG5cbiAgICAgICAgdGhpcy5ncmFudChcbiAgICAgICAgICAgIGlkZW50aXR5LFxuICAgICAgICAgICAge1xuICAgICAgICAgICAgICAgIHN0cmVhbUFjdGlvbnM6IFtcbiAgICAgICAgICAgICAgICAgICAgJ2tpbmVzaXM6RGVzY3JpYmVTdHJlYW0nLFxuICAgICAgICAgICAgICAgICAgICAna2luZXNpczpQdXRSZWNvcmQnLFxuICAgICAgICAgICAgICAgICAgICAna2luZXNpczpQdXRSZWNvcmRzJ1xuICAgICAgICAgICAgICAgIF0sXG4gICAgICAgICAgICAgICAga2V5QWN0aW9uczogW1xuICAgICAgICAgICAgICAgICAgICAna21zOkdlbmVyYXRlRGF0YUtleScsXG4gICAgICAgICAgICAgICAgICAgICdrbXM6RW5jcnlwdCdcbiAgICAgICAgICAgICAgICBdXG4gICAgICAgICAgICB9XG4gICAgICAgICk7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogR3JhbnRzIHJlYWQvd3JpdGUgcGVybWlzc2lvbnMgZm9yIHRoaXMgc3RyZWFtIGFuZCBpdHMgY29udGVudHMgdG8gYW4gSUFNXG4gICAgICogcHJpbmNpcGFsIChSb2xlL0dyb3VwL1VzZXIpLlxuICAgICAqXG4gICAgICogSWYgYW4gZW5jcnlwdGlvbiBrZXkgaXMgdXNlZCwgcGVybWlzc2lvbiB0byB1c2UgdGhlIGtleSBmb3JcbiAgICAgKiBlbmNyeXB0L2RlY3J5cHQgd2lsbCBhbHNvIGJlIGdyYW50ZWQuXG4gICAgICovXG4gICAgcHVibGljIGdyYW50UmVhZFdyaXRlKGlkZW50aXR5PzogSUlkZW50aXR5UmVzb3VyY2UpIHtcbiAgICAgICAgaWYgKCFpZGVudGl0eSkge1xuICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICB9XG4gICAgICAgIHRoaXMuZ3JhbnQoXG4gICAgICAgICAgICBpZGVudGl0eSxcbiAgICAgICAgICAgIHtcbiAgICAgICAgICAgICAgICBzdHJlYW1BY3Rpb25zOiBbXG4gICAgICAgICAgICAgICAgICAgICdraW5lc2lzOkRlc2NyaWJlU3RyZWFtJyxcbiAgICAgICAgICAgICAgICAgICAgJ2tpbmVzaXM6R2V0UmVjb3JkcycsXG4gICAgICAgICAgICAgICAgICAgICdraW5lc2lzOkdldFNoYXJkSXRlcmF0b3InLFxuICAgICAgICAgICAgICAgICAgICAna2luZXNpczpQdXRSZWNvcmQnLFxuICAgICAgICAgICAgICAgICAgICAna2luZXNpczpQdXRSZWNvcmRzJ1xuICAgICAgICAgICAgICAgIF0sXG4gICAgICAgICAgICAgICAga2V5QWN0aW9uczogW1xuICAgICAgICAgICAgICAgICAgICAna21zOkRlY3J5cHQnLFxuICAgICAgICAgICAgICAgICAgICAna21zOkdlbmVyYXRlRGF0YUtleScsXG4gICAgICAgICAgICAgICAgICAgICdrbXM6RW5jcnlwdCdcbiAgICAgICAgICAgICAgICBdXG4gICAgICAgICAgICB9XG4gICAgICAgICk7XG4gICAgfVxuXG4gICAgcHJpdmF0ZSBncmFudChpZGVudGl0eTogSUlkZW50aXR5UmVzb3VyY2UsIGFjdGlvbnM6IHsgc3RyZWFtQWN0aW9uczogc3RyaW5nW10sIGtleUFjdGlvbnM6IHN0cmluZ1tdIH0pIHtcbiAgICAgICAgaWRlbnRpdHkuYWRkVG9Qb2xpY3kobmV3IFBvbGljeVN0YXRlbWVudCgpXG4gICAgICAgICAgICAuYWRkUmVzb3VyY2UodGhpcy5zdHJlYW1Bcm4pXG4gICAgICAgICAgICAuYWRkQWN0aW9ucyguLi5hY3Rpb25zLnN0cmVhbUFjdGlvbnMpKTtcblxuICAgICAgICAvLyBncmFudCBrZXkgcGVybWlzc2lvbnMgaWYgdGhlcmUncyBhbiBhc3NvY2lhdGVkIGtleS5cbiAgICAgICAgaWYgKHRoaXMuZW5jcnlwdGlvbktleSkge1xuICAgICAgICAgICAgaWRlbnRpdHkuYWRkVG9Qb2xpY3kobmV3IFBvbGljeVN0YXRlbWVudCgpXG4gICAgICAgICAgICAgICAgLmFkZFJlc291cmNlKHRoaXMuZW5jcnlwdGlvbktleS5rZXlBcm4pXG4gICAgICAgICAgICAgICAgLmFkZEFjdGlvbnMoLi4uYWN0aW9ucy5rZXlBY3Rpb25zKSk7XG4gICAgICAgIH1cbiAgICB9XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgU3RyZWFtUHJvcHMge1xuICAgIC8qKlxuICAgICAqIEVuZm9yY2VzIGEgcGFydGljdWxhciBwaHlzaWNhbCBzdHJlYW0gbmFtZS5cbiAgICAgKiBAZGVmYXVsdCA8Z2VuZXJhdGVkPlxuICAgICAqL1xuICAgIHN0cmVhbU5hbWU/OiBzdHJpbmc7XG5cbiAgICAvKipcbiAgICAgKiBUaGUgbnVtYmVyIG9mIGhvdXJzIGZvciB0aGUgZGF0YSByZWNvcmRzIHRoYXQgYXJlIHN0b3JlZCBpbiBzaGFyZHMgdG8gcmVtYWluIGFjY2Vzc2libGUuXG4gICAgICogQGRlZmF1bHQgMjRcbiAgICAgKi9cbiAgICByZXRlbnRpb25QZXJpb2RIb3Vycz86IG51bWJlcjtcblxuICAgIC8qKlxuICAgICAqIFRoZSBudW1iZXIgb2Ygc2hhcmRzIGZvciB0aGUgc3RyZWFtLlxuICAgICAqIEBkZWZhdWx0IDFcbiAgICAgKi9cbiAgICBzaGFyZENvdW50PzogbnVtYmVyO1xuXG4gICAgLyoqXG4gICAgICogVGhlIGtpbmQgb2Ygc2VydmVyLXNpZGUgZW5jcnlwdGlvbiB0byBhcHBseSB0byB0aGlzIHN0cmVhbS5cbiAgICAgKlxuICAgICAqIElmIHlvdSBjaG9vc2UgS01TLCB5b3UgY2FuIHNwZWNpZnkgYSBLTVMga2V5IHZpYSBgZW5jcnlwdGlvbktleWAuIElmXG4gICAgICogZW5jcnlwdGlvbiBrZXkgaXMgbm90IHNwZWNpZmllZCwgYSBrZXkgd2lsbCBhdXRvbWF0aWNhbGx5IGJlIGNyZWF0ZWQuXG4gICAgICpcbiAgICAgKiBAZGVmYXVsdCBVbmVuY3J5cHRlZFxuICAgICAqL1xuICAgIGVuY3J5cHRpb24/OiBTdHJlYW1FbmNyeXB0aW9uO1xuXG4gICAgLyoqXG4gICAgICogRXh0ZXJuYWwgS01TIGtleSB0byB1c2UgZm9yIHN0cmVhbSBlbmNyeXB0aW9uLlxuICAgICAqXG4gICAgICogVGhlICdlbmNyeXB0aW9uJyBwcm9wZXJ0eSBtdXN0IGJlIHNldCB0byBcIkttc1wiLlxuICAgICAqXG4gICAgICogQGRlZmF1bHQgSWYgZW5jcnlwdGlvbiBpcyBzZXQgdG8gXCJLbXNcIiBhbmQgdGhpcyBwcm9wZXJ0eSBpcyB1bmRlZmluZWQsIGFcbiAgICAgKiBuZXcgS01TIGtleSB3aWxsIGJlIGNyZWF0ZWQgYW5kIGFzc29jaWF0ZWQgd2l0aCB0aGlzIHN0cmVhbS5cbiAgICAgKi9cbiAgICBlbmNyeXB0aW9uS2V5Pzoga21zLkVuY3J5cHRpb25LZXlSZWY7XG59XG5cbi8qKlxuICogQSBLaW5lc2lzIHN0cmVhbS4gQ2FuIGJlIGVuY3J5cHRlZCB3aXRoIGEgS01TIGtleS5cbiAqL1xuZXhwb3J0IGNsYXNzIFN0cmVhbSBleHRlbmRzIFN0cmVhbVJlZiB7XG4gICAgcHVibGljIHJlYWRvbmx5IHN0cmVhbUFybjoga2luZXNpcy5TdHJlYW1Bcm47XG4gICAgcHVibGljIHJlYWRvbmx5IHN0cmVhbU5hbWU6IFN0cmVhbU5hbWU7XG4gICAgcHVibGljIHJlYWRvbmx5IGVuY3J5cHRpb25LZXk/OiBrbXMuRW5jcnlwdGlvbktleVJlZjtcblxuICAgIHByaXZhdGUgcmVhZG9ubHkgc3RyZWFtOiBraW5lc2lzLlN0cmVhbVJlc291cmNlO1xuXG4gICAgY29uc3RydWN0b3IocGFyZW50OiBDb25zdHJ1Y3QsIG5hbWU6IHN0cmluZywgcHJvcHM6IFN0cmVhbVByb3BzID0ge30pIHtcbiAgICAgICAgc3VwZXIocGFyZW50LCBuYW1lKTtcblxuICAgICAgICBjb25zdCBzaGFyZENvdW50ID0gcHJvcHMuc2hhcmRDb3VudCB8fCAxO1xuICAgICAgICBjb25zdCByZXRlbnRpb25QZXJpb2RIb3VycyA9IHByb3BzLnJldGVudGlvblBlcmlvZEhvdXJzIHx8IDI0O1xuICAgICAgICBpZiAocmV0ZW50aW9uUGVyaW9kSG91cnMgPCAyNCAmJiByZXRlbnRpb25QZXJpb2RIb3VycyA+IDE2OCkge1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKFwicmV0ZW50aW9uUGVyaW9kSG91cnMgbXVzdCBiZSBiZXR3ZWVuIDI0IGFuZCAxNjggaG91cnNcIik7XG4gICAgICAgIH1cblxuICAgICAgICBjb25zdCB7IHN0cmVhbUVuY3J5cHRpb24sIGVuY3J5cHRpb25LZXkgfSA9IHRoaXMucGFyc2VFbmNyeXB0aW9uKHByb3BzKTtcblxuICAgICAgICB0aGlzLnN0cmVhbSA9IG5ldyBraW5lc2lzLlN0cmVhbVJlc291cmNlKHRoaXMsIFwiUmVzb3VyY2VcIiwge1xuICAgICAgICAgICAgc3RyZWFtTmFtZTogcHJvcHMuc3RyZWFtTmFtZSxcbiAgICAgICAgICAgIHJldGVudGlvblBlcmlvZEhvdXJzLFxuICAgICAgICAgICAgc2hhcmRDb3VudCxcbiAgICAgICAgICAgIHN0cmVhbUVuY3J5cHRpb25cbiAgICAgICAgfSk7XG4gICAgICAgIHRoaXMuc3RyZWFtQXJuID0gdGhpcy5zdHJlYW0uc3RyZWFtQXJuO1xuICAgICAgICB0aGlzLnN0cmVhbU5hbWUgPSB0aGlzLnN0cmVhbS5yZWY7XG4gICAgICAgIHRoaXMuZW5jcnlwdGlvbktleSA9IGVuY3J5cHRpb25LZXk7XG5cbiAgICAgICAgaWYgKHByb3BzLnN0cmVhbU5hbWUpIHsgdGhpcy5hZGRNZXRhZGF0YSgnYXdzOmNkazpoYXNQaHlzaWNhbE5hbWUnLCBwcm9wcy5zdHJlYW1OYW1lKTsgfVxuICAgIH1cblxuICAgIC8qKlxuICAgICAqIFNldCB1cCBrZXkgcHJvcGVydGllcyBhbmQgcmV0dXJuIHRoZSBTdHJlYW0gZW5jcnlwdGlvbiBwcm9wZXJ0eSBmcm9tIHRoZVxuICAgICAqIHVzZXIncyBjb25maWd1cmF0aW9uLlxuICAgICAqL1xuICAgIHByaXZhdGUgcGFyc2VFbmNyeXB0aW9uKHByb3BzOiBTdHJlYW1Qcm9wcyk6IHtcbiAgICAgICAgc3RyZWFtRW5jcnlwdGlvbj86IGtpbmVzaXMuU3RyZWFtUmVzb3VyY2UuU3RyZWFtRW5jcnlwdGlvblByb3BlcnR5LFxuICAgICAgICBlbmNyeXB0aW9uS2V5Pzoga21zLkVuY3J5cHRpb25LZXlSZWZcbiAgICB9IHtcblxuICAgICAgICAvLyBkZWZhdWx0IHRvIHVuZW5jcnlwdGVkLlxuICAgICAgICBjb25zdCBlbmNyeXB0aW9uVHlwZSA9IHByb3BzLmVuY3J5cHRpb24gfHwgU3RyZWFtRW5jcnlwdGlvbi5VbmVuY3J5cHRlZDtcblxuICAgICAgICAvLyBpZiBlbmNyeXB0aW9uIGtleSBpcyBzZXQsIGVuY3J5cHRpb24gbXVzdCBiZSBzZXQgdG8gS01TLlxuICAgICAgICBpZiAoZW5jcnlwdGlvblR5cGUgIT09IFN0cmVhbUVuY3J5cHRpb24uS21zICYmIHByb3BzLmVuY3J5cHRpb25LZXkpIHtcbiAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcihgZW5jcnlwdGlvbktleSBpcyBzcGVjaWZpZWQsIHNvICdlbmNyeXB0aW9uJyBtdXN0IGJlIHNldCB0byBLTVMgKHZhbHVlOiAke2VuY3J5cHRpb25UeXBlfSlgKTtcbiAgICAgICAgfVxuXG4gICAgICAgIGlmIChlbmNyeXB0aW9uVHlwZSA9PT0gU3RyZWFtRW5jcnlwdGlvbi5VbmVuY3J5cHRlZCkge1xuICAgICAgICAgICAgcmV0dXJuIHsgc3RyZWFtRW5jcnlwdGlvbjogdW5kZWZpbmVkLCBlbmNyeXB0aW9uS2V5OiB1bmRlZmluZWQgfTtcbiAgICAgICAgfVxuXG4gICAgICAgIGlmIChlbmNyeXB0aW9uVHlwZSA9PT0gU3RyZWFtRW5jcnlwdGlvbi5LbXMpIHtcbiAgICAgICAgICAgIGNvbnN0IGVuY3J5cHRpb25LZXkgPSBwcm9wcy5lbmNyeXB0aW9uS2V5IHx8IG5ldyBrbXMuRW5jcnlwdGlvbktleSh0aGlzLCAnS2V5Jywge1xuICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBgQ3JlYXRlZCBieSAke3RoaXMucGF0aH1gXG4gICAgICAgICAgICB9KTtcblxuICAgICAgICAgICAgY29uc3Qgc3RyZWFtRW5jcnlwdGlvbjoga2luZXNpcy5TdHJlYW1SZXNvdXJjZS5TdHJlYW1FbmNyeXB0aW9uUHJvcGVydHkgPSB7XG4gICAgICAgICAgICAgICAgZW5jcnlwdGlvblR5cGU6ICdLTVMnLFxuICAgICAgICAgICAgICAgIGtleUlkOiBlbmNyeXB0aW9uS2V5LmtleUFyblxuICAgICAgICAgICAgfTtcbiAgICAgICAgICAgIHJldHVybiB7IGVuY3J5cHRpb25LZXksIHN0cmVhbUVuY3J5cHRpb24gfTtcbiAgICAgICAgfVxuXG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgVW5leHBlY3RlZCAnZW5jcnlwdGlvblR5cGUnOiAke2VuY3J5cHRpb25UeXBlfWApO1xuICAgIH1cbn1cblxuLyoqXG4gKiBXaGF0IGtpbmQgb2Ygc2VydmVyLXNpZGUgZW5jcnlwdGlvbiB0byBhcHBseSB0byB0aGlzIHN0cmVhbVxuICovXG5leHBvcnQgZW51bSBTdHJlYW1FbmNyeXB0aW9uIHtcbiAgICAvKipcbiAgICAgKiBSZWNvcmRzIGluIHRoZSBzdHJlYW0gYXJlIG5vdCBlbmNyeXB0ZWQuXG4gICAgICovXG4gICAgVW5lbmNyeXB0ZWQgPSAnTk9ORScsXG5cbiAgICAvKipcbiAgICAgKiBTZXJ2ZXItc2lkZSBlbmNyeXB0aW9uIHdpdGggYSBLTVMga2V5IG1hbmFnZWQgYnkgdGhlIHVzZXIuXG4gICAgICogSWYgYGVuY3J5cHRpb25LZXlgIGlzIHNwZWNpZmllZCwgdGhpcyBrZXkgd2lsbCBiZSB1c2VkLCBvdGhlcndpc2UsIG9uZSB3aWxsIGJlIGRlZmluZWQuXG4gICAgICovXG4gICAgS21zID0gJ0tNUycsXG59XG5cbi8qKlxuICogVGhlIG5hbWUgb2YgdGhlIHN0cmVhbS5cbiAqL1xuZXhwb3J0IGNsYXNzIFN0cmVhbU5hbWUgZXh0ZW5kcyBUb2tlbiB7fVxuXG5jbGFzcyBJbXBvcnRlZFN0cmVhbVJlZiBleHRlbmRzIFN0cmVhbVJlZiB7XG4gICAgcHVibGljIHJlYWRvbmx5IHN0cmVhbUFybjoga2luZXNpcy5TdHJlYW1Bcm47XG4gICAgcHVibGljIHJlYWRvbmx5IGVuY3J5cHRpb25LZXk/OiBrbXMuRW5jcnlwdGlvbktleVJlZjtcblxuICAgIGNvbnN0cnVjdG9yKHBhcmVudDogQ29uc3RydWN0LCBuYW1lOiBzdHJpbmcsIHByb3BzOiBTdHJlYW1SZWZQcm9wcykge1xuICAgICAgICBzdXBlcihwYXJlbnQsIG5hbWUpO1xuXG4gICAgICAgIHRoaXMuc3RyZWFtQXJuID0gcHJvcHMuc3RyZWFtQXJuO1xuICAgICAgICBpZiAocHJvcHMuZW5jcnlwdGlvbktleSkge1xuICAgICAgICAgICAgdGhpcy5lbmNyeXB0aW9uS2V5ID0ga21zLkVuY3J5cHRpb25LZXlSZWYuaW1wb3J0KHBhcmVudCwgJ0tleScsIHByb3BzLmVuY3J5cHRpb25LZXkpO1xuICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgdGhpcy5lbmNyeXB0aW9uS2V5ID0gdW5kZWZpbmVkO1xuICAgICAgICB9XG4gICAgfVxufVxuXG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC9yb290L3JlcG9zL2F3cy1jZGsvcGFja2FnZXMvQGF3cy1jZGsva2luZXNpcy9saWIvc3RyZWFtLnRzIiwibW9kdWxlLmV4cG9ydHMgPSBqc2lpJF9hd3NfY2RrX2NvcmUkO1xuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIGV4dGVybmFsIFwianNpaSRfYXdzX2Nka19jb3JlJFwiXG4vLyBtb2R1bGUgaWQgPSAyXG4vLyBtb2R1bGUgY2h1bmtzID0gMCIsIm1vZHVsZS5leHBvcnRzID0ganNpaSRfYXdzX2Nka19rbXMkO1xuXG5cbi8vLy8vLy8vLy8vLy8vLy8vL1xuLy8gV0VCUEFDSyBGT09URVJcbi8vIGV4dGVybmFsIFwianNpaSRfYXdzX2Nka19rbXMkXCJcbi8vIG1vZHVsZSBpZCA9IDNcbi8vIG1vZHVsZSBjaHVua3MgPSAwIiwibW9kdWxlLmV4cG9ydHMgPSBqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyQ7XG5cblxuLy8vLy8vLy8vLy8vLy8vLy8vXG4vLyBXRUJQQUNLIEZPT1RFUlxuLy8gZXh0ZXJuYWwgXCJqc2lpJF9hd3NfY2RrX3Jlc291cmNlcyRcIlxuLy8gbW9kdWxlIGlkID0gNFxuLy8gbW9kdWxlIGNodW5rcyA9IDAiXSwic291cmNlUm9vdCI6IiJ9"
+}
