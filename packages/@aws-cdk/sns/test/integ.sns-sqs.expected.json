@@ -18,47 +18,6 @@
         }
       }
     },
-    "MyTopicPolicy12A5EC17": {
-      "Type": "AWS::SNS::TopicPolicy",
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sns:Publish",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "events.amazonaws.com"
-              },
-              "Resource": {
-                "Ref": "MyTopic86869434"
-              },
-              "Sid": "0"
-            }
-          ],
-          "Version": "2012-10-17"
-        },
-        "Topics": [
-          {
-            "Ref": "MyTopic86869434"
-          }
-        ]
-      }
-    },
-    "EveryMinute2BBCEA8F": {
-      "Type": "AWS::Events::Rule",
-      "Properties": {
-        "ScheduleExpression": "rate(1 minute)",
-        "State": "ENABLED",
-        "Targets": [
-          {
-            "Arn": {
-              "Ref": "MyTopic86869434"
-            },
-            "Id": "MyTopic"
-          }
-        ]
-      }
-    },
     "MyQueueE6CA6235": {
       "Type": "AWS::SQS::Queue"
     },
