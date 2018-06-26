@@ -6,3 +6,6 @@ dist
 pack
 .BUILD_COMPLETED
 .local-npm
+
+bin/
+obj/
