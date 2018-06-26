@@ -11,3 +11,13 @@ for i in $( ls $AWS_CDK ); do
 done
 
 
+# Ensure that all generated projects are added to the solution.
+SRC=./src
+for i in $( ls $SRC ); do
+    CSPROJ=./src/$i/$i.csproj
+    if [ -e $CSPROJ ]; then
+        dotnet sln ./src/Aws.Cdk.sln add $CSPROJ
+    fi
+done
+
+
