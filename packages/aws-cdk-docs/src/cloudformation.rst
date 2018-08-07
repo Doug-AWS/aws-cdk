@@ -38,18 +38,17 @@ where **S3Bucket** is the logical ID of the bucket in your template:
       }
    }   
    
-You can include this bucket in your |cdk| app,
+You can include this template in your |cdk| app,
 as shown in the following example
 (note that you cannot use this method in an |l2| construct):
 
 .. code-block:: js
 
-   import { FnGetAtt } from '@aws-cdk/core';
-   import { readFileSync } from 'fs'
+   import fs = require('fs');
    
-   new Include(this, "ExistingInfrastructure", {
-      template: JSON.parse(readFileSync('my-template.json').toString())
-   })
+   new cdk.Include(this, "ExistingInfrastructure", {
+       template: JSON.parse(fs.readFileSync('my-template.json').toString())
+   });
 
 Then to access an attribute of the resource, such as the bucket's ARN:
 
